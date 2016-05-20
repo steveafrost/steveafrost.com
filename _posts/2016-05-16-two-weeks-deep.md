@@ -4,7 +4,6 @@ title: "Two Weeks Deep"
 date: 2016-05-16 15:00:00 -0400
 categories: blog
 tags: flatiron-school learning-to-code
-permalink: /two-weeks-deep
 ---
 _(Day 16)_
 

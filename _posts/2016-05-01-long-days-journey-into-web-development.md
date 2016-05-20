@@ -4,7 +4,6 @@ title: "Long Day’s Journey Into Web Development"
 date: 2016-05-01 14:00:00 -0400
 categories: blog
 tags: flatiron-school learning-to-code
-permalink: /long-days-journey-into-web-development
 ---
 
 _(Day 1)_
