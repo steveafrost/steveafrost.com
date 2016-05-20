@@ -1,11 +1,13 @@
-—-
+---
 layout: post
-title: “Long Day’s Journey Into Web Development”
+title: "Long Day’s Journey Into Web Development"
 date: 2016-05-01 14:00:00 -0400
-categories: blog flatiron-school learning-to-code
-—
+categories: blog
+tags: flatiron-school learning-to-code
+permalink: /long-days-journey-into-web-development
+---
 
-(Day 1)
+_(Day 1)_
 
 After months (er, maybe years) of lurking, delaying, and excuses, today I began my trek toward becoming a full stack developer. As with everything, I exhausted all other options, free and paid, to only come full circle back to Flatiron School’s Learn.co program.
 
