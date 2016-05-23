@@ -14,9 +14,10 @@ dl, dd, ol, ul, figure {
  * Basic styling
  */
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $text-color;
-    background-color: $background-color;
+    font: $base-font-weight #{$base-font-size}/#{$base-line-height};
+    font-family: Lato, sans-serif;
+    color: #000000;
+    background: url('../assets/steveafrostbg.jpg');
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -91,15 +92,15 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-    color: $brand-color;
+    color: #000000;
     text-decoration: none;
 
     &:visited {
-        color: darken($brand-color, 15%);
+        color: #000000;
     }
 
     &:hover {
-        color: $text-color;
+        color: #000000;
         text-decoration: underline;
     }
 }
@@ -156,12 +157,14 @@ pre {
  * Wrapper
  */
 .wrapper {
+    background-color: #FFFFFF;
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
+    padding-right: $spacing-unit * 2;
+    padding-left: $spacing-unit * 2;
+    padding-bottom: $spacing-unit * 2;
     @extend %clearfix;
 
     @include media-query($on-laptop) {
@@ -169,6 +172,7 @@ pre {
         max-width:         calc(#{$content-width} - (#{$spacing-unit}));
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
+        padding-bottom: $spacing-unit / 2;
     }
 }
 
