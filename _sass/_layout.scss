@@ -11,6 +11,7 @@
 
 .site-title {
     font-size: 26px;
+    font-weight: 300;
     line-height: 56px;
     margin-bottom: 0;
     float: left;
@@ -241,4 +242,15 @@
             font-size: 18px;
         }
     }
+}
+
+/* Custom Article CSS */
+article.post {
+  background-color: #FFF7F5;
+  padding: $spacing-unit * 2;
+  border-radius: 25px;
+  
+  @include media-query($on-laptop) {
+      padding: $spacing-unit / 2;
+  }
 }

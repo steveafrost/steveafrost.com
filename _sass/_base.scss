@@ -15,9 +15,9 @@ dl, dd, ol, ul, figure {
  */
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height};
-    font-family: Lato, sans-serif;
+    font-family: $base-font-family;
     color: #000000;
-    background: url('../assets/steveafrostbg.jpg');
+    background: url('../assets/steveafrostbg.jpg') fixed;
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -157,14 +157,12 @@ pre {
  * Wrapper
  */
 .wrapper {
-    background-color: #FFFFFF;
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
     margin-right: auto;
     margin-left: auto;
     padding-right: $spacing-unit * 2;
     padding-left: $spacing-unit * 2;
-    padding-bottom: $spacing-unit * 2;
     @extend %clearfix;
 
     @include media-query($on-laptop) {
@@ -172,7 +170,6 @@ pre {
         max-width:         calc(#{$content-width} - (#{$spacing-unit}));
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
-        padding-bottom: $spacing-unit / 2;
     }
 }
 
