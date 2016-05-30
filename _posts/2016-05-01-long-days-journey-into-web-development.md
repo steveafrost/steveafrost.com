@@ -4,6 +4,7 @@ title: "Long Day’s Journey Into Web Development"
 date: 2016-05-01 14:00:00 -0400
 categories: blog
 tags: flatiron-school learning-to-code
+description: As an opening post to this blog, I discuss starting a coding school... or the procrastination of starting.
 comments: true
 ---
 
