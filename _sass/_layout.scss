@@ -247,10 +247,12 @@
 /* Custom Article CSS */
 article.post {
   background-color: #FFF7F5;
-  padding: $spacing-unit * 2;
   border-radius: 25px;
+  padding: $spacing-unit * 2;
   
   @include media-query($on-laptop) {
+      background-color: #FFF7F5;
+      border-radius: 25px;
       padding: $spacing-unit / 2;
   }
 }
