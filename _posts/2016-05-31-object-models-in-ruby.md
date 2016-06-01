@@ -2,7 +2,7 @@
 layout: post
 title: "Object Models in Ruby"
 author: Steve Frost
-date: 2016-05-31 23:00:00 -0400
+date: 2016-05-31 15:00:00 -0400
 categories: blog
 tags: flatiron-school learning-to-code
 description: What are object models in Ruby? How do they work? How do you avoid the headaches when working with object models?
