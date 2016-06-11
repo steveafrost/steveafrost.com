@@ -163,6 +163,7 @@ pre {
     margin-left: auto;
     padding-right: $spacing-unit * 2;
     padding-left: $spacing-unit * 2;
+    text-align: center;
     @extend %clearfix;
 
     @include media-query($on-laptop) {
