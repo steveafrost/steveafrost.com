@@ -86,7 +86,6 @@
         }
         
         .nav-links {
-            clear: both;
             display: none;
         }
 
@@ -270,12 +269,17 @@ article.post {
   background-color: #FFF7F5;
   border-radius: 15px;
   padding: $spacing-unit;
-  margin-left: -35px;
+  margin-left: -50px;
   
   @include media-query($on-laptop) {
       background-color: #FFF7F5;
       border-radius: 25px;
       padding: $spacing-unit / 2;
+      margin-left: 0px;
+  }
+  
+  @include media-query($on-palm) {
+      margin-left: 0px;
   }
 }
 
