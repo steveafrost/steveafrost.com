@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2016-05-16 15:00:00 -04:00
 categories: blog
 tags: flatiron-school learning-to-code
-description: How does it feel after attending a coding school for two weeks? I do a brief recap this week.
+description: "How does it feel after attending a coding school for two weeks? I do a brief recap this week."
 comments: true
 
 ---

@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2016-05-01 14:00:00 -04:00
 categories: blog
 tags: flatiron-school learning-to-code
-description: As an opening post to this blog, I discuss starting a coding school... or the procrastination of starting.
+description: "As an opening post to this blog, I discuss starting a coding school... or the procrastination of starting."
 comments: true
 ---
 

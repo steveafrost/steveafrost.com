@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2016-06-25 18:24:00 -04:00
 categories: blog
 tags: flatiron-school learning-to-code
-description: The tale of persistence behind building my first CLI gem.
+description: "The tale of persistence behind building my first CLI gem."
 comments: true
 ---
 

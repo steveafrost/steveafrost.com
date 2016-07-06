@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2016-07-06 18:00:00 -04:00
 categories: blog
 tags: flatiron-school learning-to-code
-description: Exploring Active Record: What We've Learned and What We've Found.
+description: "What we've learned and what we've discovered about Active Record"
 comments: true
 ---
 
