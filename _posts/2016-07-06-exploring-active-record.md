@@ -9,7 +9,7 @@ description: Exploring Active Record: What We've Learned and What We've Found.
 comments: true
 ---
 
-_(Day 66)_
+_(Day 66)_ 
 
 ## Active Record Overview ##
 Active Record is a Ruby gem (an incredible Ruby gem) that provides the ability to communicate with a database through object relational mapping. All this really means is that we can use similar object oriented conventions on our database through Active Record. Through this, we unlock several benefits:
