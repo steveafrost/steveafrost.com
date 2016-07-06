@@ -1,4 +1,13 @@
-
+---
+layout: post
+title: "Exploring Active Record"
+author: Steve Frost
+date: 2016-07-06 15:00:00 -04:00
+categories: blog
+tags: flatiron-school learning-to-code
+description: Exploring Active Record: What We've Learned and What We've Found.
+comments: true
+---
 
 _(Day 66)_
 
