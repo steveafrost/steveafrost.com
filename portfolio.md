@@ -45,6 +45,14 @@ permalink: /portfolio/
         <center>MLB Scoreboard Gem</center>
       </div>
     </div>
+    <div class="row">
+      <div class="col-4">
+        <a href="https://github.com/steveafrost/much-free-very-wow" target="_blank">
+          <img src="../assets/mlbscoreboardrubygem.jpg">
+        </a>
+        <center>Much Free, Very Wow Sinatra App</center>
+      </div>
+    </div>
   </div>
 
 </div>
