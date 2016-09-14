@@ -15,3 +15,5 @@ permalink: /blog/
     </li>
   {% endfor %}
 </ul>
+
+<a href="https://medium.com/@SteveEff"><img src="../assets/medium-logo.png" height="50" width="50" style="border: none">For more, head to Medium</a>
