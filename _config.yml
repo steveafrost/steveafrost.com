@@ -1,12 +1,10 @@
 # Permalinks
 #
-# Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
-relative_permalinks: true
 
 # Setup
 title:               Steve Frost
-tagline:             'Portfolio & Blogs of Steve Frost, aspiring developer and avid learner.'
+tagline:             'Blogs of an aspiring developer and avid learner.'
 description:         'Operations & Support Manager (and aspiring developer) with a thirst for knowledge and a passion for working with technology-forward teams. Known best for organizing data, flexing interpersonal skills, and showing compassion for end-users.'
 url:                 http://steveafrost.com
 baseurl:             ''
@@ -20,3 +18,5 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+gems: [jekyll-paginate]
