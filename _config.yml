@@ -1,27 +1,22 @@
-# Welcome to Jekyll!
+# Permalinks
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
 
-# Site settings
-title: Steve Frost
-tagline: Portfolio & Blogs of Steve Frost, aspiring developer and avid learner.
-email: ffrostt@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Operations & Support Manager (and aspiring developer) with a thirst for knowledge and a passion for working with technology-forward teams. Known best for organizing data, flexing interpersonal skills, and showing compassion for end-users.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://steveafrost.com" # the base hostname & protocol for your site
-permalink: pretty
-twitter_username: steveeff
-github_username:  steveafrost
+# Setup
+title:               Steve Frost
+tagline:             'Portfolio & Blogs of Steve Frost, aspiring developer and avid learner.'
+description:         'Operations & Support Manager (and aspiring developer) with a thirst for knowledge and a passion for working with technology-forward teams. Known best for organizing data, flexing interpersonal skills, and showing compassion for end-users.'
+url:                 http://steveafrost.com
+baseurl:             ''
+paginate:            5
 
-# Build settings
-markdown: kramdown
+# About/contact
+author:
+  name:              Steve Frost
+  url:               https://twitter.com/steveeff
+  email:             ffrostt@gmail.com
 
-# Gems
-gems:
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-redirect-from
+# Custom vars
+version:             1.0.0
