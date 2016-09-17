@@ -1,6 +1,8 @@
 # Permalinks
 #
 permalink:           pretty
+paginate: 5
+paginate_path: "page:num"
 
 # Setup
 title:               Steve Frost
@@ -8,7 +10,6 @@ tagline:             'Blogs of an aspiring developer and avid learner.'
 description:         'Operations & Support Manager (and aspiring developer) with a thirst for knowledge and a passion for working with technology-forward teams. Known best for organizing data, flexing interpersonal skills, and showing compassion for end-users.'
 url:                 http://steveafrost.com
 baseurl:             ''
-paginate:            5
 
 # About/contact
 author:
