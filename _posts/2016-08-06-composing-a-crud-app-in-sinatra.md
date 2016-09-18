@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2016-08-06 16:00:00 -04:00
 categories: blog
 tags: flatiron-school learning-to-code
-description: "What I learned from creating a few apps in Sinatra"
+description: "What I learned about CRUD from creating a few apps in Sinatra"
 comments: true
 ---
 
