@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2016-10-07 17:30:00 -04:00
 categories: blog
 tags: flatiron-school learning-to-code
-description: "A overview of my first Rails app called Plant Nanny"
+description: "An overview of my first Rails app called Plant Nanny"
 comments: true
 ---
 
