@@ -26,27 +26,27 @@ Now that you know some of the backstory about Homebrew and what exactly it does,
 **Installing Homebrew**
 
 To install Homebrew, open up your Terminal and enter `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. If you're curious what this script does, there is a description that is printed out in the terminal that includes that information. Once Homebrew is installed, any package can be installed via the command `brew package` i.e. `brew zzz` which is a package for a [command-line MacOS sleep program](https://github.com/Orc/Zzz). This will install the package into your Cellar according to the Formula. Here is a brief list of the common Homebrew puns/terms you'll come across.
-  * Formula - the package definition
-  * Keg - the installation prefix of a formula
-  * Cellar - the place where all Kegs are stored
-  * Tap - an optional git repository of formulae and/or commands
-  * Bottle - when a pre-built keg is used instead of building from source
-  * Cask - an [extension of homebrew](https://github.com/caskroom/homebrew-cask) to install macOS native apps
-  * Brew Bundle - an [extension of homebrew](https://github.com/Homebrew/homebrew-bundle) to describe dependencies
+* Formula - the package definition
+* Keg - the installation prefix of a formula
+* Cellar - the place where all Kegs are stored
+* Tap - an optional git repository of formulae and/or commands
+* Bottle - when a pre-built keg is used instead of building from source
+* Cask - an [extension of homebrew](https://github.com/caskroom/homebrew-cask) to install macOS native apps
+* Brew Bundle - an [extension of homebrew](https://github.com/Homebrew/homebrew-bundle) to describe dependencies
 
 **Maintaining Homebrew**
 
 Okay, so you've gone hog wild with the puns, putting kegs in your cellar, tapping casks, and bonging repositories (not a real one) - how do you keep these all updated? Enter another wonderful thing about Homebrew. To update your packages, just use `brew upgrade` and Homebrew will search through your Cellar and upgrade all packages to the most recent source available. To keep Homebrew itself updated, that is simple - enter `brew update` in the Terminal. Each time Homebrew updates, new packages are made available to install.
 
 **Tips & Tricks**
-  * `brew info kegname` displays info about that package
-  * `brew cleanup` to remove older, unused Formula versions
-  * `brew ls kegname` shows how the keg is arranged in your Cellar
-  * `brew outdated` to see what is outdated and could use a `brew upgrade`
-  * `brew pin kegname` will prevent a keg from being updated and `unpin` will undo
+* `brew info kegname` displays info about that package
+* `brew cleanup` to remove older, unused Formula versions
+* `brew ls kegname` shows how the keg is arranged in your Cellar
+* `brew outdated` to see what is outdated and could use a `brew upgrade`
+* `brew pin kegname` will prevent a keg from being updated and `unpin` will undo
 
 **Conclusion**
 
-Give Homebrew a try and let me know how you like it. As a new Rails developer, it has been a godsend for installing things like geckodriver, imagemagick, and sqlite. While installing each of these manually, I came across issues that Homebrew easily resolved *and* I don't have to worry about keeping the packages up-to-date. Homebrew does a wonderful job of [documentation](https://github.com/Homebrew/brew/tree/master/docs) - THANK YOU - so you'll rarely be left in the dark. Even with these docs, there may be an issue or improvement to offer. If there is a way you can contribute, don't hesitate to fork, edit, and open a pull request to help out the community. Before investing your time, view the [FAQ](https://github.com/Homebrew/brew/blob/master/docs/FAQ.md) as that could answer the question or address the issue.
+Give Homebrew a try and [let me know how](https://twitter.com/SteveEff) you like it. As a new Rails developer, it has been a godsend for installing things like geckodriver, imagemagick, and sqlite. While installing each of these manually, I came across issues that Homebrew easily resolved *and* I don't have to worry about keeping the packages up-to-date. Homebrew does a wonderful job of [documentation](https://github.com/Homebrew/brew/tree/master/docs) - THANK YOU - so you'll rarely be left in the dark. Even with these docs, there may be an issue or improvement to offer. If there is a way you can contribute, don't hesitate to fork, edit, and open a pull request to help out the community. Before investing your time, view the [FAQ](https://github.com/Homebrew/brew/blob/master/docs/FAQ.md) as that could answer the question or address the issue.
 
 Enjoy!
