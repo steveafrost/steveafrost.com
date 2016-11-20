@@ -26,6 +26,7 @@ Now that you know some of the backstory about Homebrew and what exactly it does,
 **Installing Homebrew**
 
 To install Homebrew, open up your Terminal and enter `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. If you're curious what this script does, there is a description that is printed out in the terminal that includes that information. Once Homebrew is installed, any package can be installed via the command `brew package` i.e. `brew zzz` which is a package for a [command-line MacOS sleep program](https://github.com/Orc/Zzz). This will install the package into your Cellar according to the Formula. Here is a brief list of the common Homebrew puns/terms you'll come across.
+
 * Formula - the package definition
 * Keg - the installation prefix of a formula
 * Cellar - the place where all Kegs are stored
@@ -39,6 +40,7 @@ To install Homebrew, open up your Terminal and enter `/usr/bin/ruby -e "$(curl -
 Okay, so you've gone hog wild with the puns, putting kegs in your cellar, tapping casks, and bonging repositories (not a real one) - how do you keep these all updated? Enter another wonderful thing about Homebrew. To update your packages, just use `brew upgrade` and Homebrew will search through your Cellar and upgrade all packages to the most recent source available. To keep Homebrew itself updated, that is simple - enter `brew update` in the Terminal. Each time Homebrew updates, new packages are made available to install.
 
 **Tips & Tricks**
+
 * `brew info kegname` displays info about that package
 * `brew cleanup` to remove older, unused Formula versions
 * `brew ls kegname` shows how the keg is arranged in your Cellar

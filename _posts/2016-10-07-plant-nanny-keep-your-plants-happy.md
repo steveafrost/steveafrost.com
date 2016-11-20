@@ -22,11 +22,13 @@ Inspiration for the app came from my own personal experience with indoor plants.
 ![Plant Nanny All Plants Page]({{site-url}}/assets/plantnanny2.jpeg)
 
 **Challenges I Faced**
-* *Should I allow for image upload or use a placeholder image for each plant?* I decided to use a placeholder for the plants because I wasn't aware of how to do an image upload in Rails yet and there were so many other things that were new to me. The placeholder allowed me to focus on the grander scheme of the app and prioritize image uploading for the next release.
 
-* *How do I setup the migrations? Do I have enough/too many tables?* I got stuck on this same question when doing my Sinatra project. It helps to talk your schema through with someone and see if they have any questions/suggestions. Once you've done that, move forward with the project. It's important to write code so that you can see how the program will look with your proposed schema then you can add or remove tables later. It's useful to remind yourself that the database *can* change.
+* Should I allow for image upload or use a placeholder image for each plant?* I decided to use a placeholder for the plants because I wasn't aware of how to do an image upload in Rails yet and there were so many other things that were new to me. The placeholder allowed me to focus on the grander scheme of the app and prioritize image uploading for the next release.
+
+* How do I setup the migrations? Do I have enough/too many tables?* I got stuck on this same question when doing my Sinatra project. It helps to talk your schema through with someone and see if they have any questions/suggestions. Once you've done that, move forward with the project. It's important to write code so that you can see how the program will look with your proposed schema then you can add or remove tables later. It's useful to remind yourself that the database *can* change.
 
 **Plans for v2**
+
 * Include a dropdown on Add Plant page to select existing plant (right now it matches the title typed in - too much error probability)
 
 * Add "today" to the My Profile page which shows which plants need to be watered, moved, or repotted today. Can even build this out further to alert you via an extension or light mobile app
