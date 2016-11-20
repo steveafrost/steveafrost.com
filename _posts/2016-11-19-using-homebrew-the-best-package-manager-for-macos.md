@@ -9,6 +9,7 @@ description: "Homebrew is an incredible resource for new and old developers alik
 comments: true
 ---
 
+![HomebrewLogo]({{site-url}}/assets/homebrewlogo.png)
 It is hard for me to hold back the excitement for [Homebrew](http://brew.sh/). It has saved me hundreds of hours, surely. If the feeling of frustration with juggling dependencies, root paths, compiling, repair, and updating packages is familiar, Homebrew is here to save you as well.
 
 **What is Homebrew?**
