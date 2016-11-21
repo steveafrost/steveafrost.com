@@ -2,7 +2,7 @@
 title: Steve Frost - Full Stack Web Developer
 description: "Operations & Support Manager (and aspiring developer) with a thirst for knowledge and a passion for working with technology-forward teams. Known best for organizing massive amounts of data, flexing interpersonal skills, and showing compassion for end-users."
 baseurl: "" # for test: remove string '/space-jekyll-templa' to ''
-url: "http://steveafrost.com" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https:yourusername.githu.io'
+url: "https://steveafrost.com" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https:yourusername.githu.io'
 
 # User settings
 username: Steve Frost
