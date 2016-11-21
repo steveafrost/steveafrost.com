@@ -3,6 +3,7 @@ layout: post
 title: "Plant Nanny: Keep Your Plants Happy"
 author: Steve Frost
 date: 2016-10-07 17:30:00 -04:00
+image: '/assets/img/blogs/plantnanny1.jpeg'
 categories: blog
 tags: flatiron-school learning-to-code
 description: "An overview of my first Rails app called Plant Nanny"

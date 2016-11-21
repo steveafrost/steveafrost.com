@@ -3,6 +3,7 @@ layout: post
 title: "Learning CRUD with Monster Trucks"
 author: Steve Frost
 date: 2016-08-05 16:00:00 -04:00
+image: '/assets/img/blogs/learningcrud1.jpeg'
 categories: blog
 tags: flatiron-school learning-to-code
 description: "We try to have some nostalgic monster truck fun while learning CRUD routes in Sinatra"

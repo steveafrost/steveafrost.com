@@ -3,6 +3,7 @@ layout: post
 title: "Composing a CRUD App in Sinatra"
 author: Steve Frost
 date: 2016-08-06 16:00:00 -04:00
+image: '/assets/img/blogs/composingcrudapp2.jpeg'
 categories: blog
 tags: flatiron-school learning-to-code
 description: "What I learned about CRUD from creating a few apps in Sinatra"

@@ -3,6 +3,7 @@ layout: post
 title: "Using Homebrew - The Best Package Manager for MacOS"
 author: Steve Frost
 date: 2016-11-19 12:30:00 -04:00
+image: '/assets/img/blogs/homebrewlogo.png'
 categories: blog
 tags: tools tips-and-tricks
 description: "Homebrew is an incredible resource for new and old developers alike. Homebrew saves you time by compiling code, managing package dependencies, and much more!"
