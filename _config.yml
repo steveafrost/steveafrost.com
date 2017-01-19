@@ -36,10 +36,10 @@ links:
 
 # projects in header index
 projects:
+  - name: Daily Documentary
+    url: https://github.com/steveafrost/daily-documentary
   - name: Plant Nanny
     url: https://github.com/steveafrost/plant-nanny
-  - name: Much Free, Very Wow
-    url: https://github.com/steveafrost/much-free-very-wow
   - name: Scoreboard CLI Gem
     url: https://github.com/steveafrost/scoreboard-cli-gem
 
