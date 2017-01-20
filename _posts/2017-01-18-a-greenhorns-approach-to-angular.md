@@ -9,11 +9,11 @@ description: "A synopsis of what I learned by building my first Angular web app 
 comments: true
 ---
 
-I started on learning Angular over a month ago as part of my final section at Flatiron School... about a week ago I actually started to understand Angular, I think. This seems to be the typical trajectory, and sentiment, as there is _so_ much information on what Angular is and how Angular is done. After reading material, watching tutorials, and practicing small segments of Angular, I started on my final project a few weeks ago. There were [several specific specs](https://github.com/steveafrost/daily-documentary/blob/master/spec.md) provided for the project with the general idea being that the back-end would be Rails while the front-end would be Angular.
+I started learning Angular over a month ago as part of my final section at Flatiron School... about a week ago I actually started to understand Angular, I think. This seems to be the typical trajectory, and sentiment, as there is _so_ much information on what Angular is and how Angular is done. After reading material, watching tutorials, and practicing small segments of Angular, I started on my final project a few weeks ago. There were [several specific specs](https://github.com/steveafrost/daily-documentary/blob/master/spec.md) provided for the project with the general idea being that the back-end would be Rails while the front-end would be Angular.
 
-In this post I'll provide the material was useful to me while starting out on Angular, the hang ups, and the engineering decisions that were constructed on my first Angular project.
+In this post I'll provide the material that was useful to me when starting out on Angular, the hang ups, and the engineering decisions that were constructed on my first Angular project.
 
-### Front-End Package Management: Bower vs Bundler
+### Front-End Package Management
 
 Immediately upon starting my project I was met with something I've never dabbled with before - installing & maintaining front-end dependencies for Javascript. At this point, I had heard somewhat about different tools on the JS scene like [NPM](https://www.npmjs.com/), [Bower](https://bower.io/), and [Yarn](https://yarnpkg.com/). A majority of the [Angular tutorial videos](https://www.youtube.com/watch?v=zKkUN-mJtPQ) that I watched used Bower so I set down that road at first until I came along a recent development called RailsAssets in [this valuable GoRails video](https://gorails.com/episodes/rails-assets).
 
