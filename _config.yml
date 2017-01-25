@@ -1,12 +1,12 @@
 # Site settings
 title: Steve Frost - Full Stack Web Developer
-description: "Full-Stack Web Developmer with a thirst for knowledge and a passion for working with technology-forward teams. Known best for organizing massive amounts of data, flexing interpersonal skills, and showing compassion for end-users."
+description: "Full-Stack Web Developer. Urban Fixed Cyclist. Hugger of Trees."
 baseurl: "" # for test: remove string '/space-jekyll-templa' to ''
-url: "https://steveafrost.com" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https:yourusername.githu.io'
+url: "https://steveafrost.com" # for test: remove string 'http://victorvoid.github.io' to '' but in production: 'https:yourusername.github.io'
 
 # User settings
 username: Steve Frost
-user_title: Full Stack Web Developer
+user_title: Full-Stack Web Developer
 email: ffrostt@gmail.com
 twitter_username: SteveEff
 github_username:  steveafrost
