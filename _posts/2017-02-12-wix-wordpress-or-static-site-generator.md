@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Wix, WordPress, or Static Site Generator?"
+title: "Choosing the Right Website Platform"
 author: Steve Frost
 date: 2017-02-12 22:00:00 -04:00
 categories: blog
