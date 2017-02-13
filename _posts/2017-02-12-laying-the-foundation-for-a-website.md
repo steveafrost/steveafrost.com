@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building a Website: Wix vs WordPress vs Jekyll"
+title: "Laying the Foundation for a Website"
 author: Steve Frost
 date: 2017-02-12 22:00:00 -04:00
 categories: blog
