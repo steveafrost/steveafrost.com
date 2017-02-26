@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2017-02-12 22:00:00 -04:00
 categories: blog
 tags: static-site-generator wordpress
-description: "You've been asked to make a site for a friend, family member, or client - where do you start? "
+description: "You've been asked to make a site for a friend, family member, or client - where do you start?"
 comments: true
 ---
 
