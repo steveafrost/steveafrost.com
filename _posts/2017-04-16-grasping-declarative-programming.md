@@ -40,7 +40,7 @@ In pseudo-code, this can be represented by the age-old 'make a sandwich' metapho
 
 ### Another Way to Look At It
 
-The definition made sense to me, but what provided a breakthrough was a line from [Tyle McGinnis' article](https://tylermcginnis.com/imperative-vs-declarative-programming/) on Imperative vs Declarative. In his article, Tyler notes that another way to look at declarative programming is to see it as an abstraction of imperative programming. Even though in declarative programming we're only telling the code *what* to do rather than *how*, that *how* is still being executed at some point by the language but it is hidden from us or abstracted away.
+The definition made sense to me, but what provided a breakthrough was a line from [Tyler McGinnis' article](https://tylermcginnis.com/imperative-vs-declarative-programming/) on Imperative vs Declarative. In his article, Tyler notes that another way to look at declarative programming is to see it as an abstraction of imperative programming. Even though in declarative programming we're only telling the code *what* to do rather than *how*, that *how* is still being executed at some point by the language but it is hidden from us or abstracted away.
 
 ### What Uses Declarative Programming?
 
