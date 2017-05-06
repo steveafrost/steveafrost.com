@@ -9,7 +9,7 @@ description: "When I made my transition from Ruby to Javascript, the various nua
 comments: true
 ---
 
-![javascript type coercion picture](/assets/img/blogs/javascripttypecoercion1.jpg)
+![javascript-type-coercion-picture](/assets/img/blogs/javascripttypecoercion1.jpg)
 
 When I made my transition from Ruby to Javascript, the various nuances of the language were frustrating and I was tempted to retreat back to Ruby. After investing time to understand them, I grew fond of Javascript and left my past love behind. At the forefront of subtle, pesky behaviors is *Type Coercion*. If you break down the word, it tells you exactly what behavior is happening here: Javascript is [coercing](http://www.dictionary.com/browse/coerce), or persuading, a value to a different type as in the string '1' becomes 1.
 

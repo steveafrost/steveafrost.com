@@ -9,6 +9,8 @@ description: "Closures one of several terms I realized I glossed over when first
 comments: true
 ---
 
+![javascript-closures-picture](/assets/img/blogs/javascriptclosures1.jpg)
+
 Closures one of several terms I realized I glossed over when first learning the language. It is one of the topics that when you see it it's an "okay that makes sense" reaction but to actually explain what is happening is the grander part of the understanding, at least with Closures. One inspiration for relearning the term came from the wonderful synopsis provided in ["You Don't Know JS"](https://github.com/getify/You-Dont-Know-JS) which is an incredible collection of books for those who haven't read it yet. Heck, there's even an entire book titled ["Scopes & Closures"](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) which covers purely scopes & closures! 
 
 ### What is a Closure?
