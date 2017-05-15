@@ -9,7 +9,7 @@ description: "The commencement of this emerging series is none other than the so
 comments: true
 ---
 
-![picture-of-sneakers](/assets/img/blogs/codepauserunning1.jpg)
+![person-holding-sneakers-by-field](/assets/img/blogs/codepauserunning1.jpg)
 
 While I regularly blog about my understanding of technical aspects of coding, I've come to realize my personal lifestyle changes have equally attributed to the topics I learn and the products I create. In honor of this revelation, I'm starting a new series here called Code Pause where I'll write about activities _outside_ of coding that have made me more productive _inside_ of coding.
 
