@@ -39,9 +39,9 @@ projects:
   - name: PJ Masks Live
     url: http://pjmaskslive.com
   - name: Daily Documentary
-    url: https://github.com/steveafrost/daily-documentary
+    url: https://daily-documentary.herokuapp.com
   - name: Plant Nanny
-    url: https://github.com/steveafrost/plant-nanny
+    url: https://plant-nanny.herokuapp.com
 
 # exclude my node related stuff
 exclude: ['package.json', 'src', 'node_modules']
