@@ -14,6 +14,7 @@ module.exports = React.createClass({
   render () {
     const { body } = this.props
     const head = Helmet.rewind();
+    const metaTags = generateMetaTags(post, config, path);
 
     let css
     if (process.env.NODE_ENV === 'production') {
@@ -29,8 +30,7 @@ module.exports = React.createClass({
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://steveafrost.com/img/profile.jpg" />
+          {metaTags}
           {head.title.toComponent()}
           {head.meta.toComponent()}
           <TypographyStyle typography={typography} />
