@@ -13,7 +13,7 @@ class Bio extends React.Component {
       >
         I'm a <strong>software engineer</strong> who lives in Brooklyn and codes in Javascript, PHP, and Ruby.
         <br /><br />
-        When I'm not programming, I'm either biking, running, at a concert, or at the community garden.
+        When I'm not programming, I'm either biking, running, or at the community garden.
         <br /><br />
         Find me on <a href="https://steveafrost.com" target="_blank">GitHub</a>, <a href="https://linkedin.com/in/steveafrost.com" target="_blank">LinkedIn</a>, or <a href="https://twitter.com/SteveEff">Twitter</a>!
       </p>
