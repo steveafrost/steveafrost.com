@@ -34,7 +34,6 @@ class MarkdownWrapper extends React.Component {
           }}
         />
         <ReadNext post={post} pages={route.pages} />
-        <Bio />
       </div>
     )
   }
