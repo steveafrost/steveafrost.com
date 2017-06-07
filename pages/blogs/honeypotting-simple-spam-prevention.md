@@ -1,5 +1,6 @@
 ---
 layout: post
+path: honeypotting-simple-spam-prevention
 title: "Honeypotting: Simple Spam Prevention"
 author: Steve Frost
 date: 2017-03-11 12:30:00 -04:00

@@ -1,5 +1,6 @@
 ---
 layout: post
+path: busting-cache-with-asset-hash
 title: "Busting Cache with Asset Hash"
 author: Steve Frost
 date: 2017-03-26 21:00:00 -04:00

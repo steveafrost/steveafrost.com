@@ -1,5 +1,6 @@
 ---
 layout: post
+path: comparing-flexbox-and-grid
 title: "Comparing Flexbox and Grid"
 author: Steve Frost
 date: 2017-04-02 21:30:00 -04:00

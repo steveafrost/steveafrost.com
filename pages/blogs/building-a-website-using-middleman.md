@@ -1,5 +1,6 @@
 ---
 layout: post
+path: building-a-website-using-middleman
 title: "Building a Website using Middleman"
 author: Steve Frost
 date: 2017-02-26 10:00:00 -04:00

@@ -1,5 +1,6 @@
 ---
 layout: post
+path: "discovering-the-minimax-algorithm"
 title: "Discovering the Minimax Algorithm"
 author: Steve Frost
 date: 2017-03-05 15:00:00 -04:00

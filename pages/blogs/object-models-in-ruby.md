@@ -1,5 +1,6 @@
 ---
 layout: post
+path: object-models-in-ruby
 title: "Object Models in Ruby"
 author: Steve Frost
 date: 2016-05-31 15:00:00 -04:00

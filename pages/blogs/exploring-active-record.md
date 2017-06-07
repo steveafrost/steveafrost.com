@@ -1,5 +1,6 @@
 ---
 layout: post
+path: exploring-active-record
 title: "Exploring Active Record"
 author: Steve Frost
 date: 2016-07-06 18:00:00 -04:00

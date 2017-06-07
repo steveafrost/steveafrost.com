@@ -1,5 +1,6 @@
 ---
 layout: post
+path: setting-up-a-local-wordpress-environment
 title: "Setting Up a Local WordPress Environment"
 author: Steve Frost
 date: 2017-05-14 19:00:00 -04:00

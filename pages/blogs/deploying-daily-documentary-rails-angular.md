@@ -1,5 +1,6 @@
 ---
 layout: post
+path: deploying-daily-documentary-rails-angular
 title: "Deploying Daily Documentary - Rails/Angular"
 author: Steve Frost
 date: 2017-05-28 10:30:00 -04:00

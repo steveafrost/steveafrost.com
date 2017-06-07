@@ -1,5 +1,6 @@
 ---
 layout: post
+path: laying-the-foundation-for-a-website
 title: "Laying the Foundation for a Website"
 author: Steve Frost
 date: 2017-02-12 22:00:00 -04:00

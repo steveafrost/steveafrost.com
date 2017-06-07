@@ -1,5 +1,6 @@
 ---
 layout: post
+path: wandering-through-javascript-closures
 title: "Wandering Through Javascript Closures"
 author: Steve Frost
 date: 2017-04-30 13:00:00 -04:00

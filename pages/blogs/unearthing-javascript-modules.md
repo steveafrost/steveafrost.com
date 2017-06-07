@@ -1,5 +1,6 @@
 ---
 layout: post
+path: unearthing-javascript-modules
 title: "Unearthing Javascript Modules"
 author: Steve Frost
 date: 2017-04-09 14:05:00 -04:00

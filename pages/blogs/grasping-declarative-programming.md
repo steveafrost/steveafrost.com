@@ -1,5 +1,6 @@
 ---
 layout: post
+path: grasping-declarative-programming
 title: "Grasping Declarative Programming"
 author: Steve Frost
 date: 2017-04-16 16:00:00 -04:00

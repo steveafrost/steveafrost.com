@@ -1,5 +1,6 @@
 ---
 layout: post
+path: composing-a-crud-app-in-sinatra
 title: "Composing a CRUD App in Sinatra"
 author: Steve Frost
 date: 2016-08-06 16:00:00 -04:00

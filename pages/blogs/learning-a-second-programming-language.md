@@ -1,5 +1,6 @@
 ---
 layout: post
+path: learning-a-second-programming-language
 title: "Learning a Second (Programming) Language"
 author: Steve Frost
 date: 2016-11-30 19:00:00 -04:00

@@ -1,5 +1,6 @@
 ---
 layout: post
+path: questioning-the-quicks-of-php
 title: "Questioning the Quirks of PHP"
 author: Steve Frost
 date: 2017-06-04 20:45:00 -04:00

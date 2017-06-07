@@ -1,5 +1,6 @@
 ---
 layout: post
+path: javascript-type-coercion
 title: "Javascript Type Coercion"
 author: Steve Frost
 date: 2017-04-23 13:00:00 -04:00

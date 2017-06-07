@@ -1,5 +1,6 @@
 ---
 layout: post
+path: a-greenhorns-approach-to-angular
 title: "A Greenhorn's Approach to Angular"
 author: Steve Frost
 date: 2017-1-18 23:00:00 -04:00

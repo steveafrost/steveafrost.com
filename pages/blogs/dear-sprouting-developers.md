@@ -1,5 +1,6 @@
 ---
 layout: post
+path: dear-sprouting-developers
 title: "Dear Sprouting Developers"
 author: Steve Frost
 date: 2016-07-24 16:00:00 -04:00

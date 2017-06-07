@@ -1,5 +1,6 @@
 ---
 layout: post
+path: using-homebrew-the-best-package-manager-for-macos
 title: "Using Homebrew - The Best Package Manager for MacOS"
 author: Steve Frost
 date: 2016-11-19 12:30:00 -04:00

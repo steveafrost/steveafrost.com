@@ -1,5 +1,6 @@
 ---
 layout: post
+path: protect-yoself-data-privacy-day-2017
 title: "Protect Yoself - Data Privacy Day 2017"
 author: Steve Frost
 date: 2017-1-29 14:00:00 -04:00

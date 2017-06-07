@@ -1,5 +1,6 @@
 ---
 layout: post
+path: staying-focused-staying-sharp
 title: "Staying Focused, Staying Sharp"
 author: Steve Frost
 date: 2017-02-04 17:30:00 -04:00

@@ -1,5 +1,6 @@
 ---
 layout: post
+path: plant-nanny-keep-your-plants-happy
 title: "Plant Nanny: Keep Your Plants Happy"
 author: Steve Frost
 date: 2016-10-07 17:30:00 -04:00

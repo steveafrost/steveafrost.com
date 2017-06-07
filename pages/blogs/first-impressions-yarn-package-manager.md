@@ -1,5 +1,6 @@
 ---
 layout: post
+path: first-impressions-yarn-package-manager
 title: "First Impressions: Yarn Package Manager"
 author: Steve Frost
 date: 2017-05-14 19:00:00 -04:00

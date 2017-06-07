@@ -1,5 +1,6 @@
 ---
 layout: post
+path: code-pause-run-tell-that
 title: "Code Pause: Run Tell That"
 author: Steve Frost
 date: 2017-03-19 19:00:00 -04:00

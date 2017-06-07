@@ -1,5 +1,6 @@
 ---
 layout: post
+path: two-weeks-deep-into-coding-school
 title: "Two Weeks Deep Into Coding School"
 author: Steve Frost
 date: 2016-05-16 15:00:00 -04:00

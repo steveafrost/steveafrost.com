@@ -1,5 +1,6 @@
 ---
 layout: post
+path: applying-regex-lookaround
 title: "Applying Regex Lookarounds"
 author: Steve Frost
 date: 2017-05-06 16:00:00 -04:00

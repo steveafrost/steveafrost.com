@@ -1,5 +1,6 @@
 ---
 layout: post
+path: building-a-ruby-gem-the-experience
 title: "Building a Ruby Gem: The Experience"
 author: Steve Frost
 date: 2016-06-25 18:24:00 -04:00

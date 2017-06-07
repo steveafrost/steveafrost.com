@@ -1,5 +1,6 @@
 ---
 layout: post
+path: learning-crud-with-monster-trucks
 title: "Learning CRUD with Monster Trucks"
 author: Steve Frost
 date: 2016-08-05 16:00:00 -04:00
