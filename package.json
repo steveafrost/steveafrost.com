@@ -17,7 +17,7 @@
     "react-responsive-grid": "^0.3.3",
     "react-typography": "^0.15.0",
     "typography": "^0.15.0",
-    "typography-theme-noriega": "^0.15.10",
+    "typography-theme-lincoln": "^0.15.11",
     "underscore.string": "^3.2.3"
   },
   "devDependencies": {

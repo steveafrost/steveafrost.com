@@ -8,6 +8,7 @@ import Helmet from "react-helmet"
 import { config } from 'config'
 import include from 'underscore.string/include'
 import Bio from 'components/Bio'
+import Nav from 'components/Nav'
 
 class BlogIndex extends React.Component {
   render () {
@@ -26,6 +27,7 @@ class BlogIndex extends React.Component {
             {"name": "keywords", "content": "blog, articles"},
           ]}
         />
+        <Nav />
         <Bio />
         <ul>
           {visiblePages.map((page) => (

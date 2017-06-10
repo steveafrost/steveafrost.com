@@ -1,7 +1,7 @@
 import Typography from 'typography'
-import Noriega from 'typography-theme-noriega'
+import Lincoln from 'typography-theme-lincoln'
 
-const typography = new Typography(Noriega)
+const typography = new Typography(Lincoln)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
