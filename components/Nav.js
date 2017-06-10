@@ -1,19 +1,19 @@
-import React from 'react'
-import { config } from 'config'
-import { rhythm } from 'utils/typography'
+import React, { Component } from 'react'
+import { prefixLink } from 'gatsby-helpers'
+import { Link, IndexLink } from 'react-router'
 
-class Nav extends React.Component {
+export default class Nav extends Component {
   render () {
     return (
-      <div
-        style={{
-          marginBottom: rhythm(2.5),
-        }}
-      >
-        Hello
-      </div>
+      <nav className="site-nav">
+        <IndexLink to={prefixLink('/')} className="nav-brand">Steve Frost</IndexLink>
+        <ul className="nav-link-list">
+          <li className="nav-link"><IndexLink activeClassName='active' to={prefixLink('/')}>Home</IndexLink></li>
+          <li className="nav-link"><Link activeClassName='active' to={prefixLink('/articles/')}>Articles</Link></li>
+          <li className="nav-link"><Link activeClassName='active' to={prefixLink('/projects/')}>Projects</Link></li>
+          <li className="nav-link"><Link activeClassName='active' to={prefixLink('/resume/')}>Resume</Link></li>
+        </ul>
+      </nav>
     )
   }
 }
-
-export default Nav
