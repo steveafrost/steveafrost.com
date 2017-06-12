@@ -61,7 +61,6 @@ class Template extends React.Component {
       >
         <Nav />
         {children}
-        }
       </Container>
     )
   }
