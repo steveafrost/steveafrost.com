@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { prefixLink } from 'gatsby-helpers'
 import { Link, IndexLink } from 'react-router'
+import '../css/nav.css'
 
 export default class Nav extends Component {
   render () {

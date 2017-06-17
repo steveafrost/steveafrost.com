@@ -7,9 +7,8 @@ import { rhythm } from 'utils/typography'
 import Helmet from "react-helmet"
 import { config } from 'config'
 import include from 'underscore.string/include'
-import Bio from 'components/Bio'
 
-class Index extends React.Component {
+class ArticleIndex extends React.Component {
   render () {
     // Sort pages.
     const sortedPages = orderBy(this.props.route.pages, 'data.date', 'desc')
@@ -26,14 +25,27 @@ class Index extends React.Component {
             {"name": "keywords", "content": "blog, articles"},
           ]}
         />
-        <Bio />
+        <ul>
+          {visiblePages.map((page) => (
+              <li
+                key={page.path}
+                style={{
+                    marginBottom: rhythm(1/4),
+                }}
+              >
+                <Link style={{boxShadow: 'none'}} to={prefixLink(page.path)}>
+                    {get(page, 'data.title', page.path)}
+                </Link>
+              </li>
+          ))}
+        </ul>
       </div>
     )
   }
 }
 
-Index.propTypes = {
+ArticleIndex.propTypes = {
   route: React.PropTypes.object,
 }
 
-export default Index
+export default ArticleIndex
