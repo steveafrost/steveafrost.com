@@ -19,7 +19,7 @@ class ArticleIndex extends React.Component {
     return (
       <div>
         <Helmet
-          title="Articles - Steve Frost | Full Stack Web Developer"
+          title="Articles | Steve Frost - Full Stack Web Developer"
           meta={[
             {"name": "description", "content": "Full-Stack Web Developer. Urban Fixed Cyclist. Hugger of Trees."},
             {"name": "keywords", "content": "blog, articles"},
