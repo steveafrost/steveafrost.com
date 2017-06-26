@@ -5,7 +5,7 @@ author: Steve Frost
 date: 2017-06-25 23:30:00 -04:00
 categories: blog
 tags: html css responsive
-description: ""
+description: "Amongst several extremely useful features, CSS3 brought us REMs & EMs - two responsive-minded measurement units. In my experience, these units tend to be more predictable and adaptable than the usual style of pixels and percents though those are still good for things such as border-widths and the like. Today I'll outline exactly what REMs & EMs are, their journey to cross-browser support, and the benefits in using them."
 comments: true
 ---
 
