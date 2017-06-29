@@ -47,4 +47,20 @@ CSS3 had a long, tattered road to walk/crawl before any spec was fully published
 
 ### Benefits of REMs & EMs
 
-Benefits coming shortly! I'll update this post in the morning.
+The main benefit I've noticed of basing a site off REMs & EMs is ease of responsiveness. If the content, structure, etc is based off the root font-size then the only media queries needed are on the HTML font-size. When that is scaled up, the entire page scales up. To have this work, it's best to have the containers based on REMs and the font based on EMs. That is because we want the containers to scale up relative to the HTML root font size and the contents inside of them to be relative to their containers.
+
+If this is how you do decide to use REMs & EMs, there is one catch that I've noticed. When scaling, scale *up to* 100%. That means your HTML font-size on mobile should be 80% or so and then step it up 5% - 10% at each breakpoint. If this 80% font is too small in your opinion, then use a `:root` selector to increase the font in pixels.
+
+```css
+:root {
+  font-size: 20px;  // most browsers are 16px by default -->
+}
+
+html {
+  font-size: 80%;  // then scale up as the screen grows using media queries
+}
+```
+
+The reason we want to scale up to 100% max is because if there are images on the page that rely on that root size, once it goes beyond 100% they'll become distorted.
+
+Hopefully that quick outline of how I've learned to create responsive designs using purely REMs & EMs, and one percent rule, will be helpful in your next project. If you find any other tricks when trying it out, leave them in the comments below!
