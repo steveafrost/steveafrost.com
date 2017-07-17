@@ -2,7 +2,7 @@
 layout: post
 title: "Quirks of 'Display: Inline-Block'"
 author: Steve Frost
-date: 2017-07-02 23:30:00 -04:00
+date: 2017-07-09 21:30:00 -04:00
 categories: blog
 tags: css
 description: "The display property in CSS comes with several supported values like inline, block, flex, list-item, and the anti-hero, table. The list goes on to include combinations of those such as inline-flex, inline-table, and inline-block. The default value of the display property is set by the browser and typically does the job. Luckily, like many things in web development, we can change the value if we want a HTML element to behave differently. One of the most common values I find myself using is display: inline-block. Most of the time it's a godsend but it does come have a few quirks."
