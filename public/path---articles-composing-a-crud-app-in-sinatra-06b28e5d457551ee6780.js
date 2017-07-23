@@ -1,0 +1,2 @@
+webpackJsonp([0x2ea935cbff7a6c00],{"./node_modules/json-loader/index.js!./.cache/json/articles-composing-a-crud-app-in-sinatra.json":function(a,n){a.exports={pathContext:{path:"/articles/composing-a-crud-app-in-sinatra"}}}});
+//# sourceMappingURL=path---articles-composing-a-crud-app-in-sinatra-06b28e5d457551ee6780.js.map
