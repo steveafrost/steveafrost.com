@@ -10,6 +10,14 @@
                 {
                     "node": {
                         "frontmatter": {
+                            "path": "/articles/first-impressions-gatsby-js",
+                            "title": "First Impressions: Gatsby.js"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
                             "path": "/articles/templating-with-solely-json",
                             "title": "Templating with Solely JSON"
                         }

@@ -1,0 +1,2 @@
+webpackJsonp([0xefcab16fb5626800],{"./node_modules/json-loader/index.js!./.cache/json/articles-first-impressions-trellis.json":function(s,e){s.exports={pathContext:{path:"/articles/first-impressions-trellis"}}}});
+//# sourceMappingURL=path---articles-first-impressions-trellis-b564c61f56f18821fdfe.js.map

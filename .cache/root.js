@@ -85,9 +85,13 @@ function shouldUpdateScroll(prevRouterProps, _ref) {
   return true;
 }
 
-var noMatch = _pages2.default.find(function (r) {
-  return r.path === "/dev-404-page/";
-});
+var noMatch = void 0;
+for (var i = 0; i < _pages2.default.length; i++) {
+  if (_pages2.default[i].path === "/dev-404-page/") {
+    noMatch = _pages2.default[i];
+    break;
+  }
+}
 
 var addNotFoundRoute = function addNotFoundRoute() {
   if (noMatch) {
