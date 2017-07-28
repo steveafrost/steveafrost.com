@@ -30,7 +30,7 @@ class Bio extends React.Component {
         {" "}
         <strong>Steve Frost</strong>
         {" "}
-        who is newly Minnesotan and focused on making a difference in the community and our environment through full-stack web development.
+        who lives in Minneapolis using technology to make an impact in the community and our environment.
         {" "}
         <a href="https://twitter.com/steveafrost">
           Follow on Twitter
