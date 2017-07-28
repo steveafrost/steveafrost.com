@@ -1,184 +1,184 @@
 {
   "assetsByChunkName": {
     "path---articles-first-impressions-gatsby-js": [
-      "path---articles-first-impressions-gatsby-js-7f218b8c490024165d5e.js",
-      "path---articles-first-impressions-gatsby-js-7f218b8c490024165d5e.js.map"
+      "path---articles-first-impressions-gatsby-js-ff947ba00a6b30e470be.js",
+      "path---articles-first-impressions-gatsby-js-ff947ba00a6b30e470be.js.map"
     ],
     "path---articles-questioning-the-quirks-of-php": [
-      "path---articles-questioning-the-quirks-of-php-819fdcc20b6c444a2fbd.js",
-      "path---articles-questioning-the-quirks-of-php-819fdcc20b6c444a2fbd.js.map"
+      "path---articles-questioning-the-quirks-of-php-2b382f38b7f92089c34e.js",
+      "path---articles-questioning-the-quirks-of-php-2b382f38b7f92089c34e.js.map"
     ],
     "path---articles-responsive-css-with-rems-and-ems": [
-      "path---articles-responsive-css-with-rems-and-ems-1a6e42620f09578afdcc.js",
-      "path---articles-responsive-css-with-rems-and-ems-1a6e42620f09578afdcc.js.map"
+      "path---articles-responsive-css-with-rems-and-ems-ce3c48e857eec7097924.js",
+      "path---articles-responsive-css-with-rems-and-ems-ce3c48e857eec7097924.js.map"
     ],
     "path---articles-building-a-website-using-middleman": [
-      "path---articles-building-a-website-using-middleman-a11a3eedaef6dfe4d44d.js",
-      "path---articles-building-a-website-using-middleman-a11a3eedaef6dfe4d44d.js.map"
+      "path---articles-building-a-website-using-middleman-73508bf21d35a14f8ebb.js",
+      "path---articles-building-a-website-using-middleman-73508bf21d35a14f8ebb.js.map"
     ],
     "path---articles-grasping-declarative-programming": [
-      "path---articles-grasping-declarative-programming-764a9300ee48c679d3f9.js",
-      "path---articles-grasping-declarative-programming-764a9300ee48c679d3f9.js.map"
+      "path---articles-grasping-declarative-programming-0e181333d848278c0cd2.js",
+      "path---articles-grasping-declarative-programming-0e181333d848278c0cd2.js.map"
     ],
     "path---articles-composing-a-crud-app-in-sinatra": [
-      "path---articles-composing-a-crud-app-in-sinatra-06b28e5d457551ee6780.js",
-      "path---articles-composing-a-crud-app-in-sinatra-06b28e5d457551ee6780.js.map"
+      "path---articles-composing-a-crud-app-in-sinatra-0d8416dcd5ce93d81d24.js",
+      "path---articles-composing-a-crud-app-in-sinatra-0d8416dcd5ce93d81d24.js.map"
     ],
     "page-component---src-pages-index-js": [
       "page-component---src-pages-index-js-2247729e785af6c75775.js",
       "page-component---src-pages-index-js-2247729e785af6c75775.js.map"
     ],
     "path---articles-deploying-daily-documentary-rails-angular": [
-      "path---articles-deploying-daily-documentary-rails-angular-458355e57a3dc12a7f00.js",
-      "path---articles-deploying-daily-documentary-rails-angular-458355e57a3dc12a7f00.js.map"
+      "path---articles-deploying-daily-documentary-rails-angular-df9c0675be45805cca69.js",
+      "path---articles-deploying-daily-documentary-rails-angular-df9c0675be45805cca69.js.map"
     ],
     "path---articles-dear-sprouting-developers": [
-      "path---articles-dear-sprouting-developers-9683352321d0a82be08e.js",
-      "path---articles-dear-sprouting-developers-9683352321d0a82be08e.js.map"
+      "path---articles-dear-sprouting-developers-e9b0a129070b2c20dbbb.js",
+      "path---articles-dear-sprouting-developers-e9b0a129070b2c20dbbb.js.map"
     ],
     "path---articles-honeypotting-simple-spam-prevention": [
-      "path---articles-honeypotting-simple-spam-prevention-600f2e0d269048697fd8.js",
-      "path---articles-honeypotting-simple-spam-prevention-600f2e0d269048697fd8.js.map"
+      "path---articles-honeypotting-simple-spam-prevention-5cc5f987413f30373578.js",
+      "path---articles-honeypotting-simple-spam-prevention-5cc5f987413f30373578.js.map"
     ],
     "path---articles-comparing-flexbox-and-grid": [
-      "path---articles-comparing-flexbox-and-grid-3edbd72c6b89794afd36.js",
-      "path---articles-comparing-flexbox-and-grid-3edbd72c6b89794afd36.js.map"
+      "path---articles-comparing-flexbox-and-grid-a00405301d548e379389.js",
+      "path---articles-comparing-flexbox-and-grid-a00405301d548e379389.js.map"
     ],
     "path---articles-unearthing-javascript-modules": [
-      "path---articles-unearthing-javascript-modules-694b63332c274f5849e2.js",
-      "path---articles-unearthing-javascript-modules-694b63332c274f5849e2.js.map"
+      "path---articles-unearthing-javascript-modules-f4bc89d566946fe66d15.js",
+      "path---articles-unearthing-javascript-modules-f4bc89d566946fe66d15.js.map"
     ],
     "page-component---src-templates-blog-post-js": [
       "page-component---src-templates-blog-post-js-59e2ec2356f8ac98105b.js",
       "page-component---src-templates-blog-post-js-59e2ec2356f8ac98105b.js.map"
     ],
     "path---articles-two-weeks-deep-into-coding-school": [
-      "path---articles-two-weeks-deep-into-coding-school-0848a919db2e5bdf45bd.js",
-      "path---articles-two-weeks-deep-into-coding-school-0848a919db2e5bdf45bd.js.map"
+      "path---articles-two-weeks-deep-into-coding-school-3b7b27926e7d047fd9b5.js",
+      "path---articles-two-weeks-deep-into-coding-school-3b7b27926e7d047fd9b5.js.map"
     ],
     "path---articles-object-models-in-ruby": [
-      "path---articles-object-models-in-ruby-21bec6f65deaaa98424b.js",
-      "path---articles-object-models-in-ruby-21bec6f65deaaa98424b.js.map"
+      "path---articles-object-models-in-ruby-9abf7d0a62c3fb340d11.js",
+      "path---articles-object-models-in-ruby-9abf7d0a62c3fb340d11.js.map"
     ],
     "path---articles-staying-focused-staying-sharp": [
-      "path---articles-staying-focused-staying-sharp-39fa7248107aded144fa.js",
-      "path---articles-staying-focused-staying-sharp-39fa7248107aded144fa.js.map"
+      "path---articles-staying-focused-staying-sharp-d1cd8b65d57c24c5b20c.js",
+      "path---articles-staying-focused-staying-sharp-d1cd8b65d57c24c5b20c.js.map"
     ],
     "path---articles-preprocessing-bundling-and-live-preview-with-gulp": [
-      "path---articles-preprocessing-bundling-and-live-preview-with-gulp-51db95ab83d2257342c0.js",
-      "path---articles-preprocessing-bundling-and-live-preview-with-gulp-51db95ab83d2257342c0.js.map"
+      "path---articles-preprocessing-bundling-and-live-preview-with-gulp-7fa5824256c9fa6528a9.js",
+      "path---articles-preprocessing-bundling-and-live-preview-with-gulp-7fa5824256c9fa6528a9.js.map"
     ],
     "path---articles-regex-lookahead-and-lookbehind": [
-      "path---articles-regex-lookahead-and-lookbehind-fdff694036051e7ad12f.js",
-      "path---articles-regex-lookahead-and-lookbehind-fdff694036051e7ad12f.js.map"
+      "path---articles-regex-lookahead-and-lookbehind-5bdd8a8dd13f403ec3d5.js",
+      "path---articles-regex-lookahead-and-lookbehind-5bdd8a8dd13f403ec3d5.js.map"
     ],
     "path---articles-setting-up-a-local-wordpress-environment": [
-      "path---articles-setting-up-a-local-wordpress-environment-b6be5c073a8ab26bffd8.js",
-      "path---articles-setting-up-a-local-wordpress-environment-b6be5c073a8ab26bffd8.js.map"
+      "path---articles-setting-up-a-local-wordpress-environment-64c212d9199d049b1efa.js",
+      "path---articles-setting-up-a-local-wordpress-environment-64c212d9199d049b1efa.js.map"
     ],
     "path---articles-protect-yoself-data-privacy-day-2017": [
-      "path---articles-protect-yoself-data-privacy-day-2017-aded790633173d16fbb9.js",
-      "path---articles-protect-yoself-data-privacy-day-2017-aded790633173d16fbb9.js.map"
+      "path---articles-protect-yoself-data-privacy-day-2017-5121ac1d70b3b8aee49e.js",
+      "path---articles-protect-yoself-data-privacy-day-2017-5121ac1d70b3b8aee49e.js.map"
     ],
     "path---articles-javascript-type-coercion": [
-      "path---articles-javascript-type-coercion-011c4989179d6ce798d1.js",
-      "path---articles-javascript-type-coercion-011c4989179d6ce798d1.js.map"
+      "path---articles-javascript-type-coercion-7b7f4a97d9a9fb6872bb.js",
+      "path---articles-javascript-type-coercion-7b7f4a97d9a9fb6872bb.js.map"
     ],
     "page-component---node-modules-gatsby-plugin-offline-app-shell-js": [
       "page-component---node-modules-gatsby-plugin-offline-app-shell-js-4f0dddda43ae15168f16.js",
       "page-component---node-modules-gatsby-plugin-offline-app-shell-js-4f0dddda43ae15168f16.js.map"
     ],
     "path---articles-learning-crud-with-monster-trucks": [
-      "path---articles-learning-crud-with-monster-trucks-4cb5fe10407bf4361620.js",
-      "path---articles-learning-crud-with-monster-trucks-4cb5fe10407bf4361620.js.map"
+      "path---articles-learning-crud-with-monster-trucks-6fac63f1a2afe33c18b1.js",
+      "path---articles-learning-crud-with-monster-trucks-6fac63f1a2afe33c18b1.js.map"
     ],
     "path---articles-exploring-active-record": [
-      "path---articles-exploring-active-record-98d26f6d19323bea7f9b.js",
-      "path---articles-exploring-active-record-98d26f6d19323bea7f9b.js.map"
+      "path---articles-exploring-active-record-927af74d6835920b1f38.js",
+      "path---articles-exploring-active-record-927af74d6835920b1f38.js.map"
     ],
     "path---articles-plant-nanny-keep-your-plants-happy": [
-      "path---articles-plant-nanny-keep-your-plants-happy-ab5de2a9e18c4b4a4278.js",
-      "path---articles-plant-nanny-keep-your-plants-happy-ab5de2a9e18c4b4a4278.js.map"
+      "path---articles-plant-nanny-keep-your-plants-happy-6dc997027e680f8dc92b.js",
+      "path---articles-plant-nanny-keep-your-plants-happy-6dc997027e680f8dc92b.js.map"
     ],
     "path---index": [
-      "path---index-586c7e095e534a3909ec.js",
-      "path---index-586c7e095e534a3909ec.js.map"
+      "path---index-e68b274284c351013078.js",
+      "path---index-e68b274284c351013078.js.map"
     ],
     "path---articles-laying-the-foundation-for-a-website": [
-      "path---articles-laying-the-foundation-for-a-website-e45b7b4804cafc720092.js",
-      "path---articles-laying-the-foundation-for-a-website-e45b7b4804cafc720092.js.map"
+      "path---articles-laying-the-foundation-for-a-website-b17556d45c04349183a4.js",
+      "path---articles-laying-the-foundation-for-a-website-b17556d45c04349183a4.js.map"
     ],
     "path---articles-discovering-the-minimax-algorithm": [
-      "path---articles-discovering-the-minimax-algorithm-acd9898924a1a2fe5e5c.js",
-      "path---articles-discovering-the-minimax-algorithm-acd9898924a1a2fe5e5c.js.map"
+      "path---articles-discovering-the-minimax-algorithm-06191288218efe66f467.js",
+      "path---articles-discovering-the-minimax-algorithm-06191288218efe66f467.js.map"
     ],
     "path---articles-templating-with-solely-json": [
-      "path---articles-templating-with-solely-json-92f0fbf0255a565cb0c9.js",
-      "path---articles-templating-with-solely-json-92f0fbf0255a565cb0c9.js.map"
+      "path---articles-templating-with-solely-json-db3e2a1e9d4a2dad6ee2.js",
+      "path---articles-templating-with-solely-json-db3e2a1e9d4a2dad6ee2.js.map"
     ],
     "path---articles-what-are-php-data-objects": [
-      "path---articles-what-are-php-data-objects-52a14722c7eddfbee94d.js",
-      "path---articles-what-are-php-data-objects-52a14722c7eddfbee94d.js.map"
+      "path---articles-what-are-php-data-objects-30d6d9eed9d96c982064.js",
+      "path---articles-what-are-php-data-objects-30d6d9eed9d96c982064.js.map"
     ],
     "path---articles-building-a-ruby-gem-the-experience": [
-      "path---articles-building-a-ruby-gem-the-experience-94640900fa3ce3c10cc1.js",
-      "path---articles-building-a-ruby-gem-the-experience-94640900fa3ce3c10cc1.js.map"
+      "path---articles-building-a-ruby-gem-the-experience-8bdb9b4ff5361ff8fcbb.js",
+      "path---articles-building-a-ruby-gem-the-experience-8bdb9b4ff5361ff8fcbb.js.map"
     ],
     "commons": [
       "commons-40be9f1c36c391bf0039.js",
       "commons-40be9f1c36c391bf0039.js.map"
     ],
     "path---articles-long-days-journey-into-web-development": [
-      "path---articles-long-days-journey-into-web-development-eea160b2573a713e6272.js",
-      "path---articles-long-days-journey-into-web-development-eea160b2573a713e6272.js.map"
+      "path---articles-long-days-journey-into-web-development-c75d780a3fdbd7dc6e25.js",
+      "path---articles-long-days-journey-into-web-development-c75d780a3fdbd7dc6e25.js.map"
     ],
     "path---articles-first-impressions-yarn-package-manager": [
-      "path---articles-first-impressions-yarn-package-manager-d0fbb057665413258324.js",
-      "path---articles-first-impressions-yarn-package-manager-d0fbb057665413258324.js.map"
+      "path---articles-first-impressions-yarn-package-manager-ad0c233956ad192ac74b.js",
+      "path---articles-first-impressions-yarn-package-manager-ad0c233956ad192ac74b.js.map"
     ],
     "path---articles-code-pause-run-tell-that": [
-      "path---articles-code-pause-run-tell-that-db9f848d2e74667515d5.js",
-      "path---articles-code-pause-run-tell-that-db9f848d2e74667515d5.js.map"
+      "path---articles-code-pause-run-tell-that-8096b650a0d9373346c3.js",
+      "path---articles-code-pause-run-tell-that-8096b650a0d9373346c3.js.map"
     ],
     "path---articles-a-greenhorns-approach-to-angular": [
-      "path---articles-a-greenhorns-approach-to-angular-c7e553f5007c65eba361.js",
-      "path---articles-a-greenhorns-approach-to-angular-c7e553f5007c65eba361.js.map"
+      "path---articles-a-greenhorns-approach-to-angular-84124479a8b24eb1a4ff.js",
+      "path---articles-a-greenhorns-approach-to-angular-84124479a8b24eb1a4ff.js.map"
     ],
     "path---offline-plugin-app-shell-fallback": [
       "path---offline-plugin-app-shell-fallback-586c7e095e534a3909ec.js",
       "path---offline-plugin-app-shell-fallback-586c7e095e534a3909ec.js.map"
     ],
     "path---articles-busting-cache-with-asset-hash": [
-      "path---articles-busting-cache-with-asset-hash-0bf7cfda84ff60a1ccba.js",
-      "path---articles-busting-cache-with-asset-hash-0bf7cfda84ff60a1ccba.js.map"
+      "path---articles-busting-cache-with-asset-hash-6babe60901dade920f96.js",
+      "path---articles-busting-cache-with-asset-hash-6babe60901dade920f96.js.map"
     ],
     "path---articles-wandering-through-javascript-closures": [
-      "path---articles-wandering-through-javascript-closures-d0934f586ed36e41d19f.js",
-      "path---articles-wandering-through-javascript-closures-d0934f586ed36e41d19f.js.map"
+      "path---articles-wandering-through-javascript-closures-0b86645a1581dd6fa1d8.js",
+      "path---articles-wandering-through-javascript-closures-0b86645a1581dd6fa1d8.js.map"
     ],
     "path---articles-learning-a-second-programming-language": [
-      "path---articles-learning-a-second-programming-language-bbc59e781b0e47510784.js",
-      "path---articles-learning-a-second-programming-language-bbc59e781b0e47510784.js.map"
+      "path---articles-learning-a-second-programming-language-2af5b478b4b42f76798e.js",
+      "path---articles-learning-a-second-programming-language-2af5b478b4b42f76798e.js.map"
     ],
     "app": [
-      "app-d5d1297bb61f96193909.js",
-      "app-d5d1297bb61f96193909.js.map"
+      "app-2c602167b7e63c9482cd.js",
+      "app-2c602167b7e63c9482cd.js.map"
     ],
     "layout-component---index": [
-      "layout-component---index-8d79d8df635c7d08f373.js",
-      "layout-component---index-8d79d8df635c7d08f373.js.map"
+      "layout-component---index-550f25fceccaf493df59.js",
+      "layout-component---index-550f25fceccaf493df59.js.map"
     ],
     "path---articles-quirks-of-display-inline-block": [
-      "path---articles-quirks-of-display-inline-block-3d228173e6c7113586ce.js",
-      "path---articles-quirks-of-display-inline-block-3d228173e6c7113586ce.js.map"
+      "path---articles-quirks-of-display-inline-block-9f0a49b941ccda9010b8.js",
+      "path---articles-quirks-of-display-inline-block-9f0a49b941ccda9010b8.js.map"
     ],
     "path---articles-first-impressions-trellis": [
-      "path---articles-first-impressions-trellis-770d58112b75236f9bdb.js",
-      "path---articles-first-impressions-trellis-770d58112b75236f9bdb.js.map"
+      "path---articles-first-impressions-trellis-dbffad81bf075998f6a0.js",
+      "path---articles-first-impressions-trellis-dbffad81bf075998f6a0.js.map"
     ],
     "path---articles-using-homebrew-the-best-package-manager-for-macos": [
-      "path---articles-using-homebrew-the-best-package-manager-for-macos-eaf600591d2670de6952.js",
-      "path---articles-using-homebrew-the-best-package-manager-for-macos-eaf600591d2670de6952.js.map"
+      "path---articles-using-homebrew-the-best-package-manager-for-macos-76a3d601f355998aedfb.js",
+      "path---articles-using-homebrew-the-best-package-manager-for-macos-76a3d601f355998aedfb.js.map"
     ]
   }
 }
