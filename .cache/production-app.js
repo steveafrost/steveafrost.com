@@ -195,7 +195,9 @@ loadLayout(function (layout) {
     };
 
     var NewRoot = (0, _apiRunnerBrowser2.default)("wrapRootComponent", { Root: Root }, Root)[0];
-    _reactDom2.default.render(_react2.default.createElement(NewRoot, null), typeof window !== "undefined" ? document.getElementById("___gatsby") : void 0);
+    _reactDom2.default.render(_react2.default.createElement(NewRoot, null), typeof window !== "undefined" ? document.getElementById("___gatsby") : void 0, function () {
+      (0, _apiRunnerBrowser2.default)("onInitialClientRender");
+    });
   });
 });
 //# sourceMappingURL=production-app.js.map
