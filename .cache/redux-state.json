@@ -1,13 +1,19 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
+      "component": "/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/dev-404-page.js",
       "path": "/dev-404-page/",
+      "componentChunkName": "page-component---cache-dev-404-page-js",
+      "jsonName": "dev-404-page.json",
+      "internalComponentName": "ComponentDev404Page",
+      "context": {},
+      "pluginCreator___NODE": "Plugin dev-404-page",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
+        "contentDigest": "7c5a57d3706d8d1dc412c268119743a6",
         "owner": "internal-data-bridge"
       }
     },
@@ -1074,13 +1080,15 @@
         "title": "Steve Frost – Full Stack Web Developer",
         "author": "Steve Frost"
       },
+      "port": "8000",
+      "host": "localhost",
       "pathPrefix": "",
-      "buildTime": "2017-07-24T03:18:35.638Z",
+      "buildTime": "2017-07-28T03:47:19.096Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "e7e9bc167657e184df70452f8cfc37d7",
+        "contentDigest": "1f73b6574feb7f9ca5e4dd8103be3ce5",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -3649,23 +3657,6 @@
       },
       "fileAbsolutePath": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/what-are-php-data-objects.md"
     },
-    "SitePage /offline-plugin-app-shell-fallback/": {
-      "path": "/offline-plugin-app-shell-fallback/",
-      "component": "/Users/stevefrost/Development/Websites/steveafrost.github.io/node_modules/gatsby-plugin-offline/app-shell.js",
-      "componentChunkName": "page-component---node-modules-gatsby-plugin-offline-app-shell-js",
-      "jsonName": "offline-plugin-app-shell-fallback.json",
-      "internalComponentName": "ComponentOfflinePluginAppShellFallback",
-      "context": {},
-      "pluginCreator___NODE": "Plugin gatsby-plugin-offline",
-      "id": "SitePage /offline-plugin-app-shell-fallback/",
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "type": "SitePage",
-        "contentDigest": "b04cdf4e5bf2ca61392685b8e6f39355",
-        "owner": "internal-data-bridge"
-      }
-    },
     "SitePage /articles/a-greenhorns-approach-to-angular": {
       "path": "/articles/a-greenhorns-approach-to-angular",
       "component": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/templates/blog-post.js",
@@ -4548,6 +4539,9 @@
     "connections": {
       "MarkdownRemark": [
         "/"
+      ],
+      "SitePage": [
+        "/dev-404-page/"
       ]
     }
   }
