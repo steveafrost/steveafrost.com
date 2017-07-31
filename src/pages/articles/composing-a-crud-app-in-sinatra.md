@@ -4,7 +4,7 @@ title: "Composing a CRUD App in Sinatra"
 author: Steve Frost
 date: 2016-08-06 16:00:00 -04:00
 categories: blog
-tags: flatiron-school learning-to-code
+tags: devops static-site-generators
 description: "What I learned about CRUD from creating a few apps in Sinatra"
 comments: true
 path: "/articles/composing-a-crud-app-in-sinatra"
