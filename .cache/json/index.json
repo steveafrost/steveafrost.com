@@ -10,6 +10,14 @@
                 {
                     "node": {
                         "frontmatter": {
+                            "path": "/articles/continuous-deployment-with-surge",
+                            "title": "Continuous Deployment with Surge"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
                             "path": "/articles/first-impressions-gatsby-js",
                             "title": "First Impressions: Gatsby.js"
                         }
@@ -28,14 +36,6 @@
                         "frontmatter": {
                             "path": "/articles/quirks-of-display-inline-block",
                             "title": "Quirks of 'Display: Inline-Block'"
-                        }
-                    }
-                },
-                {
-                    "node": {
-                        "frontmatter": {
-                            "path": "/articles/preprocessing-bundling-and-live-preview-with-gulp",
-                            "title": "Preprocessing, Bundling, and Live Preview with Gulp"
                         }
                     }
                 },
@@ -300,6 +300,14 @@
                         "frontmatter": {
                             "path": "/articles/long-days-journey-into-web-development",
                             "title": "Long Day’s Journey Into Web Development"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
+                            "path": "/articles/preprocessing-bundling-and-live-preview-with-gulp",
+                            "title": "Preprocessing, Bundling, and Live Preview with Gulp"
                         }
                     }
                 }

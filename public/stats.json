@@ -101,8 +101,8 @@
       "path---articles-plant-nanny-keep-your-plants-happy-6dc997027e680f8dc92b.js.map"
     ],
     "path---index": [
-      "path---index-e68b274284c351013078.js",
-      "path---index-e68b274284c351013078.js.map"
+      "path---index-79b06fec5c49ca4275aa.js",
+      "path---index-79b06fec5c49ca4275aa.js.map"
     ],
     "path---articles-laying-the-foundation-for-a-website": [
       "path---articles-laying-the-foundation-for-a-website-b17556d45c04349183a4.js",
@@ -136,6 +136,10 @@
       "path---articles-first-impressions-yarn-package-manager-ad0c233956ad192ac74b.js",
       "path---articles-first-impressions-yarn-package-manager-ad0c233956ad192ac74b.js.map"
     ],
+    "path---articles-continuous-deployment-with-surge": [
+      "path---articles-continuous-deployment-with-surge-dbd981726cd57f31795d.js",
+      "path---articles-continuous-deployment-with-surge-dbd981726cd57f31795d.js.map"
+    ],
     "path---articles-code-pause-run-tell-that": [
       "path---articles-code-pause-run-tell-that-8096b650a0d9373346c3.js",
       "path---articles-code-pause-run-tell-that-8096b650a0d9373346c3.js.map"
@@ -161,8 +165,8 @@
       "path---articles-learning-a-second-programming-language-2af5b478b4b42f76798e.js.map"
     ],
     "app": [
-      "app-2c602167b7e63c9482cd.js",
-      "app-2c602167b7e63c9482cd.js.map"
+      "app-decd47ecb8893cd4c0cb.js",
+      "app-decd47ecb8893cd4c0cb.js.map"
     ],
     "layout-component---index": [
       "layout-component---index-550f25fceccaf493df59.js",

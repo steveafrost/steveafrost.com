@@ -1,8 +1,8 @@
 [
     {
-        "componentChunkName": "page-component---node-modules-gatsby-plugin-offline-app-shell-js",
-        "jsonName": "offline-plugin-app-shell-fallback.json",
-        "path": "/offline-plugin-app-shell-fallback/"
+        "componentChunkName": "page-component---cache-dev-404-page-js",
+        "jsonName": "dev-404-page.json",
+        "path": "/dev-404-page/"
     },
     {
         "componentChunkName": "page-component---src-templates-blog-post-js",
@@ -188,6 +188,11 @@
         "componentChunkName": "page-component---src-templates-blog-post-js",
         "jsonName": "articles-what-are-php-data-objects.json",
         "path": "/articles/what-are-php-data-objects"
+    },
+    {
+        "componentChunkName": "page-component---src-templates-blog-post-js",
+        "jsonName": "articles-continuous-deployment-with-surge.json",
+        "path": "/articles/continuous-deployment-with-surge"
     },
     {
         "componentChunkName": "page-component---src-pages-index-js",
