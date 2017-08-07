@@ -1,2 +1,0 @@
-webpackJsonp([0x798a103cf0124000],{"./node_modules/json-loader/index.js!./.cache/json/articles-learning-crud-with-monster-trucks.json":function(n,e){n.exports={pathContext:{path:"/articles/learning-crud-with-monster-trucks"}}}});
-//# sourceMappingURL=path---articles-learning-crud-with-monster-trucks-4cb5fe10407bf4361620.js.map

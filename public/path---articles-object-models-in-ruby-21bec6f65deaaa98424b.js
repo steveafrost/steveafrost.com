@@ -1,2 +1,0 @@
-webpackJsonp([0x51200ad968fb3000],{"./node_modules/json-loader/index.js!./.cache/json/articles-object-models-in-ruby.json":function(e,o){e.exports={pathContext:{path:"/articles/object-models-in-ruby"}}}});
-//# sourceMappingURL=path---articles-object-models-in-ruby-21bec6f65deaaa98424b.js.map

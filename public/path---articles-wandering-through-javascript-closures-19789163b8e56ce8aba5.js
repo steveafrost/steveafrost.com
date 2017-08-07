@@ -1,2 +1,0 @@
-webpackJsonp([0xcef452d763058800],{"./node_modules/json-loader/index.js!./.cache/json/articles-wandering-through-javascript-closures.json":function(e,s){e.exports={pathContext:{path:"/articles/wandering-through-javascript-closures"}}}});
-//# sourceMappingURL=path---articles-wandering-through-javascript-closures-19789163b8e56ce8aba5.js.map

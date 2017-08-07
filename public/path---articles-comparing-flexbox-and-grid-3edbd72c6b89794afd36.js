@@ -1,2 +1,0 @@
-webpackJsonp([0x47081b00a80c6000],{"./node_modules/json-loader/index.js!./.cache/json/articles-comparing-flexbox-and-grid.json":function(o,n){o.exports={pathContext:{path:"/articles/comparing-flexbox-and-grid"}}}});
-//# sourceMappingURL=path---articles-comparing-flexbox-and-grid-3edbd72c6b89794afd36.js.map

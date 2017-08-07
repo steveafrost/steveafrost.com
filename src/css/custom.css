@@ -1,0 +1,20 @@
+/* Color Scheme
+
+Purple Highlight: #353555
+Link/Nav Color: #3C6E71
+Hover: #284B63;
+Standard BG: #FFFFFF
+
+OR
+
+https://cl.ly/1h3w450z0w0f
+
+*/
+
+h3, a {
+  color: #3C6E71;
+}
+
+h3:hover, a:hover {
+  color: #284B63;
+}

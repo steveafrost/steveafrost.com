@@ -1,2 +1,0 @@
-webpackJsonp([0x97242092ca32d800],{"./node_modules/json-loader/index.js!./.cache/json/articles-building-a-ruby-gem-the-experience.json":function(e,n){e.exports={pathContext:{path:"/articles/building-a-ruby-gem-the-experience"}}}});
-//# sourceMappingURL=path---articles-building-a-ruby-gem-the-experience-e24469b52be5893d79f7.js.map

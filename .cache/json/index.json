@@ -42,6 +42,14 @@
                 {
                     "node": {
                         "frontmatter": {
+                            "path": "/articles/preprocessing-bundling-and-live-preview-with-gulp",
+                            "title": "Preprocessing, Bundling, and Live Preview with Gulp"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
                             "path": "/articles/responsive-css-with-rems-and-ems",
                             "title": "Responsive CSS with REMs & EMs"
                         }
@@ -300,14 +308,6 @@
                         "frontmatter": {
                             "path": "/articles/long-days-journey-into-web-development",
                             "title": "Long Day’s Journey Into Web Development"
-                        }
-                    }
-                },
-                {
-                    "node": {
-                        "frontmatter": {
-                            "path": "/articles/preprocessing-bundling-and-live-preview-with-gulp",
-                            "title": "Preprocessing, Bundling, and Live Preview with Gulp"
                         }
                     }
                 }

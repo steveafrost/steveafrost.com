@@ -1,2 +1,0 @@
-webpackJsonp([0x6f7ede996c391c00],{"./node_modules/json-loader/index.js!./.cache/json/articles-protect-yoself-data-privacy-day-2017.json":function(e,a){e.exports={pathContext:{path:"/articles/protect-yoself-data-privacy-day-2017"}}}});
-//# sourceMappingURL=path---articles-protect-yoself-data-privacy-day-2017-e30fca4a87a30a2d4109.js.map

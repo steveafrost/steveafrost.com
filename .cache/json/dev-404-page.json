@@ -10,17 +10,7 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/a-greenhorns-approach-to-angular"
-                    }
-                },
-                {
-                    "node": {
                         "path": "/articles/building-a-ruby-gem-the-experience"
-                    }
-                },
-                {
-                    "node": {
-                        "path": "/articles/comparing-flexbox-and-grid"
                     }
                 },
                 {
@@ -30,12 +20,22 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/composing-a-crud-app-in-sinatra"
+                        "path": "/articles/a-greenhorns-approach-to-angular"
                     }
                 },
                 {
                     "node": {
                         "path": "/articles/code-pause-run-tell-that"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/comparing-flexbox-and-grid"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/composing-a-crud-app-in-sinatra"
                     }
                 },
                 {
@@ -50,12 +50,17 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/exploring-active-record"
+                        "path": "/articles/continuous-deployment-with-surge"
                     }
                 },
                 {
                     "node": {
                         "path": "/articles/deploying-daily-documentary-rails-angular"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/exploring-active-record"
                     }
                 },
                 {
@@ -75,12 +80,12 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/honeypotting-simple-spam-prevention"
+                        "path": "/articles/grasping-declarative-programming"
                     }
                 },
                 {
                     "node": {
-                        "path": "/articles/grasping-declarative-programming"
+                        "path": "/articles/honeypotting-simple-spam-prevention"
                     }
                 },
                 {
@@ -95,17 +100,17 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/long-days-journey-into-web-development"
-                    }
-                },
-                {
-                    "node": {
                         "path": "/articles/learning-crud-with-monster-trucks"
                     }
                 },
                 {
                     "node": {
                         "path": "/articles/learning-a-second-programming-language"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/preprocessing-bundling-and-live-preview-with-gulp"
                     }
                 },
                 {
@@ -120,17 +125,12 @@
                 },
                 {
                     "node": {
+                        "path": "/articles/long-days-journey-into-web-development"
+                    }
+                },
+                {
+                    "node": {
                         "path": "/articles/plant-nanny-keep-your-plants-happy"
-                    }
-                },
-                {
-                    "node": {
-                        "path": "/articles/preprocessing-bundling-and-live-preview-with-gulp"
-                    }
-                },
-                {
-                    "node": {
-                        "path": "/articles/regex-lookahead-and-lookbehind"
                     }
                 },
                 {
@@ -150,12 +150,7 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/templating-with-solely-json"
-                    }
-                },
-                {
-                    "node": {
-                        "path": "/articles/setting-up-a-local-wordpress-environment"
+                        "path": "/articles/regex-lookahead-and-lookbehind"
                     }
                 },
                 {
@@ -165,12 +160,17 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/unearthing-javascript-modules"
+                        "path": "/articles/two-weeks-deep-into-coding-school"
                     }
                 },
                 {
                     "node": {
-                        "path": "/articles/two-weeks-deep-into-coding-school"
+                        "path": "/articles/setting-up-a-local-wordpress-environment"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/templating-with-solely-json"
                     }
                 },
                 {
@@ -180,17 +180,17 @@
                 },
                 {
                     "node": {
-                        "path": "/articles/wandering-through-javascript-closures"
-                    }
-                },
-                {
-                    "node": {
                         "path": "/articles/what-are-php-data-objects"
                     }
                 },
                 {
                     "node": {
-                        "path": "/articles/continuous-deployment-with-surge"
+                        "path": "/articles/unearthing-javascript-modules"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/wandering-through-javascript-closures"
                     }
                 },
                 {

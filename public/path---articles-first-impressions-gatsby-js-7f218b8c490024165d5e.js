@@ -1,2 +1,0 @@
-webpackJsonp([0x35f1f65a795728],{"./node_modules/json-loader/index.js!./.cache/json/articles-first-impressions-gatsby-js.json":function(s,e){s.exports={pathContext:{path:"/articles/first-impressions-gatsby-js"}}}});
-//# sourceMappingURL=path---articles-first-impressions-gatsby-js-7f218b8c490024165d5e.js.map

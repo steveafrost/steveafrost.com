@@ -1,2 +1,0 @@
-webpackJsonp([0xd2a4928b2f020800],{"./node_modules/json-loader/index.js!./.cache/json/articles-learning-a-second-programming-language.json":function(n,a){n.exports={pathContext:{path:"/articles/learning-a-second-programming-language"}}}});
-//# sourceMappingURL=path---articles-learning-a-second-programming-language-5db59ee68b81882973f9.js.map

@@ -1,2 +1,0 @@
-webpackJsonp([0x9239fc9d5ff32000],{"./node_modules/json-loader/index.js!./.cache/json/articles-what-are-php-data-objects.json":function(a,e){a.exports={pathContext:{path:"/articles/what-are-php-data-objects"}}}});
-//# sourceMappingURL=path---articles-what-are-php-data-objects-f108e2532b255d142fa3.js.map

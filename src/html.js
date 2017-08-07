@@ -2,6 +2,8 @@ import React from "react"
 import { TypographyStyle } from "react-typography"
 
 import typography from "./utils/typography"
+import customCSS from "./css/custom.css"
+
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
