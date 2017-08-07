@@ -29,6 +29,7 @@
     "typeface-merriweather": "^0.0.25",
     "typeface-montserrat": "^0.0.24",
     "typography": "^0.15.8",
+    "typography-plugin-code": "^0.15.11",
     "typography-theme-wordpress-2016": "^0.15.1"
   },
   "devDependencies": {

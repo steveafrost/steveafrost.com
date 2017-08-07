@@ -10,6 +10,14 @@
                 {
                     "node": {
                         "frontmatter": {
+                            "path": "/articles/adding-custom-styles-to-gatsby-js",
+                            "title": "Adding Custom Styles to Gatsby.js"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
                             "path": "/articles/continuous-deployment-with-surge",
                             "title": "Continuous Deployment with Surge"
                         }
@@ -308,14 +316,6 @@
                         "frontmatter": {
                             "path": "/articles/long-days-journey-into-web-development",
                             "title": "Long Day’s Journey Into Web Development"
-                        }
-                    }
-                },
-                {
-                    "node": {
-                        "frontmatter": {
-                            "path": "/articles/adding-custom-styles-to-gatsby-js",
-                            "title": "Adding Custom Styles to Gatsby.js"
                         }
                     }
                 }

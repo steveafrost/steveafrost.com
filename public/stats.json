@@ -76,6 +76,10 @@
       "path---articles-setting-up-a-local-wordpress-environment-64c212d9199d049b1efa.js",
       "path---articles-setting-up-a-local-wordpress-environment-64c212d9199d049b1efa.js.map"
     ],
+    "path---articles-adding-custom-styles-to-gatsby-js": [
+      "path---articles-adding-custom-styles-to-gatsby-js-fb41634131d63eda60ee.js",
+      "path---articles-adding-custom-styles-to-gatsby-js-fb41634131d63eda60ee.js.map"
+    ],
     "path---articles-protect-yoself-data-privacy-day-2017": [
       "path---articles-protect-yoself-data-privacy-day-2017-5121ac1d70b3b8aee49e.js",
       "path---articles-protect-yoself-data-privacy-day-2017-5121ac1d70b3b8aee49e.js.map"
@@ -101,8 +105,8 @@
       "path---articles-plant-nanny-keep-your-plants-happy-6dc997027e680f8dc92b.js.map"
     ],
     "path---index": [
-      "path---index-79b06fec5c49ca4275aa.js",
-      "path---index-79b06fec5c49ca4275aa.js.map"
+      "path---index-e918d912b52bde7f7293.js",
+      "path---index-e918d912b52bde7f7293.js.map"
     ],
     "path---articles-laying-the-foundation-for-a-website": [
       "path---articles-laying-the-foundation-for-a-website-b17556d45c04349183a4.js",
@@ -165,8 +169,8 @@
       "path---articles-learning-a-second-programming-language-2af5b478b4b42f76798e.js.map"
     ],
     "app": [
-      "app-7734fde157c6662b0230.js",
-      "app-7734fde157c6662b0230.js.map"
+      "app-24e4dd2e82436e4ae505.js",
+      "app-24e4dd2e82436e4ae505.js.map"
     ],
     "layout-component---index": [
       "layout-component---index-d7c1972a2182cf51df72.js",
