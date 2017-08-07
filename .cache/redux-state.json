@@ -4393,6 +4393,69 @@
         "contentDigest": "f4d65a485d30d3084eab0949fe3d4d06",
         "owner": "internal-data-bridge"
       }
+    },
+    "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file": {
+      "id": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file",
+      "children": [
+        "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file >>> MarkdownRemark"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "13e87317b4d330c4046ed28928e9ee29",
+        "mediaType": "text/x-markdown",
+        "type": "File",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "pages",
+      "absolutePath": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md",
+      "relativePath": "articles/adding-custom-styles-to-gatsby-js.md",
+      "extension": "md",
+      "size": 2409,
+      "prettySize": "2.41 kB",
+      "modifiedTime": "2017-08-07T03:34:06.000Z",
+      "accessTime": "2017-08-07T03:34:06.000Z",
+      "changeTime": "2017-08-07T03:34:06.000Z",
+      "birthTime": "2017-08-07T03:22:22.000Z",
+      "root": "/",
+      "dir": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles",
+      "base": "adding-custom-styles-to-gatsby-js.md",
+      "ext": ".md",
+      "name": "adding-custom-styles-to-gatsby-js",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4096,
+      "ino": 9334431,
+      "blocks": 8,
+      "atime": "2017-08-07T03:34:06.000Z",
+      "mtime": "2017-08-07T03:34:06.000Z",
+      "ctime": "2017-08-07T03:34:06.000Z",
+      "birthtime": "2017-08-07T03:22:22.000Z"
+    },
+    "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file >>> MarkdownRemark": {
+      "id": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file >>> MarkdownRemark",
+      "children": [],
+      "parent": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file",
+      "internal": {
+        "content": "---\ntitle: \"Adding Custom Styles to Gatsby.js\"\nauthor: Steve Frost\ndate: 2017-08-06 23:00:00 -04:00\ncategories: blog\ntags: gatsby static-site-generators javascript\ndescription: \"Maybe it's been the long week, or exhausted, but I spent much too long trying to find out how to add custom styles to my blog today. I'm familiar with how to do it in a basic website setup - whether that's WordPress, Jekyll, or Middleman – but with Gatsby, everything is a React component. In retrospect, I was definitely over thinking it so I've made this blog post to help out with people trying to do the same thing who are possibly over thinking it as well.\"\npath: \"/articles/adding-custom-styles-to-gatsby-js\"\n---\n\nMaybe it's been the long week, or exhausted, but I spent much too long trying to find out how to add custom styles to my blog today. I'm familiar with how to do it in a basic website setup - whether that's WordPress, Jekyll, or Middleman – but with Gatsby, everything is a React component. In retrospect, I was definitely over thinking it so I've made this blog post to help out with people trying to do the same thing who are possibly over thinking it as well.\n\nIn a typical setup, stylesheets are linked in the head of the page by a simple `<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\">` and then the rules in mystyle.css are applied to that page. That is pretty basic knowledge. Since I am new to Gatsby, and therefore React, I kept trying to include my stylesheet like this in my components. While that will work if the stylesheet is a static asset in the ./static folder, React & Gatsby has support for importing stylesheets directly into components.\n\n```javascript\nimport customCSS from \"./css/custom.css\"\n```\n\nNow our customCSS file will be available by that variable name and Webpack will notice we need it throughout our component and therefore apply the Webpack magic to it. Essentially, the magic is minifying, optimizing, and automatically bundling it to create a cumulative styles.css (or whatever you decide to name it) file.\n\nThis pattern comes from the module pattern made popular by CommonJS & NodeJS. I haven't decided how I like it so far as I'm so familiar with including it with the classic `link rel` HTML tag. The Webpack benefits seem to be well worth it so I'll continue down this road for now and I hope to write more about React, Gatsby, and Webpack as I learn more.\n",
+        "contentDigest": "4c31c6cc657e318c28f931a0ff2f3355",
+        "type": "MarkdownRemark",
+        "owner": "gatsby-transformer-remark"
+      },
+      "frontmatter": {
+        "title": "Adding Custom Styles to Gatsby.js",
+        "author": "Steve Frost",
+        "date": "2017-08-07T03:00:00.000Z",
+        "categories": "blog",
+        "tags": "gatsby static-site-generators javascript",
+        "description": "Maybe it's been the long week, or exhausted, but I spent much too long trying to find out how to add custom styles to my blog today. I'm familiar with how to do it in a basic website setup - whether that's WordPress, Jekyll, or Middleman – but with Gatsby, everything is a React component. In retrospect, I was definitely over thinking it so I've made this blog post to help out with people trying to do the same thing who are possibly over thinking it as well.",
+        "path": "/articles/adding-custom-styles-to-gatsby-js",
+        "parent": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md absPath of file"
+      },
+      "fileAbsolutePath": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/adding-custom-styles-to-gatsby-js.md"
     }
   },
   "status": {

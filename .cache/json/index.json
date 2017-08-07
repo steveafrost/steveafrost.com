@@ -310,6 +310,14 @@
                             "title": "Long Day’s Journey Into Web Development"
                         }
                     }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
+                            "path": "/articles/adding-custom-styles-to-gatsby-js",
+                            "title": "Adding Custom Styles to Gatsby.js"
+                        }
+                    }
                 }
             ]
         }
