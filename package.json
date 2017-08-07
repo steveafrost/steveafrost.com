@@ -38,7 +38,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "rm -rf ./public && gatsby build && surge --project ./public --domain steveafrost.com"
+      "pre-push": "gatsby build && surge --project ./public --domain steveafrost.com"
     }
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
