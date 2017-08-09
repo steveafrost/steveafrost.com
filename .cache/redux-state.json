@@ -1060,12 +1060,12 @@
       "port": "8000",
       "host": "localhost",
       "pathPrefix": "",
-      "buildTime": "2017-08-09T04:08:08.650Z",
+      "buildTime": "2017-08-09T04:38:37.961Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "c3faf6d2f75bf4d860d6d8a565b8b57c",
+        "contentDigest": "ce1130b06b3000ee1c8e31cde24eef58",
         "type": "Site",
         "owner": "internal-data-bridge"
       }

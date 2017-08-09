@@ -1,7 +1,5 @@
 import React from "react"
-
-import "typeface-montserrat"
-import "typeface-merriweather"
+import Link from "gatsby-link"
 
 import { rhythm } from "../utils/typography"
 
@@ -11,13 +9,50 @@ class Nav extends React.Component {
       <nav
         style={{
           marginBottom: rhythm(2.5),
-          width: rhtym(40)
+          width: rhythm(28),
         }}
       >
-        <li>Home</li>
-        <li>Articles</li>
-        <li>Projects</li>
-        <li>About</li>
+        <div className="nav-left">
+          <Link
+            style={{
+              boxShadow: "none",
+              textDecoration: "none",
+              float: "left",
+            }}
+            to={"/"}
+          >
+            Steve Frost | Full-Stack Web Developer
+          </Link>
+        </div>
+        <div className="nav-right">
+          <Link
+            style={{
+              boxShadow: "none",
+              textDecoration: "none",
+            }}
+            to={"/articles"}
+          >
+            Articles
+          </Link>
+          <Link
+            style={{
+              boxShadow: "none",
+              textDecoration: "none",
+            }}
+            to={"/projects"}
+          >
+            Projects
+          </Link>
+          <Link
+            style={{
+              boxShadow: "none",
+              textDecoration: "none",
+            }}
+            to={"/about"}
+          >
+            About
+          </Link>
+        </div>
       </nav>
     )
   }

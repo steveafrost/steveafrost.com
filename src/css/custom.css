@@ -18,3 +18,15 @@ h3, a {
 h3:hover, a:hover {
   color: #284B63;
 }
+
+.nav-left {
+  float: left;
+}
+
+.nav-right {
+  float: right;
+}
+
+.nav-right a {
+  margin-left: 15px;
+}
