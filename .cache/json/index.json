@@ -318,6 +318,22 @@
                             "title": "Long Day’s Journey Into Web Development"
                         }
                     }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
+                            "path": "/articles/reframing-callback-terminology",
+                            "title": "Reframing Callback Terminology"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
+                            "path": "/articles/reframing-callback-terminology",
+                            "title": "Reframing Callback Terminology"
+                        }
+                    }
                 }
             ]
         }
