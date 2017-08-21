@@ -49,6 +49,8 @@ exports.json = {
   "articles-setting-up-a-local-wordpress-environment.json": require("/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-setting-up-a-local-wordpress-environment.json"),
   "articles-unearthing-javascript-modules.json": require("/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-unearthing-javascript-modules.json"),
   "articles-wandering-through-javascript-closures.json": require("/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-wandering-through-javascript-closures.json"),
+  "articles-reframing-callback-terminology.json": require("/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-reframing-callback-terminology.json"),
+  "articles-first-impressions-hapi-js.json": require("/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-first-impressions-hapi-js.json"),
   "index.json": require("/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/index.json")
 }
 

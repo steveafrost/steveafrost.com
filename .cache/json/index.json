@@ -10,6 +10,14 @@
                 {
                     "node": {
                         "frontmatter": {
+                            "path": "/articles/reframing-callback-terminology",
+                            "title": "Reframing Callback Terminology"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
                             "path": "/articles/adding-custom-styles-to-gatsby-js",
                             "title": "Adding Custom Styles to Gatsby.js"
                         }
@@ -322,16 +330,8 @@
                 {
                     "node": {
                         "frontmatter": {
-                            "path": "/articles/reframing-callback-terminology",
-                            "title": "Reframing Callback Terminology"
-                        }
-                    }
-                },
-                {
-                    "node": {
-                        "frontmatter": {
-                            "path": "/articles/reframing-callback-terminology",
-                            "title": "Reframing Callback Terminology"
+                            "path": "/articles/first-impressions-hapi-js",
+                            "title": "First Impressions: Hapi.js"
                         }
                     }
                 }

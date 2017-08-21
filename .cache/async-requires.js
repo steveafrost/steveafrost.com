@@ -48,6 +48,8 @@ exports.json = {
   "articles-setting-up-a-local-wordpress-environment.json": require("gatsby-module-loader?name=path---articles-setting-up-a-local-wordpress-environment!/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-setting-up-a-local-wordpress-environment.json"),
   "articles-unearthing-javascript-modules.json": require("gatsby-module-loader?name=path---articles-unearthing-javascript-modules!/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-unearthing-javascript-modules.json"),
   "articles-wandering-through-javascript-closures.json": require("gatsby-module-loader?name=path---articles-wandering-through-javascript-closures!/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-wandering-through-javascript-closures.json"),
+  "articles-reframing-callback-terminology.json": require("gatsby-module-loader?name=path---articles-reframing-callback-terminology!/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-reframing-callback-terminology.json"),
+  "articles-first-impressions-hapi-js.json": require("gatsby-module-loader?name=path---articles-first-impressions-hapi-js!/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/articles-first-impressions-hapi-js.json"),
   "index.json": require("gatsby-module-loader?name=path---index!/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/json/index.json")
 }
 

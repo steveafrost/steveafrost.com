@@ -1,7 +1,7 @@
 {
     "data": {
         "allSitePage": {
-            "totalCount": 40,
+            "totalCount": 42,
             "edges": [
                 {
                     "node": {
@@ -196,6 +196,16 @@
                 {
                     "node": {
                         "path": "/articles/wandering-through-javascript-closures"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/reframing-callback-terminology"
+                    }
+                },
+                {
+                    "node": {
+                        "path": "/articles/first-impressions-hapi-js"
                     }
                 },
                 {

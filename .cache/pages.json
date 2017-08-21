@@ -200,6 +200,16 @@
         "path": "/articles/wandering-through-javascript-closures"
     },
     {
+        "componentChunkName": "page-component---src-templates-blog-post-js",
+        "jsonName": "articles-reframing-callback-terminology.json",
+        "path": "/articles/reframing-callback-terminology"
+    },
+    {
+        "componentChunkName": "page-component---src-templates-blog-post-js",
+        "jsonName": "articles-first-impressions-hapi-js.json",
+        "path": "/articles/first-impressions-hapi-js"
+    },
+    {
         "componentChunkName": "page-component---src-pages-index-js",
         "jsonName": "index.json",
         "path": "/"
