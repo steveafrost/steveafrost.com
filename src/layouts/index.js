@@ -26,7 +26,7 @@ class Template extends React.Component {
             }}
             to={"/"}
           >
-            Steve Frost | Full-Stack Web Developer
+            Steve Frost | Front-End Engineer
           </Link>
         </h3>
       )
@@ -46,7 +46,7 @@ class Template extends React.Component {
             }}
             to={"/"}
           >
-            Steve Frost | Full-Stack Web Developer
+            Steve Frost | Front-End Engineer
           </Link>
         </h3>
       )

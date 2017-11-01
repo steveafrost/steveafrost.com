@@ -19,8 +19,9 @@ class Bio extends React.Component {
           src={profilePic}
           alt={`Steve Frost`}
           style={{
+            borderRadius: "0.5em",
             float: "left",
-            marginRight: rhythm(1 / 4),
+            marginRight: rhythm(1 / 3),
             marginBottom: 0,
             width: rhythm(2),
             height: rhythm(2),

@@ -21,7 +21,7 @@ class Nav extends React.Component {
             }}
             to={"/"}
           >
-            Steve Frost | Full-Stack Web Developer
+            Steve Frost | Front-End Engineer
           </Link>
         </div>
         <div className="nav-right">
