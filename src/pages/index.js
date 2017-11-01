@@ -20,6 +20,7 @@ class BlogIndex extends React.Component {
             key={post.node.frontmatter.path}
             style={{
               marginBottom: rhythm(1 / 4),
+              marginTop: rhythm(1 / 4),
             }}
           >
             <Link style={{ boxShadow: "none" }} to={post.node.frontmatter.path}>

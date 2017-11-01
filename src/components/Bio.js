@@ -23,8 +23,8 @@ class Bio extends React.Component {
             float: "left",
             marginRight: rhythm(1 / 3),
             marginBottom: 0,
-            width: rhythm(2),
-            height: rhythm(2),
+            width: rhythm(5),
+            height: rhythm(5),
           }}
         />
         Written by
