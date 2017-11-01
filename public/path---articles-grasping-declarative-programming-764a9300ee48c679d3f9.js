@@ -1,2 +1,0 @@
-webpackJsonp([0x28efbf6bdbc14a00],{"./node_modules/json-loader/index.js!./.cache/json/articles-grasping-declarative-programming.json":function(a,e){a.exports={pathContext:{path:"/articles/grasping-declarative-programming"}}}});
-//# sourceMappingURL=path---articles-grasping-declarative-programming-764a9300ee48c679d3f9.js.map
