@@ -1,19 +1,13 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
-      "component": "/Users/stevefrost/Development/Websites/steveafrost.github.io/.cache/dev-404-page.js",
       "path": "/dev-404-page/",
-      "componentChunkName": "page-component---cache-dev-404-page-js",
-      "jsonName": "dev-404-page.json",
-      "internalComponentName": "ComponentDev404Page",
-      "context": {},
-      "pluginCreator___NODE": "Plugin dev-404-page",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "7c5a57d3706d8d1dc412c268119743a6",
+        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
         "owner": "internal-data-bridge"
       }
     },
@@ -1057,15 +1051,13 @@
         "title": "Steve Frost – Full Stack Web Developer",
         "author": "Steve Frost"
       },
-      "port": "8000",
-      "host": "localhost",
       "pathPrefix": "",
-      "buildTime": "2017-08-21T02:40:15.584Z",
+      "buildTime": "2017-08-21T02:59:56.494Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "951bdd0911ff8b536209d8b4ee46fc43",
+        "contentDigest": "d1d99b58560560fd9f13bb4c0bb5b6a0",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -3850,6 +3842,23 @@
         "parent": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/first-impressions-hapi-js.md absPath of file"
       },
       "fileAbsolutePath": "/Users/stevefrost/Development/Websites/steveafrost.github.io/src/pages/articles/first-impressions-hapi-js.md"
+    },
+    "SitePage /offline-plugin-app-shell-fallback/": {
+      "path": "/offline-plugin-app-shell-fallback/",
+      "component": "/Users/stevefrost/Development/Websites/steveafrost.github.io/node_modules/gatsby-plugin-offline/app-shell.js",
+      "componentChunkName": "page-component---node-modules-gatsby-plugin-offline-app-shell-js",
+      "jsonName": "offline-plugin-app-shell-fallback.json",
+      "internalComponentName": "ComponentOfflinePluginAppShellFallback",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-offline",
+      "id": "SitePage /offline-plugin-app-shell-fallback/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "b04cdf4e5bf2ca61392685b8e6f39355",
+        "owner": "internal-data-bridge"
+      }
     },
     "SitePage /articles/adding-custom-styles-to-gatsby-js": {
       "path": "/articles/adding-custom-styles-to-gatsby-js",

@@ -32,7 +32,7 @@ class Bio extends React.Component {
         {" "}
         who lives in Minneapolis using technology to make an impact in the community and our environment.
         {" "}
-        <a href="https://twitter.com/steveafrost">
+        <a href="https://twitter.com/SteveEff">
           Follow on Twitter
         </a>
       </p>

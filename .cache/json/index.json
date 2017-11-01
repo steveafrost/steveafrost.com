@@ -10,6 +10,14 @@
                 {
                     "node": {
                         "frontmatter": {
+                            "path": "/articles/first-impressions-hapi-js",
+                            "title": "First Impressions: Hapi.js"
+                        }
+                    }
+                },
+                {
+                    "node": {
+                        "frontmatter": {
                             "path": "/articles/reframing-callback-terminology",
                             "title": "Reframing Callback Terminology"
                         }
@@ -324,14 +332,6 @@
                         "frontmatter": {
                             "path": "/articles/long-days-journey-into-web-development",
                             "title": "Long Day’s Journey Into Web Development"
-                        }
-                    }
-                },
-                {
-                    "node": {
-                        "frontmatter": {
-                            "path": "/articles/first-impressions-hapi-js",
-                            "title": "First Impressions: Hapi.js"
                         }
                     }
                 }
