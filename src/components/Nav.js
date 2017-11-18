@@ -1,17 +1,11 @@
 import React from "react"
 import Link from "gatsby-link"
-
 import { rhythm } from "../utils/typography"
 
 class Nav extends React.Component {
   render() {
     return (
-      <nav
-        style={{
-          marginBottom: rhythm(2.5),
-          width: rhythm(28),
-        }}
-      >
+      <nav>
         <div className="nav-left">
           <Link
             style={{

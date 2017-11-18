@@ -1,6 +1,7 @@
 import React from "react"
+import Link from "gatsby-link"
 import { TypographyStyle } from "react-typography"
-
+import Nav from "./components/Nav"
 import typography from "./utils/typography"
 import customCSS from "./css/custom.css"
 

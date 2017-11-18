@@ -28,7 +28,10 @@
     "react-responsive-grid": "^0.3.3",
     "typeface-merriweather": "^0.0.35",
     "typeface-montserrat": "^0.0.37",
-    "typography-theme-wordpress-2016": "^0.15.1"
+    "typography": "^0.16.6",
+    "typography-theme-elk-glen": "^0.16.9",
+    "typography-theme-fairy-gates": "^0.15.11",
+    "typography-theme-grand-view": "^0.15.10"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
