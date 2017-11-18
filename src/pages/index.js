@@ -4,7 +4,6 @@ import get from "lodash/get"
 import Helmet from "react-helmet"
 
 import Bio from "../components/Bio"
-import Nav from "../components/Nav"
 import { rhythm } from "../utils/typography"
 
 class BlogIndex extends React.Component {
@@ -34,9 +33,12 @@ class BlogIndex extends React.Component {
     return (
       <div>
         <Helmet title={get(this, "props.data.site.siteMetadata.title")} />
-        <Nav />
         <Bio />
-        <ul>
+        <ul
+          style={{
+            clear: "both",
+            paddingTop:"20px",
+          }}>
           {pageLinks}
         </ul>
       </div>
