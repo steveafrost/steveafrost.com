@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import { Container } from 'react-responsive-grid';
 import Nav from '../components/Nav.js';
-
 import { rhythm, scale } from '../utils/typography';
 import customCSS from '../css/custom.css';
 
@@ -67,7 +66,7 @@ class Template extends Component {
 }
 
 Template.propTypes = {
-    children: React.PropTypes.function,
+    children: React.PropTypes.func,
     location: React.PropTypes.object,
     route: React.PropTypes.object,
 };

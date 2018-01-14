@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import { TypographyStyle } from 'react-typography';
-import Container from './components/Container';
 import Nav from './components/Nav';
 import typography from './utils/typography';
 import customCSS from './css/custom.css';
@@ -41,15 +40,13 @@ export default class HTML extends Component {
                     {css}
                 </head>
                 <body>
-                    <Container>
-                        <div
-                            id="___gatsby"
-                            dangerouslySetInnerHTML={{
-                                __html: this.props.body,
-                            }}
-                        />
-                        {this.props.postBodyComponents}
-                    </Container>
+                    <div
+                        id="___gatsby"
+                        dangerouslySetInnerHTML={{
+                            __html: this.props.body,
+                        }}
+                    />
+                    {this.props.postBodyComponents}
                 </body>
             </html>
         );
