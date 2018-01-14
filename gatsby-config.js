@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://steveafrost.com'
-    title: "Steve Frost – Front-End Engineer",
-    author: "Steve Frost",
+    siteUrl: `https://steveafrost.com`,
+    title: `Steve Frost – Front-End Engineer`,
+    author: `Steve Frost`,
   },
   plugins: [
     {
@@ -10,6 +10,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: "pages",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/css`,
+        name: "css",
       },
     },
     {
