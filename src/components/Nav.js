@@ -6,47 +6,10 @@ class Nav extends React.Component {
   render() {
     return (
       <nav>
-        <div className="nav-left">
-          <Link
-            style={{
-              boxShadow: "none",
-              textDecoration: "none",
-              float: "left",
-            }}
-            to={"/"}
-          >
-            Steve Frost | Front-End Engineer
-          </Link>
-        </div>
-        <div className="nav-right">
-          <Link
-            style={{
-              boxShadow: "none",
-              textDecoration: "none",
-            }}
-            to={"/articles"}
-          >
-            Articles
-          </Link>
-          <Link
-            style={{
-              boxShadow: "none",
-              textDecoration: "none",
-            }}
-            to={"/projects"}
-          >
-            Projects
-          </Link>
-          <Link
-            style={{
-              boxShadow: "none",
-              textDecoration: "none",
-            }}
-            to={"/about"}
-          >
-            About
-          </Link>
-        </div>
+        <Link to={"/"}>Steve Frost | Front-End Engineer</Link>
+        <Link to={"/articles"}>Articles</Link>
+        <Link to={"/projects"}>Projects</Link>
+        <Link to={"/about"}>About</Link>
       </nav>
     )
   }
