@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // Import typefaces
 import 'typeface-montserrat';

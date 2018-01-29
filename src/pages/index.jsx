@@ -23,7 +23,7 @@ class BlogIndex extends Component {
           <Link style={{ boxShadow: 'none' }} to={post.node.frontmatter.path}>
             {post.node.frontmatter.title}
           </Link>
-        </li>);
+                       </li>);
       }
     });
 
@@ -43,10 +43,6 @@ class BlogIndex extends Component {
     );
   }
 }
-
-BlogIndex.propTypes = {
-  route: React.PropTypes.object,
-};
 
 export default BlogIndex;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import Navigation from '../components/Navigation.jsx';
+import Navigation from '../components/Navigation';
 import { rhythm, scale } from '../utils/typography';
 import customCSS from '../css/custom.css';
 

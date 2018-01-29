@@ -10,20 +10,20 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const pages = [];
-    const blogPost = path.resolve('./src/templates/blog-post.js');
+    const blogPost = path.resolve('./src/templates/blog-post.jsx');
     resolve(graphql(`
-          {
-            allMarkdownRemark(limit: 1000) {
-              edges {
-                node {
-                  frontmatter {
-                    path
-                  }
+        {
+          allMarkdownRemark(limit: 1000) {
+            edges {
+              node {
+                frontmatter {
+                  path
                 }
               }
             }
           }
-        `).then((result) => {
+        }
+      `).then((result) => {
       if (result.errors) {
         console.log(result.errors);
         reject(result.errors);
