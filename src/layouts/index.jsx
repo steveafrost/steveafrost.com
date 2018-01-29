@@ -1,25 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Container } from 'react-responsive-grid';
+import Link from 'gatsby-link';
 import Navigation from '../components/Navigation.jsx';
 import { rhythm, scale } from '../utils/typography';
+import customCSS from '../css/custom.css';
 
 const Template = ({ children }) => (
   <div>
     <Navigation />
-    <Container
-      style={{
-        maxWidth: rhythm(28),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      {children()}
-    </Container>
+    {children()}
   </div>
 );
-
-Template.propTypes = {
-  children: PropTypes.func.isRequired,
-};
 
 export default Template;
