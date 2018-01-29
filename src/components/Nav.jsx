@@ -1,12 +1,16 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import { rhythm } from '../utils/typography';
+import styled from 'styled-components';
 
-const Navigation = () => (
-  <nav>
-    <Link to="/" href="/">
-      Steve Frost | Front-End Engineer
-    </Link>
+const Nav = styled.nav`
+  color: #3c6e71;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+`;
+
+export default () => (
+  <Nav>
     <Link to="/articles" href="/articles">
       Articles
     </Link>
@@ -16,7 +20,5 @@ const Navigation = () => (
     <Link to="/about" href="/about">
       About
     </Link>
-  </nav>
+  </Nav>
 );
-
-export default Navigation;

@@ -1,13 +1,16 @@
 import React from 'react';
-import Link from 'gatsby-link';
-import Navigation from '../components/Navigation';
-import { rhythm, scale } from '../utils/typography';
-import customCSS from '../css/custom.css';
+import styled from 'styled-components';
+import Header from '../components/Header';
+
+const Main = styled.main`
+  max-width: 1000px;
+  width: 100%;
+`;
 
 const Template = ({ children }) => (
   <div>
-    <Navigation />
-    {children()}
+    <Header />
+    <Main>{children()}</Main>
   </div>
 );
 
