@@ -1,7 +1,10 @@
 import Typography from 'typography';
-import grandView from 'typography-theme-grand-view';
+import CodePlugin from 'typography-plugin-code';
+import twinPeaks from 'typography-theme-twin-peaks';
 
-const typography = new Typography(grandView);
+twinPeaks.plugins = [new CodePlugin()];
+
+const typography = new Typography(twinPeaks);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
