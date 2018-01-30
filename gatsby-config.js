@@ -13,13 +13,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/css`,
-        name: 'css',
-      },
-    },
-    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
