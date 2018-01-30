@@ -3,7 +3,7 @@ import CodePlugin from 'typography-plugin-code';
 
 const typography = new Typography({
   title: 'Steve Frost - Portfolio',
-  baseFontSize: '18px',
+  baseFontSize: '16px',
   baseLineHeight: 1.45,
   headerFontFamily: ['Raleway', 'san-serif'],
   bodyFontFamily: ['Merriweather', 'serif'],
