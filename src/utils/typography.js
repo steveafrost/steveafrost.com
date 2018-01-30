@@ -16,6 +16,9 @@ const typography = new Typography({
       alignItems: 'center',
       display: 'flex',
       flexDirection: 'column',
+      margin: '20px auto',
+      maxWidth: '800px',
+      width: '100%',
     },
     a: {
       color: '#3c6e71',
@@ -23,7 +26,7 @@ const typography = new Typography({
   }),
 });
 
-typography.plugins = [new CodePlugin()];
+typography.plugins = new CodePlugin();
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
