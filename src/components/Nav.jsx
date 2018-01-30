@@ -3,22 +3,26 @@ import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-  color: #3c6e71;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  text-decoration: none;
   width: 50%;
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export default () => (
   <Nav>
-    <Link to="/articles" href="/articles">
+    <NavLink to="/articles" href="/articles">
       Articles
-    </Link>
-    <Link to="/projects" href="/projects">
+    </NavLink>
+    <NavLink to="/projects" href="/projects">
       Projects
-    </Link>
-    <Link to="/about" href="/about">
+    </NavLink>
+    <NavLink to="/about" href="/about">
       About
-    </Link>
+    </NavLink>
   </Nav>
 );
