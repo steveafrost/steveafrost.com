@@ -36,7 +36,7 @@ const About = () => (
     <p>Contact me directly at hello[at]steveafrost.com</p>
     <p>
       See my GitHub repositories at{' '}
-      <a href="https://github.com/steveafrost" target="_blank">
+      <a href="https://github.com/steveafrost" target="_blank" rel="noopener noreferrer">
         https://github.com/steveafrost
       </a>
     </p>
