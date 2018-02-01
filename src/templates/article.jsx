@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import Bio from '../components/Bio';
 import { rhythm, scale } from '../utils/typography';
 
-class BlogPostTemplate extends Component {
+class ArticleTemplate extends Component {
   render() {
     const post = this.props.data.markdownRemark;
     const siteTitle = get(this.props, 'data.site.siteMetadata.title');
@@ -35,10 +35,10 @@ class BlogPostTemplate extends Component {
   }
 }
 
-export default BlogPostTemplate;
+export default ArticleTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query ArticleByPath($path: String!) {
     site {
       siteMetadata {
         title

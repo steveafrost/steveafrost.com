@@ -2,9 +2,21 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import { rhythm } from '../utils/typography';
 
-class BlogIndex extends Component {
+const ArticleList = styled.ul`
+  font-family: 'Raleway', 'sans-serif';
+  font-weight: 400;
+  font-size: 24px;
+  list-style: none;
+`;
+
+const ArticleLink = styled(Link)`
+  text-decoration: none;
+`;
+
+class ArticleIndex extends Component {
   render() {
     const pageLinks = [];
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
@@ -15,13 +27,11 @@ class BlogIndex extends Component {
         pageLinks.push(<li
           key={post.node.frontmatter.path}
           style={{
-              marginBottom: rhythm(1 / 4),
-              marginTop: rhythm(1 / 4),
+              marginBottom: rhythm(1),
+              marginTop: rhythm(1),
             }}
         >
-          <Link style={{ boxShadow: 'none' }} to={post.node.frontmatter.path}>
-            {post.node.frontmatter.title}
-          </Link>
+          <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
                        </li>);
       }
     });
@@ -29,13 +39,13 @@ class BlogIndex extends Component {
     return (
       <div>
         <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
-        <ul>{pageLinks}</ul>
+        <ArticleList>{pageLinks}</ArticleList>
       </div>
     );
   }
 }
 
-export default BlogIndex;
+export default ArticleIndex;
 
 export const pageQuery = graphql`
   query IndexQuery {
