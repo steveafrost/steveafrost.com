@@ -8,7 +8,7 @@ const Header = styled.header`
   display: flex;
   flex-flow: row wrap;
   font-family: 'Raleway', 'sans-serif';
-  font-weight: 700;
+  font-weight: bold;
   justify-content: space-between;
   margin-bottom: 50px;
   padding: 20px 0;

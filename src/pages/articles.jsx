@@ -7,8 +7,8 @@ import { rhythm } from '../utils/typography';
 
 const ArticleList = styled.ul`
   font-family: 'Raleway', 'sans-serif';
-  font-weight: 400;
-  font-size: 24px;
+  font-weight: normal;
+  font-size: 20px;
   list-style: none;
 `;
 
@@ -24,13 +24,7 @@ class ArticleIndex extends Component {
     posts.forEach((post) => {
       if (post.node.path !== '/404/') {
         const title = get(post, 'node.frontmatter.title') || post.node.path;
-        pageLinks.push(<li
-          key={post.node.frontmatter.path}
-          style={{
-              marginBottom: rhythm(1),
-              marginTop: rhythm(1),
-            }}
-        >
+        pageLinks.push(<li key={post.node.frontmatter.path}>
           <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
                        </li>);
       }
