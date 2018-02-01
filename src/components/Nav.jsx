@@ -15,8 +15,14 @@ const NavLink = styled(Link)`
 
 export default () => (
   <Nav>
-    <NavLink to="/articles">Articles</NavLink>
-    <NavLink to="/projects">Projects</NavLink>
-    <NavLink to="/about">About</NavLink>
+    <NavLink to="/articles/" href="/articles/">
+      Articles
+    </NavLink>
+    <NavLink to="/projects/" href="/projects/">
+      Projects
+    </NavLink>
+    <NavLink to="/about/" href="/about/">
+      About
+    </NavLink>
   </Nav>
 );
