@@ -12,6 +12,7 @@ const Header = styled.header`
   justify-content: space-between;
   padding: 20px 0;
   text-decoration: none;
+  width: 100%;
 `;
 
 const SiteTitle = styled(Link)`

@@ -12,16 +12,11 @@ const typography = new Typography({
     { name: 'Merriweather', styles: ['400', '400i', '700'] },
   ],
   overrideStyles: () => ({
-    body: {
-      alignItems: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-      margin: '20px auto',
-      maxWidth: '800px',
-      width: '100%',
-    },
     a: {
       color: '#3c6e71',
+    },
+    'div#___gatsby': {
+      width: '100%',
     },
   }),
 });
