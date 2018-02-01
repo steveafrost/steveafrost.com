@@ -11,12 +11,13 @@ const Header = styled.header`
   font-weight: bold;
   justify-content: space-between;
   margin-bottom: 50px;
-  padding: 20px 0;
+  padding: 2rem;
   text-decoration: none;
   width: 100%;
 `;
 
 const SiteTitle = styled(Link)`
+  font-size: 1.31em;
   width: 50%;
   text-decoration: none;
 `;
