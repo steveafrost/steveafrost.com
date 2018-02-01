@@ -10,6 +10,7 @@ const Header = styled.header`
   font-family: 'Raleway', 'sans-serif';
   font-weight: 700;
   justify-content: space-between;
+  margin-bottom: 50px;
   padding: 20px 0;
   text-decoration: none;
   width: 100%;

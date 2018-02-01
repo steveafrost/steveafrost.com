@@ -29,14 +29,7 @@ class BlogIndex extends Component {
     return (
       <div>
         <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
-        <ul
-          style={{
-            clear: 'both',
-            paddingTop: '20px',
-          }}
-        >
-          {pageLinks}
-        </ul>
+        <ul>{pageLinks}</ul>
       </div>
     );
   }
