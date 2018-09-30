@@ -19,7 +19,7 @@ const Main = styled.main`
 const Template = ({ children }) => (
   <Container>
     <Header />
-    <Main>{children()}</Main>
+    <Main>{children}</Main>
   </Container>
 );
 
