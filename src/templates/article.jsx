@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Bio from '../components/Bio';
 import { rhythm, scale } from '../utils/typography';

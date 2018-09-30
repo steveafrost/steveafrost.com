@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import { rhythm } from '../utils/typography';
 
 const ArticleList = styled.ul`
   font-family: 'Raleway', 'sans-serif';
@@ -24,9 +24,11 @@ class ArticleIndex extends Component {
     posts.forEach((post) => {
       if (post.node.path !== '/404/') {
         const title = get(post, 'node.frontmatter.title') || post.node.path;
-        pageLinks.push(<li key={post.node.frontmatter.path}>
-          <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
-                       </li>);
+        pageLinks.push(
+          <li key={post.node.frontmatter.path}>
+            <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
+          </li>,
+        );
       }
     });
 
