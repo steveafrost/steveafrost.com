@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import profilePic from './profile-pic.jpg';
+import profilePic from '../img/profile-pic.jpg';
 import { rhythm } from '../utils/typography';
 
 const Bio = styled.div`
@@ -26,8 +26,14 @@ export default () => (
       }}
     />
     <BioText>
-      Written by <strong>Steve Frost</strong> who lives in Minneapolis using technology to make an
-      impact in the community and our environment.{' '}
+      <p>
+        Written by
+        {' '}
+        <strong>Steve Frost</strong>
+        {' '}
+who lives in Minneapolis using technology to make an
+        impact in the community and our environment.
+      </p>
       <a href="https://twitter.com/SteveEff">Follow on Twitter</a>
     </BioText>
   </Bio>

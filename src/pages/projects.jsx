@@ -103,15 +103,3 @@ export default () => (
     </ProjectList>
   </Layout>
 );
-
-export const projectIndexQuery = graphql`
-  query ProjectImageQuery {
-    blogImages: allImageSharp(filter: { id: { regex: "/blogs/" } }) {
-      edges {
-        node {
-          id
-        }
-      }
-    }
-  }
-`;
