@@ -36,14 +36,14 @@ export default (props) => {
 };
 
 export const pageQuery = graphql`
-  query ArticleByPath($path: String!) {
+  query ArticleByPath($slug: String!) {
     site {
       siteMetadata {
         title
         author
       }
     }
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
       frontmatter {
