@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import Layout from '../components/Layout';
 
 const ArticleList = styled.ul`
   font-family: 'Raleway', 'sans-serif';
@@ -16,32 +17,29 @@ const ArticleLink = styled(Link)`
   text-decoration: none;
 `;
 
-class ArticleIndex extends Component {
-  render() {
-    const pageLinks = [];
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const posts = get(this, 'props.data.allMarkdownRemark.edges');
-    posts.forEach((post) => {
-      if (post.node.path !== '/404/') {
-        const title = get(post, 'node.frontmatter.title') || post.node.path;
-        pageLinks.push(
-          <li key={post.node.frontmatter.path}>
-            <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
-          </li>,
-        );
-      }
-    });
+export default () => {
+  const pageLinks = [];
+  const siteTitle = get(this, 'props.data.site.siteMetadata.title');
+  const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
-    return (
-      <div>
-        <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
-        <ArticleList>{pageLinks}</ArticleList>
-      </div>
-    );
-  }
-}
+  posts.forEach((post) => {
+    if (post.node.path !== '/404/') {
+      const title = get(post, 'node.frontmatter.title') || post.node.path;
+      pageLinks.push(
+        <li key={post.node.frontmatter.path}>
+          <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
+        </li>,
+      );
+    }
+  });
 
-export default ArticleIndex;
+  return (
+    <Layout>
+      <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
+      <ArticleList>{pageLinks}</ArticleList>
+    </Layout>
+  );
+};
 
 export const pageQuery = graphql`
   query IndexQuery {

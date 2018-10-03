@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from '../components/Header';
+import Header from './Header';
 
 const Container = styled.div`
   align-items: center;
@@ -16,11 +16,9 @@ const Main = styled.main`
   width: 100%;
 `;
 
-const Template = ({ children }) => (
+export default ({ children }) => (
   <Container>
     <Header />
     <Main>{children}</Main>
   </Container>
 );
-
-export default Template;
