@@ -17,26 +17,20 @@ const ArticleLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default () => {
-  const pageLinks = [];
-  const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-  const posts = get(this, 'props.data.allMarkdownRemark.edges');
-
-  posts.forEach((post) => {
-    if (post.node.path !== '/404/') {
-      const title = get(post, 'node.frontmatter.title') || post.node.path;
-      pageLinks.push(
-        <li key={post.node.frontmatter.path}>
-          <ArticleLink to={post.node.frontmatter.path}>{post.node.frontmatter.title}</ArticleLink>
-        </li>,
-      );
-    }
-  });
+export default ({ data }) => {
+  const siteTitle = get(data, 'site.siteMetadata.title', null);
+  const articles = get(data, 'allMarkdownRemark.edges', null);
 
   return (
     <Layout>
-      <Helmet title={get(this, 'props.data.site.siteMetadata.title')} />
-      <ArticleList>{pageLinks}</ArticleList>
+      <Helmet title={siteTitle} />
+      <ArticleList>
+        {articles.map(({ node }) => (
+          <li key={node.frontmatter.path}>
+            <ArticleLink to={node.frontmatter.path}>{node.frontmatter.title}</ArticleLink>
+          </li>
+        ))}
+      </ArticleList>
     </Layout>
   );
 };
@@ -53,8 +47,6 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             path
-          }
-          frontmatter {
             title
           }
         }
