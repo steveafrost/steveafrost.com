@@ -3,17 +3,7 @@ import { TypographyStyle, GoogleFont } from 'react-typography';
 import Header from './components/Header';
 import typography from './utils/typography';
 
-const getCSS = () => {
-  if (process.env.NODE_ENV === 'production') {
-    return (
-      <style
-        id="gatsby-inlined-css"
-        dangerouslySetInnerHTML={{ __html: require('!raw-loader!../public/styles.css') }}
-      />
-    );
-  }
-  return undefined;
-};
+const getCSS = () => undefined;
 
 export default ({ body, headComponents, postBodyComponents }) => (
   <html lang="en">
