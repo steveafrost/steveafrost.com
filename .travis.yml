@@ -37,3 +37,9 @@ addons:
 script:
   - npm install
   - npm run lint
+  - npm run build
+deploy:
+  provider: surge
+  project: ./public/
+  domain: steveafrost.com
+  skip_cleanup: true
