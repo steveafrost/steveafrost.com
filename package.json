@@ -44,11 +44,6 @@
         "eslint-plugin-react": "^7.12.4",
         "prettier": "^1.16.4"
     },
-    "git": {
-        "scripts": {
-            "pre-push": "gatsby build && surge --project ./public --domain steveafrost.com"
-        }
-    },
     "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
     "keywords": [
         "gatsby"
