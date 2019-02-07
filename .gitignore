@@ -1,4 +1,6 @@
 .cache
+.DS_Store
+.github
+assets
 node_modules
 public
-.DS_Store
