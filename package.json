@@ -42,6 +42,7 @@
         "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-react": "^7.12.4",
+        "gh-pages": "^2.0.1",
         "prettier": "^1.16.4"
     },
     "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -59,6 +60,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "develop": "gatsby develop",
         "build": "gatsby build",
+        "preDeploy": "gatsby build --prefix-paths",
+        "deploy": "npm run preDeploy && gh-pages -d public",
         "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
     }
 }
