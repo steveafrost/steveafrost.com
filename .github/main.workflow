@@ -11,5 +11,5 @@ action "On Master" {
 action "Publish" {
   uses = "enriikke/gatsby-gh-pages-action@master"
   needs = ["On Master"]
-  secrets = ["GITHUB_TOKEN"]
+  secrets = ["GITHUB_PAT"]
 }
