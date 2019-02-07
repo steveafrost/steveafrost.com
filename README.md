@@ -1,1 +1,6 @@
-# Personal website built w/ Gatsby, GitHub Actions, and GitHub Pages
+# Personal website for Steve Frost 
+
+* Frontend: Gatsby
+* CI: GitHub Actions
+* CDN: Cloudflare
+* Hosting: GitHub Pages
