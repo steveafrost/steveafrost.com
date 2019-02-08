@@ -1,6 +1,5 @@
 import React from 'react';
 import { TypographyStyle, GoogleFont } from 'react-typography';
-import Header from './components/Header';
 import typography from './utils/typography';
 
 const getCSS = () => undefined;

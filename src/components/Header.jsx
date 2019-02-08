@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import styled from 'styled-components';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Nav from './Nav';
 
 const Header = styled.header`
@@ -16,7 +16,7 @@ const Header = styled.header`
   width: 100%;
 `;
 
-const SiteTitle = styled(Link)`
+const SiteTitle = styled(AniLink)`
   font-size: 1.31em;
   width: 50%;
   text-decoration: none;
@@ -24,7 +24,13 @@ const SiteTitle = styled(Link)`
 
 export default () => (
   <Header>
-    <SiteTitle to="/" href="/">
+    <SiteTitle
+      to="/"
+      href="/"
+      paintDrip
+      hex="#53B3CB"
+      style={{ color: '#53B3CB' }}
+    >
       Steve Frost | Front-End Engineer
     </SiteTitle>
     <Nav />
