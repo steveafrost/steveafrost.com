@@ -16,7 +16,7 @@ const ArticleItem = styled.li`
 
 const ArticleLink = styled(Link)`
   background-image: none;
-  color: #444444;
+  color: rgba(0, 0, 0, 0.7);
   text-decoration: none;
   text-shadow: none;
 
@@ -25,7 +25,7 @@ const ArticleLink = styled(Link)`
     width: 0px;
     height: 1px;
     display: block;
-    background: #444444;
+    background: rgba(0, 0, 0, 0.7);
     transition: 300ms;
   }
 
