@@ -7,8 +7,7 @@ const Bio = styled.div`
   margin: 2rem;
 `;
 
-const BioText = styled.h3`
-  font-weight: normal;
+const BioText = styled.p`
 `;
 
 export default () => (

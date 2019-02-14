@@ -14,22 +14,11 @@ export default (props) => {
     <Layout>
       <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
       <h1>{post.frontmatter.title}</h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          display: 'block',
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
-        }}
-      >
+      <p style={{ ...scale(-1 / 5) }}>
         {post.frontmatter.date}
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
+      <hr style={{ marginBottom: rhythm(1)  }}/>
       <Bio />
     </Layout>
   );

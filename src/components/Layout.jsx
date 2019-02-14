@@ -8,6 +8,7 @@ const Container = styled.div`
   flex-direction: column;
   max-width: 1000px;
   margin: 20px auto;
+  padding: 0 20px;
   width: 100%;
 `;
 

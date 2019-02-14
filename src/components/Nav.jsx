@@ -11,8 +11,10 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled(AniLink)`
-  font-size: 1.31em;
+  background-image: none;
+  font-size: 1.25em;
   text-decoration: none;
+  text-shadow: none;
 `;
 
 export default () => (

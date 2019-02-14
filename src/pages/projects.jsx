@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 
 const ProjectList = styled.ul`
+  margin-left: 0;
   list-style: none;
 `;
 
