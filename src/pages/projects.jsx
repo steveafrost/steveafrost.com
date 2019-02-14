@@ -11,11 +11,15 @@ const Project = styled.li`
   margin-bottom: 4rem;
 `;
 
+const ProjectTitle = styled.h2`
+  margin-top: 0;
+`;
+
 export default () => (
   <Layout>
     <ProjectList>
       <Project>
-        <h2>Blind Tails</h2>
+        <ProjectTitle>Blind Tails</ProjectTitle>
         <ul>
           <li>Utilized WordPress & Genesis Framework to create community resource</li>
           <li>Adjusted mock & implementation to meet client needs</li>
@@ -23,7 +27,7 @@ export default () => (
         </ul>
       </Project>
       <Project>
-        <h2>PJ Masks Live</h2>
+        <ProjectTitle>PJ Masks Live</ProjectTitle>
         <p>
           Designed & developed website for PJ Masks Live event in collaboration with Disney, eOne
           Entertainment, and Round Room Presents. The website is currently receiving several
@@ -40,9 +44,9 @@ export default () => (
         </ul>
       </Project>
       <Project>
-        <h2>
+        <ProjectTitle>
           Daily Documentary - Browse, watch, and track today's hottest documentaries around the web
-        </h2>
+        </ProjectTitle>
         <ul>
           <li>
             Followed RESTful URL patterns & used UI Router to provide structured route management
@@ -55,7 +59,7 @@ export default () => (
         </ul>
       </Project>
       <Project>
-        <h2>Plant Nanny - The personal plant assistant that curates gardener's tips and tricks</h2>
+        <ProjectTitle>Plant Nanny - The personal plant assistant that curates gardener's tips and tricks</ProjectTitle>
         <ul>
           <li>Built internal APIs using Ruby on Rails to render data efficiently</li>
           <li>Implemented Devise to facilitate oAuth and user login</li>
@@ -64,7 +68,7 @@ export default () => (
         </ul>
       </Project>
       <Project>
-        <h2>Much Free, Very Wow</h2>
+        <ProjectTitle>Much Free, Very Wow</ProjectTitle>
         <p>
           Web application built in Sinatra w/ Ruby that allows users to submit free activities to do
           around NYC. Users can modify their own activities and can view activities submitted by
@@ -72,7 +76,7 @@ export default () => (
         </p>
       </Project>
       <Project>
-        <h2>MLB Scoreboard - Up-to-the-minute MLB matchups & box scores for baseball</h2>
+        <ProjectTitle>MLB Scoreboard - Up-to-the-minute MLB matchups & box scores for baseball</ProjectTitle>
         <ul>
           <li>Scraped MLB API with Nokogiri to provide most recent data for application</li>
           <li>Utilized Terminal Table to display data in an organized fashion</li>
@@ -81,7 +85,7 @@ export default () => (
         </ul>
       </Project>
       <Project>
-        <h2>Brooklyn Queen Honey</h2>
+        <ProjectTitle>Brooklyn Queen Honey</ProjectTitle>
         <ul>
           <li>Built upon Genesis Framework</li>
           <li>Incorporated Google Analytics, WebTools, and W3 Total Cache</li>
@@ -90,7 +94,7 @@ export default () => (
         </ul>
       </Project>
       <Project>
-        <h2>Pittman Home Remodeling</h2>
+        <ProjectTitle>Pittman Home Remodeling</ProjectTitle>
         <ul>
           <li>Built upon Genesis Framework</li>
           <li>SEO setup and optimization through Genesis</li>

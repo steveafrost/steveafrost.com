@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 
 const ArticleList = styled.ul`
-  list-style: none;
+  list-style: katakana;
 `;
 
 const ArticleItem = styled.li`
@@ -19,6 +19,7 @@ const ArticleLink = styled(Link)`
   color: rgba(0, 0, 0, 0.7);
   text-decoration: none;
   text-shadow: none;
+  width: fit-content;
 
   &:after {
     content: '';

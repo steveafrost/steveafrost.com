@@ -1,18 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import breakpoint from 'styled-components-breakpoint';
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 const Nav = styled.nav`
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  flex: 0 1 40%;
+  justify-content: space-around;
   text-decoration: none;
-  width: 40%;
+
+  ${breakpoint('tablet')`
+    justify-content: space-between;
+  `}
 `;
 
 const NavLink = styled(AniLink)`
   background-image: none;
-  font-size: 1.25em;
+  font-size: 1.35rem;
   text-decoration: none;
   text-shadow: none;
 `;
