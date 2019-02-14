@@ -7,14 +7,31 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 
 const ArticleList = styled.ul`
-  font-family: 'Raleway', 'sans-serif';
-  font-weight: normal;
-  font-size: 20px;
   list-style: none;
 `;
 
+const ArticleItem = styled.li`
+  width: fit-content
+`;
+
 const ArticleLink = styled(Link)`
+  background-image: none;
+  color: #444444;
   text-decoration: none;
+  text-shadow: none;
+
+  &:after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: #444444;
+    transition: 300ms;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
 `;
 
 export default ({ data }) => {
@@ -26,9 +43,9 @@ export default ({ data }) => {
       <Helmet title={siteTitle} />
       <ArticleList>
         {articles.map(({ node }) => (
-          <li key={node.frontmatter.path}>
+          <ArticleItem key={node.frontmatter.path}>
             <ArticleLink to={node.frontmatter.path}>{node.frontmatter.title}</ArticleLink>
-          </li>
+          </ArticleItem>
         ))}
       </ArticleList>
     </Layout>
