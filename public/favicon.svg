@@ -1,11 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 36 36">
     <defs>
-        <linearGradient id="a" x1="0" x2="32" y1="0" y2="32" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ed6a5e"/>
-            <stop offset="50%" stop-color="#e8836b"/>
-            <stop offset="100%" stop-color="#f4a261"/>
+        <linearGradient id="a" x1="4" y1="2" x2="32" y2="34" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ED6A5E"/>
+            <stop offset="50%" stop-color="#E8836B"/>
+            <stop offset="100%" stop-color="#F4A261"/>
         </linearGradient>
     </defs>
-    <path fill="url(#a)" d="m16 3-6 8h3l-4 7h3.5L6 27h20l-6.5-9H23l-4-7h3Z"/>
-    <rect width="3" height="3" x="14.5" y="27" fill="url(#a)" opacity=".7" rx=".5"/>
+    <path d="M18 2 L30 10 L30 26 L18 34 L6 26 L6 10 Z" fill="url(#a)" opacity="0.2"/>
+    <path d="M18 2 L6 10 L18 18 Z" fill="url(#a)" opacity="0.55"/>
+    <path d="M18 2 L30 10 L18 18 Z" fill="url(#a)" opacity="0.75"/>
+    <path d="M30 10 L30 26 L18 18 Z" fill="url(#a)" opacity="0.5"/>
+    <path d="M30 26 L18 34 L18 18 Z" fill="url(#a)" opacity="0.35"/>
+    <path d="M18 34 L6 26 L18 18 Z" fill="url(#a)" opacity="0.6"/>
+    <path d="M6 26 L6 10 L18 18 Z" fill="url(#a)" opacity="0.45"/>
+    <path d="M18 2 L18 18 M6 10 L18 18 M30 10 L18 18 M30 26 L18 18 M18 34 L18 18 M6 26 L18 18" stroke="url(#a)" stroke-width="0.6" opacity="0.4"/>
+    <path d="M18 2 L30 10 L30 26 L18 34 L6 26 L6 10 Z" stroke="url(#a)" stroke-width="0.8" opacity="0.6" fill="none"/>
 </svg>
