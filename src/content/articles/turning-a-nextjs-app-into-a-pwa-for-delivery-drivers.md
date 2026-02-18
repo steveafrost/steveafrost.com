@@ -8,9 +8,9 @@ tags:
   - react
 ---
 
-My wife does Shipt deliveries. After every order, she'd text herself the address and tip amount so she could remember which neighborhoods tip well and plan future batches accordingly. Notes app, screenshots, mental math — it worked, but barely.
+My childhood best friend does Shipt deliveries. After every order, he'd save the address in Apple Maps with emoji labels to indicate how well they tipped — green hearts for good tippers, red flags for the stingy ones. It worked, but scrolling through a map full of emoji pins to plan a delivery route is not exactly a scalable system.
 
-I built [Tip Track](https://github.com/steveafrost/tip-track) to replace that workflow. It's a Next.js app where she logs orders, records tips by address, and pulls up reports with charts. The important part for this post: it had to feel like a native app on her phone, work offline when cell service drops mid-delivery, and not require an App Store download. That meant building it as a Progressive Web App.
+I built [Tip Track](https://github.com/steveafrost/tip-track) to replace that workflow. It's a Next.js app where he logs orders, records tips by address, and pulls up reports with charts. The important part for this post: it had to feel like a native app on his phone, work offline when cell service drops mid-delivery, and not require an App Store download. That meant building it as a Progressive Web App.
 
 ## What Makes a PWA a PWA
 
@@ -41,7 +41,7 @@ The service worker is where things get interesting — and where opinions diverg
 
 For Tip Track, I leaned toward the network-first approach. The app's value is in real-time data — recent orders, tip totals, address lookups. Serving stale cached data would be worse than showing a loading state. The service worker caches the app shell (HTML, CSS, JS bundles) so the app launches instantly, but API calls always hit the network first and fall back to cache only when offline.
 
-The practical effect: my wife opens the app from her home screen, it loads immediately even with a weak signal, and the data is fresh. If she's in a dead zone, she can still see her previously loaded orders — they just won't update until she's back online.
+The practical effect: he opens the app from his home screen, it loads immediately even with a weak signal, and the data is fresh. If he's in a dead zone, he can still see his previously loaded orders — they just won't update until he's back online.
 
 ## Install Prompts and the Home Screen
 
@@ -59,7 +59,7 @@ Clerk handles this gracefully — the sign-in flow works the same in both contex
 
 ## Was It Worth It Over a Native App?
 
-Absolutely. A native app would have meant maintaining two codebases (or learning React Native), dealing with App Store review, and convincing family members to download yet another app. The PWA is one codebase, deploys instantly on push, and installs in two taps.
+Absolutely. A native app would have meant maintaining two codebases (or learning React Native), dealing with App Store review, and convincing someone to download yet another app. The PWA is one codebase, deploys instantly on push, and installs in two taps.
 
 The trade-offs are real — no push notifications on iOS (until recently), no background sync, limited access to device APIs. For Tip Track, none of those mattered. The app needs to accept input, store data, and show charts. A PWA does all of that with zero platform gatekeeping.
 
