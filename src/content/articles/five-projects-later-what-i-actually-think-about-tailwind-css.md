@@ -22,7 +22,7 @@ The first time you see a Tailwind component, it looks like someone dumped a thes
 
 My instinct was to extract this into a CSS class immediately. That instinct is wrong — or at least premature. The utility classes are the abstraction. Extracting them into a named class just adds a layer of indirection without reducing complexity.
 
-It took a full project (the Drew Aichele portfolio) before I internalized this. By the second project (Sesame Street Live), I was writing utility classes without thinking about it, the way you stop thinking about individual keystrokes when you can touch-type.
+It took a couple of projects before I internalized this. After that, I was writing utility classes without thinking about it, the way you stop thinking about individual keystrokes when you can touch-type.
 
 ## What Clicked
 

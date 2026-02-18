@@ -40,7 +40,7 @@ On the tour sites, hero images and promotional banners went through the same pip
 
 ## The Things That Annoy Me
 
-**Build times scale with page count.** The Cocomelon site generates a page per show per city. As the tour grows, build time creeps up. ISR helps, but the initial build still touches every page. For a personal project it's fine. For a site with thousands of pages, I'd think harder about it.
+**Build times scale with content.** The Cocomelon site renders every show as a row in a listing — location, venue, ticket links — all on a single page driven by CMS data. It's manageable now, but on a site with thousands of dynamic pages, build time would creep up. ISR helps, but the initial build still touches everything. For a personal project it's fine. For a large-scale site, I'd think harder about it.
 
 **The caching story is confusing.** Next.js caches aggressively — `fetch` responses, rendered pages, even router state. The defaults have changed between versions, and understanding exactly what's cached and how to invalidate it requires reading docs carefully. I've been bitten by stale data appearing in development because a cached `fetch` didn't revalidate when I expected it to.
 
