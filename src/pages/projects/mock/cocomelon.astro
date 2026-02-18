@@ -1,0 +1,43 @@
+---
+import MockBanner from '../../../components/MockBanner.astro';
+
+const pages = [
+  { label: 'Page 1', src: '/img/mocks/cocomelon-1.html' },
+  { label: 'Page 2', src: '/img/mocks/cocomelon-2.html' },
+] as const;
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Cocomelon On Tour - Mock</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#18181b;overflow:hidden;font-family:Inter,system-ui,sans-serif}
+    .tabs{position:fixed;top:44px;left:0;right:0;z-index:9998;display:flex;gap:2px;padding:4px 20px;background:#27272a;border-bottom:1px solid rgba(255,255,255,0.06)}
+    .tab{padding:6px 14px;border:none;border-radius:6px;background:transparent;color:#a1a1aa;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s}
+    .tab:hover{color:#fff;background:rgba(255,255,255,0.06)}
+    .tab.active{color:#fff;background:rgba(255,255,255,0.1)}
+    iframe{position:fixed;top:80px;left:0;width:100%;height:calc(100vh - 80px);border:none}
+  </style>
+</head>
+<body>
+  <MockBanner projectName="Cocomelon On Tour" />
+  <nav class="tabs">
+    {pages.map((page, i) => (
+      <button type="button" class:list={['tab', { active: i === 0 }]} data-src={page.src}>{page.label}</button>
+    ))}
+  </nav>
+  <iframe id="mock-frame" src={pages[0].src} title="Cocomelon On Tour mock" loading="lazy"></iframe>
+  <script>
+    document.querySelectorAll('.tab').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const frame = document.getElementById('mock-frame') as HTMLIFrameElement;
+        frame.src = btn.getAttribute('data-src') ?? '';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft);
+const sortedArticles = articles.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<MainLayout title="Articles | Steve Frost" description="Technical articles and blog posts by Steve Frost.">
+  <section class="py-8">
+    <h1 class="mb-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <span class="text-gradient">Articles</span>
+    </h1>
+    <p class="mb-12 max-w-2xl text-zinc-400">
+      Thoughts on web development, tools, and the craft of building software.
+    </p>
+
+    <ul class="space-y-1">
+      {sortedArticles.map((article, i) => (
+        <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
+          <a
+            href={`/articles/${article.slug}`}
+            class="group flex flex-col gap-1 rounded-xl border border-transparent px-5 py-4 transition-all hover:border-white/5 hover:bg-zinc-900/60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+          >
+            <h2 class="text-lg font-medium text-zinc-200 transition-colors group-hover:text-gradient">
+              {article.data.title}
+            </h2>
+            <time class="shrink-0 text-sm text-zinc-600" datetime={article.data.date.toISOString()}>
+              {article.data.date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </time>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</MainLayout>

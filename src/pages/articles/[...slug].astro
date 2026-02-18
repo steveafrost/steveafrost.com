@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import Bio from '../../components/Bio.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+
+<MainLayout title={`${article.data.title} | Steve Frost`}>
+  <article class="py-8">
+    <header class="mb-10">
+      <h1 class="mb-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        {article.data.title}
+      </h1>
+      <time class="text-sm text-zinc-500" datetime={article.data.date.toISOString()}>
+        {article.data.date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </time>
+    </header>
+
+    <div class="prose prose-invert prose-zinc max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-brand-400 prose-a:no-underline hover:prose-a:underline prose-pre:rounded-lg prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-img:rounded-lg">
+      <Content />
+    </div>
+
+    <hr class="my-12 border-zinc-800" />
+    <Bio />
+  </article>
+</MainLayout>

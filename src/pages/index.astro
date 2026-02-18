@@ -1,16 +1,101 @@
 ---
+import { Image } from 'astro:assets';
+import avatarImg from '../assets/avatar.jpg';
+import MainLayout from '../layouts/MainLayout.astro';
 
+const techStack = [
+  { name: 'TypeScript', color: 'from-blue-400 to-blue-600' },
+  { name: 'React', color: 'from-cyan-400 to-cyan-600' },
+  { name: 'Next.js', color: 'from-zinc-300 to-zinc-500' },
+  { name: 'Astro', color: 'from-coral-400 to-coral-600' },
+  { name: 'Node.js', color: 'from-emerald-400 to-emerald-600' },
+  { name: 'Ruby', color: 'from-red-400 to-red-600' },
+  { name: 'Tailwind', color: 'from-sky-400 to-sky-600' },
+  { name: 'GraphQL', color: 'from-amber-400 to-amber-600' },
+] as const;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <!-- Hero -->
+  <section class="relative flex flex-col items-center py-20 text-center sm:py-28">
+    <!-- Decorative blobs -->
+    <div class="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2" aria-hidden="true">
+      <div class="h-72 w-72 rounded-full bg-gradient-to-br from-coral-400/20 via-coral-300/20 to-amber-400/20 blur-3xl"></div>
+    </div>
+
+    <div class="relative animate-slide-up">
+      <div class="group relative mb-8 inline-block">
+        <div class="absolute -inset-1 mask-blob bg-gradient-to-br from-coral-400 via-coral-300 to-amber-400 opacity-75 blur-sm transition-opacity group-hover:opacity-100 animate-glow"></div>
+        <Image
+          src={avatarImg}
+          alt="Steve Frost"
+          width={128}
+          height={128}
+          format="webp"
+          quality={80}
+          fetchpriority="high"
+          decoding="async"
+          class="relative h-28 w-28 mask-blob object-cover sm:h-32 sm:w-32"
+        />
+      </div>
+
+      <h1 class="mb-4 text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
+        <span class="text-gradient">Steve Frost</span>
+      </h1>
+
+      <p class="mb-3 text-lg text-zinc-400 sm:text-xl">
+        Software Engineer at
+        <span class="font-semibold text-emerald-400">Shopify</span>
+      </p>
+
+      <p class="mx-auto mb-10 max-w-md text-zinc-500">
+        Building useful, beautiful web experiences
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/projects"
+          class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-105 active:scale-95"
+        >
+          <span class="absolute inset-0 bg-gradient-to-r from-coral-500 via-coral-400 to-amber-500 animate-gradient" style="background-size: 300% 300%;"></span>
+          <span class="relative">View Projects</span>
+          <svg class="relative h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a
+          href="https://github.com/steveafrost"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-zinc-700/50 bg-zinc-900/50 px-7 py-3 text-sm font-semibold text-zinc-300 backdrop-blur transition-all hover:scale-105 hover:border-coral-400/30 hover:text-white active:scale-95"
+        >
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="mx-auto h-px w-2/3 bg-gradient-to-r from-transparent via-coral-400/30 to-transparent" aria-hidden="true"></div>
+
+  <!-- Tech Stack -->
+  <section class="py-20 animate-fade-in">
+    <h2 class="mb-10 text-center text-2xl font-bold text-white">What I Work With</h2>
+    <div class="mx-auto grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
+      {techStack.map(({ name, color }, i) => (
+        <div
+          class="group relative overflow-hidden rounded-xl border border-white/5 bg-zinc-900/50 p-4 text-center transition-all hover:scale-105 hover:border-white/10"
+          style={`animation-delay: ${i * 80}ms`}
+        >
+          <div class={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 transition-opacity group-hover:opacity-10`}></div>
+          <span class="relative text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">
+            {name}
+          </span>
+        </div>
+      ))}
+    </div>
+  </section>
+</MainLayout>

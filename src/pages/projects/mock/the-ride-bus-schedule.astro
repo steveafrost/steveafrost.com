@@ -1,0 +1,98 @@
+---
+import MockBanner from '../../../components/MockBanner.astro';
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TheRide Bus Schedule - TRMNL - Mock</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Helvetica Neue',Arial,sans-serif;background:#111;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px}
+
+    /* TRMNL e-ink device frame */
+    .trmnl-frame{width:100%;max-width:800px;aspect-ratio:800/480;background:#e8e4d9;border-radius:4px;display:flex;flex-direction:column;padding:32px 40px 16px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,0.4);color:#111;overflow:hidden}
+
+    /* Slight e-ink texture */
+    .trmnl-frame::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="transparent"/><rect width="1" height="1" fill="rgba(0,0,0,0.02)"/></svg>');pointer-events:none}
+
+    .departures{flex:1;display:flex;flex-direction:column;gap:24px}
+    .departure{display:flex;align-items:center;gap:16px}
+
+    /* Route badge images - colored squares matching actual Liquid code */
+    .route-badge{width:80px;height:80px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:14px;color:#fff}
+    .route-27{background:#2563eb}
+    .route-28{background:#dc2626}
+    .route-32{background:#16a34a}
+
+    .departure-info{display:flex;flex-direction:column;gap:4px}
+    .departure-labels{display:flex;gap:8px;align-items:center}
+
+    /* Matches: label label--small label--inverted / label label--small */
+    .label{font-size:13px;font-weight:700;padding:2px 8px;border-radius:3px}
+    .label--inverted{background:#111;color:#e8e4d9}
+    .label--default{background:#d4d0c6;color:#111}
+
+    .departure-time{font-size:32px;font-weight:700;color:#111;margin-top:4px}
+
+    /* Title bar - matches actual TRMNL title_bar */
+    .title-bar{display:flex;align-items:center;gap:10px;padding-top:12px;margin-top:auto;border-top:1px solid rgba(0,0,0,0.1)}
+    .title-bar img{width:20px;height:20px;opacity:0.5}
+    .title-bar .title{font-size:14px;font-weight:700;color:#555}
+    .title-bar .instance{font-size:12px;color:#888;margin-left:auto}
+
+    .updated{text-align:right;font-size:11px;color:#888;font-weight:700;margin-top:8px;padding-right:8px}
+  </style>
+</head>
+<body>
+  <MockBanner projectName="TheRide Bus Schedule (TRMNL)" />
+  <div class="trmnl-frame">
+    <div class="departures">
+      <!-- Departure 1: Route 27 -> Meijer -->
+      <div class="departure">
+        <div class="route-badge route-27">27</div>
+        <div class="departure-info">
+          <div class="departure-labels">
+            <span class="label label--inverted">Route 27</span>
+            <span class="label label--default">→ Meijer</span>
+          </div>
+          <span class="departure-time">3:42 pm</span>
+        </div>
+      </div>
+
+      <!-- Departure 2: Route 28 -> Transit Center -->
+      <div class="departure">
+        <div class="route-badge route-28">28</div>
+        <div class="departure-info">
+          <div class="departure-labels">
+            <span class="label label--inverted">Route 28</span>
+            <span class="label label--default">→ Transit Center</span>
+          </div>
+          <span class="departure-time">3:58 pm</span>
+        </div>
+      </div>
+
+      <!-- Departure 3: Route 32 -> Transit Center -->
+      <div class="departure">
+        <div class="route-badge route-32">32</div>
+        <div class="departure-info">
+          <div class="departure-labels">
+            <span class="label label--inverted">Route 32</span>
+            <span class="label label--default">→ Transit Center</span>
+          </div>
+          <span class="departure-time">4:15 pm</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="updated">Updated at 3:38</div>
+
+    <!-- Title bar matching actual TRMNL widget -->
+    <div class="title-bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span class="title">Bus</span>
+      <span class="instance">Pauline &amp; South Maple</span>
+    </div>
+  </div>
+</body>
+</html>

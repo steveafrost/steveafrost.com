@@ -1,0 +1,125 @@
+---
+import MockBanner from '../../../components/MockBanner.astro';
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Message Relay - Mock</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'SF Mono','Fira Code','JetBrains Mono',monospace;background:#0a0a0a;min-height:100vh;color:#e4e4e7;padding:20px;display:flex;justify-content:center}
+    .container{max-width:900px;width:100%}
+
+    /* Terminal window */
+    .terminal{background:#18181b;border:1px solid #27272a;border-radius:10px;overflow:hidden;margin-bottom:24px;box-shadow:0 4px 24px rgba(0,0,0,0.4)}
+    .terminal-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#27272a;border-bottom:1px solid #333}
+    .terminal-dot{width:12px;height:12px;border-radius:50%}
+    .terminal-dot.red{background:#ff5f57}
+    .terminal-dot.yellow{background:#febc2e}
+    .terminal-dot.green{background:#28c840}
+    .terminal-title{flex:1;text-align:center;font-size:13px;color:#71717a}
+    .terminal-body{padding:20px;font-size:14px;line-height:1.8;overflow-x:auto}
+
+    /* Prompt styles */
+    .prompt{color:#22c55e}
+    .cmd{color:#e4e4e7}
+    .comment{color:#71717a}
+    .output{color:#a1a1aa}
+    .success{color:#22c55e}
+    .info{color:#3b82f6}
+    .url{color:#a78bfa}
+    .json-key{color:#60a5fa}
+    .json-str{color:#34d399}
+    .json-bool{color:#f59e0b}
+    .json-num{color:#f472b6}
+    .dim{opacity:0.6}
+
+    .line{white-space:pre}
+
+    /* Feature cards */
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}
+    .feature{background:#18181b;border:1px solid #27272a;border-radius:8px;padding:20px}
+    .feature-icon{font-size:24px;margin-bottom:8px}
+    .feature h3{font-size:15px;font-weight:600;margin-bottom:8px;font-family:'SF Mono','Fira Code',monospace;color:#e4e4e7}
+    .feature p{font-size:13px;color:#71717a;line-height:1.6;font-family:-apple-system,sans-serif}
+
+    h2{font-family:-apple-system,sans-serif;font-size:20px;color:#a1a1aa;margin-bottom:16px;font-weight:600}
+  </style>
+</head>
+<body>
+  <MockBanner projectName="Message Relay" />
+  <div class="container">
+    <!-- Server startup terminal -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">message-relay — node</span>
+      </div>
+      <div class="terminal-body">
+        <div class="line"><span class="prompt">$ </span><span class="cmd">relay-start</span></div>
+        <div class="line"><span class="info">ℹ</span> <span class="output">Starting message-relay service...</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Server listening on port </span><span class="json-num">3000</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">iMessage integration ready</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Health endpoint: </span><span class="url">http://localhost:3000/health</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line"><span class="comment"># Send a test message</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">curl -X POST http://localhost:3000/webhook \</span></div>
+        <div class="line"><span class="cmd">  -H "Content-Type: application/json" \</span></div>
+        <div class="line"><span class="cmd">  -d '&#123;"message": "Hello!", "phoneNumbers": ["+1234567890"]&#125;'</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&#123;</div>
+        <div class="line">  <span class="json-key">"success"</span>: <span class="json-bool">true</span>,</div>
+        <div class="line">  <span class="json-key">"message"</span>: <span class="json-str">"Message sent successfully"</span>,</div>
+        <div class="line">  <span class="json-key">"recipients"</span>: <span class="json-num">1</span>,</div>
+        <div class="line">  <span class="json-key">"phoneNumbers"</span>: [<span class="json-str">"+1234567890"</span>]</div>
+        <div class="line">&#125;</div>
+      </div>
+    </div>
+
+    <!-- Health check terminal -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">message-relay — health check</span>
+      </div>
+      <div class="terminal-body">
+        <div class="line"><span class="prompt">$ </span><span class="cmd">relay-status</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line">&#123;</div>
+        <div class="line">  <span class="json-key">"status"</span>: <span class="json-str">"healthy"</span>,</div>
+        <div class="line">  <span class="json-key">"timestamp"</span>: <span class="json-str">"2025-02-17T14:30:00.000Z"</span></div>
+        <div class="line">&#125;</div>
+      </div>
+    </div>
+
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">📡</div>
+        <h3>Webhook Endpoint</h3>
+        <p>Accepts POST requests with message payloads and delivers them via iMessage using macOS AppleScript.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👥</div>
+        <h3>Group Messaging</h3>
+        <p>Send to multiple recipients simultaneously. Supports group chat keywords to target existing conversations.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏥</div>
+        <h3>Health Monitoring</h3>
+        <p>Built-in health check endpoint with graceful shutdown and proper signal handling.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚀</div>
+        <h3>Auto-Start</h3>
+        <p>Configure as a launchd service to start automatically on boot with helpful shell aliases.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

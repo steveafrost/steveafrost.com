@@ -1,0 +1,18 @@
+---
+interface Props {
+  projectName: string;
+}
+const { projectName } = Astro.props;
+---
+
+<div id="mock-banner" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#18181b,#27272a);border-bottom:1px solid rgba(255,255,255,0.08);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;font-family:Inter,system-ui,sans-serif;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="background:linear-gradient(135deg,#ED6A5E,#F4A261);color:white;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;">Mock</span>
+    <span style="color:#a1a1aa;font-size:13px;">Visual replica of <strong style="color:white;">{projectName}</strong></span>
+  </div>
+  <a href="/projects" style="color:#a1a1aa;font-size:13px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#a1a1aa'">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+    Back to projects
+  </a>
+</div>
+<div style="height:44px;" aria-hidden="true"></div>

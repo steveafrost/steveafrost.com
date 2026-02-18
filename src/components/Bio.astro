@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import avatarImg from '../assets/avatar.jpg';
+---
+
+<div class="flex items-center gap-4 rounded-2xl border border-white/5 bg-zinc-900/60 p-5 backdrop-blur">
+  <div class="relative shrink-0">
+    <div class="absolute -inset-0.5 mask-blob bg-gradient-to-br from-coral-400 to-amber-400 opacity-50 blur-sm"></div>
+    <Image
+      src={avatarImg}
+      alt="Steve Frost"
+      width={56}
+      height={56}
+      format="webp"
+      quality={80}
+      loading="lazy"
+      decoding="async"
+      class="relative h-14 w-14 mask-blob border border-zinc-800 object-cover"
+    />
+  </div>
+  <p class="text-sm leading-relaxed text-zinc-400">
+    Written by <strong class="text-white">Steve Frost</strong>, a software engineer at
+    <span class="text-emerald-400">Shopify</span> based in Ann Arbor, MI.
+  </p>
+</div>
