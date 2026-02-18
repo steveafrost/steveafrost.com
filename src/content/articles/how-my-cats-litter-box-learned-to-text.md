@@ -1,5 +1,5 @@
 ---
-title: "Bridging the Web and macOS with AppleScript"
+title: "How My Cat's Litter Box Learned to Text"
 date: 2026-02-18
 tags:
   - applescript
