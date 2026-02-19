@@ -115,11 +115,13 @@
       radial-gradient(at 10% 80%, rgba(148, 226, 213, 0.05) 0px, transparent 50%);
   }
 
-  .card-glow:hover {
-    box-shadow:
-      0 0 0 1px rgba(237, 106, 94, 0.15),
-      0 8px 40px -12px rgba(237, 106, 94, 0.2),
-      0 0 60px -20px rgba(232, 131, 107, 0.15);
+  @media (hover: hover) {
+    .card-glow:hover {
+      box-shadow:
+        0 0 0 1px rgba(237, 106, 94, 0.15),
+        0 8px 40px -12px rgba(237, 106, 94, 0.2),
+        0 0 60px -20px rgba(232, 131, 107, 0.15);
+    }
   }
 
   .noise::before {
