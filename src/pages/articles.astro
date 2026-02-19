@@ -27,7 +27,7 @@ const sortedArticles = articles.sort(
         <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
           <a
             href={`/articles/${article.slug}`}
-            class="group flex flex-col gap-1 rounded-xl border border-transparent px-5 py-4 transition-all hover:border-white/5 hover:bg-ctp-surface0/60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+            class="group flex flex-col gap-1 rounded-xl border border-transparent px-3 py-4 transition-all hover:border-white/5 hover:bg-ctp-surface0/60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:px-5"
           >
               <h2 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-gradient">
               {article.data.title}
