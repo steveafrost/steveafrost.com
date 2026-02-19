@@ -148,10 +148,10 @@ const projects: readonly Project[] = [
         return (
           <article
             class:list={[
-              'card-glow group relative flex flex-col overflow-hidden rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 backdrop-blur transition-all duration-300 hover:bg-ctp-surface0/50 hover:scale-[1.02]',
+              'card-glow group project-item relative flex flex-col overflow-hidden rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 backdrop-blur transition-[color,background-color,border-color,box-shadow,transform] duration-300 hover:bg-ctp-surface0/50 hover:scale-[1.02]',
               accent,
             ]}
-            style={`animation: slideUp 0.5s ease-out ${i * 80}ms both;`}
+            style={`--i: ${i}`}
           >
             <div class={`pointer-events-none absolute inset-0 bg-gradient-to-br ${langStyle.bg} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} aria-hidden="true"></div>
 
@@ -217,3 +217,11 @@ const projects: readonly Project[] = [
     </div>
   </section>
 </MainLayout>
+
+<style>
+  @media (hover: hover) {
+    .project-item {
+      animation: slideUp 0.5s ease-out calc(var(--i) * 80ms) both;
+    }
+  }
+</style>

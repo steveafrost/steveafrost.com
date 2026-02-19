@@ -35,10 +35,10 @@ const getReadingTime = (body: string) => {
         const min = getReadingTime(article.body ?? '');
 
         return (
-          <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
+          <li class="article-item" style={`--i: ${i}`}>
             <a
               href={`/articles/${article.slug}`}
-              class="group block rounded-xl border border-white/5 border-l-2 border-l-coral-400/40 bg-ctp-surface0/30 px-3 py-4 transition-all duration-300 hover:border-white/10 hover:border-l-coral-400 hover:bg-ctp-surface0/50"
+              class="group block rounded-xl border border-white/5 border-l-2 border-l-coral-400/40 bg-ctp-surface0/30 px-3 py-4 transition-colors duration-300 hover:border-white/10 hover:border-l-coral-400 hover:bg-ctp-surface0/50"
             >
               <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                 <h2 class="text-lg font-medium text-gradient-hover text-ctp-text transition-colors duration-300 group-hover:text-transparent">
@@ -61,3 +61,11 @@ const getReadingTime = (body: string) => {
     </ul>
   </section>
 </MainLayout>
+
+<style>
+  @media (hover: hover) {
+    .article-item {
+      animation: slideUp 0.4s ease-out calc(var(--i) * 60ms) both;
+    }
+  }
+</style>
