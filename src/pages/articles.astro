@@ -6,6 +6,17 @@ const articles = await getCollection('articles', ({ data }) => !data.draft);
 const sortedArticles = articles.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const getReadingTime = (body: string) => {
+  const words = body.replace(/^---[\s\S]*?---/, '').trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 250));
+};
+
+const allTimes = sortedArticles.map((a) => getReadingTime(a.body ?? ''));
+const maxTime = Math.max(...allTimes);
 ---
 
 <MainLayout title="Articles | Steve Frost" description="Technical articles and blog posts by Steve Frost.">
@@ -22,26 +33,40 @@ const sortedArticles = articles.sort(
       Thoughts on web development, tools, and the craft of building software.
     </p>
 
-    <ul class="space-y-1">
-      {sortedArticles.map((article, i) => (
-        <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
-          <a
-            href={`/articles/${article.slug}`}
-            class="group flex flex-col gap-1 rounded-xl border border-transparent px-3 py-4 transition-all hover:border-white/5 hover:bg-ctp-surface0/60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 sm:px-5"
-          >
-              <h2 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-gradient">
-              {article.data.title}
-            </h2>
-            <time class="shrink-0 text-sm text-ctp-overlay0" datetime={article.data.date.toISOString()}>
-              {article.data.date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-            </time>
-          </a>
-        </li>
-      ))}
+    <ul class="space-y-6">
+      {sortedArticles.map((article, i) => {
+        const min = getReadingTime(article.body ?? '');
+        const pct = Math.round((min / maxTime) * 100);
+
+        return (
+          <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
+            <a
+              href={`/articles/${article.slug}`}
+              class="group block rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 transition-all hover:border-white/10 hover:bg-ctp-surface0/50"
+            >
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                <h2 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-gradient">
+                  {article.data.title}
+                </h2>
+                <time class="shrink-0 text-sm text-ctp-overlay0" datetime={article.data.date.toISOString()}>
+                  {formatDate(article.data.date)}
+                </time>
+              </div>
+              <div class="mt-3 flex items-center gap-3">
+                <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-ctp-surface1/60">
+                  <div
+                    class="h-full rounded-full bg-gradient-to-r from-coral-400 to-ctp-yellow transition-all group-hover:opacity-100"
+                    style={`width: ${pct}%; opacity: 0.6;`}
+                  />
+                </div>
+                <span class="shrink-0 text-xs tabular-nums text-ctp-overlay0">
+                  {min} min
+                </span>
+              </div>
+            </a>
+          </li>
+        );
+      })}
     </ul>
   </section>
 </MainLayout>

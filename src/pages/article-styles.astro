@@ -1,0 +1,234 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft);
+const sortedArticles = articles
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 5);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const formatMonoDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+const getExcerpt = (body: string, length = 120) => {
+  const plain = body.replace(/^---[\s\S]*?---/, '').replace(/[#*`\[\]()>_~]/g, '').trim();
+  return plain.length > length ? plain.slice(0, length).trimEnd() + '...' : plain;
+};
+
+const getReadingTime = (body: string) => {
+  const words = body.replace(/^---[\s\S]*?---/, '').trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 250));
+};
+---
+
+<MainLayout title="Article Styles | Steve Frost">
+  <div class="space-y-24 pb-16">
+
+    <!-- STYLE 1: Terminal -->
+    <section>
+      <h2 class="mb-2 text-xl font-bold text-white">Style 1: Terminal</h2>
+      <p class="mb-6 text-sm text-ctp-overlay1">Monospace CLI aesthetic with file-listing formatting.</p>
+
+      <div class="overflow-hidden rounded-xl border border-white/5 bg-ctp-crust">
+        <div class="flex items-center gap-2 border-b border-white/5 px-4 py-2.5">
+          <span class="h-3 w-3 rounded-full bg-coral-400/80"></span>
+          <span class="h-3 w-3 rounded-full bg-ctp-yellow/60"></span>
+          <span class="h-3 w-3 rounded-full bg-ctp-green/60"></span>
+          <span class="ml-3 font-mono text-xs text-ctp-overlay0">~/articles</span>
+        </div>
+        <div class="px-4 py-3">
+          <p class="font-mono text-xs text-ctp-overlay0">
+            <span class="text-ctp-green">frost</span><span class="text-ctp-overlay1">@</span><span class="text-ctp-lavender">site</span> <span class="text-ctp-overlay1">$</span> ls -lt --articles
+          </p>
+          <div class="mt-3 space-y-0.5">
+            {sortedArticles.map((article, i) => {
+              const min = getReadingTime(article.body ?? '');
+              return (
+                <a
+                  href={`/articles/${article.slug}`}
+                  class="group -mx-2 flex items-baseline gap-3 rounded px-2 py-1 font-mono text-sm transition-colors hover:bg-ctp-surface0/50"
+                  style={`animation: slideUp 0.3s ease-out ${i * 50}ms both;`}
+                >
+                  <span class="shrink-0 text-ctp-overlay0">{formatMonoDate(article.data.date)}</span>
+                  <span class="shrink-0 text-ctp-overlay0/60">{String(min).padStart(2, '\u00A0')}m</span>
+                  <span class="truncate text-ctp-teal transition-colors group-hover:text-coral-300">{article.data.title}</span>
+                </a>
+              );
+            })}
+          </div>
+          <p class="mt-3 font-mono text-xs text-ctp-overlay0">
+            <span class="text-ctp-green">frost</span><span class="text-ctp-overlay1">@</span><span class="text-ctp-lavender">site</span> <span class="text-ctp-overlay1">$</span> <span class="inline-block h-3.5 w-1.5 animate-pulse bg-ctp-text/70"></span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STYLE 2: Numbered Editorial -->
+    <section>
+      <h2 class="mb-2 text-xl font-bold text-white">Style 2: Numbered Editorial</h2>
+      <p class="mb-6 text-sm text-ctp-overlay1">Big index numbers with a clean magazine layout.</p>
+
+      <ol class="space-y-0 divide-y divide-white/5">
+        {sortedArticles.map((article, i) => (
+          <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
+            <a
+              href={`/articles/${article.slug}`}
+              class="group flex items-start gap-5 py-5 transition-colors hover:bg-ctp-surface0/20 sm:gap-8"
+            >
+              <span class="shrink-0 text-4xl font-extrabold tabular-nums leading-none text-ctp-surface2 transition-colors group-hover:text-coral-400 sm:text-5xl">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div class="min-w-0 pt-0.5">
+                <h3 class="text-lg font-semibold text-ctp-text transition-colors group-hover:text-gradient sm:text-xl">
+                  {article.data.title}
+                </h3>
+                <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ctp-overlay0">
+                  <time datetime={article.data.date.toISOString()}>{formatDate(article.data.date)}</time>
+                  <span class="text-ctp-surface2" aria-hidden="true">/</span>
+                  <span>{getReadingTime(article.body ?? '')} min read</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- STYLE 3: Bento Grid -->
+    <section>
+      <h2 class="mb-2 text-xl font-bold text-white">Style 3: Bento Grid</h2>
+      <p class="mb-6 text-sm text-ctp-overlay1">Mixed-size tiles — featured article takes the lead.</p>
+
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {sortedArticles.map((article, i) => {
+          const isHero = i === 0;
+          return (
+            <a
+              href={`/articles/${article.slug}`}
+              class:list={[
+                "group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-white/5 bg-ctp-surface0/30 p-5 transition-all hover:border-white/10 hover:bg-ctp-surface0/50",
+                isHero ? "sm:col-span-2 sm:row-span-2 sm:p-8" : "",
+              ]}
+              style={`animation: slideUp 0.4s ease-out ${i * 80}ms both;`}
+            >
+              <div class="absolute inset-0 bg-gradient-to-t from-ctp-crust/80 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
+              <div class="relative">
+                {article.data.tags && article.data.tags.length > 0 && (
+                  <div class="mb-3 flex flex-wrap gap-1.5">
+                    {article.data.tags.slice(0, 2).map((tag: string) => (
+                      <span class="rounded-full bg-coral-400/10 px-2 py-0.5 text-[11px] font-medium text-coral-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <h3 class:list={[
+                  "font-semibold text-ctp-text transition-colors group-hover:text-gradient",
+                  isHero ? "text-xl sm:text-2xl" : "text-base",
+                ]}>
+                  {article.data.title}
+                </h3>
+                {isHero && (
+                  <p class="mt-2 text-sm leading-relaxed text-ctp-overlay1 line-clamp-2">
+                    {getExcerpt(article.body ?? '', 160)}
+                  </p>
+                )}
+                <time
+                  class="mt-2 block text-xs text-ctp-overlay0"
+                  datetime={article.data.date.toISOString()}
+                >
+                  {formatDate(article.data.date)}
+                </time>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- STYLE 4: Gradient Border Rows -->
+    <section>
+      <h2 class="mb-2 text-xl font-bold text-white">Style 4: Gradient Border Rows</h2>
+      <p class="mb-6 text-sm text-ctp-overlay1">Animated left-border accent that reveals on hover.</p>
+
+      <ul class="space-y-2">
+        {sortedArticles.map((article, i) => (
+          <li
+            class="group relative overflow-hidden rounded-lg"
+            style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}
+          >
+            <div class="absolute inset-y-0 left-0 w-1 rounded-full bg-ctp-surface2/40 transition-all group-hover:w-1.5 group-hover:bg-gradient-to-b group-hover:from-coral-400 group-hover:via-coral-350 group-hover:to-ctp-yellow" aria-hidden="true" />
+            <a
+              href={`/articles/${article.slug}`}
+              class="block py-4 pl-5 pr-4 transition-colors hover:bg-ctp-surface0/30"
+            >
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <h3 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-white">
+                  {article.data.title}
+                </h3>
+                <time class="shrink-0 text-sm tabular-nums text-ctp-overlay0" datetime={article.data.date.toISOString()}>
+                  {formatDate(article.data.date)}
+                </time>
+              </div>
+              <p class="mt-1.5 text-sm leading-relaxed text-ctp-overlay1 line-clamp-1 sm:max-w-[70%]">
+                {getExcerpt(article.body ?? '', 100)}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- STYLE 5: Reading Time Bar -->
+    <section>
+      <h2 class="mb-2 text-xl font-bold text-white">Style 5: Reading Time Bar</h2>
+      <p class="mb-6 text-sm text-ctp-overlay1">Visual reading-time indicator bar for each article.</p>
+
+      {(() => {
+        const maxTime = Math.max(...sortedArticles.map((a) => getReadingTime(a.body ?? '')));
+        return null;
+      })()}
+      <ul class="space-y-6">
+        {sortedArticles.map((article, i) => {
+          const min = getReadingTime(article.body ?? '');
+          const allTimes = sortedArticles.map((a) => getReadingTime(a.body ?? ''));
+          const maxTime = Math.max(...allTimes);
+          const pct = Math.round((min / maxTime) * 100);
+
+          return (
+            <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
+              <a
+                href={`/articles/${article.slug}`}
+                class="group block rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 transition-all hover:border-white/10 hover:bg-ctp-surface0/50"
+              >
+                <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                  <h3 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-gradient">
+                    {article.data.title}
+                  </h3>
+                  <time class="shrink-0 text-sm text-ctp-overlay0" datetime={article.data.date.toISOString()}>
+                    {formatDate(article.data.date)}
+                  </time>
+                </div>
+                <div class="mt-3 flex items-center gap-3">
+                  <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-ctp-surface1/60">
+                    <div
+                      class="h-full rounded-full bg-gradient-to-r from-coral-400 to-ctp-yellow transition-all group-hover:opacity-100"
+                      style={`width: ${pct}%; opacity: 0.6;`}
+                    />
+                  </div>
+                  <span class="shrink-0 text-xs tabular-nums text-ctp-overlay0">
+                    {min} min
+                  </span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+  </div>
+</MainLayout>
