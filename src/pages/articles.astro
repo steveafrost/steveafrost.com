@@ -9,11 +9,16 @@ const sortedArticles = articles.sort(
 ---
 
 <MainLayout title="Articles | Steve Frost" description="Technical articles and blog posts by Steve Frost.">
-  <section class="py-8">
-    <h1 class="mb-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
-      <span class="text-gradient">Articles</span>
+  <section class="pb-8">
+    <h1 class="mb-8 text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <span class="relative inline-block">
+        <span class="text-gradient">articles</span>
+        <svg class="absolute -bottom-3 left-0 w-full text-coral-400/40" viewBox="0 0 100 10" fill="none" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 5c8.33-6 16.67 6 25 0s16.67 6 25 0 16.67 6 25 0 16.67 6 25 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </span>
     </h1>
-    <p class="mb-12 max-w-2xl text-zinc-400">
+    <p class="mb-12 max-w-2xl text-ctp-subtext0">
       Thoughts on web development, tools, and the craft of building software.
     </p>
 
@@ -22,12 +27,12 @@ const sortedArticles = articles.sort(
         <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
           <a
             href={`/articles/${article.slug}`}
-            class="group flex flex-col gap-1 rounded-xl border border-transparent px-5 py-4 transition-all hover:border-white/5 hover:bg-zinc-900/60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+            class="group flex flex-col gap-1 rounded-xl border border-transparent px-5 py-4 transition-all hover:border-white/5 hover:bg-ctp-surface0/60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
           >
-            <h2 class="text-lg font-medium text-zinc-200 transition-colors group-hover:text-gradient">
+              <h2 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-gradient">
               {article.data.title}
             </h2>
-            <time class="shrink-0 text-sm text-zinc-600" datetime={article.data.date.toISOString()}>
+            <time class="shrink-0 text-sm text-ctp-overlay0" datetime={article.data.date.toISOString()}>
               {article.data.date.toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'short',

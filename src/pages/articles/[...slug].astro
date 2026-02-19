@@ -18,10 +18,11 @@ const { Content } = await article.render();
 <MainLayout title={`${article.data.title} | Steve Frost`}>
   <article class="py-8">
     <header class="mb-10">
-      <h1 class="mb-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-        {article.data.title}
-      </h1>
-      <time class="text-sm text-zinc-500" datetime={article.data.date.toISOString()}>
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl text-gradient">{article.data.title}</h1>
+      <svg class="mt-1.5 mb-4 text-coral-400/40" width="160" height="16" viewBox="0 0 100 10" fill="none" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 5c8.33-6 16.67 6 25 0s16.67 6 25 0 16.67 6 25 0 16.67 6 25 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+      </svg>
+      <time class="text-sm text-ctp-overlay1" datetime={article.data.date.toISOString()}>
         {article.data.date.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
@@ -30,11 +31,11 @@ const { Content } = await article.render();
       </time>
     </header>
 
-    <div class="prose prose-invert prose-zinc max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-brand-400 prose-a:no-underline hover:prose-a:underline prose-pre:rounded-lg prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-zinc-800 prose-img:rounded-lg">
+    <div class="prose prose-invert prose-zinc max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-brand-400 prose-a:no-underline hover:prose-a:underline prose-pre:rounded-lg prose-pre:bg-ctp-mantle prose-pre:border prose-pre:border-ctp-surface0 prose-img:rounded-lg">
       <Content />
     </div>
 
-    <hr class="my-12 border-zinc-800" />
+    <hr class="my-12 border-ctp-surface0" />
     <Bio />
   </article>
 </MainLayout>

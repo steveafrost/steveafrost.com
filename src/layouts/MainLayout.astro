@@ -56,17 +56,17 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="relative min-h-screen flex flex-col font-sans bg-mesh">
+  <body class="relative min-h-screen flex flex-col font-sans bg-mesh pb-16 sm:pb-0">
     <!-- Top gradient line -->
     <div class="h-1 w-full bg-gradient-to-r from-coral-400 via-coral-300 to-amber-400 animate-gradient" style="background-size: 300% 300%;" aria-hidden="true"></div>
 
-    <header class="sticky top-0 z-50 border-b border-white/5 bg-zinc-950/70 backdrop-blur-xl">
+    <header class="sticky top-0 z-50 border-b border-white/5 bg-ctp-base/70 backdrop-blur-xl">
       <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a href="/" class="group flex items-center gap-2 text-lg font-bold tracking-tight">
           <Logo />
           <span class="text-white transition-colors group-hover:text-gradient">steveafrost</span>
         </a>
-        <ul class="flex items-center gap-1">
+        <ul class="hidden sm:flex items-center gap-1">
           {navLinks.map(({ href, label }) => (
             <li>
               <a
@@ -75,7 +75,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
                   'relative rounded-full px-4 py-2 text-sm font-medium transition-all',
                   currentPath === href || (href !== '/' && currentPath.startsWith(href))
                     ? 'bg-white/10 text-white'
-                    : 'text-zinc-400 hover:text-white hover:bg-white/5',
+                    : 'text-ctp-subtext0 hover:text-white hover:bg-white/5',
                 ]}
               >
                 {label}
@@ -92,19 +92,19 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
     <footer class="border-t border-white/5">
       <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-8 sm:flex-row sm:justify-between">
-        <p class="text-sm text-zinc-600">
+        <p class="text-sm text-ctp-overlay0">
           &copy; {new Date().getFullYear()} Steve Frost &middot; Built with
-          <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-coral-400 transition-colors">Astro</a>
+          <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-ctp-overlay1 hover:text-coral-400 transition-colors">Astro</a>
           &
-          <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-amber-400 transition-colors">Tailwind</a>
+          <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-ctp-overlay1 hover:text-amber-400 transition-colors">Tailwind</a>
         </p>
         <div class="flex items-center gap-5">
-          <a href="https://github.com/steveafrost" target="_blank" rel="noopener noreferrer" class="text-zinc-600 transition-all hover:text-coral-400 hover:scale-110" aria-label="GitHub">
+          <a href="https://github.com/steveafrost" target="_blank" rel="noopener noreferrer" class="text-ctp-overlay0 transition-all hover:text-coral-400 hover:scale-110" aria-label="GitHub">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
             </svg>
           </a>
-          <a href="mailto:hello@steveafrost.com" class="text-zinc-600 transition-all hover:text-amber-400 hover:scale-110" aria-label="Email">
+          <a href="mailto:hello@steveafrost.com" class="text-ctp-overlay0 transition-all hover:text-amber-400 hover:scale-110" aria-label="Email">
             <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
@@ -112,5 +112,66 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         </div>
       </div>
     </footer>
+
+    <nav class="fixed bottom-0 inset-x-0 z-50 border-t border-white/5 bg-ctp-base/80 backdrop-blur-xl sm:hidden" aria-label="Mobile navigation">
+      <ul class="mx-auto flex max-w-md items-center justify-around px-2 py-2">
+        <li>
+          <a
+            href="/"
+            class:list={[
+              'flex flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-all',
+              currentPath === '/' ? 'text-coral-350' : 'text-ctp-overlay1',
+            ]}
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955a1.126 1.126 0 0 1 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/articles"
+            class:list={[
+              'flex flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-all',
+              currentPath.startsWith('/articles') ? 'text-coral-350' : 'text-ctp-overlay1',
+            ]}
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+            </svg>
+            <span>Articles</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/projects"
+            class:list={[
+              'flex flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-all',
+              currentPath.startsWith('/projects') ? 'text-coral-350' : 'text-ctp-overlay1',
+            ]}
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+            </svg>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/about"
+            class:list={[
+              'flex flex-col items-center gap-1 rounded-xl px-3 py-2 text-xs font-medium transition-all',
+              currentPath.startsWith('/about') ? 'text-coral-350' : 'text-ctp-overlay1',
+            ]}
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+            <span>About</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>
