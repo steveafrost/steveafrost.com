@@ -54,7 +54,7 @@ const projects: readonly Project[] = [
     name: 'Leon Bridges',
     description: 'Official artist website for Grammy-winning R&B/soul artist Leon Bridges. Split-panel layout with full-viewport hero, discography, tour dates via Seated widget, and merch integration.',
     language: 'HTML',
-    tech: ['HTML', 'CSS', 'jQuery', 'Seated Widget', 'Columbia Records'],
+    tech: ['HTML', 'CSS', 'jQuery'],
     mockUrl: '/projects/mock/leon-bridges',
     role: 'Lead Developer',
   },
@@ -153,7 +153,7 @@ const projects: readonly Project[] = [
             ]}
             style={`animation: slideUp 0.5s ease-out ${i * 80}ms both;`}
           >
-            <div class={`pointer-events-none absolute inset-0 bg-gradient-to-br ${langStyle.bg} opacity-0 transition-opacity group-hover:opacity-100`} aria-hidden="true"></div>
+            <div class={`pointer-events-none absolute inset-0 bg-gradient-to-br ${langStyle.bg} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} aria-hidden="true"></div>
 
             <div class="relative">
               <div class="mb-1 flex items-center gap-2">
@@ -162,7 +162,7 @@ const projects: readonly Project[] = [
                 </span>
               </div>
 
-              <h2 class="mb-2 text-lg font-bold text-white transition-colors group-hover:text-gradient">
+              <h2 class="mb-2 text-lg font-bold text-gradient-hover text-white transition-colors duration-300 group-hover:text-transparent">
                 {project.name}
               </h2>
 

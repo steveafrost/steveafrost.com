@@ -82,7 +82,7 @@ const getReadingTime = (body: string) => {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div class="min-w-0 pt-0.5">
-                <h3 class="text-lg font-semibold text-ctp-text transition-colors group-hover:text-gradient sm:text-xl">
+                <h3 class="text-lg font-semibold text-gradient-hover text-ctp-text transition-colors duration-300 group-hover:text-transparent sm:text-xl">
                   {article.data.title}
                 </h3>
                 <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ctp-overlay0">
@@ -126,7 +126,7 @@ const getReadingTime = (body: string) => {
                   </div>
                 )}
                 <h3 class:list={[
-                  "font-semibold text-ctp-text transition-colors group-hover:text-gradient",
+                  "font-semibold text-gradient-hover text-ctp-text transition-colors duration-300 group-hover:text-transparent",
                   isHero ? "text-xl sm:text-2xl" : "text-base",
                 ]}>
                   {article.data.title}
@@ -202,10 +202,10 @@ const getReadingTime = (body: string) => {
             <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
               <a
                 href={`/articles/${article.slug}`}
-                class="group block rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 transition-all hover:border-white/10 hover:bg-ctp-surface0/50"
+                class="group block rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 transition-all duration-300 hover:border-white/10 hover:bg-ctp-surface0/50"
               >
                 <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                  <h3 class="text-lg font-medium text-ctp-text transition-colors group-hover:text-gradient">
+                  <h3 class="text-lg font-medium text-gradient-hover text-ctp-text transition-colors duration-300 group-hover:text-transparent">
                     {article.data.title}
                   </h3>
                   <time class="shrink-0 text-sm text-ctp-overlay0" datetime={article.data.date.toISOString()}>

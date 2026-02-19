@@ -64,7 +64,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
       <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <a href="/" class="group flex items-center gap-2 text-lg font-bold tracking-tight">
           <Logo />
-          <span class="text-white transition-colors group-hover:text-gradient">steveafrost</span>
+          <span class="text-gradient-hover text-white transition-colors duration-300 group-hover:text-transparent">steveafrost</span>
         </a>
         <ul class="hidden sm:flex items-center gap-1">
           {navLinks.map(({ href, label }) => (

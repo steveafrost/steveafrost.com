@@ -103,6 +103,14 @@
     animation: gradient 8s ease infinite;
   }
 
+  .text-gradient-hover {
+    background-image: linear-gradient(135deg, #ED6A5E, #E8836B, #F4A261);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient 8s ease infinite;
+  }
+
   .border-gradient {
     border-image: linear-gradient(135deg, #ED6A5E, #E8836B, #F4A261) 1;
   }
@@ -116,6 +124,13 @@
   }
 
   @media (hover: hover) {
+    .card-glow {
+      box-shadow:
+        0 0 0 1px rgba(237, 106, 94, 0),
+        0 8px 40px -12px rgba(237, 106, 94, 0),
+        0 0 60px -20px rgba(232, 131, 107, 0);
+    }
+
     .card-glow:hover {
       box-shadow:
         0 0 0 1px rgba(237, 106, 94, 0.15),
