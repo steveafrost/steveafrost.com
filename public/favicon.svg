@@ -1,18 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 36 36">
-    <defs>
-        <linearGradient id="a" x1="4" y1="2" x2="32" y2="34" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ED6A5E"/>
-            <stop offset="50%" stop-color="#E8836B"/>
-            <stop offset="100%" stop-color="#F4A261"/>
-        </linearGradient>
-    </defs>
-    <path d="M18 2 L30 10 L30 26 L18 34 L6 26 L6 10 Z" fill="url(#a)" opacity="0.2"/>
-    <path d="M18 2 L6 10 L18 18 Z" fill="url(#a)" opacity="0.55"/>
-    <path d="M18 2 L30 10 L18 18 Z" fill="url(#a)" opacity="0.75"/>
-    <path d="M30 10 L30 26 L18 18 Z" fill="url(#a)" opacity="0.5"/>
-    <path d="M30 26 L18 34 L18 18 Z" fill="url(#a)" opacity="0.35"/>
-    <path d="M18 34 L6 26 L18 18 Z" fill="url(#a)" opacity="0.6"/>
-    <path d="M6 26 L6 10 L18 18 Z" fill="url(#a)" opacity="0.45"/>
-    <path d="M18 2 L18 18 M6 10 L18 18 M30 10 L18 18 M30 26 L18 18 M18 34 L18 18 M6 26 L18 18" stroke="url(#a)" stroke-width="0.6" opacity="0.4"/>
-    <path d="M18 2 L30 10 L30 26 L18 34 L6 26 L6 10 Z" stroke="url(#a)" stroke-width="0.8" opacity="0.6" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" fill="none">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eb7363"/>
+      <stop offset="100%" stop-color="#f4a898"/>
+    </linearGradient>
+  </defs>
+  <!-- Top-left facet -->
+  <polygon points="32,0 52,16 32,32" fill="#eb7363"/>
+  <!-- Top-right facet -->
+  <polygon points="32,0 52,16 64,4" fill="#f4a898" opacity="0.85"/>
+  <!-- Bottom-left facet -->
+  <polygon points="0,28 20,44 32,32" fill="#f4a898" opacity="0.7"/>
+  <!-- Center facet -->
+  <polygon points="32,32 52,16 64,32 52,48" fill="url(#grad)"/>
+  <!-- Bottom facet -->
+  <polygon points="32,32 20,44 32,60 52,48" fill="#eb7363" opacity="0.9"/>
+  <!-- Bottom-right facet -->
+  <polygon points="52,48 32,60 48,64 64,52" fill="#f4a898" opacity="0.65"/>
 </svg>

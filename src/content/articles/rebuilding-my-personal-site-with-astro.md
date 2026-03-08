@@ -1,6 +1,7 @@
 ---
 title: "Rebuilding My Personal Site with Astro"
 date: 2025-09-18
+description: "Why I migrated from Gatsby to Astro and what surprised me—islands architecture, content collections, and meaningful build performance gains."
 tags:
   - astro
   - tailwind
@@ -60,7 +61,7 @@ No GraphQL layer. No source plugins. No build-time data graph. Just a function c
 
 ## Performance by Default
 
-Migrating from Gatsby to Astro, my Lighthouse performance score went to 100 without any optimization work. That's not because I'm good at performance — it's because Astro's defaults are aggressive. It inlines all stylesheets (configured with `inlineStylesheets: 'always'`), outputs static HTML with no JS payload, and generates optimized images through its built-in `<Image>` component.
+Migrating from Gatsby to Astro, my Lighthouse performance score went to 100 on the first run — no manual tuning required. That's not because I'm good at performance — it's because Astro's defaults are aggressive. It inlines all stylesheets (configured with `inlineStylesheets: 'always'`), outputs static HTML with no JS payload, and generates optimized images through its built-in `<Image>` component.
 
 The site loads in a single request for the HTML plus whatever images are visible. There's no JavaScript bundle to parse, no hydration step, no client-side routing taking over. Pages feel instant because they *are* instant — there's nothing to execute.
 

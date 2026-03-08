@@ -147,4 +147,74 @@
     pointer-events: none;
     z-index: 0;
   }
+
+  /* Magnetic hover effect base */
+  .magnetic {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Enhanced card depth */
+  .depth-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  /* Scroll-triggered reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children animation */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .stagger-children.is-visible > *:nth-child(1) { animation: fadeUp 0.5s ease-out 0ms forwards; }
+  .stagger-children.is-visible > *:nth-child(2) { animation: fadeUp 0.5s ease-out 80ms forwards; }
+  .stagger-children.is-visible > *:nth-child(3) { animation: fadeUp 0.5s ease-out 160ms forwards; }
+  .stagger-children.is-visible > *:nth-child(4) { animation: fadeUp 0.5s ease-out 240ms forwards; }
+  .stagger-children.is-visible > *:nth-child(5) { animation: fadeUp 0.5s ease-out 320ms forwards; }
+  .stagger-children.is-visible > *:nth-child(6) { animation: fadeUp 0.5s ease-out 400ms forwards; }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Shine effect for previews */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.1) 45%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.1) 55%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .shine:hover::after {
+    transform: translateX(100%);
+  }
 }

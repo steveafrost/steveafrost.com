@@ -1,6 +1,7 @@
 ---
 title: "Turning a Next.js App Into a PWA for Delivery Drivers"
 date: 2025-11-18
+description: "How I converted a Next.js tip-tracking app into a PWA for Shipt drivers—covering service workers, manifest config, and the offline-first tradeoffs that actually mattered."
 tags:
   - pwa
   - nextjs
@@ -61,6 +62,6 @@ Clerk handles this gracefully — the sign-in flow works the same in both contex
 
 Absolutely. A native app would have meant maintaining two codebases (or learning React Native), dealing with App Store review, and convincing someone to download yet another app. The PWA is one codebase, deploys instantly on push, and installs in two taps.
 
-The trade-offs are real — no push notifications on iOS (until recently), no background sync, limited access to device APIs. For Tip Track, none of those mattered. The app needs to accept input, store data, and show charts. A PWA does all of that with zero platform gatekeeping.
+The trade-offs are real — iOS push notifications only work if users add the app to their home screen and you're targeting iOS 16.4+, background sync is limited, and device API access is nowhere near native. For Tip Track, none of those mattered. The app needs to accept input, store data, and show charts. A PWA does all of that with zero platform gatekeeping.
 
 If you're building a tool for a specific person or small group and it doesn't need deep device integration, a PWA is hard to beat.

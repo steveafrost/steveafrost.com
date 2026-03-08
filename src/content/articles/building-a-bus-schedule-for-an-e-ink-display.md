@@ -1,6 +1,7 @@
 ---
 title: "Building a Bus Schedule for an E-Ink Display"
 date: 2025-12-18
+description: "Building a TRMNL recipe with Liquid templating to display real-time bus departures for TheRide in Ann Arbor on an e-ink display."
 tags:
   - trmnl
   - liquid
@@ -50,7 +51,7 @@ The `limit: 3` filter is key. Three departures is all that fits on the 800x480 e
 
 ## Designing for E-Ink
 
-The TRMNL screen has a warm paper-like background — not pure white, more like `#e8e4d9`. I styled the template to match that aesthetic: bold route numbers in large colored squares, departure times in 32px font weight, and a minimal footer showing the stop name and last update time.
+The TRMNL screen has a warm paper-like background — not pure white, feels more like `#e8e4d9` than true white. I styled the template to match that aesthetic: bold route numbers in large colored squares, departure times in 32px font weight, and a minimal footer showing the stop name and last update time.
 
 There's no JavaScript. No interactivity. The display refreshes on a timer, and whatever HTML the Liquid produces is what you see until the next refresh. This constraint is oddly freeing — you can't overthink the UX when there's literally one state.
 

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* ── Variables ─────────────────────────────────────── */
+  :root {
+    --coral:        #eb7363;
+    --coral-light:  #fdf2f0;
+    --coral-fade:   #f4a898;
+    --dark:         #111827;
+    --gray-50:      #F9FAFB;
+    --gray-100:     #F3F4F6;
+    --gray-200:     #E5E7EB;
+    --gray-500:     #6B7280;
+    --gray-700:     #374151;
+    --white:        #ffffff;
+  }
+
+  /* ── Reset ─────────────────────────────────────────── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: $font_name, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: $font_size;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero Header ───────────────────────────────────── */
+  #hero {
+    background: var(--dark);
+    width: 100%;
+    padding: 32px 40px;
+    display: table;
+  }
+
+  #hero-left {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+  }
+
+  #hero-right {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+    text-align: right;
+  }
+
+  #hero-logo img {
+    max-height: 52px;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  #hero-company-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.2px;
+  }
+
+  #hero-company-meta {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 3px;
+    line-height: 1.6;
+  }
+
+  #hero-invoice-label {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--coral);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  #hero-invoice-number {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  #hero-dates {
+    display: table;
+    margin-left: auto;
+  }
+
+  .hero-date-row {
+    display: table-row;
+  }
+
+  .hero-date-label {
+    display: table-cell;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6B7280;
+    padding-right: 16px;
+    padding-bottom: 3px;
+    text-align: right;
+  }
+
+  .hero-date-value {
+    display: table-cell;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    text-align: right;
+    padding-bottom: 3px;
+  }
+
+  .hero-date-value.highlight {
+    color: var(--coral);
+  }
+
+  /* ── Accent Bar ────────────────────────────────────── */
+  #accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--coral) 0%, var(--coral-fade) 100%);
+    width: 100%;
+  }
+
+  /* ── Content Area ──────────────────────────────────── */
+  #content {
+    padding: 36px 40px 0;
+  }
+
+  /* ── From / To ─────────────────────────────────────── */
+  #parties {
+    display: table;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  #from-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding-right: 32px;
+  }
+
+  #to-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+  }
+
+  .party-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 8px;
+  }
+
+  /* IN populates these divs — style their contents */
+  #company-details,
+  #company-address,
+  #client-details {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.8;
+  }
+
+  #company-details p:first-child,
+  #client-details p:first-child {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  /* ── Line Items Table ──────────────────────────────── */
+  #items-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  #items-table thead tr {
+    background: var(--dark);
+  }
+
+  #items-table thead th {
+    padding: 11px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: left;
+  }
+
+  #items-table thead th.right {
+    text-align: right;
+  }
+
+  #items-table thead th.center {
+    text-align: center;
+  }
+
+  #items-table tbody tr.odd {
+    background: var(--white);
+  }
+
+  #items-table tbody tr.even {
+    background: var(--gray-50);
+  }
+
+  #items-table tbody td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--dark);
+    vertical-align: top;
+  }
+
+  #items-table tbody td.item-name {
+    font-weight: 600;
+    color: var(--dark);
+    white-space: nowrap;
+  }
+
+  #items-table tbody td.item-desc {
+    color: var(--gray-500);
+    font-size: 12px;
+  }
+
+  #items-table tbody td.right {
+    text-align: right;
+  }
+
+  #items-table tbody td.center {
+    text-align: center;
+  }
+
+  /* ── Totals ─────────────────────────────────────────── */
+  #totals-wrapper {
+    display: table;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+
+  #totals-spacer {
+    display: table-cell;
+    width: 60%;
+  }
+
+  #totals-block {
+    display: table-cell;
+    width: 40%;
+    vertical-align: top;
+  }
+
+  #totals-block table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  #totals-block table td {
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--gray-700);
+  }
+
+  #totals-block table td.totals-label {
+    text-align: left;
+  }
+
+  #totals-block table td.totals-value {
+    text-align: right;
+    font-weight: 600;
+  }
+
+  #totals-block table tr.totals-separator td {
+    border-top: 2px solid var(--gray-200);
+    padding-top: 12px;
+  }
+
+  #totals-block table tr.totals-grand td {
+    background: var(--coral);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 14px;
+  }
+
+  /* ── Notes / Terms ─────────────────────────────────── */
+  #notes-terms {
+    display: table;
+    width: 100%;
+    padding: 0 40px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--gray-200);
+    padding-top: 24px;
+    margin-top: 0;
+  }
+
+  #notes-col, #terms-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding-right: 24px;
+  }
+
+  #terms-col {
+    padding-right: 0;
+    padding-left: 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+
+  .section-text {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.8;
+  }
+
+  /* ── Footer Tagline ────────────────────────────────── */
+  #footer-tagline {
+    margin: 24px 40px 40px;
+    padding: 14px 18px;
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Hero Header ──────────────────────────────────────── -->
+<div id="hero">
+  <div id="hero-left">
+    <div id="hero-logo"><img src="$company.logo" alt="$company.name"></div>
+    <div id="hero-company-name">$company.name</div>
+    <div id="hero-company-meta">
+      $company.email
+    </div>
+  </div>
+  <div id="hero-right">
+    <div id="hero-invoice-label">Credit</div>
+    <div id="hero-invoice-number"># $credit.number</div>
+    <div id="hero-dates">
+      <div class="hero-date-row">
+        <span class="hero-date-label">Issued</span>
+        <span class="hero-date-value">$credit.date</span>
+      </div>
+      <div class="hero-date-row">
+        <span class="hero-date-label">Balance</span>
+        <span class="hero-date-value highlight">$credit.balance_due</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Coral Accent Bar ─────────────────────────────────── -->
+<div id="accent-bar"></div>
+
+<!-- ── Content ──────────────────────────────────────────── -->
+<div id="content">
+
+  <!-- From / To -->
+  <div id="parties">
+    <div id="from-col">
+      <div class="party-label">From</div>
+      <div id="company-details"></div>
+      <div id="company-address"></div>
+    </div>
+    <div id="to-col">
+      <div class="party-label">Credit For</div>
+      <div id="client-details"></div>
+    </div>
+  </div>
+
+  <!-- Line Items -->
+  <ninja>
+  {% if credits is defined and credits is not empty %}
+  {% set credit = credits|first %}
+  <table id="items-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th class="center">Qty / Hrs</th>
+        <th class="right">Rate</th>
+        <th class="right">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in credit.line_items %}
+      <tr class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+        <td class="item-name">{{ item.product_key }}</td>
+        <td class="item-desc">{{ item.notes }}</td>
+        <td class="center">{{ item.quantity }}</td>
+        <td class="right">{{ item.cost }}</td>
+        <td class="right">{{ item.line_total }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  </ninja>
+
+  <!-- Totals -->
+  <div id="totals-wrapper">
+    <div id="totals-spacer"></div>
+    <div id="totals-block">
+      <table>
+        <tr class="totals-separator">
+          <td class="totals-label">Subtotal</td>
+          <td class="totals-value">$subtotal</td>
+        </tr>
+        <ninja>
+        {% if credits is defined and credits is not empty %}
+        {% set credit = credits|first %}
+        {% if credit.discount_raw > 0 %}
+        <tr>
+          <td class="totals-label">Discount</td>
+          <td class="totals-value">- {{ credit.discount }}</td>
+        </tr>
+        {% endif %}
+        {% if credit.total_taxes_raw > 0 %}
+        <tr>
+          <td class="totals-label">Tax</td>
+          <td class="totals-value">{{ credit.total_taxes }}</td>
+        </tr>
+        {% endif %}
+        {% endif %}
+        </ninja>
+        <tr class="totals-grand">
+          <td class="totals-label">Credit Total</td>
+          <td class="totals-value">$credit.balance_due</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- ── Notes / Terms ────────────────────────────────────── -->
+<ninja>
+{% if credits is defined and credits is not empty %}
+{% set credit = credits|first %}
+{% if credit.public_notes or credit.terms %}
+<div id="notes-terms" style="padding: 24px 40px 0;">
+  {% if credit.public_notes %}
+  <div id="notes-col">
+    <div class="section-label">Notes</div>
+    <div class="section-text">{{ credit.public_notes }}</div>
+  </div>
+  {% endif %}
+  {% if credit.terms %}
+  <div id="terms-col">
+    <div class="section-label">Terms</div>
+    <div class="section-text">{{ credit.terms }}</div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+{% endif %}
+</ninja>
+
+<!-- ── Footer Tagline ────────────────────────────────────── -->
+<ninja>
+{% if credits is defined and credits is not empty %}
+{% set credit = credits|first %}
+{% if credit.footer %}
+<div id="footer-tagline">{{ credit.footer }}</div>
+{% endif %}
+{% endif %}
+</ninja>
+
+</body>
+</html>

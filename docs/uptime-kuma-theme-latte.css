@@ -1,0 +1,275 @@
+/* SteveAFrost - Uptime Kuma Theme (Catppuccin Latte) */
+:root {
+  --sf-bg: #eff1f5;
+  --sf-bg-2: #e6e9ef;
+  --sf-surface: #f8f9fb;
+  --sf-surface-2: #ffffff;
+  --sf-border: rgba(220, 138, 120, 0.25);
+  --sf-text: #4c4f69;
+  --sf-muted: #6c6f85;
+
+  --sf-accent: #dc8a78;
+  --sf-accent-2: #fe640b;
+  --sf-accent-3: #df8e1d;
+
+  --sf-success: var(--sf-accent);
+  --sf-warning: #df8e1d;
+  --sf-danger: #d20f39;
+  --sf-info: #179299;
+
+  --danger: #d20f39;
+  --red: #d20f39;
+  --bs-danger: #d20f39;
+  --bs-danger-rgb: 210, 15, 57;
+}
+
+@keyframes sf-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html, body {
+  color: var(--sf-text);
+  background-color: var(--sf-bg);
+  font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(at 25% 30%, rgba(220, 138, 120, 0.14) 0px, transparent 50%),
+    radial-gradient(at 90% 20%, rgba(254, 100, 11, 0.10) 0px, transparent 50%),
+    radial-gradient(at 55% 95%, rgba(223, 142, 29, 0.10) 0px, transparent 50%),
+    radial-gradient(at 12% 82%, rgba(23, 146, 153, 0.10) 0px, transparent 50%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+#app, .status-page {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3, .title {
+  color: var(--sf-text);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--sf-accent-2);
+}
+
+a:hover {
+  color: var(--sf-accent);
+}
+
+.shadow-box,
+.status-page .shadow-box,
+.status-page .monitor-list {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--sf-border);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(220, 138, 120, 0.10),
+    0 12px 36px -22px rgba(220, 138, 120, 0.35),
+    0 0 48px -32px rgba(254, 100, 11, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.status-page .monitor-list .monitor-list-item,
+.status-page .monitor-list .item {
+  border-bottom: 1px solid rgba(220, 138, 120, 0.12);
+  transition: background-color 0.2s ease;
+}
+
+.status-page .monitor-list .monitor-list-item:hover,
+.status-page .monitor-list .item:hover {
+  background-color: rgba(220, 138, 120, 0.12) !important;
+}
+
+.monitor-list .item:hover {
+  background-color: rgba(220, 138, 120, 0.12) !important;
+}
+
+.status-page .monitor-list .monitor-list-item.up,
+.status-page .monitor-list .monitor-list-item.ok,
+.status-page .monitor-list .monitor-list-item.status-up,
+.status-page .monitor-list .monitor-list-item.status-ok,
+.status-page .monitor-list .monitor-list-item.success {
+  background-color: rgba(220, 138, 120, 0.12) !important;
+}
+
+.status-page .monitor-list .monitor-list-item:last-child,
+.status-page .monitor-list .item:last-child {
+  border-bottom: none;
+}
+
+.badge, .status-page .badge {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge-success, .badge-green {
+  background: rgba(220, 138, 120, 0.16);
+  color: var(--sf-accent);
+  border: 1px solid rgba(220, 138, 120, 0.32);
+}
+
+.badge-up, .badge-ok, .badge-status-up, .badge-status-ok {
+  background: rgba(220, 138, 120, 0.16) !important;
+  color: var(--sf-accent) !important;
+  border: 1px solid rgba(220, 138, 120, 0.32) !important;
+}
+
+.badge-danger, .badge-red {
+  background: rgba(210, 15, 57, 0.12);
+  color: var(--sf-danger);
+  border: 1px solid rgba(210, 15, 57, 0.22);
+}
+
+.badge-warning, .badge-yellow {
+  background: rgba(223, 142, 29, 0.14);
+  color: var(--sf-warning);
+  border: 1px solid rgba(223, 142, 29, 0.24);
+}
+
+.badge-danger, .badge-red,
+.badge-down, .badge-fail, .badge-failed {
+  background: rgba(210, 15, 57, 0.12) !important;
+  color: var(--sf-danger) !important;
+  border: 1px solid rgba(210, 15, 57, 0.22) !important;
+}
+
+.btn,
+.btn-primary,
+.status-page .btn-primary {
+  background-image: linear-gradient(135deg, var(--sf-accent), var(--sf-accent-2), var(--sf-accent-3));
+  background-size: 200% 200%;
+  animation: sf-gradient 8s ease infinite;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -18px rgba(220, 138, 120, 0.45);
+}
+
+.btn:hover,
+.btn-primary:hover {
+  filter: brightness(1.04);
+}
+
+.btn-secondary, .btn-outline-secondary {
+  background: transparent;
+  color: var(--sf-text);
+  border: 1px solid rgba(220, 138, 120, 0.35);
+  border-radius: 999px;
+}
+
+.text-muted, .small, small {
+  color: var(--sf-muted);
+}
+
+.code, code, pre, .font-mono {
+  font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", monospace;
+}
+
+.heartbeat, .beat {
+  border-radius: 6px;
+}
+
+.heartbeat.up, .beat.up,
+.heartbeat.ok, .beat.ok,
+.beat-up, .beat-ok {
+  background: var(--sf-accent) !important;
+}
+
+.status-page .monitor-list .beat.up,
+.status-page .monitor-list .beat.ok,
+.status-page .monitor-list .beat-up,
+.status-page .monitor-list .beat-ok,
+.status-page .monitor-list .heartbeat.up,
+.status-page .monitor-list .heartbeat.ok,
+.status-page .monitor-list .heartbeat-bar.up,
+.status-page .monitor-list .heartbeat-bar.ok,
+.status-page .monitor-list .bar.up,
+.status-page .monitor-list .bar.ok {
+  background: var(--sf-accent) !important;
+}
+
+.hp-bar-big .beat,
+.status-page .beat,
+.status-page .heartbeat-bar,
+.status-page .bar {
+  background-color: var(--sf-accent) !important;
+}
+
+.hp-bar-big .beat.down,
+.hp-bar-big .beat.failed,
+.hp-bar-big .beat.fail,
+.hp-bar-big .beat.error,
+.hp-bar-big .beat[data-status="down"],
+.hp-bar-big .beat[data-status="fail"],
+.hp-bar-big .beat[data-status="failed"],
+.hp-bar-big .beat[data-status="dead"],
+.status-page .beat.down,
+.status-page .beat.failed,
+.status-page .beat.fail,
+.status-page .beat.error,
+.status-page .bar.down,
+.status-page .bar.failed,
+.status-page .bar.fail,
+.status-page .bar.error,
+.status-page .heartbeat-bar.down,
+.status-page .heartbeat-bar.failed,
+.status-page .heartbeat-bar.fail,
+.status-page .heartbeat-bar.error {
+  background-color: var(--sf-danger) !important;
+}
+
+.bg-primary {
+  background-color: var(--sf-accent) !important;
+}
+
+.bg-danger {
+  background-color: var(--sf-danger) !important;
+}
+
+.overall-status .ok {
+  color: var(--sf-accent) !important;
+}
+
+.text-success,
+.text-green,
+.status-up,
+.status-ok,
+.ok {
+  color: var(--sf-accent) !important;
+}
+
+.overall-status .down,
+.overall-status .fail,
+.overall-status .failed {
+  color: var(--sf-danger) !important;
+}
+
+.heartbeat.down, .beat.down {
+  background: var(--sf-danger) !important;
+}
+
+.heartbeat.fail, .beat.fail,
+.heartbeat.failed, .beat.failed,
+.heartbeat.error, .beat.error,
+.heartbeat[data-status="down"], .beat[data-status="down"] {
+  background: var(--sf-danger) !important;
+}
+
+.heartbeat.pending, .beat.pending {
+  background: var(--sf-warning);
+}

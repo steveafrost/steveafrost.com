@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* ── Variables ─────────────────────────────────────── */
+  :root {
+    --coral:        #eb7363;
+    --coral-light:  #fdf2f0;
+    --coral-fade:   #f4a898;
+    --dark:         #111827;
+    --gray-50:      #F9FAFB;
+    --gray-100:     #F3F4F6;
+    --gray-200:     #E5E7EB;
+    --gray-500:     #6B7280;
+    --gray-700:     #374151;
+    --white:        #ffffff;
+  }
+
+  /* ── Reset ─────────────────────────────────────────── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: $font_name, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: $font_size;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero Header ───────────────────────────────────── */
+  #hero {
+    background: var(--dark);
+    width: 100%;
+    padding: 32px 40px;
+    display: table;
+  }
+
+  #hero-left {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+  }
+
+  #hero-right {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+    text-align: right;
+  }
+
+  #hero-logo img {
+    max-height: 52px;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  #hero-company-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.2px;
+  }
+
+  #hero-company-meta {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 3px;
+    line-height: 1.6;
+  }
+
+  #hero-report-label {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--coral);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  #hero-report-date {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  /* ── Accent Bar ────────────────────────────────────── */
+  #accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--coral) 0%, var(--coral-fade) 100%);
+    width: 100%;
+  }
+
+  /* ── Content Area ──────────────────────────────────── */
+  #content {
+    padding: 36px 40px 0;
+  }
+
+  /* ── From / To ─────────────────────────────────────── */
+  #parties {
+    display: table;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  #from-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding-right: 32px;
+  }
+
+  #to-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+  }
+
+  .party-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 8px;
+  }
+
+  /* IN populates these divs — style their contents */
+  #company-details,
+  #company-address,
+  #vendor-details {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.8;
+  }
+
+  #company-details p:first-child,
+  #vendor-details p:first-child {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  /* ── Expense Details ────────────────────────────────── */
+  #expense-details {
+    display: table;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .expense-details-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding-right: 32px;
+  }
+
+  .expense-details-col:last-child {
+    padding-right: 0;
+  }
+
+  .expense-field {
+    margin-bottom: 16px;
+  }
+
+  .expense-field-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 4px;
+  }
+
+  .expense-field-value {
+    font-size: 13px;
+    color: var(--gray-700);
+  }
+
+  /* ── Expenses Table (multiple expenses) ────────────── */
+  #expenses-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  #expenses-table thead tr {
+    background: var(--dark);
+  }
+
+  #expenses-table thead th {
+    padding: 11px 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: left;
+  }
+
+  #expenses-table thead th.right {
+    text-align: right;
+  }
+
+  #expenses-table tbody tr.odd {
+    background: var(--white);
+  }
+
+  #expenses-table tbody tr.even {
+    background: var(--gray-50);
+  }
+
+  #expenses-table tbody td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--dark);
+    vertical-align: top;
+  }
+
+  #expenses-table tbody td.right {
+    text-align: right;
+  }
+
+  /* ── Totals ─────────────────────────────────────────── */
+  #totals-wrapper {
+    display: table;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+
+  #totals-spacer {
+    display: table-cell;
+    width: 60%;
+  }
+
+  #totals-block {
+    display: table-cell;
+    width: 40%;
+    vertical-align: top;
+  }
+
+  #totals-block table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  #totals-block table td {
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--gray-700);
+  }
+
+  #totals-block table td.totals-label {
+    text-align: left;
+  }
+
+  #totals-block table td.totals-value {
+    text-align: right;
+    font-weight: 600;
+  }
+
+  #totals-block table tr.totals-separator td {
+    border-top: 2px solid var(--gray-200);
+    padding-top: 12px;
+  }
+
+  #totals-block table tr.totals-grand td {
+    background: var(--coral);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 13px 14px;
+  }
+
+  /* ── Notes / Terms ─────────────────────────────────── */
+  #notes-terms {
+    display: table;
+    width: 100%;
+    padding: 0 40px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--gray-200);
+    padding-top: 24px;
+    margin-top: 0;
+  }
+
+  #notes-col, #terms-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    padding-right: 24px;
+  }
+
+  #terms-col {
+    padding-right: 0;
+    padding-left: 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+
+  .section-text {
+    font-size: 12px;
+    color: var(--gray-500);
+    line-height: 1.8;
+  }
+
+  /* ── Footer Tagline ────────────────────────────────── */
+  #footer-tagline {
+    margin: 24px 40px 40px;
+    padding: 14px 18px;
+    background: var(--coral-light);
+    border-left: 3px solid var(--coral);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Hero Header ──────────────────────────────────────── -->
+<div id="hero">
+  <div id="hero-left">
+    <div id="hero-logo"><img src="$company.logo" alt="$company.name"></div>
+    <div id="hero-company-name">$company.name</div>
+    <div id="hero-company-meta">
+      $company.email
+    </div>
+  </div>
+  <div id="hero-right">
+    <div id="hero-report-label">Expense Report</div>
+    <div id="hero-report-date">$expense.date</div>
+  </div>
+</div>
+
+<!-- ── Coral Accent Bar ─────────────────────────────────── -->
+<div id="accent-bar"></div>
+
+<!-- ── Content ──────────────────────────────────────────── -->
+<div id="content">
+
+  <!-- From / To -->
+  <div id="parties">
+    <div id="from-col">
+      <div class="party-label">Company</div>
+      <div id="company-details"></div>
+      <div id="company-address"></div>
+    </div>
+    <div id="to-col">
+      <div class="party-label">Vendor</div>
+      <div id="vendor-details"></div>
+    </div>
+  </div>
+
+  <!-- Expense Details (single expense view) -->
+  <ninja>
+  {% if expenses is defined and expenses is not empty %}
+  {% set expense = expenses|first %}
+  <div id="expense-details">
+    <div class="expense-details-col">
+      <div class="expense-field">
+        <div class="expense-field-label">Category</div>
+        <div class="expense-field-value">{{ expense.category }}</div>
+      </div>
+      <div class="expense-field">
+        <div class="expense-field-label">Date</div>
+        <div class="expense-field-value">{{ expense.date }}</div>
+      </div>
+      <div class="expense-field">
+        <div class="expense-field-label">Amount</div>
+        <div class="expense-field-value">{{ expense.amount }}</div>
+      </div>
+    </div>
+    <div class="expense-details-col">
+      <div class="expense-field">
+        <div class="expense-field-label">Payment Date</div>
+        <div class="expense-field-value">{{ expense.payment_date }}</div>
+      </div>
+      <div class="expense-field">
+        <div class="expense-field-label">Transaction Reference</div>
+        <div class="expense-field-value">{{ expense.transaction_reference }}</div>
+      </div>
+      {% if expense.tax_name1 %}
+      <div class="expense-field">
+        <div class="expense-field-label">Tax</div>
+        <div class="expense-field-value">{{ expense.tax_name1 }} ({{ expense.tax_rate1 }}%)</div>
+      </div>
+      {% endif %}
+      {% if expense.tax_name2 %}
+      <div class="expense-field">
+        <div class="expense-field-label">Tax 2</div>
+        <div class="expense-field-value">{{ expense.tax_name2 }} ({{ expense.tax_rate2 }}%)</div>
+      </div>
+      {% endif %}
+      {% if expense.tax_name3 %}
+      <div class="expense-field">
+        <div class="expense-field-label">Tax 3</div>
+        <div class="expense-field-value">{{ expense.tax_name3 }} ({{ expense.tax_rate3 }}%)</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  </ninja>
+
+  <!-- Expenses Table (multiple expenses) -->
+  <ninja>
+  {% if expenses is defined and expenses|length > 1 %}
+  <table id="expenses-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Date</th>
+        <th class="right">Amount</th>
+        <th class="right">Tax</th>
+        <th class="right">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for expense in expenses %}
+      <tr class="{% if loop.index is odd %}odd{% else %}even{% endif %}">
+        <td>{{ expense.category }}</td>
+        <td>{{ expense.date }}</td>
+        <td class="right">{{ expense.amount }}</td>
+        <td class="right">{{ expense.tax_amount }}</td>
+        <td class="right">{{ expense.amount_raw + (expense.tax_amount_raw or 0) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  </ninja>
+
+  <!-- Totals -->
+  <div id="totals-wrapper">
+    <div id="totals-spacer"></div>
+    <div id="totals-block">
+      <table>
+        <tr class="totals-separator">
+          <td class="totals-label">Subtotal</td>
+          <td class="totals-value">$subtotal</td>
+        </tr>
+        <ninja>
+        {% if expenses is defined and expenses is not empty %}
+        {% set expense = expenses|first %}
+        {% if expense.tax_amount_raw > 0 %}
+        <tr>
+          <td class="totals-label">Tax</td>
+          <td class="totals-value">{{ expense.tax_amount }}</td>
+        </tr>
+        {% endif %}
+        {% endif %}
+        </ninja>
+        <tr class="totals-grand">
+          <td class="totals-label">Total</td>
+          <td class="totals-value">$total</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- ── Notes ────────────────────────────────────────────── -->
+<ninja>
+{% if expenses is defined and expenses is not empty %}
+{% set expense = expenses|first %}
+{% if expense.public_notes %}
+<div id="notes-terms" style="padding: 24px 40px 0;">
+  <div id="notes-col">
+    <div class="section-label">Notes</div>
+    <div class="section-text">{{ expense.public_notes }}</div>
+  </div>
+</div>
+{% endif %}
+{% endif %}
+</ninja>
+
+</body>
+</html>

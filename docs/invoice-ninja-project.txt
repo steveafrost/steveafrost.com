@@ -1,0 +1,53 @@
+
+$company.name
+$company.email
+PROJECT
+$project.name
+
+{% if projects is defined and projects is not empty %} {% set project = projects|first %}
+DUE DATE
+{{ project.due_date }}
+TASK RATE
+{{ project.task_rate }}
+HOURS
+{{ project.current_hours }} / {{ project.budgeted_hours }}
+
+{{ ((project.current_hours / project.budgeted_hours * 100)|round(1) if project.budgeted_hours > 0 else 0) }}% Complete
+STATUS
+Active
+{% endif %}
+CLIENT
+
+PROJECT NOTES
+{% if projects is defined and projects is not empty %} {% set project = projects|first %}
+{{ project.public_notes }}
+{% endif %}
+{% if projects is defined and projects is not empty %} {% set project = projects|first %} {% if project.tasks %} {% set rowIndex = 0 %} {% for task in project.tasks %} {% if task.time_log %} {% for log in task.time_log %} {% set rowIndex = rowIndex + 1 %} {% endfor %} {% endif %} {% endfor %}
+DATE
+DESCRIPTION
+USER
+DURATION
+{{ log.start_date }}
+{{ log.description }}
+{{ task.user.name }}
+{{ log.duration }}
+{% endif %} {% endif %}
+
+{% if projects is defined and projects is not empty %} {% set project = projects|first %} {% endif %} {% if projects is defined and projects is not empty %} {% set project = projects|first %} {% endif %} {% if projects is defined and projects is not empty %} {% set project = projects|first %} {% endif %}
+Total Hours
+{{ project.current_hours }}
+Total Budgeted
+{{ project.budgeted_hours }}
+Remaining
+{{ project.budgeted_hours - project.current_hours }}
+{% if projects is defined and projects is not empty %} {% set project = projects|first %} {% if project.public_notes or project.private_notes %}
+{% if project.public_notes %}
+PUBLIC NOTES
+{{ project.public_notes }}
+{% endif %} {% if project.private_notes %}
+PRIVATE DETAILS
+{{ project.private_notes }}
+{% endif %}
+{% endif %} {% endif %} {% if projects is defined and projects is not empty %} {% set project = projects|first %}
+Report generated {{ "now"|date('Y-m-d') }}
+{% endif %}

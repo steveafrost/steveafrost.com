@@ -1,6 +1,7 @@
 ---
 title: "Five Projects Later: What I Actually Think About Tailwind CSS"
 date: 2025-08-18
+description: "After five projects with Tailwind CSS, here's what genuinely works, what still feels awkward, and when I'd choose it over something else."
 tags:
   - tailwind
   - css
@@ -45,9 +46,9 @@ theme: {
   extend: {
     colors: {
       coral: {
-        300: '#fca5a5',
-        400: '#f87171',
-        500: '#ef4444',
+        300: '#f4a898',
+        400: '#eb7363',
+        500: '#d4573f',
       }
     }
   }
@@ -80,7 +81,7 @@ Beyond the typography plugin, I've rarely reached for `@apply`. If I'm tempted t
 
 ## What I Still Don't Love
 
-**Long class strings are hard to scan visually.** Tooling helps — Tailwind's VS Code extension sorts classes and provides autocomplete — but a 15-utility class attribute is still harder to parse at a glance than a semantic class name like `.show-card`. I've accepted this trade-off, but I understand why it bothers people.
+**Long class strings are hard to scan visually.** Tooling helps — the Tailwind CSS IntelliSense extension provides autocomplete, and the Prettier plugin (`prettier-plugin-tailwindcss`) keeps classes in a consistent order — but a 15-utility class attribute is still harder to parse at a glance than a semantic class name like `.show-card`. I've accepted this trade-off, but I understand why it bothers people.
 
 **Tailwind is a dependency.** My CSS is now inseparable from Tailwind's utility framework. If the project died or made a breaking change, migration would be painful. The same is true of any framework, but CSS feels like it should be more portable. In practice, Tailwind has been stable and well-maintained, so this is more a philosophical concern than a practical one.
 

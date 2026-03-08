@@ -1,66 +1,36 @@
 ---
 /**
- * Faceted crystal logo — geometric gem with internal facet lines.
- * The coral-to-amber gradient shifts across faces to create depth.
+ * Frost crystal mark — asymmetric geometric facets matching the invoice logo.
+ * Icon-only, no wordmark.
  */
 ---
 
 <svg
   class="logo-mark"
-  viewBox="0 0 36 36"
+  viewBox="0 0 72 72"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
 >
   <defs>
-    <linearGradient id="logo-grad" x1="4" y1="2" x2="32" y2="34" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#ED6A5E" />
-      <stop offset="50%" stop-color="#E8836B" />
-      <stop offset="100%" stop-color="#F4A261" />
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eb7363"/>
+      <stop offset="100%" stop-color="#f4a898"/>
     </linearGradient>
   </defs>
 
-  <!-- Outer crystal silhouette -->
-  <path
-    d="M18 2 L30 10 L30 26 L18 34 L6 26 L6 10 Z"
-    fill="url(#logo-grad)"
-    opacity="0.2"
-  />
-
-  <!-- Top-left face -->
-  <path d="M18 2 L6 10 L18 18 Z" fill="url(#logo-grad)" opacity="0.55" />
-
-  <!-- Top-right face -->
-  <path d="M18 2 L30 10 L18 18 Z" fill="url(#logo-grad)" opacity="0.75" />
-
-  <!-- Right face -->
-  <path d="M30 10 L30 26 L18 18 Z" fill="url(#logo-grad)" opacity="0.5" />
-
-  <!-- Bottom-right face -->
-  <path d="M30 26 L18 34 L18 18 Z" fill="url(#logo-grad)" opacity="0.35" />
-
-  <!-- Bottom-left face -->
-  <path d="M18 34 L6 26 L18 18 Z" fill="url(#logo-grad)" opacity="0.6" />
-
-  <!-- Left face -->
-  <path d="M6 26 L6 10 L18 18 Z" fill="url(#logo-grad)" opacity="0.45" />
-
-  <!-- Facet edge lines -->
-  <path
-    d="M18 2 L18 18 M6 10 L18 18 M30 10 L18 18 M30 26 L18 18 M18 34 L18 18 M6 26 L18 18"
-    stroke="url(#logo-grad)"
-    stroke-width="0.6"
-    opacity="0.4"
-  />
-
-  <!-- Outer edge highlight -->
-  <path
-    d="M18 2 L30 10 L30 26 L18 34 L6 26 L6 10 Z"
-    stroke="url(#logo-grad)"
-    stroke-width="0.8"
-    opacity="0.6"
-    fill="none"
-  />
+  <!-- Top-left facet -->
+  <polygon points="32,0 52,16 32,32" fill="#eb7363"/>
+  <!-- Top-right facet -->
+  <polygon points="32,0 52,16 64,4" fill="#f4a898" opacity="0.85"/>
+  <!-- Bottom-left facet -->
+  <polygon points="0,28 20,44 32,32" fill="#f4a898" opacity="0.7"/>
+  <!-- Center facet -->
+  <polygon points="32,32 52,16 64,32 52,48" fill="url(#logo-grad)"/>
+  <!-- Bottom facet -->
+  <polygon points="32,32 20,44 32,60 52,48" fill="#eb7363" opacity="0.9"/>
+  <!-- Bottom-right facet -->
+  <polygon points="52,48 32,60 48,64 64,52" fill="#f4a898" opacity="0.65"/>
 </svg>
 
 <style>
@@ -68,12 +38,12 @@
     width: 2rem;
     height: 2rem;
     transition: transform 0.3s ease, filter 0.3s ease;
-    filter: drop-shadow(0 0 6px rgba(237, 106, 94, 0.15));
+    filter: drop-shadow(0 0 6px rgba(235, 115, 99, 0.15));
   }
 
   :global(.group:hover) .logo-mark {
     transform: scale(1.12) rotate(-4deg);
-    filter: drop-shadow(0 0 10px rgba(237, 106, 94, 0.35));
+    filter: drop-shadow(0 0 10px rgba(235, 115, 99, 0.35));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -82,7 +52,7 @@
     }
     :global(.group:hover) .logo-mark {
       transform: none;
-      filter: drop-shadow(0 0 6px rgba(237, 106, 94, 0.15));
+      filter: drop-shadow(0 0 6px rgba(235, 115, 99, 0.15));
     }
   }
 </style>

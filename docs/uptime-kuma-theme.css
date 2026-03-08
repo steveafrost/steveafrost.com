@@ -1,0 +1,161 @@
+/* SteveAFrost - Uptime Kuma Theme (Light) */
+:root {
+  --sf-bg: #f7f2ee;
+  --sf-bg-2: #f1ebe6;
+  --sf-surface: #ffffff;
+  --sf-surface-2: #fbf7f3;
+  --sf-border: rgba(237, 106, 94, 0.22);
+  --sf-text: #2b2a33;
+  --sf-muted: #6b6573;
+
+  --sf-accent: #ED6A5E;
+  --sf-accent-2: #E8836B;
+  --sf-accent-3: #F4A261;
+
+  --sf-success: #3ea66d;
+  --sf-warning: #c39a38;
+  --sf-danger: #d05a77;
+  --sf-info: #3aa39a;
+}
+
+@keyframes sf-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html, body {
+  color: var(--sf-text);
+  background-color: var(--sf-bg);
+  font-family: "Inter", "SF Pro Text", "Segoe UI", sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(at 27% 37%, rgba(237, 106, 94, 0.08) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, rgba(232, 131, 107, 0.07) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, rgba(244, 162, 97, 0.06) 0px, transparent 50%),
+    radial-gradient(at 10% 80%, rgba(148, 226, 213, 0.06) 0px, transparent 50%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+#app, .status-page {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3, .title {
+  color: var(--sf-text);
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--sf-accent);
+}
+
+a:hover {
+  color: var(--sf-accent-2);
+}
+
+.shadow-box,
+.status-page .shadow-box,
+.status-page .monitor-list {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--sf-border);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(237, 106, 94, 0.06),
+    0 12px 36px -22px rgba(237, 106, 94, 0.35),
+    0 0 48px -32px rgba(232, 131, 107, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.status-page .monitor-list .monitor-list-item,
+.status-page .monitor-list .item {
+  border-bottom: 1px solid rgba(237, 106, 94, 0.08);
+}
+
+.status-page .monitor-list .monitor-list-item:last-child,
+.status-page .monitor-list .item:last-child {
+  border-bottom: none;
+}
+
+.badge, .status-page .badge {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge-success, .badge-green {
+  background: rgba(62, 166, 109, 0.14);
+  color: var(--sf-success);
+  border: 1px solid rgba(62, 166, 109, 0.24);
+}
+
+.badge-danger, .badge-red {
+  background: rgba(208, 90, 119, 0.14);
+  color: var(--sf-danger);
+  border: 1px solid rgba(208, 90, 119, 0.24);
+}
+
+.badge-warning, .badge-yellow {
+  background: rgba(195, 154, 56, 0.14);
+  color: var(--sf-warning);
+  border: 1px solid rgba(195, 154, 56, 0.24);
+}
+
+.btn,
+.btn-primary,
+.status-page .btn-primary {
+  background-image: linear-gradient(135deg, var(--sf-accent), var(--sf-accent-2), var(--sf-accent-3));
+  background-size: 200% 200%;
+  animation: sf-gradient 8s ease infinite;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -18px rgba(237, 106, 94, 0.45);
+}
+
+.btn:hover,
+.btn-primary:hover {
+  filter: brightness(1.04);
+}
+
+.btn-secondary, .btn-outline-secondary {
+  background: transparent;
+  color: var(--sf-text);
+  border: 1px solid rgba(237, 106, 94, 0.3);
+  border-radius: 999px;
+}
+
+.text-muted, .small, small {
+  color: var(--sf-muted);
+}
+
+.code, code, pre, .font-mono {
+  font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", monospace;
+}
+
+.heartbeat, .beat {
+  border-radius: 6px;
+}
+
+.heartbeat.up, .beat.up {
+  background: var(--sf-success);
+}
+
+.heartbeat.down, .beat.down {
+  background: var(--sf-danger);
+}
+
+.heartbeat.pending, .beat.pending {
+  background: var(--sf-warning);
+}

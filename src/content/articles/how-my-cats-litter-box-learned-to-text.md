@@ -1,6 +1,7 @@
 ---
 title: "How My Cat's Litter Box Learned to Text"
 date: 2026-02-18
+description: "How I built a Node.js webhook server that sends iMessage alerts when my cat uses the litter box—using AppleScript, launchd, and a healthy amount of cat-parent anxiety."
 tags:
   - applescript
   - launchd
@@ -126,6 +127,10 @@ A few things tripped me up that are worth knowing going in:
 **Automation permissions.** The first time `osascript` tries to control Messages, macOS will prompt you to allow it. If you're running through launchd, that prompt may never appear visibly. You need to manually grant permissions in System Settings > Privacy & Security > Automation before the service will work headlessly.
 
 **String quoting.** AppleScript strings use double quotes, and so does the JavaScript template literal wrapping the script. If your message contains quotes or special characters, they'll break the AppleScript syntax. Sanitizing input before interpolation is important.
+
+```js
+const safe = message.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+```
 
 **Node path in the plist.** If you use `nvm`, `node` won't be at `/usr/local/bin/node`. The plist needs the absolute path to the specific Node binary — something like `/Users/you/.nvm/versions/node/v22.14.0/bin/node`. Run `which node` in your shell and use that exact path.
 

@@ -1,6 +1,7 @@
 ---
 title: "Five Projects Later: What I Actually Think About Next.js"
 date: 2025-10-18
+description: "An honest take on Next.js after five production projects—what works, what frustrates, and whether I'd reach for it again."
 tags:
   - nextjs
   - react
@@ -44,7 +45,7 @@ On the tour sites, hero images and promotional banners went through the same pip
 
 **The caching story is confusing.** Next.js caches aggressively — `fetch` responses, rendered pages, even router state. The defaults have changed between versions, and understanding exactly what's cached and how to invalidate it requires reading docs carefully. I've been bitten by stale data appearing in development because a cached `fetch` didn't revalidate when I expected it to.
 
-**The framework moves fast.** Between my first and fifth project, the recommended patterns changed meaningfully. Pages Router to App Router, `getServerSideProps` to Server Components, `next export` to `output: 'export'`. Each change improved the framework, but it means tutorials from 18 months ago may steer you wrong.
+**The framework went through major changes between v12 and v14.** Pages Router to App Router, `getServerSideProps` to Server Components, `next export` to `output: 'export'`. Each change improved things, but it means tutorials from that era may steer you wrong — and there's a lot of them still floating around.
 
 ## Would I Use It Again?
 

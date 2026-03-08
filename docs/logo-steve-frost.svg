@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="360" height="80">
+  <defs>
+    <linearGradient id="coral-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fab387"/>
+      <stop offset="100%" stop-color="#f9e2af"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Abstract geometric "S" frost crystal -->
+  <g transform="translate(8, 8)">
+    <!-- Top-left facet -->
+    <polygon points="32,0 52,16 32,32" fill="#fab387"/>
+    <!-- Top-right facet -->
+    <polygon points="32,0 52,16 64,4" fill="#f9e2af" opacity="0.85"/>
+    <!-- Bottom-left facet -->
+    <polygon points="0,28 20,44 32,32" fill="#f9e2af" opacity="0.7"/>
+    <!-- Center facet -->
+    <polygon points="32,32 52,16 64,32 52,48" fill="url(#coral-grad)"/>
+    <!-- Bottom facet -->
+    <polygon points="32,32 20,44 32,60 52,48" fill="#fab387" opacity="0.9"/>
+    <!-- Bottom-right facet -->
+    <polygon points="52,48 32,60 48,64 64,52" fill="#f9e2af" opacity="0.65"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="88" y="38" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="1">STEVE</text>
+  <text x="88" y="66" font-family="'Inter', 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" font-weight="300" fill="#ffffff" letter-spacing="3">FROST</text>
+</svg>
