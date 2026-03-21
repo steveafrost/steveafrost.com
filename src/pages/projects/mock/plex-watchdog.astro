@@ -19,18 +19,23 @@ import MockBanner from '../../../components/MockBanner.astro';
     .terminal-dot.yellow{background:#febc2e}
     .terminal-dot.green{background:#28c840}
     .terminal-title{flex:1;text-align:center;font-size:13px;color:#71717a}
-    .terminal-body{padding:20px;font-size:14px;line-height:1.8;overflow-x:auto}
+    .terminal-body{padding:20px;font-size:13px;line-height:1.7;overflow-x:auto}
 
-    /* Prompt styles */
+    /* Shell script syntax highlighting */
+    .shebang{color:#f59e0b}
+    .comment{color:#71717a;font-style:italic}
+    .keyword{color:#c678dd}
+    .function{color:#61afef}
+    .string{color:#98c379}
+    .variable{color:#e06c75}
+    .builtin{color:#56b6c2}
     .prompt{color:#22c55e}
     .cmd{color:#e4e4e7}
-    .comment{color:#71717a}
     .output{color:#a1a1aa}
     .success{color:#22c55e}
     .warning{color:#f59e0b}
     .error{color:#ef4444}
     .info{color:#3b82f6}
-    .url{color:#a78bfa}
     .dim{opacity:0.6}
 
     .line{white-space:pre}
@@ -43,15 +48,6 @@ import MockBanner from '../../../components/MockBanner.astro';
     .feature p{font-size:13px;color:#71717a;line-height:1.6;font-family:-apple-system,sans-serif}
 
     h2{font-family:-apple-system,sans-serif;font-size:20px;color:#a1a1aa;margin-bottom:16px;font-weight:600}
-
-    /* Status indicator */
-    .status-bar{background:#18181b;border:1px solid #27272a;border-radius:8px;padding:16px;display:flex;align-items:center;gap:16px;margin-bottom:24px}
-    .status-indicator{width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-    .status-text{flex:1}
-    .status-label{font-size:12px;color:#71717a}
-    .status-value{font-size:14px;color:#e4e4e7}
-    .status-uptime{font-size:13px;color:#71717a}
   </style>
 </head>
 <body>
@@ -66,50 +62,112 @@ import MockBanner from '../../../components/MockBanner.astro';
         <span class="terminal-title">plex-watchdog — install</span>
       </div>
       <div class="terminal-body">
-        <div class="line"><span class="prompt">$ </span><span class="cmd">curl -sSL https://raw.githubusercontent.com/steveafrost/plex-watchdog-macos/main/install-watchdog.sh | bash</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">curl -fsSL https://raw.githubusercontent.com/steveafrost/plex-watchdog-macos/main/install-watchdog.sh | bash</span></div>
         <div class="line">&nbsp;</div>
-        <div class="line"><span class="info">ℹ</span> <span class="output">Installing Plex Watchdog...</span></div>
-        <div class="line"><span class="success">✓</span> <span class="output">Scripts installed to ~/.plex-watchdog/</span></div>
-        <div class="line"><span class="success">✓</span> <span class="output">LaunchAgent plist created</span></div>
-        <div class="line"><span class="success">✓</span> <span class="output">LaunchAgent loaded (plex-watchdog-macos)</span></div>
+        <div class="line"><span class="info">ℹ</span> <span class="output">Installing Plex Watchdog for macOS...</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Plex Media Server found at /Applications/</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Created LaunchAgents directory</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Copied watchdog scripts to ~/.plex-watchdog/</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Generated LaunchAgent plist</span></div>
+        <div class="line"><span class="success">✓</span> <span class="output">Loaded service: com.plex.watchdog</span></div>
         <div class="line">&nbsp;</div>
-        <div class="line"><span class="comment"># Check status</span></div>
         <div class="line"><span class="prompt">$ </span><span class="cmd">plex-watchdog status</span></div>
         <div class="line"><span class="success">●</span> <span class="output">Watchdog is running (PID: 12345)</span></div>
-        <div class="line"><span class="success">✓</span> <span class="output">Last check: 14:32:05 - Plex healthy</span></div>
       </div>
     </div>
 
-    <!-- Live status -->
-    <div class="status-bar">
-      <span class="status-indicator"></span>
-      <div class="status-text">
-        <div class="status-label">Plex Media Server</div>
-        <div class="status-value">Running & Healthy</div>
-      </div>
-      <span class="status-uptime">Uptime: 14d 3h 22m</span>
-    </div>
-
-    <!-- Watchdog log -->
+    <!-- Health check code -->
     <div class="terminal">
       <div class="terminal-bar">
         <span class="terminal-dot red"></span>
         <span class="terminal-dot yellow"></span>
         <span class="terminal-dot green"></span>
-        <span class="terminal-title">plex-watchdog — live log</span>
+        <span class="terminal-title">plex-watchdog.sh — health checks</span>
       </div>
       <div class="terminal-body">
-        <div class="line"><span class="dim">[2025-02-17 14:30:05]</span> <span class="success">Health check passed</span> <span class="dim">(process running, web UI responding)</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:31:05]</span> <span class="success">Health check passed</span> <span class="dim">(process running, web UI responding)</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:32:05]</span> <span class="success">Health check passed</span> <span class="dim">(process running, web UI responding)</span></div>
+        <div class="line"><span class="shebang">#!/bin/bash</span></div>
         <div class="line">&nbsp;</div>
-        <div class="line"><span class="comment"># Simulated crash recovery:</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:33:05]</span> <span class="warning">⚠ Plex not responding!</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:33:06]</span> <span class="error">Killing stale Plex processes...</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:33:09]</span> <span class="info">Starting Plex Media Server...</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:33:25]</span> <span class="success">✓ Plex web UI responding</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:33:25]</span> <span class="success">Recovery complete</span> <span class="dim">(took 20s)</span></div>
-        <div class="line"><span class="dim">[2025-02-17 14:34:05]</span> <span class="success">Health check passed</span> <span class="dim">(process running, web UI responding)</span></div>
+        <div class="line"><span class="comment"># Check if Plex process is running</span></div>
+        <div class="line"><span class="function">check_process</span>() {</div>
+        <div class="line">    <span class="keyword">if</span> <span class="builtin">pgrep</span> -x <span class="string">"Plex Media Server"</span> > /dev/null 2>&1; <span class="keyword">then</span></div>
+        <div class="line">        <span class="keyword">return</span> 0</div>
+        <div class="line">    <span class="keyword">else</span></div>
+        <div class="line">        <span class="keyword">return</span> 1</div>
+        <div class="line">    <span class="keyword">fi</span></div>
+        <div class="line">}</div>
+        <div class="line">&nbsp;</div>
+        <div class="line"><span class="comment"># Check if Plex web interface responds</span></div>
+        <div class="line"><span class="function">check_web_health</span>() {</div>
+        <div class="line">    <span class="keyword">local</span> <span class="variable">response</span></div>
+        <div class="line">    <span class="variable">response</span>=$(<span class="builtin">curl</span> -s -o /dev/null -w <span class="string">"%&lbrace;http_code&rbrace;"</span> \</div>
+        <div class="line">        <span class="string">"$HEALTH_CHECK_URL"</span> 2>/dev/null)</div>
+        <div class="line">    <span class="keyword">if</span> [ <span class="string">"<span class="variable">$response</span>"</span> = <span class="string">"200"</span> ]; <span class="keyword">then</span></div>
+        <div class="line">        <span class="keyword">return</span> 0</div>
+        <div class="line">    <span class="keyword">else</span></div>
+        <div class="line">        <span class="keyword">return</span> 1</div>
+        <div class="line">    <span class="keyword">fi</span></div>
+        <div class="line">}</div>
+      </div>
+    </div>
+
+    <!-- Restart logic code -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">plex-watchdog.sh — restart logic</span>
+      </div>
+      <div class="terminal-body">
+        <div class="line"><span class="function">restart_plex</span>() {</div>
+        <div class="line">    <span class="function">log</span> <span class="string">"Restarting Plex Media Server..."</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line">    <span class="comment"># Kill existing processes</span></div>
+        <div class="line">    <span class="builtin">pkill</span> -x <span class="string">"Plex Media Server"</span> 2>/dev/null</div>
+        <div class="line">    <span class="builtin">sleep</span> 2</div>
+        <div class="line">    <span class="builtin">pkill</span> -9 -x <span class="string">"Plex Media Server"</span> 2>/dev/null</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">    <span class="comment"># Wait for clean shutdown</span></div>
+        <div class="line">    <span class="builtin">sleep</span> 3</div>
+        <div class="line">&nbsp;</div>
+        <div class="line">    <span class="comment"># Start Plex</span></div>
+        <div class="line">    <span class="builtin">open</span> -a <span class="string">"Plex Media Server"</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line">    <span class="comment"># Wait for startup and verify</span></div>
+        <div class="line">    <span class="keyword">local</span> <span class="variable">count</span>=0</div>
+        <div class="line">    <span class="keyword">while</span> [ <span class="variable">$count</span> -lt <span class="variable">$MAX_STARTUP_TIME</span> ]; <span class="keyword">do</span></div>
+        <div class="line">        <span class="builtin">sleep</span> 1</div>
+        <div class="line">        <span class="keyword">if</span> <span class="function">check_web_health</span>; <span class="keyword">then</span></div>
+        <div class="line">            <span class="function">log</span> <span class="string">"✓ Plex restarted successfully!"</span></div>
+        <div class="line">            <span class="keyword">return</span> 0</div>
+        <div class="line">        <span class="keyword">fi</span></div>
+        <div class="line">        <span class="variable">count</span>=$((<span class="variable">count</span> + 1))</div>
+        <div class="line">    <span class="keyword">done</span></div>
+        <div class="line">}</div>
+      </div>
+    </div>
+
+    <!-- Control commands -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">plex-watchdog-ctl — commands</span>
+      </div>
+      <div class="terminal-body">
+        <div class="line"><span class="prompt">$ </span><span class="cmd">plex-watchdog status</span></div>
+        <div class="line"><span class="success">●</span> <span class="output">Running — PID 12345, last check: 14:32:05</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">plex-watchdog logs</span></div>
+        <div class="line"><span class="dim">[2025-02-17 14:30:05]</span> <span class="success">Health check passed</span></div>
+        <div class="line"><span class="dim">[2025-02-17 14:31:05]</span> <span class="success">Health check passed</span></div>
+        <div class="line"><span class="dim">[2025-02-17 14:32:05]</span> <span class="warning">⚠ Plex not responding</span></div>
+        <div class="line"><span class="dim">[2025-02-17 14:32:08]</span> <span class="success">✓ Plex restarted</span></div>
+        <div class="line">&nbsp;</div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">plex-watchdog test-crash</span></div>
+        <div class="line"><span class="warning">⚠</span> <span class="output">Killing Plex to test recovery...</span></div>
+        <div class="line"><span class="info">ℹ</span> <span class="output">Watchdog should restart within 60 seconds</span></div>
       </div>
     </div>
 
@@ -123,17 +181,17 @@ import MockBanner from '../../../components/MockBanner.astro';
       <div class="feature">
         <div class="feature-icon">🔄</div>
         <h3>Auto Recovery</h3>
-        <p>Kills stale processes, waits for clean shutdown, then restarts Plex and verifies it's back online.</p>
+        <p>Kills stale processes gracefully, waits for clean shutdown, then restarts Plex and verifies it's back online.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📝</div>
         <h3>Crash Logging</h3>
-        <p>All crashes and recoveries logged with timestamps. Track your Plex stability over time.</p>
+        <p>All crashes and recoveries logged with timestamps to ~/Library/Logs/PlexWatchdog/ for tracking stability.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">⚡</div>
         <h3>LaunchAgent</h3>
-        <p>Runs as a native macOS LaunchAgent. Starts automatically on boot, survives logouts.</p>
+        <p>Runs as a native macOS LaunchAgent. Starts automatically on boot and survives user logouts.</p>
       </div>
     </div>
   </div>
