@@ -113,6 +113,26 @@ const projects: readonly Project[] = [
     mockUrl: '/projects/mock/the-ride-bus-schedule',
     role: 'Solo Developer',
   },
+  {
+    slug: 'parcel-tracker',
+    name: 'Parcel Tracker',
+    description: 'Self-hosted package tracking service that automatically reads shipping emails from iCloud Mail and submits tracking numbers to Parcel app.',
+    language: 'TypeScript',
+    tech: ['TypeScript', 'Express', 'SQLite', 'IMAP', 'Docker'],
+    github: 'https://github.com/steveafrost/parcel-tracker',
+    mockUrl: '/projects/mock/parcel-tracker',
+    role: 'Solo Developer',
+  },
+  {
+    slug: 'plex-watchdog',
+    name: 'Plex Watchdog',
+    description: 'Automatic crash recovery for Plex Media Server on macOS. Monitors every 60 seconds, detects crashes, and auto-restarts Plex with logging.',
+    language: 'Shell',
+    tech: ['Shell', 'LaunchAgent', 'macOS'],
+    github: 'https://github.com/steveafrost/plex-watchdog-macos',
+    mockUrl: '/projects/mock/plex-watchdog',
+    role: 'Solo Developer',
+  },
 ] as const;
 ---
 
