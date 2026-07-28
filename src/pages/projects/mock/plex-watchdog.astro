@@ -88,16 +88,16 @@ import MockBanner from '../../../components/MockBanner.astro';
         <div class="line"><span class="shebang">#!/bin/bash</span></div>
         <div class="line">&nbsp;</div>
         <div class="line"><span class="comment"># Check if Plex process is running</span></div>
-        <div class="line"><span class="function">check_process</span>() {</div>
+        <div class="line"><span class="function">check_process</span>() {"{"}</div>
         <div class="line">    <span class="keyword">if</span> <span class="builtin">pgrep</span> -x <span class="string">"Plex Media Server"</span> > /dev/null 2>&1; <span class="keyword">then</span></div>
         <div class="line">        <span class="keyword">return</span> 0</div>
         <div class="line">    <span class="keyword">else</span></div>
         <div class="line">        <span class="keyword">return</span> 1</div>
         <div class="line">    <span class="keyword">fi</span></div>
-        <div class="line">}</div>
+        <div class="line">{"}"}</div>
         <div class="line">&nbsp;</div>
         <div class="line"><span class="comment"># Check if Plex web interface responds</span></div>
-        <div class="line"><span class="function">check_web_health</span>() {</div>
+        <div class="line"><span class="function">check_web_health</span>() {"{"}</div>
         <div class="line">    <span class="keyword">local</span> <span class="variable">response</span></div>
         <div class="line">    <span class="variable">response</span>=$(<span class="builtin">curl</span> -s -o /dev/null -w <span class="string">"%&lbrace;http_code&rbrace;"</span> \</div>
         <div class="line">        <span class="string">"$HEALTH_CHECK_URL"</span> 2>/dev/null)</div>
@@ -106,7 +106,7 @@ import MockBanner from '../../../components/MockBanner.astro';
         <div class="line">    <span class="keyword">else</span></div>
         <div class="line">        <span class="keyword">return</span> 1</div>
         <div class="line">    <span class="keyword">fi</span></div>
-        <div class="line">}</div>
+        <div class="line">{"}"}</div>
       </div>
     </div>
 
@@ -119,7 +119,7 @@ import MockBanner from '../../../components/MockBanner.astro';
         <span class="terminal-title">plex-watchdog.sh — restart logic</span>
       </div>
       <div class="terminal-body">
-        <div class="line"><span class="function">restart_plex</span>() {</div>
+        <div class="line"><span class="function">restart_plex</span>() {"{"}</div>
         <div class="line">    <span class="function">log</span> <span class="string">"Restarting Plex Media Server..."</span></div>
         <div class="line">&nbsp;</div>
         <div class="line">    <span class="comment"># Kill existing processes</span></div>
@@ -143,7 +143,7 @@ import MockBanner from '../../../components/MockBanner.astro';
         <div class="line">        <span class="keyword">fi</span></div>
         <div class="line">        <span class="variable">count</span>=$((<span class="variable">count</span> + 1))</div>
         <div class="line">    <span class="keyword">done</span></div>
-        <div class="line">}</div>
+        <div class="line">{"}"}</div>
       </div>
     </div>
 

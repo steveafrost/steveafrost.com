@@ -1,6 +1,74 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-coral-50: #fef2f1;
+  --color-coral-100: #fde6e4;
+  --color-coral-200: #f9c5c1;
+  --color-coral-300: #f4a29c;
+  --color-coral-350: #e8836b;
+  --color-coral-400: #ed6a5e;
+  --color-coral-500: #d94f42;
+  --color-coral-600: #c03a2e;
+  --color-coral-700: #9e2e24;
+  --color-coral-800: #7a261f;
+  --color-coral-900: #5c1f1a;
+
+  --color-ctp-base: #1e1e2e;
+  --color-ctp-mantle: #181825;
+  --color-ctp-crust: #11111b;
+  --color-ctp-surface0: #313244;
+  --color-ctp-surface1: #45475a;
+  --color-ctp-surface2: #585b70;
+  --color-ctp-overlay0: #6c7086;
+  --color-ctp-overlay1: #7f849c;
+  --color-ctp-overlay2: #9399b2;
+  --color-ctp-subtext0: #a6adc8;
+  --color-ctp-subtext1: #bac2de;
+  --color-ctp-text: #cdd6f4;
+  --color-ctp-rosewater: #f5e0dc;
+  --color-ctp-flamingo: #f2cdcd;
+  --color-ctp-mauve: #cba6f7;
+  --color-ctp-maroon: #eba0ac;
+  --color-ctp-yellow: #f9e2af;
+  --color-ctp-lavender: #b4befe;
+  --color-ctp-teal: #94e2d5;
+  --color-ctp-green: #a6e3a1;
+
+  --font-sans: 'Inter', 'system-ui', '-apple-system', 'sans-serif';
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'monospace';
+
+  --animate-gradient: gradient 8s ease infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-fade-in: fadeIn 0.8s ease-out;
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 20px rgba(237, 106, 94, 0.15); }
+  100% { box-shadow: 0 0 30px rgba(232, 131, 107, 0.25); }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 /* Self-hosted Inter (latin) */
 @font-face {
@@ -69,15 +137,19 @@
 
 @layer base {
   html {
-    @apply scroll-smooth;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-ctp-base text-ctp-text antialiased;
+    background-color: var(--color-ctp-base);
+    color: var(--color-ctp-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    @apply bg-coral-400/30 text-white;
+    background-color: rgb(237 106 94 / 0.3);
+    color: white;
   }
 }
 
@@ -97,7 +169,9 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     background-image: linear-gradient(135deg, #ED6A5E, #E8836B, #F4A261);
     background-size: 300% 300%;
     animation: gradient 8s ease infinite;

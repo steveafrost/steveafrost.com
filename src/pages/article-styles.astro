@@ -48,7 +48,7 @@ const getReadingTime = (body: string) => {
               const min = getReadingTime(article.body ?? '');
               return (
                 <a
-                  href={`/articles/${article.slug}`}
+                  href={`/articles/${article.id}`}
                   class="group -mx-2 flex items-baseline gap-3 rounded px-2 py-1 font-mono text-sm transition-colors hover:bg-ctp-surface0/50"
                   style={`animation: slideUp 0.3s ease-out ${i * 50}ms both;`}
                 >
@@ -75,7 +75,7 @@ const getReadingTime = (body: string) => {
         {sortedArticles.map((article, i) => (
           <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
             <a
-              href={`/articles/${article.slug}`}
+              href={`/articles/${article.id}`}
               class="group flex items-start gap-5 py-5 transition-colors hover:bg-ctp-surface0/20 sm:gap-8"
             >
               <span class="shrink-0 text-4xl font-extrabold tabular-nums leading-none text-ctp-surface2 transition-colors group-hover:text-coral-400 sm:text-5xl">
@@ -107,7 +107,7 @@ const getReadingTime = (body: string) => {
           const isHero = i === 0;
           return (
             <a
-              href={`/articles/${article.slug}`}
+              href={`/articles/${article.id}`}
               class:list={[
                 "group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-white/5 bg-ctp-surface0/30 p-5 transition-all hover:border-white/10 hover:bg-ctp-surface0/50",
                 isHero ? "sm:col-span-2 sm:row-span-2 sm:p-8" : "",
@@ -162,7 +162,7 @@ const getReadingTime = (body: string) => {
           >
             <div class="absolute inset-y-0 left-0 w-1 rounded-full bg-ctp-surface2/40 transition-all group-hover:w-1.5 group-hover:bg-gradient-to-b group-hover:from-coral-400 group-hover:via-coral-350 group-hover:to-ctp-yellow" aria-hidden="true" />
             <a
-              href={`/articles/${article.slug}`}
+              href={`/articles/${article.id}`}
               class="block py-4 pl-5 pr-4 transition-colors hover:bg-ctp-surface0/30"
             >
               <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
@@ -201,7 +201,7 @@ const getReadingTime = (body: string) => {
           return (
             <li style={`animation: slideUp 0.4s ease-out ${i * 60}ms both;`}>
               <a
-                href={`/articles/${article.slug}`}
+                href={`/articles/${article.id}`}
                 class="group block rounded-xl border border-white/5 bg-ctp-surface0/30 px-3 py-4 transition-all duration-300 hover:border-white/10 hover:bg-ctp-surface0/50"
               >
                 <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">

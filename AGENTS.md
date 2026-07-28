@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Personal portfolio site for Steve Frost. Astro 5, Tailwind CSS 3, TypeScript strict mode, deployed on Vercel.
+Personal portfolio site for Steve Frost. Astro 7, Tailwind CSS 4, TypeScript strict mode, deployed on Vercel.
 
 ## Commands
 
@@ -15,8 +15,8 @@ npm run preview  # preview production build locally
 ```
 src/
 ├── components/       # Astro components (Bio, Logo, MockBanner)
+├── content.config.ts # Content collection schema
 ├── content/
-│   ├── config.ts     # Content collection schema
 │   └── articles/     # 56+ Markdown article files
 ├── layouts/
 │   └── MainLayout.astro  # Single shared layout
@@ -36,16 +36,16 @@ public/
 
 ## Stack
 
-- **Astro 5** — file-based routing, View Transitions (`ClientRouter`), prefetch all on viewport
+- **Astro 7** — file-based routing, View Transitions (`ClientRouter`), prefetch all on viewport
 - **TypeScript** — extends `astro/tsconfigs/strict`; no `any`, explicit return types
-- **Tailwind CSS 3** — custom `coral` and `ctp` (Catppuccin Mocha) color palettes; `@tailwindcss/typography` for article prose
+- **Tailwind CSS 4** — custom `coral` and `ctp` (Catppuccin Mocha) theme tokens; `@tailwindcss/typography` for article prose
 - **MDX** — articles support MDX via `@astrojs/mdx`
 - **Sitemap + RSS** — `@astrojs/sitemap`, `@astrojs/rss` integrations configured
 - **Vercel** — static output, `build.inlineStylesheets: 'always'`
 
 ## Content Collections
 
-Articles use a single `articles` collection defined in `src/content/config.ts`:
+Articles use a single `articles` collection defined in `src/content.config.ts`:
 
 ```ts
 schema: z.object({
