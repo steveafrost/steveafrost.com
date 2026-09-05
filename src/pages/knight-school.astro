@@ -1,0 +1,87 @@
+---
+// This standalone page avoids the portfolio layout's analytics and client router.
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Privacy information and family support for Knight School Chess, an offline chess learning app for iPad." />
+    <link rel="canonical" href="https://steveafrost.com/knight-school" />
+    <meta name="theme-color" content="#faf5e9" />
+    <title>Knight School Chess — Privacy &amp; Support</title>
+  </head>
+  <body class="m-0 bg-[#faf5e9] font-sans text-[#292f29] antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded focus:bg-white focus:p-3">Skip to content</a>
+    <div class="h-2 bg-[#496a46]" aria-hidden="true"></div>
+    <header class="mx-auto max-w-3xl px-5 pb-8 pt-10 sm:px-8 sm:pt-16">
+      <p class="mb-4 text-sm font-bold uppercase tracking-widest text-[#496a46]">Learn. Practice. Play.</p>
+      <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">Knight School Chess</h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-[#50584e]">A little practice. A brighter next move. Original chess lessons, puzzles, and local play for kids on iPad.</p>
+      <nav aria-label="Page sections" class="mt-7 flex flex-wrap gap-3">
+        <a href="#privacy" class="rounded-full bg-[#496a46] px-5 py-3 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]">Privacy policy</a>
+        <a href="#support" class="rounded-full border border-[#496a46] px-5 py-3 font-semibold text-[#345032] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]">Family support</a>
+      </nav>
+    </header>
+    <main id="main" class="mx-auto max-w-3xl space-y-7 px-5 pb-12 sm:px-8">
+      <section aria-labelledby="practice-title" class="rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+        <h2 id="practice-title" class="text-xl font-bold">Made for offline practice</h2>
+        <p class="mt-3 leading-relaxed text-[#50584e]">Learn the rules, solve tactics, and play a coach bot or another person on the same iPad. Progress stays local. No accounts, ads, subscriptions, chat, or online matchmaking.</p>
+      </section>
+
+      <section id="privacy" aria-labelledby="privacy-title" class="scroll-mt-6 rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+        <h2 id="privacy-title" class="text-2xl font-bold">Privacy policy</h2>
+        <p class="mt-2 text-sm text-[#50584e]">Effective date: <time datetime="2026-09-05">September 5, 2026</time></p>
+        <div class="mt-7 space-y-6 leading-relaxed">
+          <section aria-labelledby="local-title">
+            <h3 id="local-title" class="font-bold">Local practice</h3>
+            <p class="mt-2 text-[#50584e]">Knight School works offline without accounts, ads, analytics, tracking, or subscriptions. We do not collect or receive your personal data through the app.</p>
+          </section>
+          <section aria-labelledby="storage-title">
+            <h3 id="storage-title" class="font-bold">What stays on your iPad</h3>
+            <p class="mt-2 text-[#50584e]">The player nickname, avatar, settings, learning progress, recent games, and current game are stored on the device. Saved profile slots are local progress snapshots. Progress backups and saved profile snapshots do not include an unfinished game. Loading a profile or restoring a backup starts a fresh game.</p>
+          </section>
+          <section aria-labelledby="sharing-title">
+            <h3 id="sharing-title" class="font-bold">Sharing is a grown-up choice</h3>
+            <p class="mt-2 text-[#50584e]">Sharing reports, certificates, or progress backups requires the grown-up check. These files can contain the player nickname and practice history. They leave the device only when you choose an app or destination in the system share sheet. That destination handles the file under its own privacy policy. Device backups may also include app data according to your Apple backup settings.</p>
+          </section>
+          <section aria-labelledby="managing-title">
+            <h3 id="managing-title" class="font-bold">Managing your information</h3>
+            <p class="mt-2 text-[#50584e]">You can change the nickname and delete saved profile slots in Parent Controls. Deleting the app removes its local data. Copies you exported or included in device backups remain until you delete them from those locations.</p>
+          </section>
+          <section aria-labelledby="privacy-support-title">
+            <h3 id="privacy-support-title" class="font-bold">Support</h3>
+            <p class="mt-2 text-[#50584e]">For help or privacy questions, contact <a href="mailto:hello@steveafrost.com" class="break-words font-medium text-[#345032] underline underline-offset-4">hello@steveafrost.com</a>. Please do not send a child's personal information. Any information you choose to email is used to respond to your request.</p>
+          </section>
+        </div>
+      </section>
+
+      <section id="support" aria-labelledby="support-title" class="scroll-mt-6 rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+        <h2 id="support-title" class="text-2xl font-bold">Family support</h2>
+        <div class="mt-6 space-y-6 leading-relaxed">
+          <section aria-labelledby="backup-title">
+            <h3 id="backup-title" class="font-bold">Keep a copy of progress</h3>
+            <p class="mt-2 text-[#50584e]">Open Progress, find Parent Controls, and complete the grown-up check. Under Backup and Restore, export a progress backup and choose where to save the JSON file. Keep the file somewhere you can find again.</p>
+          </section>
+          <section aria-labelledby="restore-title">
+            <h3 id="restore-title" class="font-bold">Restore a backup</h3>
+            <p class="mt-2 text-[#50584e]">In Parent Controls, choose Restore backup, select your Knight School JSON file, and review the preview before confirming. Restore replaces the current progress with the backup. Export your current progress first if you want to keep it.</p>
+          </section>
+          <section aria-labelledby="game-title">
+            <h3 id="game-title" class="font-bold">Come back to your game</h3>
+            <p class="mt-2 text-[#50584e]">Your current game is saved on this iPad and resumes when you return to Play. Practice clocks pause when you leave Play or lock your iPad; tap Resume to restart the clock. Progress backups and saved profile slots do not include unfinished games. Loading a profile or restoring a backup starts a fresh game.</p>
+          </section>
+          <section aria-labelledby="help-title">
+            <h3 id="help-title" class="font-bold">Need a hand?</h3>
+            <p class="mt-2 text-[#50584e]">Email <a href="mailto:hello@steveafrost.com" class="break-words font-medium text-[#345032] underline underline-offset-4">hello@steveafrost.com</a> with your iPad model, iPadOS version, and a description of what happened. Please leave out your child's name, progress files, and other personal information.</p>
+          </section>
+        </div>
+      </section>
+      <footer class="px-1 text-sm leading-relaxed text-[#50584e]">
+        <p>Knight School Chess · Created by Steve Frost</p>
+      </footer>
+    </main>
+  </body>
+</html>
