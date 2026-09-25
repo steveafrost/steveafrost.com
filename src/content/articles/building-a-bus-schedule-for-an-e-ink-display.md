@@ -1,7 +1,7 @@
 ---
 title: "Building a Bus Schedule for an E-Ink Display"
 date: 2025-12-18
-description: "Building a TRMNL recipe with Liquid templating to display real-time bus departures for TheRide in Ann Arbor on an e-ink display."
+description: "Building a TRMNL recipe with Liquid templating to display real-time bus departures for TheRide on an e-ink display."
 tags:
   - trmnl
   - liquid
@@ -9,7 +9,7 @@ tags:
   - hardware
 ---
 
-I bought a [TRMNL](https://usetrmnl.com) — a small e-ink display that cycles through widgets. Weather, calendar, stocks, that sort of thing. It also lets you build custom "recipes" using Liquid templates and API data. I live near a bus stop on TheRide system in Ann Arbor, and I wanted to glance at a screen and know when the next bus is coming without pulling out my phone.
+I bought a [TRMNL](https://usetrmnl.com) — a small e-ink display that cycles through widgets. Weather, calendar, stocks, that sort of thing. It also lets you build custom "recipes" using Liquid templates and API data. I live near a bus stop on TheRide system, and I wanted to glance at a screen and know when the next bus is coming without pulling out my phone.
 
 The result is a [Liquid template](https://github.com/steveafrost/the-ride-bus-schedule-trmnl) that fetches real-time departure data from TheRide's API and renders the next three buses on the e-ink screen. Route number, direction, and departure time — nothing else.
 
