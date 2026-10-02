@@ -42,4 +42,20 @@
 @media(max-width:600px){.river-home .intro{padding-top:40px}.theme-compact{position:absolute;right:24px;top:82px}.river-inner .river-content{padding-top:56px}}
 /* The original painted moon is clipped to the same measured disk as the sun. */
 [data-theme="night"] .theme-sun::before{content:"";position:absolute;inset:0;border-radius:50%;background-image:url('/river-assets/moon-source.png');background-size:1248.276% auto;background-position:75.027% 27.637%;pointer-events:none}
-.day-lamps{position:absolute;inset:0;pointer-events:none;z-index:2}.day-lamps svg{position:absolute;width:auto;max-width:none;transform:translateX(-50%)}[data-theme="night"] .day-lamps{display:none}
+/* Both themes use the very same painted fixture; night adds only illumination. */
+.lamp-repairs{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.lamp-repair-night{display:none}
+[data-theme="night"] .lamp-repair-day{display:none}
+[data-theme="night"] .lamp-repair-night{display:block}
+.bridge-lamps{position:absolute;inset:0;pointer-events:none;z-index:3}
+.bridge-lamps svg{position:absolute;width:auto;max-width:none;transform:translateX(-50%);overflow:visible}
+[data-theme="night"] .bridge-lamps image{filter:drop-shadow(0 0 55px #ffd69a)}
+/* Heroicons solid pause/play: small white glyph, generous invisible touch target. */
+.motion-toggle{z-index:4;display:grid;place-items:center;width:44px;height:44px;min-height:44px;padding:0;border-radius:50%;background:transparent;color:#fff}
+.motion-toggle:hover,[data-theme="night"] .motion-toggle:hover{background:transparent}
+.motion-toggle svg{width:18px;height:18px;filter:drop-shadow(0 1px 2px #10222d)}
+.motion-toggle .motion-play{display:none}
+.motion-toggle[data-paused="true"] .motion-pause{display:none}
+.motion-toggle[data-paused="true"] .motion-play{display:block}
+.motion-toggle:focus-visible{outline:2px solid white;outline-offset:2px}
+.motion-toggle:disabled{color:white;opacity:.65}

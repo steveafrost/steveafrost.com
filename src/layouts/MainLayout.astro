@@ -84,8 +84,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
-    <link rel="stylesheet" href="/river-assets/river.css?v=river-corrections-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=river-corrections-1" />
+    <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=lamp-controls-1" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner"]}>
@@ -99,7 +99,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
-    <script is:inline defer src="/river-assets/theme.js?v=river-corrections-1"></script>
-    {home && <script is:inline defer src="/river-assets/river.js?v=river-corrections-1"></script>}
+    <script is:inline defer src="/river-assets/theme.js?v=lamp-controls-1"></script>
+    {home && <script is:inline defer src="/river-assets/river.js?v=lamp-controls-1"></script>}
   </body>
 </html>
