@@ -30,6 +30,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
 <html lang="en">
   <head>
+    <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('river-theme')==='night'?'night':'day'}catch{document.documentElement.dataset.theme='day'}</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
@@ -93,9 +94,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
       <nav aria-label="Primary">
         {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
       </nav>
+      {!home && <button class="theme-toggle theme-compact" aria-label="Switch to night" title="Switch to night">☾</button>}
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
+    <script is:inline defer src="/river-assets/theme.js"></script>
     {home && <script is:inline defer src="/river-assets/river.js"></script>}
   </body>
 </html>

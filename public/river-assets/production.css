@@ -24,3 +24,19 @@
 .river-inner .projects-grid .preview-image{filter:none;opacity:1}
 .river-inner .projects-grid .card-bg{display:none}
 .river-inner .article-item,.river-inner [class*="animate-"]{animation:none!important}
+/* Space after the landscape gives the introduction its own quiet beat. */
+.river-home .intro{padding-top:48px}
+.theme-toggle{cursor:pointer;border:0;min-width:44px;min-height:44px;color:var(--ink)}
+.theme-sun{position:absolute;z-index:4;border-radius:50%;background:transparent;transform:translate(-50%,-50%);width:8.1%;aspect-ratio:1}
+.theme-sun:focus-visible{outline:3px solid var(--cream);box-shadow:0 0 0 6px var(--red);outline-offset:1px}
+.theme-compact{border-radius:50%;background:transparent;font-size:24px;margin-left:8px}
+[data-theme="night"]{color-scheme:dark;--cream:#10222d;--ink:#f5edd9;--olive:#bbc6b9;--red:#ffa58c;--line:#344b51}
+[data-theme="night"] .intro p,[data-theme="night"] .writing-row time{color:#c8d2c9}
+[data-theme="night"] .motion-toggle:hover{background:#263e48}
+[data-theme="night"] .river-inner{--color-ctp-subtext0:#c8d2c9;--color-ctp-surface0:#233942;--color-ctp-surface1:#304750;--color-ctp-mantle:#152a35;--surface:#233942}
+[data-theme="night"] .river-inner .prose{--tw-prose-body:#c8d2c9}
+[data-theme="night"] .river-inner .projects-grid .project-card{background:#1b303b}
+[data-theme="night"] .river-inner .projects-grid .project-card:hover{background:#233c46}
+[data-theme="night"] .river-inner .projects-grid .card-description,[data-theme="night"] .river-inner .projects-grid .tech-tag{color:#c8d2c9}
+[data-theme="night"] .river-inner .projects-grid .tech-tag{background:#263e48}
+@media(max-width:600px){.river-home .intro{padding-top:40px}.theme-compact{position:absolute;right:24px;top:82px}.river-inner .river-content{padding-top:56px}}
