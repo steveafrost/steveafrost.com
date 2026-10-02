@@ -1,28 +1,28 @@
 /* Motion deforms only the supplied raster river; it never redraws illustration art. */
 (()=>{'use strict';
 const scene=document.querySelector('.landscape');if(!scene)return;
-const canvas=scene.querySelector('canvas'),photo=scene.querySelector('.river-picture'),boat=scene.querySelector('.boat'),toggle=scene.querySelector('.motion-toggle'),explore=scene.querySelector('.river-explore'),status=scene.querySelector('[data-motion-status]'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
-let paused=false,visible=true,raf=0,clock=0,last=0,tx=0,ty=0,x=0,y=0,ready=false,gl=null,program=null,texture=null,maskTexture=null;const mask=new Image();mask.src="/river-assets/river-line-mask.png";
+const canvas=scene.querySelector('canvas'),photo=scene.querySelector('.river-picture'),toggle=scene.querySelector('.motion-toggle'),status=scene.querySelector('[data-motion-status]'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
+let paused=false,visible=true,raf=0,clock=0,last=0,ready=false,gl=null,program=null,texture=null,maskTexture=null;const mask=new Image();mask.src="/river-assets/river-motion-mask.png";
 const state={frames:0,running:false,reduced:reduced.matches,ready:false,visible:true};window.riverMotion=state;
 function sync(){const blocked=reduced.matches;toggle.disabled=blocked;toggle.textContent=blocked?'Motion off':paused?'Resume motion':'Pause motion';toggle.setAttribute('aria-pressed',String(paused));state.reduced=blocked;state.visible=visible;state.running=!paused&&!blocked&&!document.hidden&&visible;}
-function crop(){const w=scene.clientWidth,h=scene.clientHeight,ir=photo.naturalWidth/photo.naturalHeight,ratio=w/h,fitX=Math.min(1,ratio/ir),fitY=Math.min(1,ir/ratio),parts=getComputedStyle(photo).objectPosition.split(' '),fx=parseFloat(parts[0])/100,fy=parseFloat(parts[1])/100;const sun=scene.querySelector('.theme-sun');sun.style.left=((.724-fx*(1-fitX))/fitX*100)+'%';sun.style.top=((.33-fy*(1-fitY))/fitY*100)+'%';sun.style.width=(.081/fitX*100)+'%';}
-function render(){state.frames++;crop();if(ready){const w=canvas.clientWidth,h=canvas.clientHeight,d=Math.min(devicePixelRatio,2);if(canvas.width!==Math.round(w*d)||canvas.height!==Math.round(h*d)){canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);gl.viewport(0,0,canvas.width,canvas.height);}gl.uniform1f(gl.getUniformLocation(program,'time'),clock);gl.uniform2f(gl.getUniformLocation(program,'size'),w,h);gl.uniform2f(gl.getUniformLocation(program,'imageSize'),photo.naturalWidth,photo.naturalHeight);const position=getComputedStyle(photo).objectPosition.split(' ');gl.uniform2f(gl.getUniformLocation(program,'focus'),parseFloat(position[0])/100||.5,parseFloat(position[1])/100||.5);gl.drawArrays(gl.TRIANGLES,0,6);}
-boat.style.transform=`translate(${x+Math.sin(clock*.32)*5}px,${y+Math.sin(clock*.9)*1.8}px) rotate(${Math.sin(clock*.8)*1.2}deg)`;}
-function frame(now){raf=0;sync();if(!state.running)return;clock+=Math.min(last?(now-last)/1000:0,.05);last=now;x+=(tx-x)*.025;y+=(ty-y)*.025;render();raf=requestAnimationFrame(frame);}
+function crop(){const w=scene.clientWidth,h=scene.clientHeight,ir=photo.naturalWidth/photo.naturalHeight,ratio=w/h,fitX=Math.min(1,ratio/ir),fitY=Math.min(1,ir/ratio),parts=getComputedStyle(photo).objectPosition.split(' '),fx=parseFloat(parts[0])/100,fy=parseFloat(parts[1])/100;const sun=scene.querySelector('.theme-sun');sun.style.left=((.7235267-fx*(1-fitX))/fitX*100)+'%';sun.style.top=((.3287293-fy*(1-fitY))/fitY*100)+'%';sun.style.width=(.0796501/fitX*100)+'%';for(const lamp of scene.querySelectorAll('.day-lamps svg')){const height=Number(lamp.dataset.height)/724;lamp.style.left=((Number(lamp.dataset.x)-fx*(1-fitX))/fitX*100)+'%';lamp.style.top=((Number(lamp.dataset.y)-height*.18-fy*(1-fitY))/fitY*100)+'%';lamp.style.height=(height/fitY*100)+'%';}}
+function render(){state.frames++;state.time=clock;crop();if(ready){const w=canvas.clientWidth,h=canvas.clientHeight,d=Math.min(devicePixelRatio,2);if(canvas.width!==Math.round(w*d)||canvas.height!==Math.round(h*d)){canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);gl.viewport(0,0,canvas.width,canvas.height);}gl.uniform1f(gl.getUniformLocation(program,'time'),clock);gl.uniform2f(gl.getUniformLocation(program,'size'),w,h);gl.uniform2f(gl.getUniformLocation(program,'imageSize'),photo.naturalWidth,photo.naturalHeight);const position=getComputedStyle(photo).objectPosition.split(' ');gl.uniform2f(gl.getUniformLocation(program,'focus'),parseFloat(position[0])/100||.5,parseFloat(position[1])/100||.5);gl.drawArrays(gl.TRIANGLES,0,6);}
+}
+function frame(now){raf=0;sync();if(!state.running)return;clock+=Math.min(last?(now-last)/1000:0,.05);last=now;render();raf=requestAnimationFrame(frame);}
 function stop(){cancelAnimationFrame(raf);raf=0;last=0;state.running=false;}
 function start(){sync();if(state.running&&!raf)raf=requestAnimationFrame(frame);}
-function point(event){if(paused||reduced.matches)return;const b=scene.getBoundingClientRect();tx=Math.max(-18,Math.min(18,((event.clientX-b.left)/b.width-.5)*36));ty=Math.max(-3,Math.min(3,((event.clientY-b.top)/b.height-.5)*6));}
-explore.addEventListener('pointermove',point);explore.addEventListener('pointerdown',point);explore.addEventListener('pointerleave',()=>{tx=ty=0});explore.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(event.key))return;event.preventDefault();if(paused||reduced.matches)return;if(event.key==='Home')tx=ty=0;else if(event.key==='ArrowLeft')tx=Math.max(-18,tx-6);else if(event.key==='ArrowRight')tx=Math.min(18,tx+6);else if(event.key==='ArrowUp')ty=Math.max(-3,ty-1);else ty=Math.min(3,ty+1);status.textContent='Boat position changed.';});
 toggle.addEventListener('click',()=>{paused=!paused;if(paused)stop();else start();sync();status.textContent=paused?'River motion paused.':'River motion resumed.';});
 document.addEventListener('river-artwork-changing',stop);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});reduced.addEventListener('change',()=>{stop();if(reduced.matches){clock=x=y=tx=ty=0;render();}sync();start();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});reduced.addEventListener('change',()=>{stop();if(reduced.matches){clock=0;render();}sync();start();});
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error('River shader unavailable');return s;}
 function init(){try{gl=canvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)throw new Error('No WebGL');program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,'attribute vec2 position; varying vec2 uv; void main(){uv=position*.5+.5; gl_Position=vec4(position,0.,1.);}'));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`precision highp float; varying vec2 uv; uniform sampler2D image; uniform sampler2D lineMask; uniform float time; uniform vec2 size; uniform vec2 imageSize; uniform vec2 focus; void main(){vec2 p=vec2(uv.x,1.-uv.y);float ratio=size.x/size.y;float ir=imageSize.x/imageSize.y;vec2 fit=vec2(1.);if(ratio>ir)fit.y=ir/ratio;else fit.x=ratio/ir;p=(p-.5)*fit+focus*(1.-fit)+fit*.5;vec4 original=texture2D(image,p);
-float shore=.746+max(p.x-.54,0.)*.115;
-float bottom=p.x<.48?.81+(p.x-.24)*.72:1.-max(p.x-.85,0.)*.8;
-float water=smoothstep(shore+.012,shore+.04,p.y)*(1.-smoothstep(bottom-.03,bottom-.012,p.y))*smoothstep(.21,.27,p.x);
-vec2 flow=vec2((sin(p.y*180.-time*1.25)-sin(p.y*180.))*2.5/imageSize.x,(sin(p.x*75.-time*.8)-sin(p.x*75.))*.55/imageSize.y)*water;
-vec4 color=texture2D(image,p+flow);
+float water=texture2D(lineMask,p).g;
+float phase=fract(time/12.+.5);float phase2=fract(phase+.5);
+vec2 travel=vec2(160./imageSize.x,54./imageSize.y);
+vec2 a=p+(.5-phase)*travel,b=p+(.5-phase2)*travel;
+float safeA=texture2D(lineMask,a).g,safeB=texture2D(lineMask,b).g;
+vec4 ca=mix(original,texture2D(image,a),safeA),cb=mix(original,texture2D(image,b),safeB);
+vec4 color=mix(original,mix(ca,cb,abs(phase-.5)*2.),water);
 // A narrow sampling corridor includes the antialiased edges of each painted line.
 float corridor=texture2D(lineMask,p).r;
 float offset=(sin(p.x*17.-time*.55)-sin(p.x*17.))*2.4/imageSize.y;

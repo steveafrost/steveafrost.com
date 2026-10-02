@@ -11,9 +11,9 @@
 @media(prefers-reduced-motion:reduce){.river-site *{animation:none!important;transition:none!important}}
 
 /* The chosen full-bleed header: real navigation over the illustration sky. */
-.river-home{position:relative}.river-home .river-nav{position:absolute;inset:clamp(24px,4vw,76px) 0 auto;z-index:5;width:100%;background:transparent}.river-home .landscape{height:clamp(326px,33.333vw,640px)}.river-home .river-picture{object-position:center}.river-home .boat-position{top:83%}.river-home .river-nav nav a[aria-current]{text-decoration:underline;text-underline-offset:5px}
+.river-home{position:relative}.river-home .river-nav{position:absolute;inset:clamp(24px,4vw,76px) 0 auto;z-index:5;width:100%;background:transparent}.river-home .landscape{height:clamp(326px,33.333vw,640px)}.river-home .river-picture{object-position:center}.river-home .river-nav nav a[aria-current]{text-decoration:underline;text-underline-offset:5px}
 @media(max-width:1000px){.river-home .landscape{height:352px}.river-home .river-nav{top:24px}}
-@media(max-width:600px){.river-home .landscape{height:326px}.river-home .river-nav{top:12px}.river-home .river-picture{object-position:70% center}.river-home .boat-position{top:83%}}
+@media(max-width:600px){.river-home .landscape{height:326px}.river-home .river-nav{top:12px}.river-home .river-picture{object-position:70% center}}
 /* Preserve the existing project content with readable light-theme surfaces. */
 .river-inner .projects-grid .project-card{background:#efecdf;border-color:var(--line);animation:none;border-radius:8px}
 .river-inner .projects-grid .project-card:hover{background:#e9e5d8;border-color:#bfc4b7}
@@ -40,3 +40,6 @@
 [data-theme="night"] .river-inner .projects-grid .card-description,[data-theme="night"] .river-inner .projects-grid .tech-tag{color:#c8d2c9}
 [data-theme="night"] .river-inner .projects-grid .tech-tag{background:#263e48}
 @media(max-width:600px){.river-home .intro{padding-top:40px}.theme-compact{position:absolute;right:24px;top:82px}.river-inner .river-content{padding-top:56px}}
+/* The original painted moon is clipped to the same measured disk as the sun. */
+[data-theme="night"] .theme-sun::before{content:"";position:absolute;inset:0;border-radius:50%;background-image:url('/river-assets/moon-source.png');background-size:1248.276% auto;background-position:75.027% 27.637%;pointer-events:none}
+.day-lamps{position:absolute;inset:0;pointer-events:none;z-index:2}.day-lamps svg{position:absolute;width:auto;max-width:none;transform:translateX(-50%)}[data-theme="night"] .day-lamps{display:none}
