@@ -1,71 +1,49 @@
 ---
 import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
-
-const articles = await getCollection('articles', ({ data }) => !data.draft);
-const sortedArticles = articles.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
-
-const formatDate = (date: Date) =>
-  date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
-
-const getReadingTime = (body: string) => {
-  const words = body.replace(/^---[\s\S]*?---/, '').trim().split(/\s+/).length;
-  return Math.max(1, Math.ceil(words / 250));
-};
+import ArticlePreview from '../components/ArticlePreview.astro';
+const articles = (await getCollection('articles', ({ data }) => !data.draft)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const years = [...new Set(articles.map(a => a.data.date.getUTCFullYear()))];
+const topics = [...new Set(articles.flatMap(a => a.data.tags ?? []))].sort((a, b) => a.localeCompare(b));
 ---
-
 <MainLayout title="Articles | Steve Frost" description="Technical articles and blog posts by Steve Frost.">
-  <section class="pb-8">
-    <h1 class="mb-8 text-3xl font-extrabold tracking-tight sm:text-4xl">
-      <span class="relative inline-block">
-        <span class="text-gradient">articles</span>
-        <svg class="absolute -bottom-3 left-0 w-full text-coral-400/40" viewBox="0 0 100 10" fill="none" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0 5c8.33-6 16.67 6 25 0s16.67 6 25 0 16.67 6 25 0 16.67 6 25 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-        </svg>
-      </span>
-    </h1>
-    <p class="mb-12 max-w-2xl text-ctp-subtext0">
-      Thoughts on web development, tools, and the craft of building software.
-    </p>
-
-    <ul class="space-y-6">
-      {sortedArticles.map((article, i) => {
-        const min = getReadingTime(article.body ?? '');
-
-        return (
-          <li class="article-item" style={`--i: ${i}`}>
-            <a
-              href={`/articles/${article.id}`}
-              class="group block rounded-xl border border-white/5 border-l-2 border-l-coral-400/40 bg-ctp-surface0/30 px-3 py-4 transition-colors duration-300 hover:border-white/10 hover:border-l-coral-400 hover:bg-ctp-surface0/50"
-            >
-              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                <h2 class="text-lg font-medium text-gradient-hover text-ctp-text transition-colors duration-300 group-hover:text-transparent">
-                  {article.data.title}
-                </h2>
-                <time class="shrink-0 text-sm text-ctp-overlay0" datetime={article.data.date.toISOString()}>
-                  {formatDate(article.data.date)}
-                </time>
-              </div>
-              <span class="mt-2 inline-flex items-center gap-1.5 text-xs tabular-nums text-ctp-overlay0">
-                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-                {min} min read
-              </span>
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-  </section>
+<section class="articles-page">
+<header class="articles-intro"><h1>Articles</h1><p>Thoughts on web development, tools, and the craft of building software.</p></header>
+<section class="recent-reading" aria-label="Recent articles"><ArticlePreview article={articles[0]} lead /><div class="recent-rail">{articles.slice(1, 3).map(article => <ArticlePreview article={article} />)}</div></section>
+<section class="reading-archive" aria-labelledby="archive-heading">
+<header class="archive-toolbar"><div><h2 id="archive-heading">All articles</h2><p id="article-count" aria-live="polite">{articles.length} articles</p></div>
+<form class="archive-filters" role="search"><label class="search-field"><span class="sr-only">Search articles</span><input type="search" name="query" placeholder="Search articles…" /></label><label><span class="sr-only">Filter by topic</span><select name="topic"><option value="">All topics</option>{topics.map(topic => <option value={topic}>{topic}</option>)}</select></label><label><span class="sr-only">Filter by year</span><select name="year"><option value="">All years</option>{years.map(year => <option value={year}>{year}</option>)}</select></label></form>
+</header>
+<p class="no-results" hidden>No articles match these filters. <button type="button" id="reset-filters">Reset filters</button></p>
+{years.map(year => <section class="archive-year" data-year={year} aria-labelledby={`year-${year}`}><h3 id={`year-${year}`}>{year}</h3><div class="archive-entries">{articles.filter(a => a.data.date.getUTCFullYear() === year).map(article => <ArticlePreview article={article} archive />)}</div></section>)}
+</section></section>
 </MainLayout>
-
+<script>
+const page = document.querySelector<HTMLElement>('.articles-page');
+const form = page?.querySelector<HTMLFormElement>('form');
+if (page && form) {
+ const query = form.elements.namedItem('query') as HTMLInputElement;
+ const topic = form.elements.namedItem('topic') as HTMLSelectElement;
+ const year = form.elements.namedItem('year') as HTMLSelectElement;
+ const normalize = (text: string): string => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+ const update = (): void => {
+  const terms = normalize(query.value).trim().split(/\s+/).filter(Boolean); let count = 0;
+  page.querySelectorAll<HTMLElement>('.archive-year').forEach(group => { let groupCount = 0;
+   group.querySelectorAll<HTMLElement>('.reading-preview').forEach(article => {
+    const tags: string[] = JSON.parse(article.dataset.tags ?? '[]'); const text = normalize(article.dataset.search ?? '');
+    const match = (!year.value || group.dataset.year === year.value) && (!topic.value || tags.includes(topic.value)) && terms.every(term => text.includes(term));
+    article.hidden = !match; if (match) groupCount++;
+   }); group.hidden = groupCount === 0; count += groupCount;
+  });
+  const status = page.querySelector('#article-count'); if (status) status.textContent = `${count} ${count === 1 ? 'article' : 'articles'}`;
+  const empty = page.querySelector<HTMLElement>('.no-results'); if (empty) empty.hidden = count !== 0;
+ };
+ form.addEventListener('submit', event => event.preventDefault()); form.addEventListener('input', update); form.addEventListener('change', update);
+ page.querySelector('#reset-filters')?.addEventListener('click', () => { form.reset(); update(); query.focus(); });
+}
+</script>
 <style>
-  @media (hover: hover) {
-    .article-item {
-      animation: slideUp 0.4s ease-out calc(var(--i) * 60ms) both;
-    }
-  }
+.articles-page{padding-bottom:56px}:global(.river-inner:has(.articles-page) .river-nav){width:100%}:global(.river-inner:has(.articles-page) .river-nav nav){margin-left:auto}.articles-intro{margin-bottom:38px}.articles-page h1{font:400 clamp(48px,6vw,82px)/1.05 Georgia,'Times New Roman',serif;letter-spacing:-.045em;margin:0 0 13px}.articles-intro p{font:400 21px/1.5 Georgia,'Times New Roman',serif;color:var(--olive);max-width:780px;margin:0}.recent-reading{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:40px;margin-bottom:46px}.recent-rail{border-left:1px solid var(--line);padding-left:35px}.recent-rail :global(.reading-preview + .reading-preview){border-top:1px solid var(--line);margin-top:25px;padding-top:25px}.reading-archive{border-top:1px solid var(--line)}.archive-toolbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:27px 0}h2{font:400 36px/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.025em;margin:0 0 7px}#article-count{font-size:13px;color:var(--olive);margin:0}.archive-filters{display:flex;gap:12px}input,select{font:inherit;font-size:14px;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:3px;min-height:44px;padding:10px 12px;max-width:100%}input{width:260px}select{width:145px}select[name="year"]{width:120px}input::placeholder{color:var(--olive);opacity:1}input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}.archive-year{display:grid;grid-template-columns:110px minmax(0,1fr);gap:24px;border-top:1px solid var(--line);padding-top:22px;margin-bottom:24px}.archive-year > h3{font:400 25px/1.3 Georgia,'Times New Roman',serif;margin:0;position:sticky;top:24px;align-self:start}.archive-entries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 38px}.archive-entries :global(.reading-preview){border-bottom:1px solid var(--line);padding-bottom:17px}.articles-page :global([hidden]){display:none!important}.no-results{padding:40px 0;color:var(--olive)}#reset-filters{color:var(--red);text-decoration:underline;text-underline-offset:4px;background:none;border:0;padding:12px;cursor:pointer}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1000px){.archive-toolbar{align-items:flex-start;flex-direction:column}.archive-filters{width:100%}.search-field{flex:1}input{width:100%}.recent-reading{gap:28px}.recent-rail{padding-left:25px}}
+@media(max-width:640px){:global(.river-inner:has(.articles-page) .river-nav){display:grid;grid-template-columns:1fr auto;height:auto;gap:12px}:global(.river-inner:has(.articles-page) .river-nav nav){grid-row:2;grid-column:1/-1;margin:0}:global(.river-inner:has(.articles-page) .theme-compact){position:static;grid-row:1;grid-column:2}:global(.river-inner:has(.articles-page) .river-content){padding-top:30px}.articles-intro{margin-bottom:27px}.articles-intro p{font-size:18px}.recent-reading{display:block;margin-bottom:30px}.recent-rail{border-left:0;padding-left:0;margin-top:28px}.recent-rail :global(.reading-preview){border-top:1px solid var(--line);padding-top:25px}.archive-filters{display:grid;grid-template-columns:1fr 1fr}.search-field{grid-column:1/-1}select,select[name="year"]{width:100%}.archive-year{display:block}.archive-year > h3{position:static;margin-bottom:22px}.archive-entries{grid-template-columns:1fr;gap:20px}}
 </style>
