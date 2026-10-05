@@ -1,0 +1,21 @@
+---
+import ProjectFeature from '../../components/ProjectFeature.astro';
+import { projects } from '../../data/projects';
+import type { Project } from '../../data/projects';
+export function getStaticPaths() {
+  return projects.map(project => ({ params: { slug: project.slug }, props: { project } }));
+}
+interface Props { project: Project; }
+const { project } = Astro.props;
+const index = projects.findIndex(item => item.slug === project.slug);
+const previous = projects[(index + projects.length - 1) % projects.length];
+const next = projects[(index + 1) % projects.length];
+const selection = [{ name: previous.name, href: `/projects/${previous.slug}` }, { name: 'All projects', href: '/projects' }, { name: next.name, href: `/projects/${next.slug}` }];
+---
+<ProjectFeature name={project.name} subtitle={project.role} image={`/img/projects/${project.slug}.png`} imageAlt={`${project.name} preview`} story={project.mockUrl} storyLabel="View demo" screen selection={selection}>
+  <div><h2>About the project</h2><p class="project-role">{project.role}</p></div>
+  <div><p>{project.description}</p><ul class="project-tech" aria-label="Technologies">{project.tech.map(technology => <li>{technology}</li>)}</ul><p class="project-links"><a href={project.mockUrl}>View the original demo</a>{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer">View source on GitHub</a>}</p></div>
+</ProjectFeature>
+<style>
+.project-role{font-size:16px!important;color:var(--olive);margin-top:18px!important}.project-tech{display:flex;flex-wrap:wrap;gap:12px 24px;margin:26px 0;padding:0;list-style:none;font-size:14px;color:var(--olive)}.project-links{display:flex;flex-wrap:wrap;gap:18px;font-size:16px!important}.project-links a{padding-block:10px}
+</style>

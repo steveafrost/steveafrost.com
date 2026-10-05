@@ -1,0 +1,37 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ArrowRight from './ArrowRight.astro';
+interface Props { name: string; subtitle: string; image: string; imageAlt: string; story: string; storyLabel?: string; screen?: boolean; selection?: readonly { name: string; href: string }[]; }
+const { name, subtitle, image, imageAlt, story, storyLabel = 'Read the build story', screen = false, selection } = Astro.props;
+---
+<MainLayout title={`${name} | Steve Frost`} description={subtitle} ogImage={image}>
+  <article class:list={["project-feature", { screen }]}>
+    <section class="project-hero" aria-labelledby="project-title">
+      <img class="project-scene" src={image} alt={imageAlt} width="1487" height="1058" fetchpriority="high" />
+      <div class="project-hero-copy"><h1 id="project-title">{name}</h1><p>{subtitle}</p><a class="project-story" href={story}>{storyLabel} <ArrowRight /></a></div>
+      <nav class="project-selection" aria-label="Project navigation">{selection ? selection.map(item => <a href={item.href}>{item.name}</a>) : <><a href="/articles/parcelrouter-from-inbox-script-to-package-event-router">ParcelRouter</a><a href="/articles/making-gifs-small-enough-for-a-conversation">Tiny GIFs</a><span aria-current="page">Kindle newspaper</span></>}</nav>
+    </section>
+    <section class="project-notes wrap" aria-label="About the project"><slot /></section>
+  </article>
+</MainLayout>
+<style>
+:global(.river-inner #main > .project-feature){max-width:none;margin:0;width:100%}
+:global(.river-inner:has(.project-feature) .river-nav){position:absolute;z-index:3;top:0;left:0;right:0;width:100%;height:86px;max-width:none}:global(.river-inner:has(.project-feature) .river-nav nav){margin-left:auto}:global(.river-inner:has(.project-feature) .river-content){max-width:none;padding:0;width:100%}.project-hero{position:relative;min-height:100svh;isolation:isolate;color:#24332a}.project-scene{position:absolute;z-index:-1;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}.project-hero-copy{position:absolute;left:var(--gutter);bottom:155px;max-width:480px}.project-feature h1{font:400 clamp(46px,4.4vw,68px)/1.07 Georgia,'Times New Roman',serif;letter-spacing:-.035em;margin:0 0 18px;text-wrap:balance}.project-hero-copy p{font-size:23px;line-height:1.5;margin:0 0 26px;color:#52604f;max-width:420px}.project-story{display:inline-flex;align-items:center;gap:22px;border:1px solid #b93620;border-radius:999px;padding:15px 26px;color:#b93620;font-size:17px;text-decoration:none;background:#f7f4eb80}.project-story:hover{background:#f7f4eb}.project-story:focus-visible,.project-selection a:focus-visible{outline:2px solid #b93620;outline-offset:5px}.project-selection{position:absolute;bottom:38px;left:var(--gutter);right:var(--gutter);display:flex;justify-content:center;gap:48px;font-size:17px}.project-selection a,.project-selection span{padding:13px 4px;color:#24332a;text-decoration:none}.project-selection span{border-bottom:2px solid #b93620}.project-selection a:hover{text-decoration:underline;text-underline-offset:6px}.project-notes{padding-top:70px;padding-bottom:64px;display:grid;grid-template-columns:1fr 1.4fr;gap:64px;color:var(--ink)}.project-notes :global(h2){font:400 36px/1.2 Georgia,'Times New Roman',serif;margin:0;letter-spacing:-.02em}.project-notes :global(p){font:400 20px/1.65 Georgia,'Times New Roman',serif;margin:0 0 22px;max-width:720px}.project-notes :global(a){color:var(--red);text-underline-offset:4px}
+:global([data-theme="night"] .river-inner:has(.project-feature) .river-nav){color:#24332a}:global([data-theme="night"] .river-inner:has(.project-feature) .river-nav a){color:#24332a}:global([data-theme="night"] .river-inner:has(.project-feature) .theme-compact){color:#24332a}
+@media(max-width:760px){:global(.river-inner:has(.project-feature) .river-nav){display:grid;grid-template-columns:1fr auto;height:auto;gap:13px;padding-block:18px}:global(.river-inner:has(.project-feature) .river-nav nav){grid-row:2;grid-column:1/-1;margin:0}:global(.river-inner:has(.project-feature) .theme-compact){position:static;grid-row:1;grid-column:2}.project-hero{min-height:900px;min-height:max(900px,100svh)}.project-scene{height:480px;object-position:63% center}.project-hero{background:#f4e9d6}.project-hero-copy{position:absolute;top:510px;bottom:auto;left:24px;right:24px;max-width:none}.project-feature h1{font-size:48px;max-width:360px}.project-hero-copy p{font-size:19px;margin-bottom:23px}.project-story{font-size:16px;min-height:48px;padding:12px 22px}.project-selection{left:24px;right:24px;bottom:24px;gap:20px;justify-content:space-between;font-size:14px;flex-wrap:wrap}.project-selection a,.project-selection span{padding:12px 0}.project-notes{padding-top:40px;padding-bottom:30px;grid-template-columns:1fr;gap:25px}.project-notes :global(h2){font-size:30px}.project-notes :global(p){font-size:18px}}
+
+/* The same editorial layout uses each project's authentic preview image. */
+.screen .project-hero{background:var(--cream);color:var(--ink)}
+.screen .project-scene{inset:125px var(--gutter) auto auto;width:56%;height:calc(100% - 255px);object-fit:contain;object-position:right center}
+.screen .project-hero-copy{max-width:min(36vw,440px)}
+.screen .project-hero-copy p{color:var(--olive)}
+.screen .project-selection a{color:var(--ink)}
+.screen .project-story{border-color:var(--red);color:var(--red);background:var(--cream)}
+:global([data-theme="night"] .river-inner:has(.project-feature.screen) .river-nav),:global([data-theme="night"] .river-inner:has(.project-feature.screen) .river-nav a){color:var(--ink)}
+@media(max-width:760px){
+ .screen .project-scene{top:140px;left:24px;right:24px;width:calc(100% - 48px);height:330px;object-position:center}
+ .screen .project-hero-copy{max-width:none}
+ .screen .project-selection{gap:16px;font-size:13px}
+ .screen .project-selection a{max-width:40%;text-wrap:balance}
+}
+</style>
