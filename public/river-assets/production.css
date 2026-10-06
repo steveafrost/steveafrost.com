@@ -208,3 +208,11 @@ html:has(body.river-home){scroll-padding-top:112px}
 
 /* Keep the keyboard skip link above the fixed homepage header. */
 body.river-home .skip:focus{z-index:51}
+
+/* Compact visible toggle, with the full 44px keyboard and touch target. */
+.editorial-header .theme-header{position:relative;width:44px;height:44px;border:0;background:transparent}
+.editorial-header .theme-header:hover{background:transparent}
+.editorial-header .theme-header::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:32px;height:32px;border:1px solid color-mix(in srgb,currentColor 15%,transparent);border-radius:50%;pointer-events:none}
+.editorial-header .theme-header:hover::before{border-color:color-mix(in srgb,currentColor 35%,transparent);background:color-mix(in srgb,var(--ink) 5%,transparent)}
+.theme-header-moon,.theme-header-sun{position:relative;width:18px;height:18px;line-height:0}
+.theme-header svg{display:block;width:18px;height:18px}
