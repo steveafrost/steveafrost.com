@@ -35,6 +35,19 @@ vec4 color=mix(original,sceneColor(samplePoint),water*safeWater);
 float corridor=texture2D(lineMask,p).r;
 float offset=(sin(p.x*17.-time*.55)-sin(p.x*17.))*2.4/imageSize.y;
 color=mix(color,sceneColor(p+vec2(0.,offset)),corridor);
+// A separate surface-light field flows downstream; it never translates
+// the scene texture. Three-source-pixel cells keep the illustrated texture.
+vec2 surface=floor(p*imageSize/3.)*3.;
+vec2 downstream=normalize(vec2(160.,54.));
+float along=dot(surface,downstream),across=dot(surface,vec2(-downstream.y,downstream.x));
+float perspective=smoothstep(.63,1.,p.y);
+float crestShape=across*.22+sin(along*.018)*1.2;
+float crest=pow(max(0.,sin(crestShape)),10.);
+float packet=pow(max(0.,sin(along*.065-time*2.8)),2.);
+float restingPacket=pow(max(0.,sin(along*.065)),2.);
+float currentLight=crest*(packet-restingPacket)*mix(.025,.13,perspective)*water;
+vec3 surfaceTint=mix(vec3(.30,.55,.65),vec3(.85,.95,.83),daylight);
+color.rgb=clamp(color.rgb+surfaceTint*currentLight,0.,1.);
 gl_FragColor=time==0.?original:color;}`));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error('River link unavailable');gl.useProgram(program);const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const a=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);gl.activeTexture(gl.TEXTURE0);texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,photo);gl.uniform1i(gl.getUniformLocation(program,'image'),0);gl.activeTexture(gl.TEXTURE1);maskTexture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,maskTexture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,mask);gl.uniform1i(gl.getUniformLocation(program,'lineMask'),1);ready=state.ready=true;render();canvas.classList.add('ready');}catch(e){ready=false;canvas.classList.remove('ready');state.ready=false;}sync();start();}
 canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();ready=false;state.ready=false;canvas.classList.remove('ready');});canvas.addEventListener('webglcontextrestored',init);addEventListener('resize',()=>{if(!state.running)render();});
 const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;state.visible=visible;if(visible)start();else stop();},{threshold:0});observer.observe(scene);
