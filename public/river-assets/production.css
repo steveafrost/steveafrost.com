@@ -205,3 +205,6 @@ html:has(body.river-home){scroll-padding-top:112px}
 }
 @media(forced-colors:active){body.river-home .river-nav.editorial-header,[data-theme="night"] body.river-home .river-nav.editorial-header{background:Canvas!important;color:CanvasText;--ink:CanvasText}}
 @media(prefers-reduced-motion:reduce){html:has(body.river-home){scroll-behavior:auto}}
+
+/* Keep the keyboard skip link above the fixed homepage header. */
+body.river-home .skip:focus{z-index:51}
