@@ -163,3 +163,6 @@ body.river-home .river-nav.editorial-header a:focus-visible,body.river-home .riv
 /* Accessibility surfaces remain opaque even before optics observes the preference. */
 @media(prefers-reduced-transparency:reduce){body.river-home .river-nav.editorial-header{background:#f7f4eb!important}[data-theme="night"] body.river-home .river-nav.editorial-header{background:#10222d!important}}
 @media(forced-colors:active){body.river-home .river-nav.editorial-header,[data-theme="night"] body.river-home .river-nav.editorial-header{background:Canvas!important;--ink:CanvasText;border-color:CanvasText}}
+
+/* Desktop breathing room below the headline accent before project artwork. */
+@media(min-width:761px){.river-home .postcards{margin-top:54px}}
