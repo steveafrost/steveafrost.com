@@ -5,15 +5,6 @@
 (() => {
   const header = document.querySelector('.river-home .editorial-header');
   if (!header) return;
-  let frame = 0;
-  const updateScroll = () => {
-    frame = 0;
-    header.classList.toggle('is-scrolled', scrollY > 40);
-  };
-  addEventListener('scroll', () => {
-    if (!frame) frame = requestAnimationFrame(updateScroll);
-  }, {passive:true});
-  updateScroll();
   const preferences = ['(prefers-reduced-motion: reduce)', '(prefers-reduced-transparency: reduce)', '(prefers-contrast: more)', '(forced-colors: active)'].map(query => matchMedia(query));
   const chromium = /Chrome\//.test(navigator.userAgent) && !/EdgA|OPR|SamsungBrowser/.test(navigator.userAgent);
   if (!chromium || !CSS.supports('backdrop-filter', 'url("#river-backdrop-lens")')) return;

@@ -86,7 +86,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
     <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=sticky-lens-aligned-2" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=compact-header-3" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner"]}>
@@ -102,6 +102,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1"></script>
     {home && <script is:inline defer src="/river-assets/river.js?v=river-precise-2"></script>}
-    {home && <script is:inline defer src="/river-assets/sticky-glass.js?v=sticky-lens-aligned-2"></script>}
+    {home && <script is:inline defer src="/river-assets/sticky-glass.js?v=compact-header-3"></script>}
   </body>
 </html>
