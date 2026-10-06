@@ -166,3 +166,9 @@ body.river-home .river-nav.editorial-header a:focus-visible,body.river-home .riv
 
 /* Desktop breathing room below the headline accent before project artwork. */
 @media(min-width:761px){.river-home .postcards{margin-top:54px}}
+
+/* Selected header identity: exact third typeface option. */
+@font-face{font-family:Unbounded;src:url('/fonts/unbounded.ttf') format('truetype');font-weight:200 900;font-style:normal;font-display:swap}
+.editorial-header .river-brand{font-family:Unbounded,sans-serif;font-weight:600;font-size:22px;letter-spacing:-.05em}
+body.river-site .river-nav.editorial-header nav{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;letter-spacing:0}
+@media(max-width:760px){.editorial-header .river-brand{font-size:20px}}
