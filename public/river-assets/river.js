@@ -11,6 +11,8 @@ function render(){state.frames++;state.time=clock;crop();if(ready){const w=canva
 function frame(now){raf=0;sync();if(!state.running)return;clock+=Math.min(last?(now-last)/1000:0,.05);last=now;render();raf=requestAnimationFrame(frame);}
 function stop(){cancelAnimationFrame(raf);raf=0;last=0;state.running=false;}
 function start(){sync();if(state.running&&!raf)raf=requestAnimationFrame(frame);}
+// Explicit opt-in deterministic capture hook for remote motion QA.
+if(new URLSearchParams(location.search).get('river-debug')==='1'){state.seek=(seconds)=>{if(!Number.isFinite(seconds)||seconds<0)throw new RangeError('Use non-negative finite seconds');stop();paused=true;clock=reduced.matches?0:seconds;render();sync();return {time:clock,ready,paused};};state.reflectionBounds={sourcePixelsX:4,sourcePixelsY:4.8};}
 toggle.addEventListener('click',()=>{paused=!paused;if(paused)stop();else start();sync();status.textContent=paused?'River motion paused.':'River motion resumed.';});
 document.addEventListener('river-artwork-changing',stop);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start();});reduced.addEventListener('change',()=>{stop();if(reduced.matches){clock=0;render();}sync();start();});
@@ -18,12 +20,14 @@ function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,sou
 function init(){try{gl=canvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true});if(!gl)throw new Error('No WebGL');program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,'attribute vec2 position; varying vec2 uv; void main(){uv=position*.5+.5; gl_Position=vec4(position,0.,1.);}'));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`precision highp float; varying vec2 uv; uniform sampler2D image; uniform sampler2D lineMask; uniform float time; uniform vec2 size; uniform vec2 imageSize; uniform vec2 focus; void main(){vec2 p=vec2(uv.x,1.-uv.y);float ratio=size.x/size.y;float ir=imageSize.x/imageSize.y;vec2 fit=vec2(1.);if(ratio>ir)fit.y=ir/ratio;else fit.x=ratio/ir;p=(p-.5)*fit+focus*(1.-fit)+fit*.5;vec4 original=texture2D(image,p);
 // Blue follows the left foreground silhouette; green retains the original coarse mask.
 float water=texture2D(lineMask,p).b;
-float phase=fract(time/12.+.5);float phase2=fract(phase+.5);
-vec2 travel=vec2(160./imageSize.x,54./imageSize.y);
-vec2 a=p+(.5-phase)*travel,b=p+(.5-phase2)*travel;
-float safeA=texture2D(lineMask,a).b,safeB=texture2D(lineMask,b).b;
-vec4 ca=mix(original,texture2D(image,a),safeA),cb=mix(original,texture2D(image,b),safeB);
-vec4 color=mix(original,mix(ca,cb,abs(phase-.5)*2.),water);
+// Advect the ripple phase, never the reflected artwork. Source samples stay
+// within 4px horizontally / 1.35px vertically of their original position.
+float ripplePhase=p.x*90.+p.y*140.;
+float ripple=sin(ripplePhase-time*.55)-sin(ripplePhase);
+vec2 displacement=ripple*vec2(2./imageSize.x,.675/imageSize.y);
+vec2 samplePoint=p+displacement;
+float safeWater=texture2D(lineMask,samplePoint).b;
+vec4 color=mix(original,texture2D(image,samplePoint),water*safeWater);
 // A narrow sampling corridor includes the antialiased edges of each painted line.
 float corridor=texture2D(lineMask,p).r;
 float offset=(sin(p.x*17.-time*.55)-sin(p.x*17.))*2.4/imageSize.y;
