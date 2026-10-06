@@ -216,3 +216,10 @@ body.river-home .skip:focus{z-index:51}
 .editorial-header .theme-header:hover::before{border-color:color-mix(in srgb,currentColor 35%,transparent);background:color-mix(in srgb,var(--ink) 5%,transparent)}
 .theme-header-moon,.theme-header-sun{position:relative;width:18px;height:18px;line-height:0}
 .theme-header svg{display:block;width:18px;height:18px}
+
+/* Breathing room at the three annotated homepage section boundaries. */
+body.river-home{--home-intro-space:48px;--home-project-space:72px;--home-section-space:64px}
+.river-home .intro{padding-top:var(--home-intro-space)}
+.river-home .postcards{margin-top:var(--home-project-space)}
+.river-home .writing{margin-top:var(--home-section-space)}
+@media(max-width:760px){body.river-home{--home-intro-space:40px;--home-project-space:40px;--home-section-space:48px}}
