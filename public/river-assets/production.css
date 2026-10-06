@@ -99,3 +99,67 @@ html[data-theme] body.river-site .river-nav.editorial-header a{color:var(--ink)}
  .river-inner:has(.editorial-header) .project-hero-copy{top:440px}
  .river-inner:has(.editorial-header) .screen .project-scene{top:45px;height:330px}
 }
+
+/* Selected headline and quiet name, implemented with licensed self-hosted fonts. */
+@font-face{font-family:Fraunces;src:url('/fonts/fraunces.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:Fraunces;src:url('/fonts/fraunces-italic.ttf') format('truetype');font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Space Grotesk';src:url('/fonts/space-grotesk.ttf') format('truetype');font-weight:300 700;font-style:normal;font-display:swap}
+.editorial-header .river-brand{font:500 24px/1.15 'Space Grotesk',RiverSans,Arial,sans-serif;letter-spacing:-.035em;display:block}
+body.river-home .river-nav.editorial-header{position:absolute;inset:24px var(--gutter) auto;width:auto;max-width:none;height:76px;padding:16px 24px;gap:30px;border:0;border-radius:12px;background:rgb(247 244 235 / 94%)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ body.river-home .river-nav.editorial-header{background:rgb(247 244 235 / 56%);backdrop-filter:blur(14px) saturate(145%) brightness(112%);-webkit-backdrop-filter:blur(14px) saturate(145%) brightness(112%)}
+}
+[data-theme="night"] body.river-home .river-nav.editorial-header{background:rgb(16 34 45 / 94%)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ [data-theme="night"] body.river-home .river-nav.editorial-header{background:rgb(16 34 45 / 60%)}
+}
+body.river-home .landscape{height:clamp(430px,38vw,620px)}
+.river-home .intro{padding-top:30px}
+.river-home .intro h1{font:700 clamp(48px,6.5vw,96px)/.98 Fraunces,Georgia,serif;font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;letter-spacing:-.035em;margin:0 auto 12px;max-width:1100px}
+.headline-first,.headline-second{display:block}
+.headline-second{font-style:italic;line-height:1.1}
+.curiosity-accent{text-decoration:underline;text-decoration-color:#ff6348;text-decoration-thickness:6px;text-underline-offset:10px;text-decoration-skip-ink:auto}
+.river-home .postcards{margin-top:30px}
+@media(max-width:760px){
+ body.river-home .river-nav.editorial-header{inset:16px 16px auto;display:grid;grid-template-columns:1fr auto;padding:12px 16px;height:auto;gap:4px;border-radius:10px}
+ .editorial-header .river-brand{font-size:22px}
+ body.river-home .river-nav.editorial-header nav{gap:26px;margin:0;grid-row:2;grid-column:1/-1;font-size:14px}
+ body.river-home .river-nav.editorial-header nav a{padding-block:10px}
+ body.river-home .landscape{height:450px}
+ .river-home .intro{padding-top:26px}
+ .river-home .intro h1{font-size:36px;line-height:1.05;max-width:500px;margin:0 auto 12px;letter-spacing:-.035em}
+ .headline-second{font-size:34px}
+ .curiosity-accent{text-decoration-thickness:4px;text-underline-offset:6px}
+ .river-home .postcards{margin-top:26px}
+}
+@media(prefers-reduced-transparency:reduce){
+ body.river-home .river-nav.editorial-header{background:#f7f4eb;backdrop-filter:none;-webkit-backdrop-filter:none}
+ [data-theme="night"] body.river-home .river-nav.editorial-header{background:#10222d}
+}
+@media(forced-colors:active){body.river-home .river-nav.editorial-header{background:Canvas;backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid CanvasText}.curiosity-accent{text-decoration-color:currentColor}}
+
+/* Scoped glass refinement: scene transmission and gentle physical edge/depth. */
+body.river-home .river-nav.editorial-header{--ink:#081f1b;border:1px solid rgb(255 255 255 / 36%);border-radius:20px;box-shadow:inset 0 1px 0 rgb(255 255 255 / 28%),0 8px 24px rgb(8 31 27 / 7%)}
+[data-theme="night"] body.river-home .river-nav.editorial-header{--ink:#f5edd9;border-color:rgb(222 239 247 / 18%);box-shadow:inset 0 1px 0 rgb(255 255 255 / 12%),0 8px 24px rgb(0 0 0 / 14%)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){[data-theme="night"] body.river-home .river-nav.editorial-header{backdrop-filter:blur(14px) saturate(145%) brightness(75%);-webkit-backdrop-filter:blur(14px) saturate(145%) brightness(75%)}}
+@media(prefers-reduced-transparency:reduce){body.river-home .river-nav.editorial-header,[data-theme="night"] body.river-home .river-nav.editorial-header{backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}}
+@media(forced-colors:active){body.river-home .river-nav.editorial-header,[data-theme="night"] body.river-home .river-nav.editorial-header{--ink:CanvasText;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}}
+
+/* Full-word accent clears the actual italic descender at every heading size. */
+.curiosity{text-decoration:underline;text-decoration-color:#ff6348;text-decoration-thickness:6px;text-underline-offset:.32em;text-decoration-skip-ink:none}
+.river-home .intro h1{margin-bottom:24px}
+@media(max-width:760px){.curiosity{text-decoration-thickness:4px;text-underline-offset:.42em}.river-home .intro h1{margin-bottom:20px}}
+@media(forced-colors:active){.curiosity{text-decoration-color:currentColor}}
+
+/* Optics are behind controls; existing scene is the sole texture source. */
+body.river-home .river-nav.editorial-header{isolation:isolate;overflow:hidden;border-radius:28px;box-shadow:inset 0 1px 0 rgb(255 255 255 / 42%),0 10px 28px rgb(8 31 27 / 12%),0 1px 4px rgb(8 31 27 / 10%)}
+.glass-optics{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;pointer-events:none;z-index:-1;display:none}
+.editorial-header.glass-ready .glass-optics{display:block}
+body.river-home .river-nav.editorial-header.glass-ready,[data-theme="night"] body.river-home .river-nav.editorial-header.glass-ready{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.editorial-header .theme-header{box-shadow:none}
+body.river-home .river-nav.editorial-header a:focus-visible,body.river-home .river-nav.editorial-header .theme-header:focus-visible{outline-offset:2px}
+@media(prefers-reduced-transparency:reduce),(forced-colors:active){.glass-optics{display:none!important}body.river-home .river-nav.editorial-header,[data-theme="night"] body.river-home .river-nav.editorial-header{backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}}
+@media(prefers-contrast:more){body.river-home .river-nav.editorial-header{background:#f7f4eb!important;--ink:#081f1b;border:2px solid currentColor;box-shadow:none;backdrop-filter:none!important}.glass-optics{display:none!important}[data-theme="night"] body.river-home .river-nav.editorial-header{background:#10222d!important;--ink:#f5edd9}}
+/* Accessibility surfaces remain opaque even before optics observes the preference. */
+@media(prefers-reduced-transparency:reduce){body.river-home .river-nav.editorial-header{background:#f7f4eb!important}[data-theme="night"] body.river-home .river-nav.editorial-header{background:#10222d!important}}
+@media(forced-colors:active){body.river-home .river-nav.editorial-header,[data-theme="night"] body.river-home .river-nav.editorial-header{background:Canvas!important;--ink:CanvasText;border-color:CanvasText}}

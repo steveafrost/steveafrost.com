@@ -86,21 +86,23 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
     <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=header-editorial-1" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=liquid-preview-3" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner"]}>
     <a class="skip" href="#main">Skip to content</a>
     <header class="river-nav wrap editorial-header">
-      <a class="river-brand" href="/"><span class="brand-name">Steve Frost</span><span class="brand-note">Projects &amp; Learnings</span></a>
+      <a class="river-brand" href="/"><span class="brand-name">Steve Frost</span></a>
       <nav aria-label="Primary">
         {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
       </nav>
       <ThemeSwitch />
+      {home && <canvas class="glass-optics" aria-hidden="true"></canvas>}
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1"></script>
     {home && <script is:inline defer src="/river-assets/river.js?v=river-precise-2"></script>}
+    {home && <script is:inline defer src="/river-assets/glass.js?v=liquid-preview-3"></script>}
   </body>
 </html>
