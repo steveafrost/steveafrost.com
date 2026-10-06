@@ -97,12 +97,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
         {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
       </nav>
       <ThemeSwitch />
-      {home && <canvas class="glass-optics" aria-hidden="true"></canvas>}
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1"></script>
     {home && <script is:inline defer src="/river-assets/river.js?v=river-precise-2"></script>}
-    {home && <script is:inline defer src="/river-assets/glass.js?v=gaussian-unbounded-1"></script>}
   </body>
 </html>
