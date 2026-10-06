@@ -3,6 +3,7 @@ import "../styles/global.css";
 
 
 import Analytics from "@vercel/analytics/astro";
+import ThemeSwitch from "../components/ThemeSwitch.astro";
 
 interface Props {
   title?: string;
@@ -85,21 +86,21 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
     <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=lamp-controls-1" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=header-editorial-1" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner"]}>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="river-nav wrap">
-      <a class="river-brand" href="/">Steve Frost</a>
+    <header class="river-nav wrap editorial-header">
+      <a class="river-brand" href="/"><span class="brand-name">Steve Frost</span><span class="brand-note">Projects &amp; Learnings</span></a>
       <nav aria-label="Primary">
         {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
       </nav>
-      {!home && <button class="theme-toggle theme-compact" aria-label="Switch to night" title="Switch to night">☾</button>}
+      <ThemeSwitch />
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
-    <script is:inline defer src="/river-assets/theme.js?v=lamp-controls-1"></script>
+    <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1"></script>
     {home && <script is:inline defer src="/river-assets/river.js?v=river-precise-2"></script>}
   </body>
 </html>
