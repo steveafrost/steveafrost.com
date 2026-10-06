@@ -227,3 +227,7 @@ body.river-home{--home-intro-space:48px;--home-project-space:72px;--home-section
 .bank-visitor-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:hidden;visibility:hidden}
 [data-theme="night"] .bank-visitor-layer>g{filter:brightness(.65) saturate(.65)}
 @media(prefers-reduced-motion:reduce){.bank-visitor-layer{display:none}}
+
+.bridge-cyclist-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:hidden;visibility:hidden}
+[data-theme="night"] .bridge-cyclist-layer{--cycle-wheel:#52665d;--cycle-frame:#8c644b;--cycle-trousers:#32483f;--cycle-coat:#8c583f;--cycle-skin:#937957;--cycle-helmet:#b8ad89}
+@media(prefers-reduced-motion:reduce){.bridge-cyclist-layer{display:none}}
