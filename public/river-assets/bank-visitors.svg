@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-55 -80 115 90">
+<defs>
+<g id="deer">
+ <ellipse cx="0" cy="-1" rx="35" ry="4" fill="#132b28" opacity=".18"/>
+ <g data-leg="back"><path d="M-22-22h6l-3 20h-5Z" fill="#76503a"/></g><g data-leg="front"><path d="M14-22h6l3 20h-5Z" fill="#76503a"/></g>
+ <path d="M-33-27-40-33-37-20-28-20Z" fill="#a97849"/>
+ <path d="M-30-30q20-12 45 0l5 13q-23 9-47-2Z" fill="#a97849"/>
+ <path d="M-20-20q15 7 32 0" fill="none" stroke="#d7b480" stroke-width="4"/>
+ <g data-head="deer"><path d="M12-24 16-48 24-54 30-47 26-28Z" fill="#a97849"/><path d="M22-52 18-64 24-61 29-50M28-52 34-64 36-58 33-48" fill="#76503a"/><path d="M23-54 34-55 47-44 40-39 26-43Z" fill="#b78a56"/><path d="m44-46 5 2-3 4-5-2Z" fill="#24382c"/><circle cx="33" cy="-49" r="1.4" fill="#172e29"/></g>
+</g>
+<g id="fox">
+ <ellipse cx="0" cy="-1" rx="34" ry="4" fill="#132b28" opacity=".18"/>
+ <path d="M-22-23q-22-13-25-2 6 17 24 10Z" fill="#b87540"/><path d="M-40-27q-10 1-7 6l9 6 3-7Z" fill="#ecdec0"/>
+ <g data-leg="back"><path d="M-18-15h5l-3 13h-5Z" fill="#4c4434"/></g><g data-leg="front"><path d="M15-15h5l2 13h-5Z" fill="#4c4434"/></g>
+ <path d="M-26-26q23-12 46 2l3 10q-28 6-47-4Z" fill="#b87540"/>
+ <path d="M3-18 23-21l-1 9-16-1Z" fill="#e4cda4"/>
+ <g data-head="fox"><path d="m18-21 6-13 7 1 6 11 12 5-10 6-15-3Z" fill="#b87540"/><path d="m23-31 1-12 8 10m2 2 5-11 2 16" fill="#76503a"/><path d="m29-19 17 3-9 6-9-5Z" fill="#ecdec0"/><path d="m45-18 5 2-4 3Z" fill="#172e29"/><circle cx="34" cy="-23" r="1.3" fill="#172e29"/></g>
+</g>
+<g id="rabbit">
+ <ellipse cx="0" cy="-1" rx="24" ry="3" fill="#132b28" opacity=".18"/>
+ <circle cx="-23" cy="-13" r="5" fill="#eee1c6"/>
+ <g data-leg="back"><path d="M-18-11h9l2 9h-17Z" fill="#8b8370"/></g><g data-leg="front"><path d="M12-12h4l5 10H9Z" fill="#8b8370"/></g>
+ <path d="M-22-16q-1-20 17-20 19 0 21 20L10-7h-25Z" fill="#aaa28b"/>
+ <path d="M-13-12q12 6 23 0" fill="none" stroke="#d4c9ac" stroke-width="4"/>
+ <g data-head="rabbit"><path d="M10-24 7-47q1-5 4-1l7 20M17-26l5-22q2-4 3 1l-1 23" fill="#8b8370"/><path d="M10-27q10-12 20 1l5 8-10 7-16-5Z" fill="#aaa28b"/><circle cx="25" cy="-25" r="1.3" fill="#172e29"/><path d="m32-19 4 1-3 3Z" fill="#76503a"/></g>
+</g>
+</defs>
+<use href="#deer"/>
+</svg>
