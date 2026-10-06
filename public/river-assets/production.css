@@ -225,5 +225,5 @@ body.river-home{--home-intro-space:48px;--home-project-space:72px;--home-section
 @media(max-width:760px){body.river-home{--home-intro-space:40px;--home-project-space:40px;--home-section-space:48px}}
 
 .bank-visitor-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:hidden;visibility:hidden}
-[data-theme="night"] .bank-visitor-layer{filter:brightness(.65) saturate(.65)}
+[data-theme="night"] .bank-visitor-layer>g{filter:brightness(.65) saturate(.65)}
 @media(prefers-reduced-motion:reduce){.bank-visitor-layer{display:none}}
