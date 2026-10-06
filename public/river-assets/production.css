@@ -172,3 +172,6 @@ body.river-home .river-nav.editorial-header a:focus-visible,body.river-home .riv
 .editorial-header .river-brand{font-family:Unbounded,sans-serif;font-weight:600;font-size:22px;letter-spacing:-.05em}
 body.river-site .river-nav.editorial-header nav{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;letter-spacing:0}
 @media(max-width:760px){.editorial-header .river-brand{font-size:20px}}
+
+/* Optical placement requested for the selected Unbounded wordmark. */
+.editorial-header .river-brand{transform:translateY(2px)}
