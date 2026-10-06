@@ -26,18 +26,26 @@
   const svg = node('svg', {width:'0',height:'0','aria-hidden':'true',focusable:'false'});
   svg.style.cssText = 'position:absolute;pointer-events:none';
   const defs = node('defs', {});
-  const filter = node('filter', {id:'river-backdrop-lens',x:'0',y:'0',width:'100%',height:'100%','color-interpolation-filters':'sRGB'});
-  const image = node('feImage', {result:'edge-map',preserveAspectRatio:'none',x:'0',y:'0',width:'100%',height:'100%'});
-  filter.append(image, node('feDisplacementMap', {in:'SourceGraphic',in2:'edge-map',scale:'16',xChannelSelector:'R',yChannelSelector:'G'}));
+  const filter = node('filter', {id:'river-backdrop-lens',x:'0',y:'0',width:'100%',height:'100%',primitiveUnits:'userSpaceOnUse','color-interpolation-filters':'sRGB'});
+  // Percentages here resolve against the zero-sized definition SVG, not the
+  // CSS backdrop. Set actual CSS-pixel dimensions before activating the lens.
+  const image = node('feImage', {result:'edge-map',preserveAspectRatio:'none',x:'0',y:'0','color-interpolation-filters':'sRGB'});
+  const centerMap = node('feComponentTransfer', {in:'edge-map',result:'centered-edge-map','color-interpolation-filters':'sRGB'});
+  // PNG channel128 is128/255, not0.5. Remove that half-byte bias explicitly.
+  for (const channel of ['feFuncR','feFuncG']) centerMap.append(node(channel, {type:'linear',slope:'1',intercept:String(-1/510)}));
+  filter.append(image, centerMap, node('feDisplacementMap', {in:'SourceGraphic',in2:'centered-edge-map',scale:'16',xChannelSelector:'R',yChannelSelector:'G','color-interpolation-filters':'sRGB'}));
   defs.append(filter);svg.append(defs);document.body.append(svg);
   let generation = 0, size = '';
   function rebuild() {
     header.classList.remove('lens-ready');
     if (preferences.some(preference => preference.matches)) return;
-    const rect = header.getBoundingClientRect();
-    const width = Math.ceil(rect.width), height = Math.ceil(rect.height);
+    const surface = getComputedStyle(header,'::before');
+    const cssWidth = parseFloat(surface.width), cssHeight = parseFloat(surface.height);
+    const width = Math.ceil(cssWidth), height = Math.ceil(cssHeight);
     if (!width || !height || width > 2400 || height > 180) return;
-    const key = `${width}:${height}`;
+    image.setAttribute('width', String(cssWidth));
+    image.setAttribute('height', String(cssHeight));
+    const key = `${cssWidth}:${cssHeight}`;
     if (key === size) {header.classList.add('lens-ready');return;}
     const token = ++generation;
     try {
@@ -56,10 +64,11 @@
         let nx=0,ny=0;
         if (Math.max(dx,dy)>0) {const length=Math.hypot(ax,ay)||1;nx=ax*Math.sign(cx)/length;ny=ay*Math.sign(cy)/length;}
         else if (dx>dy) nx=Math.sign(cx); else ny=Math.sign(cy);
-        // Neutral center, 7px inward sample near the rounded boundary.
-        const bend=7*Math.exp(-edge/7), i=(y*width+x)*4;
-        map.data[i]=Math.round(127.5-nx*bend*255/16);
-        map.data[i+1]=Math.round(127.5-ny*bend*255/16);
+        // Compact symmetric rim: exact neutral everywhere12px inside the edge.
+        // A smooth cutoff avoids translating the panel's central backdrop.
+        const t=Math.max(0,1-edge/12), bend=5.5*t*t*(3-2*t), i=(y*width+x)*4;
+        map.data[i]=128-Math.round(nx*bend*255/16);
+        map.data[i+1]=128-Math.round(ny*bend*255/16);
         map.data[i+2]=128;map.data[i+3]=255;
       }
       context.putImageData(map,0,0);
@@ -67,7 +76,8 @@
       performance.measure('river-backdrop-map', {start,end:performance.now(),detail:{width,height}});
       probe.onload=() => {
         if (token !== generation || preferences.some(preference=>preference.matches)) return;
-        image.setAttribute('href',url);size=key;
+        image.setAttribute('href',url);
+        image.setAttributeNS('http://www.w3.org/1999/xlink','xlink:href',url);size=key;
         // Keep the tint and fallback visible while the map enters the compositor.
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
           if (token===generation && !preferences.some(preference=>preference.matches)) header.classList.add('lens-ready');
