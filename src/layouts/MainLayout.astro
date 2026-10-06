@@ -35,7 +35,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico?v=selected-river-3" sizes="16x16 32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=selected-river-3" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32.png?v=selected-river-3" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=selected-river-3" sizes="180x180" />
     <link rel="canonical" href={canonicalUrl.href} />
 
     <!-- Self-hosted font preloads (critical weights only) -->
