@@ -1,5 +1,5 @@
 import {WebGLRenderer,Container,Graphics,GraphicsContext} from '../river-assets/vendor/pixi-8.22.0-animals.mjs';
-import {scenePatch,crossingAt,riderPose,advanceLean,steamAt,steamCurve,steamParcelCount,pedalRadius} from './scene-model.mjs?v=rising-steam-4';
+import {scenePatch,crossingAt,riderPose,advanceLean,steamAt,steamCurve,steamParcelCount,pedalRadius} from './scene-model.mjs?v=slower-steam-5';
 export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
   const renderer=new Renderer(); let stage=null,disposed=false;
   const contexts=new Set();

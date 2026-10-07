@@ -23,7 +23,7 @@ Source https://github.com/pixijs/pixijs-skills pinned83760c6f53462ca9cecd6805504
 ## Validation
 
 PASS npm ci --no-audit --no-fund --prefer-offline.
-PASS NODE_OPTIONS=--max-old-space-size=2048 npm run build:80 pages; latest build1.02s, exit0; log /tmp/about-rising-steam-nav-build.log.
+PASS NODE_OPTIONS=--max-old-space-size=2048 npm run build:80 pages; latest build978ms, exit0; log /tmp/about-slower-steam-build.log.
 PASS node --test tests/about-scene.test.mjs:10 tests,0 failures. Tests cover3261 deck contacts/rigid poses, wheel arc travel,2163 rider crank/lean combinations, loop fades, stable inertia, steam bounds, mocked single-loop scheduling and lifecycle controls, real Pixi retained scene graph/context reuse and bounded limb geometry using an injected renderer without GPU/browser.
 PASS generated Home/About/Projects/Writing HTML glass header, active-page link, enhancement script.
 PASS unchanged index.astro, projects.astro, articles.astro, shared project data and original About raster compared with e224b53.
@@ -66,3 +66,11 @@ Replaced whole-ribbon deformation with upward parcel advection. Ten preallocated
 User also requested nav top gap halved on all pages. Shared floating-header desktop24->12px, mobile16->8px, with max(8px,env(safe-area-inset-top)) preserving the full safe area. Existing64px desktop bar height, internal10/12px vertical padding, fonts, toggles and day/night style declarations remain identical. Desktop content/scroll clearance112->100px; mobile152->144px plus any safe-area excess; About mobile156->148px plus safe-area excess. All68 routes using the shared portfolio header checked in generated output; four index routes use floating glass navigation. Other shared static headers have zero top gap, preserved; standalone Knight School and project mock HTML use separate navigation and are unchanged. CSS normalized only for intended gap/clearance values matches the reviewed baseline byte-for-byte, confirming no typography/theme/bar-dimension change.
 
 Validation:10 Node tests passed, including per-parcel monotonic upward movement, age expansion, fading, limited sideways drift and invisible rebirth; prior cyclist fade contact/articulation and scheduling tests pass. Bounded production build80pages/1.02s, exit0. Generated header/active-link checks pass, safe-area reservations modeled for0/20/44px. Home/Projects/Writing source, shared layout/project data and original full raster byte-identical to dafb362. git diff --check and JS syntax pass. Review artifacts rising-steam-motion.gif, rising-steam-detail.gif and rising-steam-sequence.png are CPU exports of actual retained Pixi geometry; sequence inspected, no browser/WebGL or frame-rate verification claimed. Follow-up awaits user review; production remains dafb362.
+
+## Slower, wider steam tuning
+
+User reviewed rising-steam preview582f874 and requested slower/wider steam only. Upward speed9.5->6.65referencepx/sec (30%slower); lifetime3.6->5.142857seconds preserves total rise height. Width multiplied1.33 at every age (33%wider); peak opacity0.9->0.82 softens the plume. Expansion, rise, fade and small lateral drift preserved; turbulence/fade-in timing slowed proportionally. Same ten shared-context parcels, no extra geometry, contexts, ticker, mask, dependency or canvas. Version slower-steam-5 avoids prior cached entry/modules.
+
+Ten tests passed including upward advection, expansion/dissipation, invisible rebirth, single-layer fallback, controls and cyclist contacts. Bounded production build80pages in978ms, exit0; log /tmp/about-slower-steam-build.log. Half-nav-gap CSS, shared layout, Home, Projects and Writing sources byte-identical to582f874. JS/diff checks pass.
+
+Review artifacts slower-steam-motion.gif, slower-steam-detail.gif, slower-steam-desktop-scale.png outside source. Actual retained Pixi geometry exported to CPU raster/animation, not browser/GPU captures. Desktop review frame scaled to860px crop width corresponding to1440px full-scene width /1122reference pixels, actually viewed. Browser/WebGL visual and frame-rate verification remains unavailable. Production remains explicitly approved dafb362; this checkpoint awaits review.

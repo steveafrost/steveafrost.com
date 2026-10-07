@@ -91,10 +91,10 @@ test('steam advects upward, expands and dissipates; rebirth happens only while i
   const offset=index*steamLifetime/steamParcelCount;let prior=null;
   for(let age=.001;age<steamLifetime;age+=.01){const p=steamAt(steamLifetime-offset+age,index);close(p.age,age);
    assert.ok(Math.abs(p.x-578)<2.2);assert.ok(p.scaleY>=.75);
-   if(prior){assert.ok(p.y<prior.y);assert.ok(p.scaleX>prior.scaleX&&p.scaleY>prior.scaleY);if(age>.14)assert.ok(p.alpha<prior.alpha);}
+   if(prior){assert.ok(p.y<prior.y);assert.ok(p.scaleX>prior.scaleX&&p.scaleY>prior.scaleY);if(age>.2)assert.ok(p.alpha<prior.alpha);}
    prior=p;
   }
   const end=steamAt(2*steamLifetime-offset-.00001,index),birth=steamAt(2*steamLifetime-offset,index);assert.ok(end.alpha<.000001);assert.ok(birth.alpha<.000001);close(birth.y,435);
  }
- const a=steamAt(.5),b=steamAt(1.5);close(a.y-b.y,9.5);assert.ok(b.scaleX>a.scaleX);assert.ok(Math.abs(a.x-b.x)<3);
+ const a=steamAt(.5),b=steamAt(1.5);close(a.y-b.y,6.65);assert.ok(b.scaleX>a.scaleX);assert.ok(Math.abs(a.x-b.x)<3);
 });
