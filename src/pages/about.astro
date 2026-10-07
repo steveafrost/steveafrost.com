@@ -2,115 +2,107 @@
 import { Image } from "astro:assets";
 import avatarImg from "../assets/avatar.jpg";
 import MainLayout from "../layouts/MainLayout.astro";
+const sections = [
+  { title: "It started with tinkering", text: "I've been tinkering with computers for as long as I can remember—building rigs for friends, throwing together websites for local shops, and getting busted sneaking onto the family computer way past bedtime.", scene: "workbench" },
+  { title: "Curiosity became a career", text: "Through the years, I turned the obsession into a career. I learned to think like an engineer, got to build things that actually excited me, and made some lifelong friends along the way.", scene: "bridge" },
+  { title: "Building for people", text: "These days I build front-end tools that millions of people rely on every day. I care a lot about making the web fast, accessible, and a little more open source than I found it.", scene: "river" },
+  { title: "Outside the browser", text: "When I close the laptop, you'll probably find me out on my bike or volunteering wherever I can be useful.", scene: "bicycle" },
+];
 ---
-
-<MainLayout
-  title="About | Steve Frost"
-  description="About Steve Frost - front-end engineer, cyclist, and tree hugger."
->
-  <section class="py-8">
-    <h1 class="sr-only">About</h1>
-
-    <div class="flex flex-col gap-8 md:flex-row md:gap-16">
-      <div
-        class="shrink-0 flex justify-center md:justify-start animate-slide-up"
-      >
-        <div class="group relative inline-block">
-          <div
-            class="absolute -inset-2 mask-blob bg-gradient-to-br from-coral-400/30 via-coral-300/30 to-amber-400/30 opacity-0 blur-lg transition-opacity group-hover:opacity-100"
-          >
-          </div>
-          <Image
-            src={avatarImg}
-            alt="Steve Frost"
-            width={200}
-            height={200}
-            format="webp"
-            quality={80}
-            loading="lazy"
-            decoding="async"
-            class="relative mask-blob border-2 border-white/10 transition-transform group-hover:scale-[1.02]"
-          />
+<MainLayout title="About | Steve Frost" description="About Steve Frost - front-end engineer, cyclist, and tree hugger.">
+  <article class="about-story" data-about-story data-motion="paused">
+    <img class="story-landscape" src="/about-assets/winding-story.webp" width="1122" height="1402" alt="" fetchpriority="high" />
+    <header class="story-intro">
+      <Image src={avatarImg} alt="Steve Frost's illustrated avatar" width={200} height={200} format="webp" quality={85} loading="eager" class="story-avatar" />
+      <div>
+        <h1>Building things.<br />Getting <em>outside.</em></h1>
+        <p>Front-end engineer, cyclist, and tree hugger.</p>
+      </div>
+    </header>
+    {sections.map(({title, text, scene}, i) => (
+      <section class:list={["story-section", `story-section-${i + 1}`]} aria-labelledby={`story-heading-${i}`} data-story-section>
+        <div class="story-copy">
+          <h2 id={`story-heading-${i}`}>{title}</h2>
+          <p>{text}</p>
         </div>
-      </div>
-
-      <div
-        class="max-w-2xl space-y-5 text-ctp-subtext0 leading-relaxed animate-fade-in"
-      >
-        <p>
-          I've been tinkering with computers for as long as I can
-          remember—building rigs for friends, throwing together websites for
-          local shops, and getting busted sneaking onto the family computer way
-          past bedtime.
-        </p>
-        <p>
-          Through the years, I turned the obsession into a career. I learned to
-          think like an engineer, got to build things that actually excited me,
-          and made some lifelong friends along the way.
-        </p>
-        <p>
-          These days I build front-end tools that millions of people rely on
-          every day. I care a lot about making the web fast, accessible, and a
-          little more open source than I found it.
-        </p>
-        <p>
-          When I close the laptop, you'll probably find me
-          <span class="text-coral-300">out on my bike</span> or
-          <span class="text-amber-400">volunteering</span> wherever I can be useful.
-        </p>
-      </div>
+        <div class:list={["story-art", `story-art-${scene}`]} aria-hidden="true"></div>
+      </section>
+    ))}
+    <div class="story-cyclist-track" data-story-cyclist aria-hidden="true">
+      <img class="story-cyclist" src="/about-assets/cyclist.webp" width="400" height="300" alt="" />
     </div>
-
-    <!-- Divider -->
-    <div
-      class="mx-auto my-16 h-px w-2/3 bg-gradient-to-r from-transparent via-coral-400/30 to-transparent"
-      aria-hidden="true"
-    >
-    </div>
-
-    <div class="text-center md:text-left">
-      <h2 class="mb-6 text-xl font-bold text-white">Get in Touch</h2>
-      <div class="flex flex-wrap justify-center gap-3 md:justify-start">
-        <a
-          href="https://github.com/steveafrost"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-ctp-surface0/50 px-5 py-2.5 text-sm font-medium text-ctp-subtext1 backdrop-blur transition-all hover:scale-105 hover:border-coral-400/30 hover:text-white active:scale-95"
-        >
-          <svg
-            class="h-5 w-5 transition-transform group-hover:rotate-12"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-              clip-rule="evenodd"></path>
-          </svg>
-          GitHub
-        </a>
-        <a
-          href="mailto:hello@steveafrost.com"
-          class="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-ctp-surface0/50 px-5 py-2.5 text-sm font-medium text-ctp-subtext1 backdrop-blur transition-all hover:scale-105 hover:border-amber-400/30 hover:text-white active:scale-95"
-        >
-          <svg
-            class="h-5 w-5 transition-transform group-hover:-rotate-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-            ></path>
-          </svg>
-          Email
-        </a>
+    <section class="story-contact" aria-labelledby="story-contact-title">
+      <h2 id="story-contact-title">Get in touch</h2>
+      <p>I'd love to hear from you.</p>
+      <div class="story-contact-links">
+        <a class="story-email" href="mailto:hello@steveafrost.com">hello@steveafrost.com</a>
+        <a class="story-github" href="https://github.com/steveafrost" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
-    </div>
-  </section>
+      <button class="story-motion" type="button" data-story-pause aria-pressed="true" disabled>Motion paused</button>
+    </section>
+  </article>
+  <script is:inline type="module" src="/about-assets/motion.mjs"></script>
+  <style>
+    :global(body:has(.about-story) #main){max-width:1440px;padding:0}
+    :global(body:has(.about-story) #main > .about-story){max-width:none}
+    :global(body:has(.about-story) .editorial-header){z-index:2;background:transparent!important;border-bottom:0!important;max-width:1440px!important;margin-inline:auto}
+    .about-story{position:relative;isolation:isolate;min-height:0;aspect-ratio:1122/1402;margin-top:-100px;font-family:'Space Grotesk',RiverSans,sans-serif;color:var(--ink)}
+    .story-landscape{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:-1}
+    .story-intro{position:absolute;top:7.1%;left:5.7%;right:7%;display:flex;align-items:center;gap:2.1%}
+    .story-avatar{width:16.1%;height:auto;border-radius:50%;aspect-ratio:1}
+    .story-intro h1{font-family:Fraunces,Georgia,serif;font-weight:700;font-variation-settings:'SOFT' 100,'WONK' 1;font-size:clamp(34px,3.35vw,48px);line-height:1.04;letter-spacing:-.035em;margin:0 0 16px}
+    .story-intro em{color:#cf3d23}
+    .story-intro p{font-size:clamp(17px,1.6vw,21px);line-height:1.45;margin:0;color:#35524e}
+    .story-section{position:absolute;width:38%;left:7%;top:23.5%}
+    .story-section-2{top:40.8%;left:60.5%;width:36%}
+    .story-section-3{top:57%;width:38%}
+    .story-section-4{top:73.2%;left:59.2%;width:36%}
+    .story-copy h2,.story-contact h2{font:700 clamp(28px,2.65vw,38px)/1.14 Fraunces,Georgia,serif;letter-spacing:-.045em;margin:0 0 21px;text-wrap:balance}
+    .story-copy h2::after,.story-contact h2::after{content:"";display:block;width:42px;border-bottom:3px solid #ef513a;margin-top:10px}
+    .story-copy p,.story-contact p{font-size:clamp(16px,1.42vw,20px);line-height:1.5;margin:0;color:#3a4e58}
+    .story-art{display:none}
+    .story-contact{position:absolute;left:54.8%;top:85.8%;right:5%;padding-bottom:24px}
+    .story-contact h2{margin-bottom:10px}
+    .story-contact-links{display:flex;align-items:center;flex-wrap:wrap;gap:24px;margin-top:18px;font-size:17px}
+    .story-email{background:#d53c24;color:#fff;padding:13px 20px;border-radius:5px;min-height:48px;display:inline-flex;align-items:center;overflow-wrap:anywhere}
+    .story-github{text-decoration:underline;text-underline-offset:5px;padding-block:12px}
+    .story-motion{display:block;background:var(--cream);border:1px solid var(--line);border-radius:24px;padding:10px 16px;min-height:44px;font-size:13px;margin-top:14px;cursor:pointer}
+    .story-motion:disabled{cursor:default;color:var(--olive)}
+    .story-cyclist-track{position:absolute;left:18%;top:40.1%;width:32%;height:5.6%;overflow:hidden;pointer-events:none}
+    .story-cyclist{position:absolute;width:21%;height:auto;bottom:0;animation:story-crossing 20s linear infinite;animation-play-state:paused}
+    .about-story[data-motion="running"] .story-cyclist-track[data-visible="true"] .story-cyclist{animation-play-state:running}
+    @keyframes story-crossing{0%,15%{transform:translateX(-110%)}75%,100%{transform:translateX(580%)}}
+    :global([data-theme="night"]) .about-story{--ink:#132b28;--cream:#f7f4eb;--line:#dfded1;background:#f7f4eb;color:#132b28}
+    :global([data-theme="night"]) .about-story a:focus-visible,:global([data-theme="night"]) .about-story button:focus-visible{outline-color:#cf3d23}
+    @media(min-width:1440px){.story-copy p{font-size:20px}}
+    @media(max-width:1099px){
+      .about-story{aspect-ratio:auto;margin-top:0;padding:32px 24px 48px;background:#f7f4eb;--ink:#132b28;--cream:#f7f4eb;--line:#dfded1}
+      .story-landscape{display:none}
+      .story-intro{position:static;gap:24px;align-items:center;margin-bottom:40px}
+      .story-avatar{width:112px;flex-shrink:0}
+      .story-intro h1{font-size:38px}
+      .story-intro p{font-size:18px}
+      .story-section,.story-section-2,.story-section-3,.story-section-4{position:static;width:100%;max-width:680px;margin:0 auto 36px}
+      .story-copy h2,.story-contact h2{font-size:30px}
+      .story-copy p,.story-contact p{font-size:18px;line-height:1.65}
+      .story-art{display:block;height:240px;margin-top:22px;background-image:url('/about-assets/winding-story.webp');background-repeat:no-repeat;background-size:180% auto}
+      .story-art-workbench{background-position:100% 24%}
+      .story-art-bridge{background-position:0 48%}
+      .story-art-river{background-position:100% 68%}
+      .story-art-bicycle{background-position:0 87%}
+      .story-contact{position:static;max-width:680px;margin:20px auto 0;padding:0}
+      .story-cyclist-track{display:none}
+      .story-motion{display:none}
+    }
+    @media(max-width:520px){
+      .story-intro{gap:18px;align-items:flex-start}
+      .story-avatar{width:76px}
+      .story-intro h1{font-size:29px;margin-bottom:12px}
+      .story-intro p{font-size:16px}
+      .story-copy h2,.story-contact h2{font-size:29px}
+      .story-art{height:200px;background-size:220% auto}
+      .story-contact-links{gap:18px;font-size:16px}
+    }
+    @media(prefers-reduced-motion:reduce){.story-cyclist{animation:none;transform:translateX(240%)}.story-motion{display:none}}
+  </style>
 </MainLayout>
