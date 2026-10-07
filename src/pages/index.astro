@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
 import RecentWriting from '../components/RecentWriting.astro';
+import { newestPersonalProjects, personalProjectHref } from '../data/personal-projects.mjs';
+const recentProjects = newestPersonalProjects();
 const articles = await getCollection('articles', ({ data }) => !data.draft);
 const recentArticles = articles.sort((a,b) => b.data.date.getTime()-a.data.date.getTime()).slice(0,4);
 ---
@@ -10,5 +12,5 @@ const recentArticles = articles.sort((a,b) => b.data.date.getTime()-a.data.date.
   <path d="M5.75 3a.75.75 0 0 0-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75V3.75A.75.75 0 0 0 7.25 3h-1.5ZM12.75 3a.75.75 0 0 0-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75V3.75a.75.75 0 0 0-.75-.75h-1.5Z"/>
 </svg><svg class="motion-play" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
   <path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.344-5.891a1.5 1.5 0 0 0 0-2.538L6.3 2.841Z"/>
-</svg></button><section class="intro wrap"><h1><span class="headline-first">Useful things</span><em class="headline-second">made with <span class="curiosity">curiosity</span></em></h1></section><section class="postcards wrap" aria-label="Personal projects"><a class="postcard kindle" href="/projects/kindle-newspaper"><div class="postcard-art"><img src="/river-assets/kindle.png" alt="" width="1536" height="1024"></div><h2>Kindle newspaper</h2><p>A nightly edition for my Kindle.</p></a><a class="postcard parcel" href="/articles/parcelrouter-from-inbox-script-to-package-event-router"><div class="postcard-art"><img src="/river-assets/parcel.png" alt="" width="1536" height="1024"></div><h2>ParcelRouter</h2><p>Shipping emails to package events.</p></a><a class="postcard gif" href="/articles/making-gifs-small-enough-for-a-conversation"><div class="postcard-art"><img src="/river-assets/gif.png" alt="" width="1536" height="1024"></div><h2>Tiny GIFs</h2><p>Good motion, smaller files.</p></a></section><RecentWriting articles={recentArticles} />
+</svg></button><section class="intro wrap"><h1><span class="headline-first">Useful things</span><em class="headline-second">made with <span class="curiosity">curiosity</span></em></h1></section><section class="postcards wrap" aria-label="Personal projects">{recentProjects.map(project => <a class:list={["postcard", project.postcardClass]} href={personalProjectHref(project)}><div class="postcard-art"><img src={project.postcard} alt="" width="1536" height="1024" /></div><h2>{project.name}</h2><p>{project.subtitle}</p></a>)}</section><RecentWriting articles={recentArticles} />
 </MainLayout>

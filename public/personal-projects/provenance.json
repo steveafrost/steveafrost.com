@@ -1,0 +1,29 @@
+{
+  "kindle": "existing /river-assets/kindle-project-scene.png",
+  "parcelrouter": {
+    "asset": "parcelrouter-scene.png",
+    "references": [
+      "/river-assets/kindle-project-scene.png",
+      "/river-assets/parcel.png"
+    ],
+    "sha256": "edf7e54b89ae1075410d80730d089d111ed4e9e77b12a1f66e4a669ec493a104"
+  },
+  "tiny-gifs": {
+    "asset": "tiny-gifs-scene.png",
+    "references": [
+      "/river-assets/kindle-project-scene.png",
+      "/river-assets/gif.png"
+    ],
+    "sha256": "59364dc705c143ccb07b934413298b25ff08b76237f2bb053234e57c6add279d"
+  },
+  "generatedAssetDimensions": [
+    1487,
+    1058
+  ],
+  "factsSources": [
+    "existing dated project articles",
+    "https://github.com/steveafrost/parcelrouter",
+    "https://github.com/steveafrost/tiny-gifs"
+  ],
+  "availability": "No App Store launch, unsupported release date or product capability claimed."
+}
