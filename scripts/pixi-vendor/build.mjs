@@ -1,0 +1,9 @@
+import {createRequire}from'node:module';import fs from'node:fs';import path from'node:path';import{fileURLToPath}from'node:url';
+const here=path.dirname(fileURLToPath(import.meta.url)),runtime=process.env.PIXI_BUILD_ROOT||here,require=createRequire(path.join(runtime,'package.json')),esbuild=require('esbuild'),core=path.join(runtime,'node_modules/pixi.js/lib'),root=path.resolve(here,'../..');
+const version=JSON.parse(fs.readFileSync(path.join(core,'../package.json'))).version;if(version!=='8.22.0')throw Error('Expected pinned PixiJS8.22.0');
+const result=await esbuild.build({metafile:true,entryPoints:[path.join(here,'entry.mjs')],outfile:path.join(root,'public/river-assets/vendor/pixi-8.22.0-animals.mjs'),bundle:true,tsconfigRaw:{},minify:true,format:'esm',target:'es2022',legalComments:'inline',banner:{js:'/*! PixiJS8.22.0 animal-only renderer. MIT; see pixi-LICENSE.txt. Rebuild: scripts/pixi-vendor/build.mjs. */'},plugins:[{name:'pinned-pixi-internals',setup(build){build.onResolve({filter:/^pixi-core\//},args=>({path:path.join(core,args.path.slice(10))}));}}]});
+fs.copyFileSync(path.join(core,'../LICENSE'),path.join(root,'public/river-assets/vendor/pixi-LICENSE.txt'));
+
+const packages=new Set();for(const input of Object.keys(result.metafile.inputs)){const tail=input.split('/node_modules/').at(-1);if(tail===input)continue;const parts=tail.split('/');packages.add(parts[0].startsWith('@')?parts.slice(0,2).join('/'):parts[0]);}
+let licenses='Third-party licenses for the animal-only PixiJS bundle\n';for(const name of [...packages].sort()){const folder=path.join(runtime,'node_modules',name),meta=JSON.parse(fs.readFileSync(path.join(folder,'package.json'))),file=fs.readdirSync(folder).find(f=>/^license(?:\.|$)/i.test(f));if(file)licenses+='\n--- '+name+' '+meta.version+' ---\n'+fs.readFileSync(path.join(folder,file),'utf8');}
+fs.writeFileSync(path.join(root,'public/river-assets/vendor/THIRD-PARTY-LICENSES.txt'),licenses);
