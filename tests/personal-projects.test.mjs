@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { personalProjects, newestPersonalProjects, personalProjectHref, personalProjectSelection } from '../src/data/personal-projects.mjs';
+import { personalProjects, newestPersonalProjects, featuredPersonalProjects, personalProjectHref, personalProjectSelection } from '../src/data/personal-projects.mjs';
 
 test('newest three sort by recorded portfolio date without mutating inventory', () => {
   const projects = [
@@ -36,7 +36,7 @@ function selection(html) {
 for (const project of personalProjects) {
   test(`${project.slug} builds with its own hero, canonical, metadata, and three featurette links`, () => {
     const html = fs.readFileSync(`dist/projects/${project.slug}/index.html`, 'utf8');
-    const wanted = newestPersonalProjects().map(personalProjectHref);
+    const wanted = featuredPersonalProjects().map(personalProjectHref);
     assert.deepEqual(selection(html), wanted);
     assert.ok(html.includes(`href="https://steveafrost.com/projects/${project.slug}/"`));
     assert.ok(html.includes(`property="og:image" content="https://steveafrost.com${project.hero}"`));
@@ -47,12 +47,12 @@ for (const project of personalProjects) {
     assert.ok(html.includes('aria-current="page"')); assert.ok(html.includes(project.story));
   });
 }
-test('homepage postcards link to the same newest three featurettes', () => {
+test('homepage postcards link to the same curated three featurettes', () => {
   const html = fs.readFileSync('dist/index.html', 'utf8');
   const section = html.match(/<section class="postcards wrap"[^>]*>([\s\S]*?)<\/section>/)?.[1];
   assert.ok(section);
   const links = [...section.matchAll(/<a\s+[^>]*href="([^"]+)"/g)].map(m => m[1]);
-  assert.deepEqual(links, newestPersonalProjects().map(personalProjectHref));
+  assert.deepEqual(links, featuredPersonalProjects().map(personalProjectHref));
 });
 test('professional catalog and existing article routes stay available', () => {
   for (const slug of ['leon-bridges', 'caamp', 'sesame-street-live', 'drew-aichele', 'cocomelon', 'tip-track', 'phillips-nyc', 'message-relay', 'the-ride-bus-schedule', 'parcel-tracker', 'plex-watchdog']) {
@@ -75,8 +75,8 @@ test('personal featurettes reuse the Work glass header, menu and active context'
   }
 });
 
-test('batch two reuses existing routes and updates latest-three without deleting old featurettes', () => {
-  assert.deepEqual(newestPersonalProjects().map(p => p.slug), ['kindle-newspaper', 'tiny-gifs', 'pi-skill-recommender']);
+test('curated discovery preserves all batch-two routes', () => {
+  assert.deepEqual(featuredPersonalProjects().map(p => p.slug), JSON.parse(fs.readFileSync('src/data/featured-projects.json', 'utf8')));
   for (const slug of ['message-relay', 'the-ride-bus-schedule', 'tip-track']) {
     const project = personalProjects.find(p => p.slug === slug);
     const html = fs.readFileSync(`dist/projects/${slug}/index.html`, 'utf8');
@@ -85,6 +85,6 @@ test('batch two reuses existing routes and updates latest-three without deleting
     assert.ok(html.includes(project.artworkCaption));
   }
   const older = fs.readFileSync('dist/projects/parcelrouter/index.html', 'utf8');
-  assert.deepEqual(selection(older), newestPersonalProjects().map(personalProjectHref));
-  assert.ok(!selection(older).includes('/projects/parcelrouter'));
+  assert.deepEqual(selection(older), featuredPersonalProjects().map(personalProjectHref));
+  assert.ok(fs.existsSync('dist/projects/pi-skill-recommender/index.html'));
 });

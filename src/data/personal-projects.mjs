@@ -1,4 +1,7 @@
+import featuredProjectIds from "./featured-projects.json" with { type: "json" };
+
 /** Personal featurettes are curated separately from the existing work portfolio.
+ * Featured placement is author-selected in featured-projects.json.
  * featuredDate is the dated portfolio write-up, not a claimed launch date or
  * repository push date. Adding a featurette never removes an older route.
  */
@@ -128,8 +131,24 @@ export function newestPersonalProjects(projects = personalProjects, count = 3) {
   }).slice(0, count);
 }
 
+/** Exactly three unique existing projects, in the author's chosen order.
+ * Fail the build with an actionable error rather than silently falling back.
+ */
+export function featuredPersonalProjects(ids = featuredProjectIds, projects = personalProjects) {
+  const source = 'src/data/featured-projects.json';
+  if (!Array.isArray(ids) || ids.length !== 3) throw new Error(`${source}: choose exactly three project IDs.`);
+  if (ids.some(id => typeof id !== 'string' || !id.trim())) throw new Error(`${source}: each project ID must be a nonempty string.`);
+  if (new Set(ids).size !== 3) throw new Error(`${source}: project IDs must be unique.`);
+  const byId = new Map(projects.map(project => [project.slug, project]));
+  return ids.map(id => {
+    const project = byId.get(id);
+    if (!project) throw new Error(`${source}: unknown project ID "${id}". Choose from: ${[...byId.keys()].join(', ')}.`);
+    return project;
+  });
+}
+
 export function personalProjectSelection(currentSlug, projects = personalProjects) {
-  return newestPersonalProjects(projects).map(project => ({
+  return featuredPersonalProjects(featuredProjectIds, projects).map(project => ({
     name: project.name, href: personalProjectHref(project), current: project.slug === currentSlug,
   }));
 }

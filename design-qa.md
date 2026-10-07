@@ -1,13 +1,9 @@
-# Mobile menu glass-flash candidate QA
+# Curated featured-project selection on stable mobile glass
 
-Final result: blocked pending cloud rendered QA. No local browser used.
+Final result: integrated source/build checks passed; no local browser QA.
 
-Baseline: production repository main 8703e7656d493962705ba2d5d4957201a5b69abd, exact live mobile-menu.js bytes confirmed over HTTPS. Curated feature selection 46ef796 is not included.
+Integrates author-selected featured placement on shipped menu fix 9be875c. Default selection is Kindle Newspaper, Tiny GIFs, ParcelRouter, edited in src/data/featured-projects.json. File order supplies homepage cards and personal-featurette navigation; Pi and all previous URLs remain. Story dates are retained and do not choose placement. README documents repository editing, valid IDs and validation; no CMS dashboard introduced.
 
-Supported source observation: header clip-path animation surrounds a backdrop-filtered ::before glass layer; open state simultaneously switches mobile blur 2px to 14px. Filter Effects Level 2 draft lists clip-path as a backdrop-root trigger. This supports the compositing hypothesis but does not establish the browser-specific cause of the reported flash; the draft itself notes lack of consensus on backdrop-root definition.
+Reviewed selection branch previously passed 61 tests, 83-page build, alternate-order integration checks and duplicate-selection build rejection. Menu fix uses stable mobile CSS-glass filtering and height reveal, keeping desktop lens eligibility, themes, reduced motion, rapid toggles, focus and fallback behavior. Parent cloud QA passed light/dark, repeated toggles, keyboard/navigation; settled open appearance matched baseline. Individual animation frames and iPhone Safari remain unverified.
 
-Candidate: animate border-box header height instead of clip-path. Existing overflow:hidden and 28px border radius retain rounded reveal. Header opacity, transform, background and backdrop CSS unchanged. Content translate/fade, 280ms open/180ms close, computed-frame reversal, generation guard, inert/aria-hidden, native hidden finish, reduced-motion, lifecycle and failed-WAAPI fallback preserved. Mobile disables SVG lens eligibility through the existing responsive/preference guard; desktop retains lens eligibility. Mobile uses the same 14px CSS-glass filter while closed/open, avoiding the SVG-to-CSS and blur-size switch. Light/night tint and accessibility fallbacks unchanged. Three cache tokens updated.
-
-57 tests pass; 83 pages build. All 99 HTML route bytes match baseline after normalizing three cache tokens. Artwork and unrelated public assets unchanged; only menu JS, sticky-glass JS and the mobile glass selector differ. No root-cause, visual fix or performance pass claimed. Height animation may perform layout each frame; check on the affected browser/theme and during rapid toggles. Cloud organization policy blocks DevTools, so do not bypass it; use only permitted rendered checks. No publication, deployment or push performed.
-
-Cloud worker source observation confirms lens-ready on closed header and its removal around 276px expansion; one-frame flash was not captured. DevTools blocked by cloud organization policy; no bypass attempted. Candidate needs permitted cloud rendered/theme/device checks. Stable 14px mobile blur is stronger than previous closed 2px lens treatment, a reviewable visual tradeoff.
+Final integrated validation: 64 tests pass; 83 Astro pages build. Shipped menu JavaScript, glass script, production CSS and MainLayout bytes are identical to 9be875c. No local browser permitted or used. Only approved selection changes integrated; live verification follows publication.
