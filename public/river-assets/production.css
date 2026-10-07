@@ -250,3 +250,6 @@ body.river-home .landscape{height:var(--river-hero-height)}
 [data-theme="night"] .bridge-cyclist-layer{--cycle-wheel:#52665d;--cycle-frame:#8c644b;--cycle-trousers:#32483f;--cycle-coat:#8c583f;--cycle-skin:#937957;--cycle-helmet:#b8ad89}
 [data-theme="night"] .tower-flag-layer{--flag-pole:#a89c7d}
 @media(prefers-reduced-motion:reduce){.bridge-cyclist-layer,.tower-flag-layer{display:none}}
+/* Distant painted fabric: constant depth blending, never an early exit fade. */
+.tower-flag-layer [data-flag-assembly]{opacity:.78}
+[data-theme="night"] .tower-flag-layer [data-flag-assembly]{opacity:.65;--flag-rope:#b4a68c}
