@@ -9,7 +9,7 @@ const sections = [
   { title: "Outside the browser", text: "When I close the laptop, you'll probably find me out on my bike or volunteering wherever I can be useful.", scene: "bicycle" },
 ];
 ---
-<MainLayout title="About | Steve Frost" description="About Steve Frost - front-end engineer, cyclist, and tree hugger.">
+<MainLayout glassHeader title="About | Steve Frost" description="About Steve Frost - front-end engineer, cyclist, and tree hugger.">
   <article class="about-story" data-about-story data-motion="paused">
     <img class="story-landscape" src="/about-assets/winding-story.webp" width="1122" height="1402" alt="" fetchpriority="high" />
     <header class="story-intro">
@@ -45,8 +45,7 @@ const sections = [
   <style>
     :global(body:has(.about-story) #main){max-width:1440px;padding:0}
     :global(body:has(.about-story) #main > .about-story){max-width:none}
-    :global(body:has(.about-story) .editorial-header){z-index:2;background:transparent!important;border-bottom:0!important;max-width:1440px!important;margin-inline:auto}
-    .about-story{position:relative;isolation:isolate;min-height:0;aspect-ratio:1122/1402;margin-top:-100px;font-family:'Space Grotesk',RiverSans,sans-serif;color:var(--ink)}
+    .about-story{position:relative;isolation:isolate;min-height:0;aspect-ratio:1122/1402;margin-top:0;font-family:'Space Grotesk',RiverSans,sans-serif;color:var(--ink)}
     .story-landscape{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:-1}
     .story-intro{position:absolute;top:7.1%;left:5.7%;right:7%;display:flex;align-items:center;gap:2.1%}
     .story-avatar{width:16.1%;height:auto;border-radius:50%;aspect-ratio:1}
@@ -76,7 +75,7 @@ const sections = [
     :global([data-theme="night"]) .about-story a:focus-visible,:global([data-theme="night"]) .about-story button:focus-visible{outline-color:#cf3d23}
     @media(min-width:1440px){.story-copy p{font-size:20px}}
     @media(max-width:1099px){
-      .about-story{aspect-ratio:auto;margin-top:0;padding:32px 24px 48px;background:#f7f4eb;--ink:#132b28;--cream:#f7f4eb;--line:#dfded1}
+      .about-story{aspect-ratio:auto;margin-top:0;padding:112px 24px 48px;background:#f7f4eb;--ink:#132b28;--cream:#f7f4eb;--line:#dfded1}
       .story-landscape{display:none}
       .story-intro{position:static;gap:24px;align-items:center;margin-bottom:40px}
       .story-avatar{width:112px;flex-shrink:0}
@@ -104,5 +103,9 @@ const sections = [
       .story-contact-links{gap:18px;font-size:16px}
     }
     @media(prefers-reduced-motion:reduce){.story-cyclist{animation:none;transform:translateX(240%)}.story-motion{display:none}}
+    @media(max-width:760px){.about-story{padding-top:156px}}
+    :global(html:has(.about-story)){scroll-padding-top:112px}
+    :global(body:has(.about-story) .skip:focus){z-index:51}
+    @media(max-width:760px){:global(html:has(.about-story)){scroll-padding-top:152px}}
   </style>
 </MainLayout>

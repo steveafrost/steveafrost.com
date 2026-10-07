@@ -3,7 +3,7 @@
  * Only the tested Chromium path gets distortion; other engines keep CSS glass.
  */
 (() => {
-  const header = document.querySelector('.river-home .editorial-header');
+  const header = document.querySelector('.editorial-header.glass-navigation');
   if (!header) return;
   const preferences = ['(prefers-reduced-motion: reduce)', '(prefers-reduced-transparency: reduce)', '(prefers-contrast: more)', '(forced-colors: active)'].map(query => matchMedia(query));
   const chromium = /Chrome\//.test(navigator.userAgent) && !/EdgA|OPR|SamsungBrowser/.test(navigator.userAgent);

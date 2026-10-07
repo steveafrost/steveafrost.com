@@ -10,6 +10,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   home?: boolean;
+  glassHeader?: boolean;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   description = "Front-end engineer building useful and beautiful web experiences.",
   ogImage,
   home = false,
+  glassHeader = false,
 } = Astro.props;
 
 const navLinks = [
@@ -26,6 +28,7 @@ const navLinks = [
 ] as const;
 
 const currentPath = Astro.url.pathname;
+const useGlassHeader = home || glassHeader || ["/about", "/projects", "/articles"].includes(currentPath.replace(/\/$/, ""));
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -92,9 +95,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <link rel="stylesheet" href="/river-assets/production.css?v=flag-physics-14" />
     <Analytics />
   </head>
-  <body class:list={["river-site", home ? "river-home" : "river-inner"]}>
+  <body class:list={["river-site", home ? "river-home" : "river-inner", !home && useGlassHeader && "river-glass-inner"]}>
     <a class="skip" href="#main">Skip to content</a>
-    <header class="river-nav wrap editorial-header">
+    <header class:list={["river-nav wrap editorial-header", useGlassHeader && "glass-navigation"]}>
       <a class="river-brand" href="/"><span class="brand-name">Steve Frost</span></a>
       <nav aria-label="Primary">
         {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
@@ -108,6 +111,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     {home && <script is:inline type="module" src="/river-assets/bank-visitors.mjs?v=exact-start-6"></script>}
     {home && <script is:inline type="module" src="/river-assets/bridge-cyclist.mjs?v=exact-start-4"></script>}
     {home && <script is:inline type="module" src="/river-assets/tower-flag.mjs?v=exact-start-3"></script>}
-    {home && <script is:inline defer src="/river-assets/sticky-glass.js?v=compact-header-3"></script>}
+    {useGlassHeader && <script is:inline defer src="/river-assets/sticky-glass.js?v=about-parity-1"></script>}
   </body>
 </html>
