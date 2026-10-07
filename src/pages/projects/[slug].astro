@@ -6,7 +6,7 @@ import PersonalProjectFeature from '../../components/PersonalProjectFeature.astr
 import { personalProjects } from '../../data/personal-projects.mjs';
 export function getStaticPaths() {
   return [
-    ...projects.map(project => ({ params: { slug: project.slug }, props: { project } })),
+    ...projects.filter(project => !personalProjects.some(personal => personal.slug === project.slug)).map(project => ({ params: { slug: project.slug }, props: { project } })),
     ...personalProjects.filter(project => project.slug !== 'kindle-newspaper').map(personal => ({ params: { slug: personal.slug }, props: { personal } })),
   ];
 }

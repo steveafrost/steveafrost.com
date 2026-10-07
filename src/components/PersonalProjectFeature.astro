@@ -5,11 +5,11 @@ import type { personalProjects } from '../data/personal-projects.mjs';
 interface Props { project: (typeof personalProjects)[number]; }
 const { project } = Astro.props;
 ---
-<ProjectFeature glassHeader name={project.name} subtitle={project.subtitle} image={project.hero} imageAlt={project.heroAlt} story={project.story} selection={personalProjectSelection(project.slug)}>
+<ProjectFeature glassHeader screen={"screen" in project && project.screen} sourceExcerpt={"sourceExcerpt" in project ? project.sourceExcerpt : undefined} sourceLabel={"sourceLabel" in project ? project.sourceLabel : undefined} artworkCaption={"artworkCaption" in project ? project.artworkCaption : undefined} name={project.name} subtitle={project.subtitle} image={project.hero} imageAlt={project.heroAlt} story={project.story} selection={personalProjectSelection(project.slug)}>
   <h2>{project.noteTitle}</h2>
   <div>
     {project.paragraphs.map(paragraph => <p>{paragraph}</p>)}
-    <p class="personal-project-links"><a href={project.story}>Read the complete build story</a>{project.repository && <a href={project.repository} target="_blank" rel="noopener noreferrer">View source on GitHub</a>}</p>
+    <p class="personal-project-links"><a href={project.story}>Read the complete build story</a>{"demo" in project && <a href={project.demo}>View the existing demo</a>}{project.repository && <a href={project.repository} target="_blank" rel="noopener noreferrer">View source on GitHub</a>}</p>
   </div>
 </ProjectFeature>
 <style>.personal-project-links{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:16px!important}.personal-project-links a{padding-block:10px}</style>

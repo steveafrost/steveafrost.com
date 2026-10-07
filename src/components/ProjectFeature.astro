@@ -2,17 +2,18 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import ArrowRight from './ArrowRight.astro';
 import { resolveSocialImage } from '../lib/social-image.mjs';
-interface Props { name: string; subtitle: string; image: string; imageAlt: string; story: string; storyLabel?: string; screen?: boolean; glassHeader?: boolean; selection?: readonly { name: string; href: string; current?: boolean }[]; }
-const { name, subtitle, image, imageAlt, story, storyLabel = 'Read the build story', screen = false, glassHeader = false, selection } = Astro.props;
+interface Props { name: string; subtitle: string; image: string; imageAlt: string; story: string; storyLabel?: string; screen?: boolean; glassHeader?: boolean; sourceExcerpt?: string; sourceLabel?: string; artworkCaption?: string; selection?: readonly { name: string; href: string; current?: boolean }[]; }
+const { name, subtitle, image, imageAlt, story, storyLabel = 'Read the build story', screen = false, glassHeader = false, sourceExcerpt, sourceLabel, artworkCaption, selection } = Astro.props;
 const imageMetadata = resolveSocialImage(image, imageAlt, Astro.site!);
 ---
 <MainLayout title={`${name} | Steve Frost`} description={subtitle} ogImage={image} ogImageAlt={imageAlt} glassHeader={glassHeader}>
   <article class:list={["project-feature", { screen, "shared-navigation": glassHeader }]}>
     <section class="project-hero" aria-labelledby="project-title">
-      <img class="project-scene" src={image} alt={imageAlt} width={imageMetadata?.width || 1487} height={imageMetadata?.height || 1058} fetchpriority="high" />
+      {sourceExcerpt ? <figure class="project-source"><figcaption>{sourceLabel}</figcaption><pre><code>{sourceExcerpt}</code></pre></figure> : <img class="project-scene" src={image} alt={imageAlt} width={imageMetadata?.width || 1487} height={imageMetadata?.height || 1058} fetchpriority="high" />}
       <div class="project-hero-copy"><h1 id="project-title">{name}</h1><p>{subtitle}</p><a class="project-story" href={story}>{storyLabel} <ArrowRight /></a></div>
       {selection && <nav class="project-selection" aria-label="Project navigation">{selection.map(item => <a href={item.href} aria-current={item.current ? 'page' : undefined}>{item.name}</a>)}</nav>}
     </section>
+    {artworkCaption && <p class="artwork-caption wrap">{artworkCaption}</p>}
     <section class="project-notes wrap" aria-label="About the project"><slot /></section>
   </article>
 </MainLayout>
@@ -39,3 +40,11 @@ const imageMetadata = resolveSocialImage(image, imageAlt, Astro.site!);
 }
 </style>
 <style>.project-selection a[aria-current="page"]{border-bottom:2px solid #b93620}</style>
+
+<style>
+.project-source{position:absolute;top:145px;right:var(--gutter);width:52%;margin:0;padding:32px;background:var(--cream);border:1px solid var(--line);border-radius:12px;color:var(--ink);box-shadow:0 12px 30px rgb(8 31 27 / 8%)}
+.project-source figcaption{font:500 14px/1.5 RiverSans,Arial,sans-serif;color:var(--olive);margin-bottom:22px}
+.project-source pre{font:400 clamp(12px,1.25vw,18px)/2 monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.artwork-caption{font:400 14px/1.5 RiverSans,Arial,sans-serif;color:var(--olive);margin-block:20px 0}
+@media(max-width:760px){.project-source{top:130px;left:24px;right:24px;width:auto;padding:24px}.project-source pre{font-size:13px}}
+</style>

@@ -1,13 +1,11 @@
-# Personal featurettes QA
+# Featurette batch two design QA
 
-final result: blocked
+Final result: blocked for rendered browser QA.
 
-Source visual truth: user screenshot Library libfile_dc34ca3b8aa88191bb86677fa44b992c, featurette-reference/approved-featurette.png (2048×1341 browser capture). Existing approved Kindle template and hero inspected.
-Implementation screenshot: unavailable; website browser use on Mr Chips prohibited.
-Target states: desktop and mobile, day/night. Density normalization, full-view and focused rendered comparison are blocked. Generated hero assets1487×1058 were directly inspected and are asset evidence, not rendered-page screenshots.
+Scope: Pi Skill Recommender, Message Relay, TheRide Bus Schedule and Tip Track. Existing personal featurette layout and shared glass header/menu motion reused. Three existing project previews are mock replicas and are labelled as such. Pi has no artwork in its repository tree; its hero and postcard typeset documented command names, without fabricated terminal output. Its social image uses the existing portfolio landscape.
 
-Required fidelity surfaces: fonts/typography, spacing/layout rhythm, colors/tokens retained from the approved existing template; rendered wrapping/contrast/geometry unverified. Asset quality: two matching sunlit cream photographic paper scenes derived from existing approved illustrations, inspected directly. Copy: fact-grounded in the project articles and official READMEs; no release or launch claims invented.
+Verified locally: production build 83 Astro pages; 54 tests pass; all previous 98 HTML routes retained, only /projects/pi-skill-recommender added. All public assets byte-identical. Built headers on all seven personal featurettes match Work header. Existing demos and story URLs retained. Latest-three discovery uses verified portfolio story dates: Kindle 2026-09-30, Tiny GIFs 2026-08-18, Pi 2026-06-20. Older featurette routes remain.
 
-Source checks: build82Astro pages;34tests pass; all96oldHTMLroutes retained with2newfeaturettes, all existing public assets byte-identical. Tests cover deterministic newest3/ties, featurette hrefs, age-out without removing inventory, canonical/OG/Twitter/hero, homepage agreement and existing work/article routes.
-Comparison history: no browser iteration or visual pass claimed.
-Remaining scope question: curated portfolio projects vs all personal projects; additional newer repositories found. Dates currently use dated portfolio write-ups, not repository update dates. First batch intentionally covers the3existing homepage projects while curation is pending.
+No local browser is permitted by the user. No rendered desktop/mobile screenshots, console, layout, night-theme, runtime animation or performance QA claimed. Static built HTML is review evidence, not a browser capture. No push, preview, publication or deployment performed.
+
+Copy follows the write-like-steve SKILL.md and verified portfolio stories/READMEs. Its referenced blog-voice.md failed resource retrieval; no unavailable reference was represented as read. Current application behavior and launch dates were not independently verified; featurette copy describes documented project work and dates remain story dates.

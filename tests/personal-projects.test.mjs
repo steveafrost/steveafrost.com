@@ -41,7 +41,9 @@ for (const project of personalProjects) {
     assert.ok(html.includes(`href="https://steveafrost.com/projects/${project.slug}/"`));
     assert.ok(html.includes(`property="og:image" content="https://steveafrost.com${project.hero}"`));
     assert.ok(html.includes(`name="twitter:image" content="https://steveafrost.com${project.hero}"`));
-    assert.ok(html.includes(`src="${project.hero}"`)); assert.ok(fs.existsSync(`public${project.hero}`));
+    if (project.sourceExcerpt) { assert.ok(html.includes(project.sourceLabel)); assert.ok(html.includes("/skill-recommender-candidates")); }
+    else assert.ok(html.includes(`src="${project.hero}"`));
+    assert.ok(fs.existsSync(`public${project.hero}`));
     assert.ok(html.includes('aria-current="page"')); assert.ok(html.includes(project.story));
   });
 }
@@ -71,4 +73,18 @@ test('personal featurettes reuse the Work glass header, menu and active context'
     assert.ok(html.includes('/river-assets/sticky-glass.js?v=about-parity-1'));
     assert.ok(html.includes('/river-assets/mobile-menu.js?v=unfold-1'));
   }
+});
+
+test('batch two reuses existing routes and updates latest-three without deleting old featurettes', () => {
+  assert.deepEqual(newestPersonalProjects().map(p => p.slug), ['kindle-newspaper', 'tiny-gifs', 'pi-skill-recommender']);
+  for (const slug of ['message-relay', 'the-ride-bus-schedule', 'tip-track']) {
+    const project = personalProjects.find(p => p.slug === slug);
+    const html = fs.readFileSync(`dist/projects/${slug}/index.html`, 'utf8');
+    assert.ok(html.includes(project.story));
+    assert.ok(html.includes(project.demo));
+    assert.ok(html.includes(project.artworkCaption));
+  }
+  const older = fs.readFileSync('dist/projects/parcelrouter/index.html', 'utf8');
+  assert.deepEqual(selection(older), newestPersonalProjects().map(personalProjectHref));
+  assert.ok(!selection(older).includes('/projects/parcelrouter'));
 });
