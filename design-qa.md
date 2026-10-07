@@ -1,19 +1,13 @@
-# Mobile navigation QA
+# Personal featurettes QA
 
 final result: blocked
 
-Source visual truth: Library `libfile_bc09270e80a08191a8d94dbd26a31564`, generated_images/exec-a4165686-efb3-4e67-9659-488c5ecae589.png (1374×1145, closed/open concept comparison).
-Implementation screenshot: unavailable. Browser use on Mr Chips is prohibited by the user. The user explicitly authorized production publication using build, source, and HTTPS verification.
-Target viewport: 390px mobile, both themes and closed/open states; desktop above760px preserved. Density normalization and rendered pixel dimensions cannot be verified without browser evidence.
-Full-view comparison and focused icon/header comparison: blocked; no new rendered capture.
+Source visual truth: user screenshot Library libfile_dc34ca3b8aa88191bb86677fa44b992c, featurette-reference/approved-featurette.png (2048×1341 browser capture). Existing approved Kindle template and hero inspected.
+Implementation screenshot: unavailable; website browser use on Mr Chips prohibited.
+Target states: desktop and mobile, day/night. Density normalization, full-view and focused rendered comparison are blocked. Generated hero assets1487×1058 were directly inspected and are asset evidence, not rendered-page screenshots.
 
-Required fidelity surfaces:
-- Typography: existing self-hosted Unbounded wordmark and Space Grotesk navigation retained; mobile main links20px. Rendered wrapping/optical weight unverified.
-- Spacing: closed44px row plus20px vertical padding; contiguous open panel, divided main navigation and utility row; every control44px. Computed geometry unverified.
-- Colors: existing day/night tokens and glass tint retained; open mobile blur14px; reduced-transparency/contrast/forced-color fallbacks preserved. Rendered contrast unverified.
-- Assets: existing hero and animation assets retained. Official Feather Mail/GitHub/LinkedIn/X and Phosphor circles-four paths, with bundled MIT licenses. Second checkpoint replaces the first envelope with Feather Mail, matching24×24 viewBox, stroke2, rounded caps/joins, and fillnone across the utility icons. No redrawn logos.
-- Copy: Work, Writing, About; accessible email/GitHub/LinkedIn labels; theme retains current-state aria-pressed and action labels. Exact supplied destinations.
+Required fidelity surfaces: fonts/typography, spacing/layout rhythm, colors/tokens retained from the approved existing template; rendered wrapping/contrast/geometry unverified. Asset quality: two matching sunlit cream photographic paper scenes derived from existing approved illustrations, inspected directly. Copy: fact-grounded in the project articles and official READMEs; no release or launch claims invented.
 
-Static/logic checks: node tests exercise disclosure ARIA/hidden state, Escape/focus restoration, outside close, link close, theme staying open, responsive reset and history reset. These are source logic tests, not browser interaction verification.
-Comparison history: no browser visual iteration; no visual pass claimed.
-Remaining blocker: visual fidelity, actual keyboard/focus behavior, browser console, and device rendering need user testing on the published website.
+Source checks: build82Astro pages;34tests pass; all96oldHTMLroutes retained with2newfeaturettes, all existing public assets byte-identical. Tests cover deterministic newest3/ties, featurette hrefs, age-out without removing inventory, canonical/OG/Twitter/hero, homepage agreement and existing work/article routes.
+Comparison history: no browser iteration or visual pass claimed.
+Remaining scope question: curated portfolio projects vs all personal projects; additional newer repositories found. Dates currently use dated portfolio write-ups, not repository update dates. First batch intentionally covers the3existing homepage projects while curation is pending.

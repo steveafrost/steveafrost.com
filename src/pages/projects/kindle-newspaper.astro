@@ -1,7 +1,6 @@
 ---
-import ProjectFeature from '../../components/ProjectFeature.astro';
+import PersonalProjectFeature from '../../components/PersonalProjectFeature.astro';
+import { personalProjects } from '../../data/personal-projects.mjs';
+const project = personalProjects.find(project => project.slug === 'kindle-newspaper')!;
 ---
-<ProjectFeature name="Kindle newspaper" subtitle="A nightly edition for my Kindle." image="/river-assets/kindle-project-scene.png" imageAlt="Steve’s Evening Edition newspaper resting on a book in warm sunlight." story="/articles/building-a-nightly-newspaper-for-my-kindle">
-  <h2>Steve’s Evening Edition</h2>
-  <div><p>A nightly newspaper needs a stopping point. RSS feeds keep producing articles, and putting all of them into an EPUB would just move the backlog onto a Kindle.</p><p>In August, I built Steve's Evening Edition around a smaller target: ten to eighteen articles, with a reading budget of about 9,000 words. It collects stories from curated feeds, filters and ranks them, builds an EPUB, and hands it to a delivery service.</p><a href="/articles/building-a-nightly-newspaper-for-my-kindle">Read the complete build story</a></div>
-</ProjectFeature>
+<PersonalProjectFeature project={project} />

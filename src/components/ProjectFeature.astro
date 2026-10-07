@@ -1,15 +1,17 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import ArrowRight from './ArrowRight.astro';
-interface Props { name: string; subtitle: string; image: string; imageAlt: string; story: string; storyLabel?: string; screen?: boolean; selection?: readonly { name: string; href: string }[]; }
+import { resolveSocialImage } from '../lib/social-image.mjs';
+interface Props { name: string; subtitle: string; image: string; imageAlt: string; story: string; storyLabel?: string; screen?: boolean; selection?: readonly { name: string; href: string; current?: boolean }[]; }
 const { name, subtitle, image, imageAlt, story, storyLabel = 'Read the build story', screen = false, selection } = Astro.props;
+const imageMetadata = resolveSocialImage(image, imageAlt, Astro.site!);
 ---
-<MainLayout title={`${name} | Steve Frost`} description={subtitle} ogImage={image}>
+<MainLayout title={`${name} | Steve Frost`} description={subtitle} ogImage={image} ogImageAlt={imageAlt}>
   <article class:list={["project-feature", { screen }]}>
     <section class="project-hero" aria-labelledby="project-title">
-      <img class="project-scene" src={image} alt={imageAlt} width="1487" height="1058" fetchpriority="high" />
+      <img class="project-scene" src={image} alt={imageAlt} width={imageMetadata?.width || 1487} height={imageMetadata?.height || 1058} fetchpriority="high" />
       <div class="project-hero-copy"><h1 id="project-title">{name}</h1><p>{subtitle}</p><a class="project-story" href={story}>{storyLabel} <ArrowRight /></a></div>
-      <nav class="project-selection" aria-label="Project navigation">{selection ? selection.map(item => <a href={item.href}>{item.name}</a>) : <><a href="/articles/parcelrouter-from-inbox-script-to-package-event-router">ParcelRouter</a><a href="/articles/making-gifs-small-enough-for-a-conversation">Tiny GIFs</a><span aria-current="page">Kindle newspaper</span></>}</nav>
+      {selection && <nav class="project-selection" aria-label="Project navigation">{selection.map(item => <a href={item.href} aria-current={item.current ? 'page' : undefined}>{item.name}</a>)}</nav>}
     </section>
     <section class="project-notes wrap" aria-label="About the project"><slot /></section>
   </article>
@@ -36,3 +38,4 @@ const { name, subtitle, image, imageAlt, story, storyLabel = 'Read the build sto
  .screen .project-selection a{max-width:40%;text-wrap:balance}
 }
 </style>
+<style>.project-selection a[aria-current="page"]{border-bottom:2px solid #b93620}</style>
