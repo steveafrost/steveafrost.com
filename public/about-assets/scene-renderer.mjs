@@ -1,5 +1,5 @@
 import {WebGLRenderer,Container,Graphics,GraphicsContext} from '../river-assets/vendor/pixi-8.22.0-animals.mjs';
-import {scenePatch,crossingAt,riderPose,advanceLean,steamAt,steamCurve,steamFrameCount,pedalRadius} from './scene-model.mjs?v=bridge-steam-3';
+import {scenePatch,crossingAt,riderPose,advanceLean,steamAt,steamCurve,steamParcelCount,pedalRadius} from './scene-model.mjs?v=rising-steam-4';
 export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
   const renderer=new Renderer(); let stage=null,disposed=false;
   const contexts=new Set();
@@ -25,12 +25,10 @@ export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
     const farShoe=limb(0x173932,4),nearShoe=limb(0x173932,4);
     bike.addChild(farUpper,farLower,farShoe,torso,upperArm,forearm,neck,head,nearUpper,nearLower,nearShoe,crank);
     const steam=new Container();steam.eventMode='none';stage.addChild(steam);
-    const steamFrames=Array.from({length:steamFrameCount},(_,index)=>{
-      const context=new GraphicsContext();
-      for(const command of steamCurve(index*Math.PI*2/steamFrameCount))context[command.action](...command.args);
-      context.closePath().fill(0xf7eedb);contexts.add(context);return context;
-    });
-    const ribbon=graphic(steamFrames[0]);steam.addChild(ribbon);
+    const steamContext=new GraphicsContext();
+    for(const command of steamCurve())steamContext[command.action](...command.args);
+    steamContext.closePath().fill(0xf7eedb);
+    const parcels=Array.from({length:steamParcelCount},()=>{const parcel=graphic(steamContext);steam.addChild(parcel);return parcel;});
     const screen=new Container();screen.eventMode='none';stage.addChild(screen);
     // Interior of the illustrated laptop screen; leave existing text/art intact.
     const cursor=shape(c=>c.rect(0,0,1.1,5).fill({color:0xc7d4ba,alpha:.6}));cursor.position.set(681,444);screen.addChild(cursor);
@@ -47,7 +45,7 @@ export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
         segment(nearShoe,body.nearFoot,{x:body.nearFoot.x+4,y:body.nearFoot.y});segment(farShoe,body.farFoot,{x:body.farFoot.x+4,y:body.farFoot.y});
       }
       steam.visible=screen.visible=zones.desk;
-      if(zones.desk){const p=steamAt(time);ribbon.context=steamFrames[p.frame];ribbon.position.set(p.x,p.y);ribbon.alpha=p.alpha;
+      if(zones.desk){for(let i=0;i<parcels.length;i++){const p=steamAt(time,i),parcel=parcels[i];parcel.position.set(p.x,p.y);parcel.scale.set(p.scaleX,p.scaleY);parcel.alpha=p.alpha;}
         cursor.alpha=.25+.25*(1+Math.sin(time*1.6));line.alpha=.4+.2*Math.sin(time*.65);}
       renderer.render(options);
     }

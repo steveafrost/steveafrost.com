@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {bikePose,wheelRadius,wheelbase,deck,deckSlope,arcLength,riderPose,crossingAt,advanceLean,steamAt,pedalRadius,driveRatio,bridgeSpan,steamFrameCount} from '../public/about-assets/scene-model.mjs';
+import {bikePose,wheelRadius,wheelbase,deck,deckSlope,arcLength,riderPose,crossingAt,advanceLean,steamAt,pedalRadius,driveRatio,bridgeSpan,steamParcelCount,steamLifetime} from '../public/about-assets/scene-model.mjs';
 import {initializeAboutMotion} from '../public/about-assets/motion.mjs';
 const close=(a,b,tolerance=1e-6)=>assert.ok(Math.abs(a-b)<tolerance,`${a} != ${b}`);
 test('both wheels contact curved deck with a rigid wheelbase and rolling arc length',()=>{
@@ -21,7 +21,7 @@ test('rolling phase follows distance, fade prevents visible loop teleport, inert
  const a=crossingAt(8),b=crossingAt(9);close((b.rearWheel-a.rearWheel)*wheelRadius,arcLength(a.rear.contactX,b.rear.contactX));
  assert.equal(crossingAt(27.999).visible,false);assert.equal(crossingAt(0).visible,false);close(crossingAt(3).alpha,0);close(crossingAt(23).alpha,0);
  const s={value:0,velocity:0};for(let i=0;i<300;i++)advanceLean(s,1,1/30);close(s.value,1,1e-5);assert.ok(Number.isFinite(s.velocity));
- for(let i=0;i<6;i++)for(let t=0;t<30;t+=.1){const p=steamAt(t,i);assert.ok(p.alpha===.96&&p.y===435&&p.frame>=0&&p.frame<steamFrameCount);}
+ for(let i=0;i<6;i++)for(let t=0;t<30;t+=.1){const p=steamAt(t,i);assert.ok(p.alpha>=0&&p.alpha<=.9&&p.y<=435&&p.y>=400.8&&p.scaleX>=1);}
 });
 class Events{listeners=new Map();addEventListener(type,fn){if(!this.listeners.has(type))this.listeners.set(type,new Set());this.listeners.get(type).add(fn);}removeEventListener(type,fn){this.listeners.get(type)?.delete(fn);}emit(type,event={}){for(const fn of this.listeners.get(type)||[])fn(event);}}
 function fixture(){const environment=new Events(),doc=new Events(),button=new Events(),canvas=new Events();canvas.style={};button.setAttribute=()=>{};
@@ -60,16 +60,15 @@ test('preview revision lifts tire contact and gives readable geared cadence and 
  const lift=(legacyY-p.rear.y)*1440/1122;assert.ok(lift>3&&lift<3.7);
  const a=crossingAt(9),b=crossingAt(10);assert.ok(b.crank-a.crank>3.8);close((b.crank-a.crank)*wheelRadius*driveRatio,arcLength(a.rear.contactX,b.rear.contactX));
  const r=riderPose(0),opposite=riderPose(Math.PI);close(Math.hypot(r.nearFoot.x-opposite.nearFoot.x,r.nearFoot.y-opposite.nearFoot.y),14.4);
- const plume=steamAt(0,3);assert.ok(plume.alpha>.95);assert.ok(plume.scale===1);assert.ok(plume.y===435);
 });
 test('actual Pixi crank, wheel and connected limb transforms change across visible frames',async()=>{
  const {createAboutScene}=await import('../public/about-assets/scene-renderer.mjs');let stage;
  class Renderer{canvas={setAttribute(){},addEventListener(){},remove(){}};async init(){}render(o){stage=o.container;}destroy(){}}
  const scene=await createAboutScene({append(){}},{Renderer});scene.draw(9,1/30,{bridge:true,desk:true});
  const bike=stage.children[0],nearShoe=bike.children[13],upper=bike.children[11],crank=bike.children[14];
- const previous={wheel:bike.children[0].rotation,crank:crank.rotation,shoeX:nearShoe.x,shoeY:nearShoe.y,upper:upper.rotation,torso:bike.children[6].rotation,steamY:stage.children[1].children[0].context};
+ const previous={wheel:bike.children[0].rotation,crank:crank.rotation,shoeX:nearShoe.x,shoeY:nearShoe.y,upper:upper.rotation,torso:bike.children[6].rotation,steamY:stage.children[1].children[0].y};
  scene.draw(9.8,1/30,{bridge:true,desk:true});assert.ok(crank.rotation-previous.crank>3);assert.ok(bike.children[0].rotation-previous.wheel>1);
- assert.ok(Math.hypot(nearShoe.x-previous.shoeX,nearShoe.y-previous.shoeY)>10);assert.ok(Math.abs(upper.rotation-previous.upper)>.2);assert.notEqual(bike.children[6].rotation,previous.torso);assert.notEqual(stage.children[1].children[0].context,previous.steamY);scene.destroy();
+ assert.ok(Math.hypot(nearShoe.x-previous.shoeX,nearShoe.y-previous.shoeY)>10);assert.ok(Math.abs(upper.rotation-previous.upper)>.2);assert.notEqual(bike.children[6].rotation,previous.torso);assert.notEqual(stage.children[1].children[0].y,previous.steamY);scene.destroy();
 });
 test('fade-out stays on the visible almost-level right deck until fully hidden',()=>{
  // Reference image right-hand road crest, independent of prior parabola.
@@ -81,9 +80,21 @@ test('fade-out stays on the visible almost-level right deck until fully hidden',
  }
  assert.equal(crossingAt(23.001).visible,false);close(crossingAt(23).alpha,0);assert.throws(()=>bikePose(581),RangeError);
 });
-test('only one original-style ribbon is rendered; reduced-motion restores single static fallback',async()=>{
+test('one pooled steam layer is rendered; reduced-motion restores single static fallback',async()=>{
  const {createAboutScene}=await import('../public/about-assets/scene-renderer.mjs');let stage;
  class Renderer{canvas={setAttribute(){},addEventListener(){},remove(){}};async init(){}render(o){stage=o.container;}destroy(){}}
- const scene=await createAboutScene({append(){}},{Renderer});scene.draw(22.5,1/30,{bridge:true,desk:true});assert.equal(stage.children[1].children.length,1);scene.destroy();
+ const scene=await createAboutScene({append(){}},{Renderer});scene.draw(22.5,1/30,{bridge:true,desk:true});assert.equal(stage.children[1].children.length,steamParcelCount);assert.ok(stage.children[1].children.every(p=>p.context===stage.children[1].children[0].context));scene.destroy();
  const f=fixture();assert.equal(f.root.dataset.steam,'static');f.visible('desk',true);await flush();assert.equal(f.root.dataset.steam,'animated');f.button.emit('click');assert.equal(f.root.dataset.steam,'animated');f.reduced.matches=true;f.reduced.emit('change');assert.equal(f.root.dataset.steam,'static');assert.equal(f.canvas.style.visibility,'hidden');f.cleanup();assert.equal(f.root.dataset.steam,'static');
+});
+test('steam advects upward, expands and dissipates; rebirth happens only while invisible',()=>{
+ for(let index=0;index<steamParcelCount;index++){
+  const offset=index*steamLifetime/steamParcelCount;let prior=null;
+  for(let age=.001;age<steamLifetime;age+=.01){const p=steamAt(steamLifetime-offset+age,index);close(p.age,age);
+   assert.ok(Math.abs(p.x-578)<2.2);assert.ok(p.scaleY>=.75);
+   if(prior){assert.ok(p.y<prior.y);assert.ok(p.scaleX>prior.scaleX&&p.scaleY>prior.scaleY);if(age>.14)assert.ok(p.alpha<prior.alpha);}
+   prior=p;
+  }
+  const end=steamAt(2*steamLifetime-offset-.00001,index),birth=steamAt(2*steamLifetime-offset,index);assert.ok(end.alpha<.000001);assert.ok(birth.alpha<.000001);close(birth.y,435);
+ }
+ const a=steamAt(.5),b=steamAt(1.5);close(a.y-b.y,9.5);assert.ok(b.scaleX>a.scaleX);assert.ok(Math.abs(a.x-b.x)<3);
 });

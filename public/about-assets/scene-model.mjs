@@ -56,21 +56,25 @@ export function advanceLean(state, target, seconds) {
   for(let i=0;i<steps;i++) { state.velocity += (49*(target-state.value)-14*state.velocity)*dt; state.value += state.velocity*dt; }
   state.value=Math.max(-1.5,Math.min(1.5,state.value));return state.value;
 }
-// One ribbon anchored to the cup, with precomputed curling shapes. No rising
-// detached duplicate: the wave travels upward through the original S silhouette.
-export const steamFrameCount=32;
-export function steamAt(time) {
-  return {x:578,y:435,scale:1,rotation:0,alpha:.96,frame:Math.floor(time*12)%steamFrameCount};
+// A small pool of emitted parcels forms one cream steam column. Age controls
+// upward advection, expansion and dissipation; lateral drift is secondary.
+export const steamParcelCount=10,steamLifetime=3.6;
+export function steamAt(time,index=0) {
+  const wrapped=((time+index*steamLifetime/steamParcelCount)%steamLifetime+steamLifetime)%steamLifetime;
+  const age=wrapped<1e-9||steamLifetime-wrapped<1e-9?0:wrapped;
+  const fraction=age/steamLifetime;
+  return {age,x:578+Math.sin(age*1.35+index*.31)*fraction*2.2,y:435-age*9.5,
+    scaleX:1+fraction*.9,scaleY:.75+fraction*.5,
+    alpha:.9*Math.min(1,age/.12)*(1-fraction)**1.4};
 }
-export function steamCurve(phase) {
-  const wave=y=>Math.sin(phase+y*.12)*2*Math.min(1,Math.abs(y)/15);
+// Original warm cream, soft S contour, and tapered curl, reduced to an
+// overlapping parcel. Shared context geometry is allocated exactly once.
+export function steamCurve() {
   return [
-    {action:'moveTo',args:[0,0]},
-    ...[
-      [-1,-4,-1,-7,1,-10],[3,-13,9,-14,6,-17],
-      [2,-19,-7,-20,-6,-24],[-5,-27,-2,-30,4,-34],
-      [1,-29,-2,-27,-1,-24],[0,-21,9,-21,10,-17],
-      [11,-12,5,-11,3,-8],[1,-5,2,-2,2,0]
-    ].map(points=>({action:'bezierCurveTo',args:points.map((value,i)=>i%2===0?value+wave(points[i+1]):value)}))
+    {action:'moveTo',args:[-1,0]},
+    {action:'bezierCurveTo',args:[-2,-2,2,-3,1,-5]},
+    {action:'bezierCurveTo',args:[0,-6,-3,-7,-1,-9]},
+    {action:'bezierCurveTo',args:[1,-8,4,-7,4,-5]},
+    {action:'bezierCurveTo',args:[4,-2,1,-2,1,0]}
   ];
 }
