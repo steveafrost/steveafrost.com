@@ -4,6 +4,7 @@ import "../styles/global.css";
 
 import Analytics from "@vercel/analytics/astro";
 import ThemeSwitch from "../components/ThemeSwitch.astro";
+import NavigationIcon from "../components/NavigationIcon.astro";
 
 interface Props {
   title?: string;
@@ -92,21 +93,35 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
     <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=flag-physics-14" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=mobile-menu-1" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner", !home && useGlassHeader && "river-glass-inner"]}>
     <a class="skip" href="#main">Skip to content</a>
     <header class:list={["river-nav wrap editorial-header", useGlassHeader && "glass-navigation"]}>
       <a class="river-brand" href="/"><span class="brand-name">Steve Frost</span></a>
-      <nav aria-label="Primary">
-        {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
-      </nav>
-      <ThemeSwitch />
+      <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" title="Open navigation" aria-expanded="false" aria-controls="header-menu" hidden>
+        <span class="menu-open-icon"><NavigationIcon name="dots" /></span>
+        <span class="menu-close-icon"><NavigationIcon name="close" /></span>
+      </button>
+      <div id="header-menu" class="header-menu">
+        <nav aria-label="Primary">
+          {navLinks.map(({ href, label }) => <a href={href} aria-current={currentPath.startsWith(href) ? "page" : undefined}>{label}</a>)}
+        </nav>
+        <div class="header-utilities">
+          <div class="header-social-links">
+            <a href="mailto:hello@steveafrost.com" aria-label="Email Steve Frost" title="Email Steve Frost"><NavigationIcon name="mail" /></a>
+            <a href="https://github.com/steveafrost" aria-label="Steve Frost on GitHub" title="GitHub" target="_blank" rel="noopener noreferrer"><NavigationIcon name="github" /></a>
+            <a href="https://www.linkedin.com/in/steveafrost" aria-label="Steve Frost on LinkedIn" title="LinkedIn" target="_blank" rel="noopener noreferrer"><NavigationIcon name="linkedin" /></a>
+          </div>
+          <ThemeSwitch />
+        </div>
+      </div>
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1"></script>
+    <script is:inline defer src="/river-assets/mobile-menu.js?v=1"></script>
     {home && <script is:inline defer src="/river-assets/river.js?v=unified-motion-8"></script>}
     {home && <script is:inline type="module" src="/river-assets/bank-visitors.mjs?v=exact-start-6"></script>}
     {home && <script is:inline type="module" src="/river-assets/bridge-cyclist.mjs?v=exact-start-4"></script>}

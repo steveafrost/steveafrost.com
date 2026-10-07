@@ -262,3 +262,39 @@ html:has(body.river-glass-inner){scroll-padding-top:100px}
 body.river-glass-inner .skip:focus{z-index:51}
 @media(max-width:760px){html:has(body.river-glass-inner){scroll-padding-top:calc(144px + max(0px,env(safe-area-inset-top) - 8px))}.river-glass-inner [id]{scroll-margin-top:calc(144px + max(0px,env(safe-area-inset-top) - 8px))}}
 @media(prefers-reduced-motion:reduce){html:has(body.river-glass-inner){scroll-behavior:auto}}
+
+/* Approved mobile disclosure. Desktop children retain their original layout. */
+.header-menu,.header-utilities{display:contents}
+.header-social-links,.mobile-menu-toggle,.menu-close-icon{display:none}
+.mobile-menu-toggle[hidden],.header-menu[hidden]{display:none!important}
+@media(max-width:760px){
+ body.river-site .river-nav.editorial-header.menu-enhanced{grid-template-columns:minmax(0,1fr) 44px;grid-template-rows:44px auto;column-gap:12px;row-gap:0;padding-block:10px}
+ body.river-site .river-nav.editorial-header.glass-navigation.menu-enhanced{padding-inline:12px;border-radius:28px}
+ .menu-enhanced .river-brand{grid-row:1;grid-column:1;transform:none}
+ .menu-enhanced .mobile-menu-toggle{grid-row:1;grid-column:2;display:grid;place-items:center;width:44px;height:44px;border:0;padding:0;background:transparent;color:var(--ink);cursor:pointer}
+ .mobile-menu-toggle span{line-height:0}
+ .mobile-menu-toggle svg{display:block;width:24px;height:24px}
+ .menu-close-icon svg{width:18px;height:18px}
+ .menu-enhanced.menu-is-open .menu-open-icon{display:none}
+ .menu-enhanced.menu-is-open .menu-close-icon{display:block}
+ .mobile-menu-toggle:focus-visible{outline:2px solid currentColor;outline-offset:-4px;border-radius:8px}
+ .menu-enhanced .header-menu{display:block;grid-row:2;grid-column:1/-1;min-width:0;margin-top:10px;padding-top:8px;border-top:1px solid color-mix(in srgb,currentColor 24%,transparent)}
+ body.river-site .river-nav.editorial-header.menu-enhanced .header-menu nav{display:flex;flex-direction:column;align-items:stretch;gap:0;margin:0;font-size:20px;line-height:1.35;font-weight:500}
+ body.river-site .river-nav.editorial-header.menu-enhanced .header-menu nav a{display:flex;align-items:center;min-height:44px;padding:8px 6px}
+ .menu-enhanced .header-utilities{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid color-mix(in srgb,currentColor 24%,transparent)}
+ .menu-enhanced .header-social-links{display:flex;align-items:center;gap:8px;min-width:0}
+ .menu-enhanced .header-social-links a{display:grid;place-items:center;width:44px;min-width:44px;height:44px;line-height:0}
+ .header-social-links svg{display:block;width:18px;height:18px}
+ .menu-enhanced .header-utilities .theme-header{display:grid;grid-area:auto;width:44px;height:44px;margin-left:auto}
+ .menu-enhanced .header-utilities .theme-header::before{display:none}
+ .menu-enhanced .header-utilities .theme-header svg{stroke-width:2}
+ .menu-enhanced .header-social-links a:focus-visible{outline:2px solid currentColor;outline-offset:-4px;border-radius:8px}
+ body.river-glass-inner:has(.menu-enhanced) .river-content{padding-top:calc(100px + max(0px,env(safe-area-inset-top) - 8px))}
+ html:has(body.river-glass-inner .menu-enhanced){scroll-padding-top:calc(100px + max(0px,env(safe-area-inset-top) - 8px))}
+ .river-glass-inner:has(.menu-enhanced) [id]{scroll-margin-top:calc(100px + max(0px,env(safe-area-inset-top) - 8px))}
+ body:has(.menu-enhanced) .about-story{padding-top:calc(104px + max(0px,env(safe-area-inset-top) - 8px))}
+ @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  body.river-site .editorial-header.glass-navigation.menu-is-open::before{backdrop-filter:blur(14px) saturate(125%) brightness(110%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(110%) contrast(60%)}
+  [data-theme="night"] body.river-site .editorial-header.glass-navigation.menu-is-open::before{backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%)}
+ }
+}

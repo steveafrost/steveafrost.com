@@ -1,0 +1,12 @@
+---
+import github from '../assets/navigation/github.svg?raw';
+import linkedin from '../assets/navigation/linkedin.svg?raw';
+import mail from '../assets/navigation/envelope-simple.svg?raw';
+import dots from '../assets/navigation/circles-four.svg?raw';
+import close from '../assets/navigation/x.svg?raw';
+
+interface Props { name: 'github' | 'linkedin' | 'mail' | 'dots' | 'close'; }
+const icons = { github, linkedin, mail, dots, close };
+const markup = icons[Astro.props.name].replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+---
+<Fragment set:html={markup} />
