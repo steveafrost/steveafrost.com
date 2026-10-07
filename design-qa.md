@@ -11,7 +11,7 @@ Required fidelity surfaces:
 - Typography: existing self-hosted Unbounded wordmark and Space Grotesk navigation retained; mobile main links20px. Rendered wrapping/optical weight unverified.
 - Spacing: closed44px row plus20px vertical padding; contiguous open panel, divided main navigation and utility row; every control44px. Computed geometry unverified.
 - Colors: existing day/night tokens and glass tint retained; open mobile blur14px; reduced-transparency/contrast/forced-color fallbacks preserved. Rendered contrast unverified.
-- Assets: existing hero and animation assets retained. Official Feather GitHub/LinkedIn/X and Phosphor circles-four/envelope-simple paths, with bundled MIT licenses. No redrawn logos.
+- Assets: existing hero and animation assets retained. Official Feather Mail/GitHub/LinkedIn/X and Phosphor circles-four paths, with bundled MIT licenses. Second checkpoint replaces the first envelope with Feather Mail, matching24×24 viewBox, stroke2, rounded caps/joins, and fillnone across the utility icons. No redrawn logos.
 - Copy: Work, Writing, About; accessible email/GitHub/LinkedIn labels; theme retains current-state aria-pressed and action labels. Exact supplied destinations.
 
 Static/logic checks: node tests exercise disclosure ARIA/hidden state, Escape/focus restoration, outside close, link close, theme staying open, responsive reset and history reset. These are source logic tests, not browser interaction verification.
