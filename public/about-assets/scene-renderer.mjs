@@ -1,5 +1,5 @@
 import {WebGLRenderer,Container,Graphics,GraphicsContext} from '../river-assets/vendor/pixi-8.22.0-animals.mjs';
-import {scenePatch,crossingAt,riderPose,advanceLean,steamAt} from './scene-model.mjs';
+import {scenePatch,crossingAt,riderPose,advanceLean,steamAt,pedalRadius} from './scene-model.mjs?v=readable-motion-2';
 export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
   const renderer=new Renderer(); let stage=null,disposed=false;
   const contexts=new Set();
@@ -13,18 +13,19 @@ export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
     const bike=new Container();bike.eventMode='none';stage.addChild(bike);
     const wheelContext=new GraphicsContext().circle(0,0,10).stroke({width:1.7,color:0x193b39}).circle(0,0,8.4).stroke({width:.55,color:0x87968a});
     for(let i=0;i<8;i++){const a=i*Math.PI/4;wheelContext.moveTo(0,0).lineTo(Math.cos(a)*8.4,Math.sin(a)*8.4).stroke({width:.55,color:0x657a6c});}
+    wheelContext.circle(7.5,0,.8).fill(0xd9bd80);
     const rear=graphic(wheelContext),front=graphic(wheelContext);front.x=42;bike.addChild(rear,front);
     const frame=shape(c=>c.moveTo(0,0).lineTo(12,-19).lineTo(22,0).lineTo(0,0).moveTo(12,-19).lineTo(34,-19).lineTo(22,0).moveTo(34,-19).lineTo(42,0).moveTo(34,-19).lineTo(39,-24).lineTo(43,-23).moveTo(7,-22).lineTo(17,-22).stroke({width:1.8,color:0x254f46,cap:'round',join:'round'}));bike.addChild(frame);
     // Fixed limb geometry; transforms change each frame, never clear/rebuild.
     function limb(color,width) {return shape(c=>c.rect(0,-width/2,1,width).fill(color));}
-    const farUpper=limb(0x325c58,4),farLower=limb(0xdba573,3),nearUpper=limb(0x274f4b,4),nearLower=limb(0xe2af7c,3),upperArm=limb(0xe48741,4),forearm=limb(0xe2af7c,3);
+    const farUpper=limb(0x6a8a78,4),farLower=limb(0xdba573,3),nearUpper=limb(0x274f4b,4),nearLower=limb(0xe2af7c,3),upperArm=limb(0xe48741,4),forearm=limb(0xe2af7c,3);
     const torso=limb(0xd97532,8),neck=limb(0xe2af7c,3);
     const head=shape(c=>c.circle(0,0,4.6).fill(0xe2af7c).moveTo(-5,-1).bezierCurveTo(-5,-8,5,-8,5,-1).closePath().fill(0x164d52));
-    const crank=shape(c=>c.moveTo(-5,0).lineTo(5,0).stroke({width:1.4,color:0x163d36}).circle(0,0,2).fill(0x163d36));crank.x=22;
+    const crank=shape(c=>c.moveTo(-pedalRadius,0).lineTo(pedalRadius,0).stroke({width:1.8,color:0xd4c9a2}).circle(0,0,2).fill(0x163d36));crank.x=22;
     const farShoe=limb(0x173932,4),nearShoe=limb(0x173932,4);
     bike.addChild(farUpper,farLower,farShoe,torso,upperArm,forearm,neck,head,nearUpper,nearLower,nearShoe,crank);
     const steam=new Container();steam.eventMode='none';stage.addChild(steam);
-    const steamContext=new GraphicsContext().moveTo(0,0).bezierCurveTo(-4,-3,4,-7,0,-11).stroke({color:0xf8f4df,width:2,cap:'round'});
+    const steamContext=new GraphicsContext().moveTo(0,0).bezierCurveTo(-7,-5,8,-10,0,-14).bezierCurveTo(-8,-18,7,-20,1,-23).stroke({color:0x687a6b,width:8,alpha:.35,cap:'round'}).stroke({color:0xfff9e7,width:5.5,cap:'round'});
     const wisps=Array.from({length:6},()=>{const g=graphic(steamContext);steam.addChild(g);return g;});
     const screen=new Container();screen.eventMode='none';stage.addChild(screen);
     // Interior of the illustrated laptop screen; leave existing text/art intact.
@@ -42,7 +43,7 @@ export async function createAboutScene(host, {Renderer = WebGLRenderer} = {}) {
         segment(nearShoe,body.nearFoot,{x:body.nearFoot.x+4,y:body.nearFoot.y});segment(farShoe,body.farFoot,{x:body.farFoot.x+4,y:body.farFoot.y});
       }
       steam.visible=screen.visible=zones.desk;
-      if(zones.desk){for(let i=0;i<wisps.length;i++){const p=steamAt(time,i),g=wisps[i];g.position.set(p.x,p.y);g.scale.set(p.scale);g.alpha=p.alpha;}
+      if(zones.desk){for(let i=0;i<wisps.length;i++){const p=steamAt(time,i),g=wisps[i];g.position.set(p.x,p.y);g.scale.set(p.scale);g.rotation=p.rotation;g.alpha=p.alpha;}
         cursor.alpha=.25+.25*(1+Math.sin(time*1.6));line.alpha=.4+.2*Math.sin(time*.65);}
       renderer.render(options);
     }

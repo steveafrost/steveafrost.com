@@ -1,5 +1,5 @@
 // One visibility-gated frame driver for all About effects. No Pixi ticker.
-export function initializeAboutMotion(root, environment = window, loadScene = () => import('./scene-renderer.mjs')) {
+export function initializeAboutMotion(root, environment = window, loadScene = () => import('./scene-renderer.mjs?v=readable-motion-2')) {
   if (!root) return () => {};
   const doc=root.ownerDocument,button=root.querySelector('[data-story-pause]'),host=root.querySelector('[data-about-effects]');
   if(!button||!host||typeof environment.IntersectionObserver!=='function')return()=>{};
