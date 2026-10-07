@@ -1,17 +1,17 @@
-# About visual QA
+# Projects design QA
 
 final result: blocked
 
-Source visual truth: Library libfile_e04da3810ad48191a1521db7bbc7af02; saved approved exec-b35e604c-46b8-42a6-a0bf-fcaa4849a7e3.png inspected. Desktop source1122x1402. Real artwork-only edit and cyclist asset inspected separately.
+Source truth: libfile_c4f701691ab48191935cf0af9de58ede desktop895x1757, libfile_9cc67c9c58c481918d1fce987a853d38 mobile feature overview920x1710, libfile_df097f5f8f24819182fbc99c4c20952f mobile list detail853x1844. Actual pixels inspected. Mobile full-width description detail is authoritative.
 
-Implementation screenshot: unavailable. No browser launched, per user prohibition; no callable allowed cloud browser. No full-view or focused rendered comparison possible, no viewport/console/paint evidence. Browser/GPU visual QA is blocked, not passed by build or HTTP checks. Publication requested explicitly using supported verification, with limitations disclosed.
+Rendered screenshot: unavailable. User prohibits local website browsers; no callable permitted cloud browser. No browser launched or prior access denial retried. Viewport/density/state/side-by-side and focused implementation comparison cannot be performed. No visual/console/keyboard paint pass claimed.
 
-Typography: existing self-hosted Fraunces700 normal/italic and Space Grotesk. Smaller title max48px; body16–20px desktop/18px mobile.
-Spacing: normalized target positions; below1100px original-order stacked prose/art to avoid absolute-content crowding; below520px intro adapts. Real pixels unverified.
-Colors: approved cream/ink/olive/coral. Illustrated paper stays cream in night mode for text contrast.
-Images: inspected actual target and generated art; custom illustrations preserved, no CSS/SVG art substitutes. Raster rider more detailed than tiny source, scaled small.
-Copy: exact title/subtitle and all four complete source bio paragraphs, email/GitHub preserved.
+Fidelity ledger:
+- Copy: shared existing eleven-item data source; exact source names/descriptions/roles/links retained. No invented visible labels or project statuses. Header source unchanged.
+- Layout: shared1200px title/features/list container; model widths checked320..1920 including390px content342px. Mobile grid places copy/actions across both columns. Rendered edge alignment and overflow unverified.
+- Typography: existing Fraunces/Space Grotesk; responsive titles/body; real computed browser font metrics/wrapping unverified.
+- Palette: existing theme tokens, actual CSS contrast calculations passed5.17/5.39light,8.55/9.23night; action coral slightly darker for accessibility.
+- Assets: existing actual project screenshots unchanged; native generated branch/footer inspected. Decorative adaptive crop and mobile branch omission intentional. Image loads checked on hosted build separately.
+- Interactions: native anchors,44px actions, external link labels, existing focus styles, reduced-motion CSS; browser interaction/console tests unavailable.
 
-Supported checks: git diff --check, module syntax, actual module DOM mock lifecycle/pause/reduced-motion/offscreen/hidden/narrow guard/cleanup passed. Remote build, served routes/content/assets to be recorded in external release evidence.
-
-Residual gap: responsive paint, cyclist alignment, keyboard browser behavior and console were not browser-tested. No P3 polish loop or fabricated QA pass.
+Supported static/build/HTTP checks are recorded separately and do not substitute for visual QA. Production remains unchanged. Remote preview is prepared for user review, not agency-signoff fidelity handoff.
