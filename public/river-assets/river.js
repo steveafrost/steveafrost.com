@@ -1,7 +1,7 @@
 /* Motion deforms only the supplied raster river; it never redraws illustration art. */
 (()=>{'use strict';
 const scene=document.querySelector('.landscape');if(!scene)return;
-const canvas=scene.querySelector('canvas'),photo=scene.querySelector('.river-picture'),toggle=scene.querySelector('.motion-toggle'),status=scene.querySelector('[data-motion-status]'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const canvas=scene.querySelector('canvas'),photo=scene.querySelector('.river-picture'),toggle=document.querySelector('.motion-toggle'),status=scene.querySelector('[data-motion-status]'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
 let paused=false,visible=true,raf=0,clock=0,last=0,ready=false,gl=null,program=null,texture=null,maskTexture=null;const mask=new Image();mask.src="/river-assets/river-precise-mask.png";
 const state={frames:0,running:false,reduced:reduced.matches,ready:false,visible:true};window.riverMotion=state;
 function sync(){const blocked=reduced.matches;toggle.disabled=blocked;const label=blocked?'Motion off':paused?'Resume motion':'Pause motion';toggle.setAttribute('aria-label',label);toggle.title=label;toggle.dataset.paused=String(paused||blocked);toggle.setAttribute('aria-pressed',String(paused));state.reduced=blocked;state.visible=visible;state.running=!paused&&!blocked&&!document.hidden&&visible;}
