@@ -1,0 +1,56 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {bikePose,wheelRadius,wheelbase,deck,deckSlope,arcLength,riderPose,crossingAt,advanceLean,steamAt} from '../public/about-assets/scene-model.mjs';
+import {initializeAboutMotion} from '../public/about-assets/motion.mjs';
+const close=(a,b,tolerance=1e-6)=>assert.ok(Math.abs(a-b)<tolerance,`${a} != ${b}`);
+test('both wheels contact curved deck with a rigid wheelbase and rolling arc length',()=>{
+ let prior=null;
+ for(let i=0;i<=3260;i++){const x=198+i*.1,p=bikePose(x);close(Math.hypot(p.front.x-p.rear.x,p.front.y-p.rear.y),wheelbase);
+  for(const w of [p.rear,p.front]){close(Math.hypot(w.x-w.contactX,w.y-deck(w.contactX)),wheelRadius);close((w.x-w.contactX)+(w.y-w.contactY)*deckSlope(w.contactX),0);}
+  if(prior){assert.ok(Math.abs(p.angle-prior.angle)<.001);close(arcLength(x-.1,x),Math.hypot(p.rear.x-prior.rear.x,p.rear.y-prior.rear.y),1e-6);}
+  prior=p;
+ }
+});
+test('knees/elbow maintain connected fixed lengths at every crank phase and allowed lean',()=>{
+ for(let i=0;i<=720;i++)for(const lean of [-1.5,0,1.5]){const p=riderPose(i*Math.PI/360,lean);
+  for(const [a,b,len] of [[p.hip,p.nearKnee,18],[p.nearKnee,p.nearFoot,18],[p.hip,p.farKnee,18],[p.farKnee,p.farFoot,18],[p.shoulder,p.elbow,13],[p.elbow,p.hand,13]])close(Math.hypot(a.x-b.x,a.y-b.y),len);
+  close(Math.hypot(p.nearFoot.x-22,p.nearFoot.y),5);close(p.nearFoot.x+p.farFoot.x,44);close(p.nearFoot.y+p.farFoot.y,0);
+ }
+});
+test('rolling phase follows distance, fade prevents visible loop teleport, inertia is stable',()=>{
+ const a=crossingAt(8),b=crossingAt(9);close((b.rearWheel-a.rearWheel)*wheelRadius,arcLength(a.rear.contactX,b.rear.contactX));
+ assert.equal(crossingAt(27.999).visible,false);assert.equal(crossingAt(0).visible,false);close(crossingAt(3).alpha,0);close(crossingAt(23).alpha,0);
+ const s={value:0,velocity:0};for(let i=0;i<300;i++)advanceLean(s,1,1/30);close(s.value,1,1e-5);assert.ok(Number.isFinite(s.velocity));
+ for(let i=0;i<6;i++)for(let t=0;t<30;t+=.1){const p=steamAt(t,i);assert.ok(p.alpha>=0&&p.alpha<=.22&&p.y<=429&&p.y>=391);}
+});
+class Events{listeners=new Map();addEventListener(type,fn){if(!this.listeners.has(type))this.listeners.set(type,new Set());this.listeners.get(type).add(fn);}removeEventListener(type,fn){this.listeners.get(type)?.delete(fn);}emit(type,event={}){for(const fn of this.listeners.get(type)||[])fn(event);}}
+function fixture(){const environment=new Events(),doc=new Events(),button=new Events(),canvas=new Events();canvas.style={};button.setAttribute=()=>{};
+ const desktop=new Events(),reduced=new Events();desktop.matches=true;reduced.matches=false;environment.matchMedia=q=>q.includes('min-width')?desktop:reduced;
+ let io;environment.IntersectionObserver=class{constructor(fn){io=fn;}observe(){}disconnect(){}};
+ const frames=new Map();let id=0;environment.requestAnimationFrame=fn=>{frames.set(++id,fn);return id;};environment.cancelAnimationFrame=id=>frames.delete(id);
+ const host={},root={ownerDocument:doc,dataset:{},querySelector:s=>s.includes('pause')?button:host,querySelectorAll:()=>[{dataset:{motionZone:'bridge'}},{dataset:{motionZone:'desk'}}]};
+ let draws=0,destroys=0;const scene={canvas,draw(){draws++;},destroy(){destroys++;}};
+ const cleanup=initializeAboutMotion(root,environment,async()=>({createAboutScene:async()=>scene}));
+ return {environment,doc,button,reduced,desktop,frames,root,canvas,cleanup,get draws(){return draws;},get destroys(){return destroys;},visible(key,value){io([{target:{dataset:{motionZone:key}},isIntersecting:value}]);},step(time){const list=[...frames.values()];frames.clear();for(const fn of list)fn(time);}};
+}
+const flush=()=>new Promise(resolve=>setImmediate(resolve));
+test('one frame loop stops on pause/offscreen/hidden/reduced/narrow and cleans resources',async()=>{
+ const f=fixture();assert.equal(f.frames.size,0);f.visible('desk',true);await flush();assert.equal(f.frames.size,1);f.visible('bridge',true);assert.equal(f.frames.size,1);
+ for(let t=0;t<1000;t+=1000/60)f.step(t);assert.ok(f.draws<=32&&f.draws>=20);
+ f.button.emit('click');assert.equal(f.frames.size,0);f.button.emit('click');assert.equal(f.frames.size,1);
+ f.doc.hidden=true;f.doc.emit('visibilitychange');assert.equal(f.frames.size,0);f.doc.hidden=false;f.doc.emit('visibilitychange');assert.equal(f.frames.size,1);
+ f.reduced.matches=true;f.reduced.emit('change');assert.equal(f.frames.size,0);assert.equal(f.button.disabled,true);f.reduced.matches=false;f.reduced.emit('change');
+ f.desktop.matches=false;f.desktop.emit('change');assert.equal(f.frames.size,0);f.desktop.matches=true;f.desktop.emit('change');
+ f.visible('desk',false);f.visible('bridge',false);assert.equal(f.frames.size,0);f.visible('bridge',true);
+ f.environment.emit('pagehide',{persisted:true});assert.equal(f.frames.size,0);f.environment.emit('pageshow');assert.equal(f.frames.size,1);
+ f.canvas.emit('webglcontextlost');assert.equal(f.frames.size,0);assert.equal(f.button.disabled,true);
+ f.cleanup();f.cleanup();assert.equal(f.destroys,1);assert.equal(f.frames.size,0);
+});
+test('actual Pixi scene graph has bounded limb geometry and reuses contexts between frames',async()=>{
+ const {createAboutScene}=await import('../public/about-assets/scene-renderer.mjs');let stage,options,destroyed=false;
+ class Renderer{canvas={setAttribute(){},addEventListener(){},remove(){}};async init(o){options=o;}render(o){stage=o.container;}destroy(){destroyed=true;}}
+ const scene=await createAboutScene({append(){}},{Renderer});assert.equal(options.width,670);assert.equal(options.height,320);assert.equal(options.powerPreference,'low-power');
+ scene.draw(13,1/30,{bridge:true,desk:true});const bike=stage.children[0],contexts=bike.children.map(n=>n.context);const bounds=bike.getLocalBounds();assert.equal(bike.children[6].context.bounds.minX,0);assert.equal(bike.children[6].context.bounds.maxX,1);assert.ok(bounds.maxX-bounds.minX<80&&bounds.maxY-bounds.minY<90);
+ for(let t=3.1;t<23;t+=.2){scene.draw(t,1/30,{bridge:true,desk:true});assert.deepEqual(bike.children.map(n=>n.context),contexts);assert.ok(bike.getLocalBounds().maxX-bike.getLocalBounds().minX<80);}
+ scene.destroy();assert.equal(destroyed,true);
+});
