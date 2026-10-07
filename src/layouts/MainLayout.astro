@@ -89,7 +89,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
     <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=pause-centered-12" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=unified-motion-13" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner"]}>
@@ -104,8 +104,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1"></script>
-    {home && <script is:inline defer src="/river-assets/river.js?v=depth-pause-7"></script>}
+    {home && <script is:inline defer src="/river-assets/river.js?v=unified-motion-8"></script>}
     {home && <script is:inline type="module" src="/river-assets/bank-visitors.mjs?v=pixi-depth-4"></script>}
+    {home && <script is:inline type="module" src="/river-assets/bridge-cyclist.mjs?v=unified-2"></script>}
+    {home && <script is:inline type="module" src="/river-assets/tower-flag.mjs?v=1"></script>}
     {home && <script is:inline defer src="/river-assets/sticky-glass.js?v=compact-header-3"></script>}
   </body>
 </html>
