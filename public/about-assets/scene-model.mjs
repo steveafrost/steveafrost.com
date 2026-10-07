@@ -58,14 +58,14 @@ export function advanceLean(state, target, seconds) {
 }
 // A small pool of emitted parcels forms one cream steam column. Age controls
 // upward advection, expansion and dissipation; lateral drift is secondary.
-export const steamParcelCount=10,steamLifetime=3.6/.7;
+export const steamParcelCount=10,steamLifetime=3.6/.35;
 export function steamAt(time,index=0) {
   const wrapped=((time+index*steamLifetime/steamParcelCount)%steamLifetime+steamLifetime)%steamLifetime;
   const age=wrapped<1e-9||steamLifetime-wrapped<1e-9?0:wrapped;
   const fraction=age/steamLifetime;
-  return {age,x:578+Math.sin(age*.945+index*.31)*fraction*2.2,y:435-age*6.65,
+  return {age,x:578+Math.sin(age*.4725+index*.31)*fraction*2.2,y:435-age*3.325,
     scaleX:1.33*(1+fraction*.9),scaleY:.75+fraction*.5,
-    alpha:.82*Math.min(1,age/(.12/.7))*(1-fraction)**1.4};
+    alpha:.82*Math.min(1,age/(.12/.35))*(1-fraction)**1.4};
 }
 // Original warm cream, soft S contour, and tapered curl, reduced to an
 // overlapping parcel. Shared context geometry is allocated exactly once.

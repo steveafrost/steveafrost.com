@@ -23,7 +23,7 @@ Source https://github.com/pixijs/pixijs-skills pinned83760c6f53462ca9cecd6805504
 ## Validation
 
 PASS npm ci --no-audit --no-fund --prefer-offline.
-PASS NODE_OPTIONS=--max-old-space-size=2048 npm run build:80 pages; latest build978ms, exit0; log /tmp/about-slower-steam-build.log.
+PASS NODE_OPTIONS=--max-old-space-size=2048 npm run build:80 pages; latest build963ms, exit0; log /tmp/about-half-speed-steam-build.log.
 PASS node --test tests/about-scene.test.mjs:10 tests,0 failures. Tests cover3261 deck contacts/rigid poses, wheel arc travel,2163 rider crank/lean combinations, loop fades, stable inertia, steam bounds, mocked single-loop scheduling and lifecycle controls, real Pixi retained scene graph/context reuse and bounded limb geometry using an injected renderer without GPU/browser.
 PASS generated Home/About/Projects/Writing HTML glass header, active-page link, enhancement script.
 PASS unchanged index.astro, projects.astro, articles.astro, shared project data and original About raster compared with e224b53.
@@ -71,6 +71,12 @@ Validation:10 Node tests passed, including per-parcel monotonic upward movement,
 
 User reviewed rising-steam preview582f874 and requested slower/wider steam only. Upward speed9.5->6.65referencepx/sec (30%slower); lifetime3.6->5.142857seconds preserves total rise height. Width multiplied1.33 at every age (33%wider); peak opacity0.9->0.82 softens the plume. Expansion, rise, fade and small lateral drift preserved; turbulence/fade-in timing slowed proportionally. Same ten shared-context parcels, no extra geometry, contexts, ticker, mask, dependency or canvas. Version slower-steam-5 avoids prior cached entry/modules.
 
-Ten tests passed including upward advection, expansion/dissipation, invisible rebirth, single-layer fallback, controls and cyclist contacts. Bounded production build80pages in978ms, exit0; log /tmp/about-slower-steam-build.log. Half-nav-gap CSS, shared layout, Home, Projects and Writing sources byte-identical to582f874. JS/diff checks pass.
+Ten tests passed including upward advection, expansion/dissipation, invisible rebirth, single-layer fallback, controls and cyclist contacts. Bounded production build80pages in978ms, exit0; log /tmp/about-half-speed-steam-build.log. Half-nav-gap CSS, shared layout, Home, Projects and Writing sources byte-identical to582f874. JS/diff checks pass.
 
 Review artifacts slower-steam-motion.gif, slower-steam-detail.gif, slower-steam-desktop-scale.png outside source. Actual retained Pixi geometry exported to CPU raster/animation, not browser/GPU captures. Desktop review frame scaled to860px crop width corresponding to1440px full-scene width /1122reference pixels, actually viewed. Browser/WebGL visual and frame-rate verification remains unavailable. Production remains explicitly approved dafb362; this checkpoint awaits review.
+
+## Half-speed steam checkpoint
+
+User requested further slowing of73514ec preview. Upward advection6.65->3.325referencepx/sec (half). Lifetime5.142857->10.285714seconds and emission interval0.5142857->1.0285714seconds double coherently. Ten parcels, identical spatial spacing and approved33%width factor maintained. Fade-in and lateral turbulence slow proportionally. Source version half-speed-steam-6. Half-nav-gap CSS, shared layout and baked-steam repair byte-identical to73514ec.
+
+Validated exact2x time dilation against the prior Git model across1460parcel states: x/y, width, height and opacity match when new time=2*old time. This proves the preserved spatial silhouette, density, drift/fade trajectory and gaps apart from slower timing. Existing10Node tests passed; bounded production build80pages/963ms exit0; diff/JS checks passed. Four-second CPU Pixi geometry GIFs half-speed-steam-motion.gif and half-speed-steam-detail.gif; sequence actually viewed. These are not browser/GPU recordings. No production push; dafb362 remains approved live version.
