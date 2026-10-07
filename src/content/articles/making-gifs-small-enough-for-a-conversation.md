@@ -2,6 +2,8 @@
 title: "Making GIFs Small Enough for a Conversation"
 date: 2026-08-18
 draft: false
+image: /river-assets/gif.png
+imageAlt: "The illustrated Tiny GIFs project artwork."
 ---
 
 The first 300-by-300 animated sticker I tested in [Tiny GIFs](https://github.com/steveafrost/tiny-gifs) reached the Messages conversation and took over the transcript. It looked reasonable in the picker. Once sent, it was too big for the compact reaction the app was supposed to deliver.

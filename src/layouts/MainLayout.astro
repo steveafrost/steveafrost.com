@@ -5,11 +5,14 @@ import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import ThemeSwitch from "../components/ThemeSwitch.astro";
 import NavigationIcon from "../components/NavigationIcon.astro";
+import { landscapeImage, resolveSocialImage } from "../lib/social-image.mjs";
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: "website" | "article";
   home?: boolean;
   glassHeader?: boolean;
 }
@@ -18,6 +21,8 @@ const {
   title = "Steve Frost - Software Engineer",
   description = "Front-end engineer building useful and beautiful web experiences.",
   ogImage,
+  ogImageAlt,
+  ogType = "website",
   home = false,
   glassHeader = false,
 } = Astro.props;
@@ -31,6 +36,8 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 const useGlassHeader = home || glassHeader || ["/about", "/projects", "/articles"].includes(currentPath.replace(/\/$/, ""));
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const socialImage = (ogImage && resolveSocialImage(ogImage, ogImageAlt || title, Astro.site!)) || resolveSocialImage(landscapeImage.src, landscapeImage.alt, Astro.site!);
+if (!socialImage) throw new Error("The default landscape social image is missing or invalid.");
 ---
 
 <html lang="en">
@@ -62,32 +69,28 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl.href} />
     <meta property="og:site_name" content="Steve Frost" />
-    {
-      ogImage && (
-        <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
-      )
-    }
+    <meta property="og:image" content={socialImage.src} />
+    <meta property="og:image:secure_url" content={socialImage.src} />
+    <meta property="og:image:type" content={socialImage.type} />
+    <meta property="og:image:width" content={String(socialImage.width)} />
+    <meta property="og:image:height" content={String(socialImage.height)} />
+    <meta property="og:image:alt" content={socialImage.alt} />
 
     <!-- Twitter Card -->
     <meta
       name="twitter:card"
-      content={ogImage ? "summary_large_image" : "summary"}
+      content="summary_large_image"
     />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {
-      ogImage && (
-        <meta
-          name="twitter:image"
-          content={new URL(ogImage, Astro.site).href}
-        />
-      )
-    }
+    <meta name="twitter:url" content={canonicalUrl.href} />
+    <meta name="twitter:image" content={socialImage.src} />
+    <meta name="twitter:image:alt" content={socialImage.alt} />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>

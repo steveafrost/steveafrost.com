@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import Bio from '../../components/Bio.astro';
+import { articleSocialImage } from '../../lib/social-image.mjs';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles');
@@ -13,9 +14,10 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await render(article);
+const socialImage = articleSocialImage(article, Astro.site!);
 ---
 
-<MainLayout title={`${article.data.title} | Steve Frost`}>
+<MainLayout title={`${article.data.title} | Steve Frost`} description={article.data.description} ogType="article" ogImage={socialImage?.src} ogImageAlt={socialImage?.alt}>
   <article class="py-8">
     <header class="mb-10">
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl text-gradient">{article.data.title}</h1>

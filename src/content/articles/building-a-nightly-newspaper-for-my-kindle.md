@@ -2,6 +2,8 @@
 title: "Building a Nightly Newspaper for My Kindle"
 date: 2026-09-30
 draft: false
+image: /river-assets/kindle.png
+imageAlt: "An illustrated Kindle, newspaper, and coffee overlooking a wooded landscape."
 ---
 
 A nightly newspaper needs a stopping point. RSS feeds keep producing articles, and putting all of them into an EPUB would just move the backlog onto a Kindle.

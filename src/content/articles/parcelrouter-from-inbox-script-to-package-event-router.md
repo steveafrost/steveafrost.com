@@ -2,6 +2,8 @@
 title: "ParcelRouter: From Inbox Script to Package Event Router"
 date: 2026-05-21
 draft: false
+image: /river-assets/parcel.png
+imageAlt: "The illustrated ParcelRouter project artwork."
 ---
 
 Shipping emails already contain the information a package tracker needs. The tracking number is there, usually somewhere between an order summary, a promotional banner, and a button asking you to keep shopping. Getting that information into another app is the repetitive part.
