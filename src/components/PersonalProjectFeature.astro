@@ -5,7 +5,7 @@ import type { personalProjects } from '../data/personal-projects.mjs';
 interface Props { project: (typeof personalProjects)[number]; }
 const { project } = Astro.props;
 ---
-<ProjectFeature name={project.name} subtitle={project.subtitle} image={project.hero} imageAlt={project.heroAlt} story={project.story} selection={personalProjectSelection(project.slug)}>
+<ProjectFeature glassHeader name={project.name} subtitle={project.subtitle} image={project.hero} imageAlt={project.heroAlt} story={project.story} selection={personalProjectSelection(project.slug)}>
   <h2>{project.noteTitle}</h2>
   <div>
     {project.paragraphs.map(paragraph => <p>{paragraph}</p>)}
