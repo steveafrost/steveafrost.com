@@ -28,6 +28,7 @@ const sections = [
         <div class:list={["story-art", `story-art-${scene}`]} aria-hidden="true"></div>
       </section>
     ))}
+    <img class="steam-background-repair" src="/about-assets/steam-background-repair.png" width="29" height="41" alt="" aria-hidden="true" />
     <div class="about-effects" data-about-effects aria-hidden="true"></div>
     <div class="about-motion-zone about-motion-zone--desk" data-motion-zone="desk" aria-hidden="true"></div>
     <div class="about-motion-zone about-motion-zone--bridge" data-motion-zone="bridge" aria-hidden="true"></div>
@@ -41,7 +42,7 @@ const sections = [
       <button class="story-motion" type="button" data-story-pause aria-pressed="true" disabled>Motion paused</button>
     </section>
   </article>
-  <script is:inline type="module" src="/about-assets/motion.mjs?v=readable-motion-2"></script>
+  <script is:inline type="module" src="/about-assets/motion.mjs?v=bridge-steam-3"></script>
   <style>
     :global(body:has(.about-story) #main){max-width:1440px;padding:0}
     :global(body:has(.about-story) #main > .about-story){max-width:none}
@@ -67,6 +68,8 @@ const sections = [
     .story-github{text-decoration:underline;text-underline-offset:5px;padding-block:12px}
     .story-motion{display:block;background:var(--cream);border:1px solid var(--line);border-radius:24px;padding:10px 16px;min-height:44px;font-size:13px;margin-top:14px;cursor:pointer}
     .story-motion:disabled{cursor:default;color:var(--olive)}
+    .steam-background-repair{display:none;position:absolute;left:50.3565%;top:27.9601%;width:2.5847%;height:2.9244%;pointer-events:none}
+    .about-story[data-steam="animated"] .steam-background-repair{display:block}
     .about-effects{position:absolute;left:15.1515%;top:24.9643%;width:59.7148%;height:22.8245%;pointer-events:none}
     .about-effects :global(.about-pixi-canvas){display:block;width:100%;height:100%;pointer-events:none}
     .about-motion-zone{position:absolute;pointer-events:none}
@@ -91,7 +94,7 @@ const sections = [
       .story-art-river{background-position:100% 68%}
       .story-art-bicycle{background-position:0 87%}
       .story-contact{position:static;max-width:680px;margin:20px auto 0;padding:0}
-      .about-effects,.about-motion-zone{display:none}
+      .about-effects,.about-motion-zone,.about-story[data-steam="animated"] .steam-background-repair{display:none}
       .story-motion{display:none}
     }
     @media(max-width:520px){

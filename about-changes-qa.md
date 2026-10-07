@@ -12,9 +12,9 @@ Cause: compact glass CSS and lens setup were homepage-only; About additionally f
 
 ## About rendering and constraints
 
-Reuses existing pinned PixiJS8.22.0 WebGL/Graphics subset bundle and license. No new dependency or independent Pixi ticker. One transparent670x320 canvas at illustration coordinates170,350. Existing1122x1402 raster and bridge remain unchanged. Cyclist wheel center normal offsets touch calibrated quadratic deck; front contact is solved for rigid42px wheelbase. Each wheel rotates by its own arc travel/radius; crank ratio0.38 and7.2px crank radius, opposite pedals, two-link knees/elbow, hands/feet attached. Critically damped bounded rider lean follows grade. No claim that Pixi itself provides a physics engine or that this is a full dynamics simulation.
+Reuses existing pinned PixiJS8.22.0 WebGL/Graphics subset bundle and license. No new dependency or independent Pixi ticker. One transparent670x320 canvas at illustration coordinates170,350. Existing1122x1402 raster and bridge remain unchanged. Cyclist wheel center normal offsets touch calibrated cubic deck; front contact is solved for rigid42px wheelbase. Each wheel rotates by its own arc travel/radius; crank ratio0.38 and7.2px crank radius, opposite pedals, two-link knees/elbow, hands/feet attached. Critically damped bounded rider lean follows grade. No claim that Pixi itself provides a physics engine or that this is a full dynamics simulation.
 
-Six pooled steam paths rise/curl/fade; higher-contrast curling steam and subtle line/cursor alpha changes preserve baked screen text. Geometry is allocated once. One master RAF is capped at30 rendered updates/sec; elapsed steps bounded to100ms. Lazy import/init only when a zone is visible on desktop and motion is permitted. Pause, tab visibility, per-zone intersections, reduced motion, narrow layout, bfcache and disposal are handled. WebGL failures stop motion; the original artwork remains. Actual GPU performance is unmeasured.
+One original-style steam ribbon uses32 prebuilt curling GraphicsContexts; subtle line/cursor alpha changes preserve baked screen text. A29x41 background repair replaces baked steam while animated; reduced-motion fallback retains the original single static shape. Geometry is allocated once. One master RAF is capped at30 rendered updates/sec; elapsed steps bounded to100ms. Lazy import/init only when a zone is visible on desktop and motion is permitted. Pause, tab visibility, per-zone intersections, reduced motion, narrow layout, bfcache and disposal are handled. WebGL failures stop motion; the original artwork remains. Actual GPU performance is unmeasured.
 
 ## Official skills installed
 
@@ -23,8 +23,8 @@ Source https://github.com/pixijs/pixijs-skills pinned83760c6f53462ca9cecd6805504
 ## Validation
 
 PASS npm ci --no-audit --no-fund --prefer-offline.
-PASS NODE_OPTIONS=--max-old-space-size=2048 npm run build:80 pages; latest build958ms, exit0; log /tmp/about-scene-revision-build.log.
-PASS node --test tests/about-scene.test.mjs:7 tests,0 failures. Tests cover3261 deck contacts/rigid poses, wheel arc travel,2163 rider crank/lean combinations, loop fades, stable inertia, steam bounds, mocked single-loop scheduling and lifecycle controls, real Pixi retained scene graph/context reuse and bounded limb geometry using an injected renderer without GPU/browser.
+PASS NODE_OPTIONS=--max-old-space-size=2048 npm run build:80 pages; latest build950ms, exit0; log /tmp/about-exit-steam-build.log.
+PASS node --test tests/about-scene.test.mjs:9 tests,0 failures. Tests cover3261 deck contacts/rigid poses, wheel arc travel,2163 rider crank/lean combinations, loop fades, stable inertia, steam bounds, mocked single-loop scheduling and lifecycle controls, real Pixi retained scene graph/context reuse and bounded limb geometry using an injected renderer without GPU/browser.
 PASS generated Home/About/Projects/Writing HTML glass header, active-page link, enhancement script.
 PASS unchanged index.astro, projects.astro, articles.astro, shared project data and original About raster compared with e224b53.
 PASS git diff --check and JS syntax checks.
@@ -46,3 +46,13 @@ Steam rise now48referencepx, path height23px, enlarged1.05..1.6scale,5.5px cream
 Official pixijs, pixijs-scene-graphics, pixijs-ticker and pixijs-performance installed SKILL.md files verified byte-for-byte against pinned official source83760c6f53462ca9cecd68055041f5a8c94758ce and reread for this revision; no duplicate install performed.
 
 Review artifacts outside repository: revised-scene-motion.gif (four seconds,32frames at8fps) and revised-scene-sequence.png (four frames). Exported actual retained Pixi GraphicsContext paths through official SVG exporter and Sharp; not a browser/GPU recording. Sequence pixels actually viewed. Tests additionally cover corrected displayed registration, readable cadence, increased plume bounds and actual changing scene graph transforms. Production remains untouched.
+
+## Full-path contact and single-steam correction
+
+Viewed user screenshot libfile_3c4da001bff48191a018339ca295abd9. It exposes the prior quadratic road diverging from the almost-level right-hand crest during fade-out. Opacity did not move the bike; the road calibration was wrong at the exit. Replaced it with a cubic fit that follows the visible left rise and right plateau. Normal-offset wheel contact and rigid wheelbase continue through every fading pose. Rear contact is bounded to the crossing; front contact stays inside the visible190..580 span. Wheel travel uses fixed eight-point quadrature plus normal-offset curvature contribution. No road extrapolation at the visible exit.
+
+Added340 late-phase samples21.3..23seconds covering tire contact, rigid frame, smoothness, decreasing opacity, visible crest height and bounds; fully hidden after23seconds. Previous tests still cover the complete crossing and rolling phase. Actual exported fade frames20.5,21.5,22.25,22.875seconds were viewed.
+
+Duplicate steam came from winding-story.webp itself. A local29x41 inpainted repair at565,392 covers only the baked plume, conditional on data-steam=animated. Original full illustration remains byte-identical. Repair source ImageGen exec-b6e64b0b-fc21-47d8-9fd3-13dc8e6a32d7.png generated from actual steam crop; native edited image viewed before extracting repair. The original cup/scene remain unchanged outside that local overlay. One cream0xf7eedb filled S ribbon matches the original plume silhouette and taper. Thirty-two prebuilt contexts move the curl upward while the base stays on the cup; no per-frame path reconstruction, extra ticker or filter. Manual pause freezes this single replacement. Reduced motion, narrow layout and renderer failure hide the animated overlay and expose only the original steam. Lifecycle tests verify this switching.
+
+Revision module version bridge-steam-3. Review artifacts: exit-steam-motion.gif (four seconds/32 frames) and exit-steam-sequence.png (four late-crossing frames). Actual Pixi GraphicsContext geometry exported and CPU-rasterized over the original illustration plus the same repair overlay; not browser/WebGL screenshots or runtime proof. No website browser launched. No production deployment performed.

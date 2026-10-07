@@ -1,5 +1,5 @@
 // One visibility-gated frame driver for all About effects. No Pixi ticker.
-export function initializeAboutMotion(root, environment = window, loadScene = () => import('./scene-renderer.mjs?v=readable-motion-2')) {
+export function initializeAboutMotion(root, environment = window, loadScene = () => import('./scene-renderer.mjs?v=bridge-steam-3')) {
   if (!root) return () => {};
   const doc=root.ownerDocument,button=root.querySelector('[data-story-pause]'),host=root.querySelector('[data-about-effects]');
   if(!button||!host||typeof environment.IntersectionObserver!=='function')return()=>{};
@@ -12,10 +12,10 @@ export function initializeAboutMotion(root, environment = window, loadScene = ()
     if(elapsed>=1/30){const dt=Math.min(elapsed,.1);time+=dt;last=now;try{scene.draw(time,dt,zones);}catch{lost();return;}}
     frame=environment.requestAnimationFrame(tick);
   }
-  function update(){const running=canRun();root.dataset.motion=running&&scene?'running':'paused';button.disabled=failed||reduced.matches||!desktop.matches;
+  function update(){const running=canRun();root.dataset.steam=scene&&!failed&&!reduced.matches&&desktop.matches?'animated':'static';root.dataset.motion=running&&scene?'running':'paused';button.disabled=failed||reduced.matches||!desktop.matches;
     button.setAttribute('aria-pressed',String(paused||reduced.matches||!desktop.matches||failed));
     button.textContent=failed?'Motion unavailable':reduced.matches||!desktop.matches?'Motion paused':paused?'Play motion':'Pause motion';
-    if(!running){stop();if(scene)scene.canvas.style.visibility=desktop.matches?'visible':'hidden';return;}
+    if(!running){stop();if(scene&&!failed&&!reduced.matches&&desktop.matches){try{scene.draw(time,0,zones);}catch{lost();return;}}if(scene)scene.canvas.style.visibility=desktop.matches&&!reduced.matches&&!failed?'visible':'hidden';return;}
     if(scene){scene.canvas.style.visibility='visible';if(!frame)frame=environment.requestAnimationFrame(tick);return;}
     if(!loading){loading=true;loadScene().then(module=>disposed?null:module.createAboutScene(host)).then(result=>{
       loading=false;if(disposed){result?.destroy();return;}scene=result;if(scene){scene.canvas.addEventListener('webglcontextlost',lost);scene.draw(time,0,zones);}update();
@@ -28,7 +28,7 @@ export function initializeAboutMotion(root, environment = window, loadScene = ()
   button.addEventListener('click',toggle);doc.addEventListener('visibilitychange',update);reduced.addEventListener('change',update);desktop.addEventListener('change',update);
   function hide(event){if(event.persisted){pageHidden=true;update();}else cleanup();}
   function show(){pageHidden=false;update();}
-  function cleanup(){if(disposed)return;disposed=true;stop();observer.disconnect();button.removeEventListener('click',toggle);doc.removeEventListener('visibilitychange',update);doc.removeEventListener('astro:before-swap',cleanup);reduced.removeEventListener('change',update);desktop.removeEventListener('change',update);environment.removeEventListener('pagehide',hide);environment.removeEventListener('pageshow',show);if(scene){scene.canvas.removeEventListener('webglcontextlost',lost);scene.destroy();}root.dataset.motion='paused';}
+  function cleanup(){if(disposed)return;disposed=true;stop();observer.disconnect();button.removeEventListener('click',toggle);doc.removeEventListener('visibilitychange',update);doc.removeEventListener('astro:before-swap',cleanup);reduced.removeEventListener('change',update);desktop.removeEventListener('change',update);environment.removeEventListener('pagehide',hide);environment.removeEventListener('pageshow',show);if(scene){scene.canvas.removeEventListener('webglcontextlost',lost);scene.destroy();}root.dataset.motion='paused';root.dataset.steam='static';}
   environment.addEventListener('pagehide',hide);environment.addEventListener('pageshow',show);doc.addEventListener('astro:before-swap',cleanup,{once:true});update();return cleanup;
 }
 if(typeof window!=='undefined')initializeAboutMotion(document.querySelector('[data-about-story]'));
