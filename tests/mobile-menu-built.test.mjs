@@ -12,7 +12,7 @@ for (const route of ['', 'about', 'projects', 'articles']) {
     const panel = html.match(/<div id="header-menu"[^>]*>/)?.[0];
     assert.ok(panel); assert.ok(!/hidden|inert|aria-hidden/.test(panel));
     assert.ok(html.includes('mobile-menu.js?v=unfold-2'));
-    assert.ok(html.includes('production.css?v=mobile-menu-glass-1'));
+    assert.ok(html.includes('production.css?v=featurette-viewport-1'));
     assert.ok(html.includes('<nav aria-label="Primary">'));
     assert.ok(!html.includes('role="menu"'));
   });
