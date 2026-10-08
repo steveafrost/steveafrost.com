@@ -45,7 +45,7 @@ function fixture(isMobile = true, { animate = false, reduced = false, failAt = 0
   const motion = { matches: reduced, addEventListener: (_, handler) => { motion.change = handler; } };
   const windowEvents = new Map();
   const context = { document, innerWidth: isMobile ? 390 : 1024,
-    getComputedStyle: node => ({ ...node.computed }),
+    getComputedStyle: node => ({ height: `${node.offsetHeight || 0}px`, ...node.computed }),
     matchMedia: query => query.includes('reduced-motion') ? motion : media,
     addEventListener: (name, handler) => windowEvents.set(name, handler) };
   vm.runInNewContext(source, context);
@@ -102,8 +102,9 @@ test('opening unfolds rounded glass and slides content, then releases every anim
   assert.equal(f.panel.attributes.has('aria-hidden'), false);
   assert.equal(f.effects.length, 2);
   const [surface, content] = f.effects;
-  assert.equal(surface.keyframes[0].clipPath, 'inset(0px 0px 200px 0px round 28px)');
-  assert.equal(surface.keyframes[1].clipPath, 'inset(0px 0px 0px 0px round 28px)');
+  assert.equal(surface.keyframes[0].height, '66px');
+  assert.ok(surface.keyframes.every(frame => !('clipPath' in frame) && !('opacity' in frame) && !('transform' in frame)));
+  assert.equal(surface.keyframes[1].height, '266px');
   assert.equal(content.keyframes[0].transform, 'translateY(-8px)');
   assert.equal(content.keyframes[0].opacity, '0');
   assert.equal(surface.timing.duration, 280); assert.equal(content.timing.duration, 280);
@@ -127,10 +128,10 @@ test('closing is inert and aria-hidden immediately; native hidden follows the 18
 
 test('rapid open/close/open resumes the painted frame and stale completion cannot hide reopened links', async () => {
   const f = fixture(true, { animate: true }); f.toggle.dispatch('click');
-  f.header.computed.clipPath = 'inset(0px 0px 110px 0px round 28px)';
+  f.header.computed.height = '156px';
   f.panel.computed.transform = 'matrix(1, 0, 0, 1, 0, -4)'; f.panel.computed.opacity = '0.5';
   f.toggle.dispatch('click');
-  assert.equal(f.effects[2].keyframes[0].clipPath, f.header.computed.clipPath);
+  assert.equal(f.effects[2].keyframes[0].height, f.header.computed.height);
   assert.equal(f.effects[3].keyframes[0].transform, f.panel.computed.transform);
   assert.equal(f.effects[3].keyframes[0].opacity, '0.5');
   const stale = f.effects.slice();

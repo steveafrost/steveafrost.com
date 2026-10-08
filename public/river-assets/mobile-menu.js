@@ -34,7 +34,7 @@
     // Capture the current painted frame before cancelling a rapid reversal.
     const surface = canAnimate ? getComputedStyle(header) : null;
     const content = canAnimate && !wasHidden ? getComputedStyle(panel) : null;
-    const fromClip = animations.length ? surface?.clipPath : null;
+    const fromHeight = canAnimate ? parseFloat(surface.height) || header.offsetHeight : 0;
     const fromTransform = content?.transform || 'none';
     const fromOpacity = content?.opacity || '1';
     if (wasHidden && canAnimate) collapsedHeight = header.offsetHeight;
@@ -54,17 +54,15 @@
     if (!canAnimate || (!open && wasHidden)) { settle(); return; }
     panel.hidden = false;
     const expandedHeight = header.offsetHeight;
-    const radius = surface.borderRadius;
-    const expandedClip = `inset(0px 0px 0px 0px round ${radius})`;
-    const collapsedClip = `inset(0px 0px ${Math.max(0, expandedHeight - collapsedHeight)}px 0px round ${radius})`;
     const token = generation;
     const timing = { duration: open ? 280 : 180, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'both' };
     try {
-      // A rounded clip reveals the fixed glass without scaling its type or icons.
-      // Only the content uses transform/opacity; no per-frame layout or idle loop.
+      // Keep clip-path off the ancestor of the glass backdrop: it creates a new
+      // backdrop root during the reveal. Overflow and border-radius retain the
+      // rounded edge while height changes; text and icons are never scaled.
       animations.push(header.animate([
-        { clipPath: fromClip || (wasHidden ? collapsedClip : expandedClip) },
-        { clipPath: open ? expandedClip : collapsedClip },
+        { height: `${fromHeight}px` },
+        { height: `${open ? expandedHeight : collapsedHeight}px` },
       ], timing));
       animations.push(panel.animate([
         { transform: wasHidden ? 'translateY(-8px)' : fromTransform, opacity: wasHidden ? '0' : fromOpacity },

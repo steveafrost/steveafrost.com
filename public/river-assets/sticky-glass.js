@@ -5,7 +5,8 @@
 (() => {
   const header = document.querySelector('.editorial-header.glass-navigation');
   if (!header) return;
-  const preferences = ['(prefers-reduced-motion: reduce)', '(prefers-reduced-transparency: reduce)', '(prefers-contrast: more)', '(forced-colors: active)'].map(query => matchMedia(query));
+  // Mobile disclosure changes height; keep its backdrop on one CSS filter path.
+  const preferences = ['(max-width: 760px)', '(prefers-reduced-motion: reduce)', '(prefers-reduced-transparency: reduce)', '(prefers-contrast: more)', '(forced-colors: active)'].map(query => matchMedia(query));
   const chromium = /Chrome\//.test(navigator.userAgent) && !/EdgA|OPR|SamsungBrowser/.test(navigator.userAgent);
   if (!chromium || !CSS.supports('backdrop-filter', 'url("#river-backdrop-lens")')) return;
   const ns = 'http://www.w3.org/2000/svg';

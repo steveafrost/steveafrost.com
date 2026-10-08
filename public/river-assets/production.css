@@ -295,7 +295,7 @@ body.river-glass-inner .skip:focus{z-index:51}
  .river-glass-inner:has(.menu-enhanced) [id]{scroll-margin-top:calc(100px + max(0px,env(safe-area-inset-top) - 8px))}
  body:has(.menu-enhanced) .about-story{padding-top:calc(104px + max(0px,env(safe-area-inset-top) - 8px))}
  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
-  body.river-site .editorial-header.glass-navigation.menu-is-open::before{backdrop-filter:blur(14px) saturate(125%) brightness(110%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(110%) contrast(60%)}
-  [data-theme="night"] body.river-site .editorial-header.glass-navigation.menu-is-open::before{backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%)}
+  body.river-site .editorial-header.glass-navigation.menu-enhanced::before{backdrop-filter:blur(14px) saturate(125%) brightness(110%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(110%) contrast(60%)}
+  [data-theme="night"] body.river-site .editorial-header.glass-navigation.menu-enhanced::before{backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%)}
  }
 }

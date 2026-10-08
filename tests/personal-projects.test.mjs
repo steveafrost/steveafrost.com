@@ -70,8 +70,8 @@ test('personal featurettes reuse the Work glass header, menu and active context'
     const html = fs.readFileSync(`dist/projects/${project.slug}/index.html`, 'utf8');
     assert.equal(header(html), header(work));
     assert.ok(html.includes('river-glass-inner'));
-    assert.ok(html.includes('/river-assets/sticky-glass.js?v=about-parity-1'));
-    assert.ok(html.includes('/river-assets/mobile-menu.js?v=unfold-1'));
+    assert.ok(html.includes('/river-assets/sticky-glass.js?v=mobile-stable-1'));
+    assert.ok(html.includes('/river-assets/mobile-menu.js?v=unfold-2'));
   }
 });
 
