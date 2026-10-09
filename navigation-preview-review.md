@@ -1,0 +1,9 @@
+Client-side navigation preview, based on production 080f8f48db5aa7e9c1c0eb8b4338b0fdcbcccf3c.
+
+MainLayout enables Astro ClientRouter. A single lifecycle registry owns page instances, cleans up in reverse order before DOM swaps, and reinitializes cached scripts/modules on page-load. Theme is applied to incoming HTML and river artwork before painting. River pause preference survives navigation. Menu listeners/WAAPI effects, glass observers/filter definitions, river rAF/listeners/WebGL textures/program/buffer/shaders/context, and visitor/cyclist/flag resources are disposed. Late image/Pixi callbacks cannot revive disposed instances. Standalone project mocks retain full document navigation.
+
+Validation: 87 Node tests pass (80 existing + 7 lifecycle/navigation regressions); Astro build 83 pages, all 99 HTML routes preserved; isolated Astro/TypeScript check 0 errors, 0 warnings, 45 hints. No dependency changes. Source CSS, illustration assets, selected featured projects, and featurette viewport layout preserved.
+
+Cloud browser QA required; no local browser used. Test first entry on home and on /articles; repeatedly visit home → Work → each featured project → story → Writing → About → home. Test browser Back/Forward and scroll restoration, route announcement/focus and skip link, theme changes/night-mode navigation without flashes, mobile menu including rapid toggles/Escape/outside clicks/navigation, reduced motion, pause/resume across re-entry, river/Pixi/cyclist/flag animations on repeated homepage visits, and console/resource stability. Open a standalone demo and return. Test desktop and mobile sizes in the approved cloud browser; do not treat CPU/unit evidence as visual or iOS Safari QA.
+
+Preview only; production must remain 080f8f4. No preview access grants or protection bypass settings changed.

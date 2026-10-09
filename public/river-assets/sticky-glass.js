@@ -2,7 +2,7 @@
  * SVG backdrop filtering reads live compositor pixels; no DOM capture or WebGL.
  * Only the tested Chromium path gets distortion; other engines keep CSS glass.
  */
-(() => {
+function initializeGlass() {
   const header = document.querySelector('.editorial-header.glass-navigation');
   if (!header) return;
   // Mobile disclosure changes height; keep its backdrop on one CSS filter path.
@@ -27,8 +27,17 @@
   for (const channel of ['feFuncR','feFuncG']) centerMap.append(node(channel, {type:'linear',slope:'1',intercept:String(-1/510)}));
   filter.append(image, centerMap, node('feDisplacementMap', {in:'SourceGraphic',in2:'centered-edge-map',scale:'16',xChannelSelector:'R',yChannelSelector:'G','color-interpolation-filters':'sRGB'}));
   defs.append(filter);svg.append(defs);document.body.append(svg);
+
+  const removers = [];
+  function listen(target, type, handler, options) {
+    target.addEventListener(type, handler, options);
+    removers.push(() => target.removeEventListener?.(type, handler, options));
+  }
+  let disposed = false;
   let generation = 0, size = '';
   function rebuild() {
+    if (disposed) return;
+    generation++;
     header.classList.remove('lens-ready');
     if (preferences.some(preference => preference.matches)) return;
     const surface = getComputedStyle(header,'::before');
@@ -79,7 +88,10 @@
     } catch {header.classList.remove('lens-ready');}
   }
   const observer=new ResizeObserver(rebuild);observer.observe(header);
-  for (const preference of preferences) preference.addEventListener('change',()=>{generation++;rebuild();});
-  addEventListener('pagehide',()=>{generation++;header.classList.remove('lens-ready');});
-  addEventListener('pageshow',rebuild);
-})();
+  for (const preference of preferences) listen(preference, 'change',()=>{generation++;rebuild();});
+  listen(globalThis, 'pagehide',()=>{generation++;header.classList.remove('lens-ready');});
+  listen(globalThis, 'pageshow',rebuild);
+  return () => { disposed = true; generation++; observer.disconnect(); svg.remove(); header.classList.remove('lens-ready'); for (const remove of removers) remove(); };
+}
+if (globalThis.riverLifecycle) globalThis.riverLifecycle.register('glass', initializeGlass);
+else initializeGlass();

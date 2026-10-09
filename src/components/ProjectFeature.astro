@@ -10,7 +10,7 @@ const imageMetadata = resolveSocialImage(image, imageAlt, Astro.site!);
   <article class:list={["project-feature", { screen, "shared-navigation": glassHeader }]}>
     <section class="project-hero" aria-labelledby="project-title">
       <div class="project-art">{sourceExcerpt ? <figure class="project-source"><figcaption>{sourceLabel}</figcaption><pre><code>{sourceExcerpt}</code></pre></figure> : <img class="project-scene" src={image} alt={imageAlt} width={imageMetadata?.width || 1487} height={imageMetadata?.height || 1058} fetchpriority="high" />}</div>
-      <div class="project-hero-copy"><h1 id="project-title">{name}</h1><p>{subtitle}</p><a class="project-story" href={story}>{storyLabel} <ArrowRight /></a></div>
+      <div class="project-hero-copy"><h1 id="project-title">{name}</h1><p>{subtitle}</p><a class="project-story" href={story} data-astro-reload={story.startsWith("/projects/mock/")}>{storyLabel} <ArrowRight /></a></div>
       {selection && <nav class="project-selection" aria-label="Project navigation">{selection.map(item => <a href={item.href} aria-current={item.current ? 'page' : undefined}>{item.name}</a>)}</nav>}
     </section>
     {artworkCaption && <p class="artwork-caption wrap">{artworkCaption}</p>}

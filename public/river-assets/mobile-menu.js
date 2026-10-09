@@ -1,5 +1,5 @@
 /* Native navigation disclosure: no menu roles or focus trap for ordinary links. */
-(() => {
+function initializeMenu() {
   const header = document.querySelector('.editorial-header');
   if (!header) return;
   const toggle = header.querySelector('.mobile-menu-toggle');
@@ -7,6 +7,12 @@
   if (!toggle || !panel) return;
   const mobile = matchMedia('(max-width: 760px)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+  const removers = [];
+  function listen(target, type, handler, options) {
+    target.addEventListener(type, handler, options);
+    removers.push(() => target.removeEventListener?.(type, handler, options));
+  }
   let open = false;
   let animations = [];
   let generation = 0;
@@ -81,30 +87,33 @@
     toggle.hidden = !mobile.matches;
     setOpen(false, focusWasInside, true);
   }
-  toggle.addEventListener('click', () => setOpen(!open));
-  document.addEventListener('keydown', event => {
+  listen(toggle, 'click', () => setOpen(!open));
+  listen(document, 'keydown', event => {
     if (event.key === 'Escape' && open) {
       event.preventDefault();
       setOpen(false, true);
     }
   });
-  document.addEventListener('click', event => {
+  listen(document, 'click', event => {
     if (open && !header.contains(event.target)) {
       // Return focus only if it would otherwise remain in the hidden panel.
       setOpen(false, panel.contains(document.activeElement));
     }
   });
-  panel.addEventListener('click', event => {
+  listen(panel, 'click', event => {
     if (event.target.closest('a')) setOpen(false, true);
   });
-  mobile.addEventListener('change', reset);
-  reducedMotion.addEventListener('change', reset);
-  addEventListener('resize', () => {
+  listen(mobile, 'change', reset);
+  listen(reducedMotion, 'change', reset);
+  listen(globalThis, 'resize', () => {
     // Ignore mobile browser-chrome height changes while scrolling.
     if (innerWidth !== viewportWidth) { viewportWidth = innerWidth; reset(); }
   });
-  addEventListener('pageshow', reset);
-  addEventListener('pagehide', () => setOpen(false, false, true));
+  listen(globalThis, 'pageshow', reset);
+  listen(globalThis, 'pagehide', () => setOpen(false, false, true));
   header.classList.add('menu-enhanced');
   reset();
-})();
+  return () => { cancelMotion(); for (const remove of removers) remove(); };
+}
+if (globalThis.riverLifecycle) globalThis.riverLifecycle.register('menu', initializeMenu);
+else initializeMenu();

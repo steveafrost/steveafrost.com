@@ -1,8 +1,15 @@
-(() => {
+function initializeTheme() {
   const root = document.documentElement;
   const controls = [...document.querySelectorAll('.theme-toggle')];
   const photo = document.querySelector('.river-picture');
   if (!controls.length) return;
+
+  const removers = [];
+  function listen(target, type, handler, options) {
+    target.addEventListener(type, handler, options);
+    removers.push(() => target.removeEventListener?.(type, handler, options));
+  }
+  let disposed = false;
   let busy = false;
 
   function sync() {
@@ -20,6 +27,7 @@
   }
 
   function apply(theme) {
+    if (disposed) return;
     root.dataset.theme = theme;
     try { localStorage.setItem('river-theme', theme); } catch {}
     if (photo) {
@@ -42,6 +50,7 @@
     let remaining = assets.length;
     let failed = false;
     function finish() {
+      if (disposed) return;
       busy = false;
       for (const button of controls) { button.disabled = false; button.removeAttribute('aria-busy'); }
       if (focused) control.focus({ preventScroll: true });
@@ -53,6 +62,9 @@
       next.src = src;
     }
   }
-  for (const control of controls) control.addEventListener('click', () => toggle(control));
+  for (const control of controls) listen(control, 'click', () => toggle(control));
   sync();
-})();
+  return () => { disposed = true; for (const remove of removers) remove(); };
+}
+if (globalThis.riverLifecycle) globalThis.riverLifecycle.register('theme', initializeTheme);
+else initializeTheme();

@@ -28,7 +28,7 @@ export function applyFlagPose(refs,p){
  refs.poleTip=p.poleTip;refs.flagY=p.y;refs.flagWidth=p.width;refs.dy1=p.dy1;refs.dy2=p.dy2;refs.dy3=p.dy3;
 }
 export const flagMarkup=`<defs><clipPath id="tower-occlusion"><path d="${towerOutline}"/></clipPath><clipPath id="tower-cloth-0"><rect x="0" y="-10" width="12.2" height="44"/></clipPath><clipPath id="tower-cloth-1"><rect x="11.8" y="-10" width="12.4" height="44"/></clipPath><clipPath id="tower-cloth-2"><rect x="23.8" y="-10" width="12.2" height="44"/></clipPath><g id="tower-flag-fabric"><path d="M0 0H36V24H0Z" fill="#28465c"/><path d="M0 0H18L25 10 32 0H50V8H45V32H50V40H30V32H35V16L25 29 15 16V32H20V40H0V32H5V8H0Z" transform="translate(5 2) scale(.52 .5)" fill="#e7bf49"/></g></defs><g data-flag-assembly=""><path data-pole="" d="M1393 303V303" fill="none" stroke="var(--flag-pole,#90785e)" stroke-width="1.1"/><circle data-cap="" cx="1393" cy="303" r="1.3" fill="var(--flag-pole,#90785e)"/><path data-rope="" fill="none" stroke="var(--flag-rope,#b5a286)" stroke-width=".45"/><g data-flag=""><g data-panel="0"><g clip-path="url(#tower-cloth-0)"><use href="#tower-flag-fabric"/></g></g><g data-panel="1"><g clip-path="url(#tower-cloth-1)"><use href="#tower-flag-fabric"/></g></g><g data-panel="2"><g clip-path="url(#tower-cloth-2)"><use href="#tower-flag-fabric"/></g></g></g></g><image data-tower-cover="" width="2172" height="724" clip-path="url(#tower-occlusion)"/>`;
-if(typeof document!=='undefined'){
+export function initialize(){
  const scene=document.querySelector('.landscape'),state=window.riverMotion;
  if(scene&&state&&!state.flagFrame){
  const layer=document.createElementNS('http://www.w3.org/2000/svg','svg');layer.classList.add('tower-flag-layer');layer.setAttribute('aria-hidden','true');layer.setAttribute('preserveAspectRatio','none');layer.innerHTML=flagMarkup;layer.style.visibility='hidden';scene.append(layer);
@@ -40,6 +40,8 @@ if(typeof document!=='undefined'){
  debug.start=start;debug.end=start+flagDuration;if(!forced&&time<start){hide();return;}if(photo.src!==lastImage){cover.setAttribute('href',photo.src);lastImage=photo.src;}const p=flagPose(forced?10:time-start,pose);applyFlagPose(refs,p);if(!on){layer.style.visibility='visible';on=true;}debug.active=true;debug.phase=p.phase;debug.y=p.y;
  }
  state.flagFrame=paint;paint(state.time||0);
- function cleanup(){if(disposed)return;disposed=true;removeEventListener('pagehide',pageHide);document.removeEventListener('astro:before-swap',cleanup);state.flagFrame=null;layer.remove();}function pageHide(event){if(!event.persisted)cleanup();}addEventListener('pagehide',pageHide);document.addEventListener('astro:before-swap',cleanup,{once:true});
+ function cleanup(){if(disposed)return;disposed=true;removeEventListener('pagehide',pageHide);document.removeEventListener('astro:before-swap',cleanup);state.flagFrame=null;layer.remove();}function pageHide(event){if(!event.persisted)cleanup();}addEventListener('pagehide',pageHide);return cleanup;
  }
 }
+
+if(typeof document!=='undefined'){if(globalThis.riverLifecycle)globalThis.riverLifecycle.register('flagFrame',initialize);else initialize();}
