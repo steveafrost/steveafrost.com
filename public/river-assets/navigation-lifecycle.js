@@ -33,6 +33,13 @@
   document.addEventListener('astro:before-swap', event => {
     stop();
     theme(event.newDocument);
+    // Cloudflare injects this self-removing decoder into each HTML response.
+    // Astro must execute it on every swap, even when the URL has already run.
+    for (const script of event.newDocument.querySelectorAll('script[src]')) {
+      if (/^\/cdn-cgi\/scripts\/[a-f\d]+\/cloudflare-static\/email-decode\.min\.js(?:\?.*)?$/.test(script.getAttribute('src'))) {
+        script.setAttribute('data-astro-rerun', '');
+      }
+    }
   });
   document.addEventListener('astro:after-swap', () => theme(document));
   document.addEventListener('astro:page-load', () => {

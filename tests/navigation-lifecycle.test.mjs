@@ -14,7 +14,7 @@ function target() {
 }
 function documentFixture() {
   const picture = { dataset: { day: '/day.png', night: '/night.png' }, setAttribute(key, value) { this[key] = value; } };
-  return Object.assign(target(), { documentElement: { dataset: { theme: 'day' } }, querySelector: () => picture, picture });
+  return Object.assign(target(), { documentElement: { dataset: { theme: 'day' } }, querySelector: () => picture, querySelectorAll: () => [], picture });
 }
 function fixture() {
   const document = documentFixture();
@@ -94,7 +94,7 @@ test('built shared routes include router; standalone demos retain a document bou
   for (const route of ['index.html', 'about/index.html', 'projects/index.html', 'articles/index.html', 'projects/kindle-newspaper/index.html']) {
     const html = fs.readFileSync(`dist/${route}`, 'utf8');
     assert.match(html, /name="astro-view-transitions-enabled"/);
-    assert.match(html, /navigation-lifecycle\.js\?v=router-1/);
+    assert.match(html, /navigation-lifecycle\.js\?v=router-email-2/);
   }
   const mock = fs.readFileSync('dist/projects/mock/tip-track/index.html', 'utf8');
   assert.doesNotMatch(mock, /name="astro-view-transitions-enabled"/);
@@ -137,4 +137,48 @@ test('actual river releases WebGL resources and observers; pause survives re-ent
   assert.equal(f.context.riverMotion.ready, true); assert.equal(f.context.riverMotion.running, false);
   assert.equal(toggle.dataset.paused, 'true'); assert.equal(toggle.count('click'), 1);
   assert.equal(f.errors.length, 0);
+});
+
+test('each incoming Cloudflare email decoder reruns; other scripts remain untouched', () => {
+  const f = fixture();
+  for (let visit = 0; visit < 5; visit++) {
+    const incoming = documentFixture();
+    const sources = ['/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js', '/river-assets/theme.js', 'https://example.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js', '/cdn-cgi/scripts/abc123/cloudflare-static/email-decode.min.js?v=1'];
+    const scripts = sources.map(src => ({ attributes: { src }, getAttribute(key) { return this.attributes[key]; }, setAttribute(key, value) { this.attributes[key] = value; } }));
+    incoming.querySelectorAll = () => scripts;
+    f.document.dispatch('astro:before-swap', { newDocument: incoming });
+    assert.equal(scripts[0].attributes['data-astro-rerun'], '');
+    assert.equal(scripts[3].attributes['data-astro-rerun'], '');
+    assert.equal(scripts[1].attributes['data-astro-rerun'], undefined);
+    assert.equal(scripts[2].attributes['data-astro-rerun'], undefined);
+  }
+  assert.equal(f.errors.length, 0);
+});
+
+test('the deployed Cloudflare decoder restores menu links and body email text on every swap', () => {
+  const f = fixture();
+  const decoder = fs.readFileSync('tests/fixtures/cloudflare-email-decode.snapshot.js', 'utf8');
+  // Snapshot fetched from the live Cloudflare script; executed only in the test VM.
+  for (const key of [0x12, 0xdb, 0x71, 0x4a]) {
+    const email = 'hello@steveafrost.com';
+    const encoded = key.toString(16).padStart(2, '0') + [...email].map(c => (c.charCodeAt(0) ^ key).toString(16).padStart(2, '0')).join('');
+    const menuLink = { href: 'https://steveafrost.com/cdn-cgi/l/email-protection#' + encoded };
+    const bodyLink = { href: menuLink.href };
+    const text = { value: '[email protected]' };
+    const span = { getAttribute: () => encoded, parentNode: { replaceChild(node) { text.value = node.textContent; } } };
+    const script = { attributes: { src: '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' }, getAttribute(key) { return this.attributes[key]; }, setAttribute(key, value) { this.attributes[key] = value; }, parentNode: { removeChild() {} } };
+    const incoming = documentFixture(); incoming.querySelectorAll = () => [script];
+    f.document.dispatch('astro:before-swap', { newDocument: incoming });
+    assert.equal(script.attributes['data-astro-rerun'], '');
+    const decodedDocument = {
+      currentScript: script,
+      querySelectorAll(query) { return query === 'a' ? [menuLink, bodyLink] : query === '.__cf_email__' ? [span] : []; },
+      createTextNode: textContent => ({ textContent }),
+      createElement() { return { set innerHTML(html) { this.childNodes = [{ getAttribute: () => html.match(/href="([^"]*)"/)[1] }]; } }; },
+    };
+    vm.runInNewContext(decoder, { document: decodedDocument, console });
+    assert.equal(menuLink.href, 'mailto:' + email);
+    assert.equal(bodyLink.href, 'mailto:' + email);
+    assert.equal(text.value, email);
+  }
 });
