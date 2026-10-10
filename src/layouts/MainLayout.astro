@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import browserChromeSource from "../../public/river-assets/browser-chrome.js?raw";
 
 
 import Analytics from "@vercel/analytics/astro";
@@ -16,6 +17,7 @@ interface Props {
   ogType?: "website" | "article";
   home?: boolean;
   glassHeader?: boolean;
+  browserTemplate?: "featurette" | "featurette-screen";
 }
 
 const {
@@ -26,6 +28,7 @@ const {
   ogType = "website",
   home = false,
   glassHeader = false,
+  browserTemplate,
 } = Astro.props;
 
 const navLinks = [
@@ -36,15 +39,27 @@ const navLinks = [
 
 const currentPath = Astro.url.pathname;
 const useGlassHeader = home || glassHeader || ["/about", "/projects", "/articles"].includes(currentPath.replace(/\/$/, ""));
+const chromeTemplate = browserTemplate || (home ? "home" : (currentPath.startsWith("/articles/") && currentPath !== "/articles/") ? "article" : currentPath === "/about" || currentPath === "/about/" ? "about" : "list");
+const chromeColors = {
+  home: ["#c2dcd3", "#001b32"],
+  featurette: ["#f4e9d6", "#f4e9d6"],
+  "featurette-screen": ["#f7f4eb", "#10222d"],
+  article: ["#f7f4eb", "#10222d"],
+  about: ["#f7f4eb", "#f7f4eb"],
+  list: ["#f7f4eb", "#10222d"],
+} as const;
+const [chromeDay, chromeNight] = chromeColors[chromeTemplate];
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const socialImage = (ogImage && resolveSocialImage(ogImage, ogImageAlt || title, Astro.site!)) || resolveSocialImage(landscapeImage.src, landscapeImage.alt, Astro.site!);
 if (!socialImage) throw new Error("The default landscape social image is missing or invalid.");
 ---
 
-<html lang="en">
+<html lang="en" data-browser-template={chromeTemplate} data-chrome-day={chromeDay} data-chrome-night={chromeNight} style={`background-color:${chromeDay};color-scheme:light`}>
   <head>
     <ClientRouter />
-    <script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('river-theme')==='night'?'night':'day'}catch{document.documentElement.dataset.theme='day'}</script>
+    <meta name="theme-color" content={chromeDay} />
+    <meta name="color-scheme" content="light" />
+    <script is:inline set:html={browserChromeSource} />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
@@ -125,8 +140,8 @@ if (!socialImage) throw new Error("The default landscape social image is missing
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
     <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
-    <script is:inline defer src="/river-assets/navigation-lifecycle.js?v=router-email-2"></script>
-    <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1-router-1"></script>
+    <script is:inline defer src="/river-assets/navigation-lifecycle.js?v=router-chrome-3"></script>
+    <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1-chrome-1"></script>
     <script is:inline defer src="/river-assets/mobile-menu.js?v=unfold-2-router-1"></script>
     {home && <script is:inline defer src="/river-assets/river.js?v=unified-motion-8-router-1"></script>}
     {home && <script is:inline type="module" src="/river-assets/bank-visitors.mjs?v=exact-start-6-router-1"></script>}

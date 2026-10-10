@@ -6,7 +6,7 @@ interface Props { name: string; subtitle: string; image: string; imageAlt: strin
 const { name, subtitle, image, imageAlt, story, storyLabel = 'Read the build story', screen = false, glassHeader = true, sourceExcerpt, sourceLabel, artworkCaption, selection } = Astro.props;
 const imageMetadata = resolveSocialImage(image, imageAlt, Astro.site!);
 ---
-<MainLayout title={`${name} | Steve Frost`} description={subtitle} ogImage={image} ogImageAlt={imageAlt} glassHeader={glassHeader}>
+<MainLayout browserTemplate={screen ? "featurette-screen" : "featurette"} title={`${name} | Steve Frost`} description={subtitle} ogImage={image} ogImageAlt={imageAlt} glassHeader={glassHeader}>
   <article class:list={["project-feature", { screen, "shared-navigation": glassHeader }]}>
     <section class="project-hero" aria-labelledby="project-title">
       <div class="project-art">{sourceExcerpt ? <figure class="project-source"><figcaption>{sourceLabel}</figcaption><pre><code>{sourceExcerpt}</code></pre></figure> : <img class="project-scene" src={image} alt={imageAlt} width={imageMetadata?.width || 1487} height={imageMetadata?.height || 1058} fetchpriority="high" />}</div>

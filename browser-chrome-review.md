@@ -1,0 +1,11 @@
+Browser chrome preview based on published 23e0b0695dcdd555ef93e5001ad842a06e5ec6cc.
+
+Template colors (day / night): Home #c2dcd3 / #001b32, sampled from shipped day/night river sky. Illustrated featurettes #f4e9d6 / #f4e9d6, matching their unchanged illustrated surface. Screen featurettes, articles, Writing and Work lists #f7f4eb / #10222d, matching existing page paper colors. About #f7f4eb / #f7f4eb because its illustrated reading surface explicitly stays light at night.
+
+One theme-color meta follows the app's selected appearance rather than overriding it with OS preferences. An inline head initializer applies saved appearance, meta color, root background and color-scheme before first paint. The existing theme control invokes the same function. Astro before-swap updates the incoming document and after-swap/page-load resynchronize it, including Back/Forward. Root background supplies template overscroll color; body surfaces and all existing safe-area offsets remain intact.
+
+No viewport-fit=cover or standalone/PWA mode was introduced: existing viewport/safe-area geometry remains. No Apple status-bar-style metadata previously existed. Apple documents that it applies only in standalone mode and accepts default/black/black-translucent rather than arbitrary template colors. Safari theme-color is a browser tint hint; browser/version/user settings retain final control. Desktop cloud testing cannot prove exact iPhone Safari appearance. Actual iPhone Safari validation remains necessary.
+
+Validation: build 83 pages; 96 Node tests; type check no errors/warnings. All 99 HTML routes and 51 full article bodies preserved. Source illustrations, shared header geometry, animations and email decoding preserved. Preview only. Cloud QA pending; no browser used on Mr Chips. Check template transitions, theme toggles, hard reload with saved night, Back/Forward, overscroll and the existing menu on desktop/narrow cloud browser. Then validate address/status toolbar areas on an actual iPhone in Safari.
+
+Primary references: https://webkit.org/blog/11989/new-webkit-features-in-safari-15/ and https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html

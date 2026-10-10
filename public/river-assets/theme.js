@@ -29,6 +29,7 @@ function initializeTheme() {
   function apply(theme) {
     if (disposed) return;
     root.dataset.theme = theme;
+    globalThis.riverBrowserChrome?.(document, theme);
     try { localStorage.setItem('river-theme', theme); } catch {}
     if (photo) {
       document.dispatchEvent(new Event('river-artwork-changing'));

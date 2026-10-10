@@ -18,7 +18,7 @@ test('every article shares the Writing header, active navigation and lifecycle a
     assert.equal(navigation(html), navigation(writing), file);
     assert.match(html, /river-glass-inner/, file);
     assert.match(html, /astro-view-transitions-enabled/, file);
-    assert.match(html, /navigation-lifecycle\.js\?v=router-email-2/, file);
+    assert.match(html, /navigation-lifecycle\.js\?v=router-chrome-3/, file);
     assert.match(html, /sticky-glass\.js\?v=mobile-stable-1-router-1/, file);
   }
 });

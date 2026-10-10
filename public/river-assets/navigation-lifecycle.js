@@ -19,6 +19,7 @@
     let value = document.documentElement.dataset.theme === 'night' ? 'night' : 'day';
     try { value = localStorage.getItem('river-theme') === 'night' ? 'night' : 'day'; } catch {}
     documentToUpdate.documentElement.dataset.theme = value;
+    globalThis.riverBrowserChrome?.(documentToUpdate, value);
     const picture = documentToUpdate.querySelector('.river-picture');
     if (picture?.dataset[value]) picture.setAttribute('src', picture.dataset[value]);
   }

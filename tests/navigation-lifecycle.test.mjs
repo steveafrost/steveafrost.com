@@ -94,7 +94,7 @@ test('built shared routes include router; standalone demos retain a document bou
   for (const route of ['index.html', 'about/index.html', 'projects/index.html', 'articles/index.html', 'projects/kindle-newspaper/index.html']) {
     const html = fs.readFileSync(`dist/${route}`, 'utf8');
     assert.match(html, /name="astro-view-transitions-enabled"/);
-    assert.match(html, /navigation-lifecycle\.js\?v=router-email-2/);
+    assert.match(html, /navigation-lifecycle\.js\?v=router-chrome-3/);
   }
   const mock = fs.readFileSync('dist/projects/mock/tip-track/index.html', 'utf8');
   assert.doesNotMatch(mock, /name="astro-view-transitions-enabled"/);
