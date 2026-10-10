@@ -31,14 +31,14 @@ test('root custom property synchronizes both page background providers through a
     }
   }
 });
-test('built templates provide body canvas color before JavaScript and retain automatic notch insetting', () => {
+test('built templates provide body canvas color before JavaScript and retain automatic notch insetting outside Home', () => {
   for (const route of ['index.html','about/index.html','projects/kindle-newspaper/index.html','projects/pi-skill-recommender/index.html','articles/building-a-nightly-newspaper-for-my-kindle/index.html']) {
     const html = fs.readFileSync('dist/'+route,'utf8');
     const day = html.match(/data-chrome-day="([^"]+)"/)[1];
     assert.ok(html.includes('--browser-chrome-color:'+day));
-    assert.ok(html.includes('viewport-fit=auto'));
-    assert.ok(!html.includes('viewport-fit=cover'));
-    assert.ok(html.includes('production.css?v=featurette-viewport-1-safe-area-2'));
+    assert.ok(html.includes('viewport-fit='+ (route === 'index.html' ? 'cover' : 'auto')));
+    assert.ok(!html.includes('viewport-fit='+ (route === 'index.html' ? 'auto' : 'cover')));
+    assert.ok(html.includes('production.css?v=featurette-viewport-1-home-sky-3'));
     assert.ok(!html.includes('apple-mobile-web-app-capable'));
   }
 });

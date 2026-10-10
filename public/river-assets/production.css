@@ -299,3 +299,29 @@ body.river-glass-inner .skip:focus{z-index:51}
    Keep the canvas/chrome color aligned; reading surfaces stay inside content. */
 body.river-site{background-color:var(--browser-chrome-color,var(--cream))}
 body.river-site #main,body.river-site .river-footer{background-color:var(--cream)}
+
+/* Home alone draws into the physical safe area. Keep the original scene inside
+   its former safe width/height; the exposed raster edges fill the extra space. */
+body.river-home{--home-sky-top:env(safe-area-inset-top,0px);--home-safe-left:env(safe-area-inset-left,0px);--home-safe-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body.river-home #main{padding-left:var(--home-safe-left);padding-right:var(--home-safe-right)}
+.home-river-frame{position:relative;max-width:1920px;margin-inline:auto}
+.home-sky-space{height:var(--home-sky-top)}
+.home-river-extension{position:absolute;inset:0;pointer-events:none}
+.home-river-edge{position:absolute;display:block;overflow:hidden;pointer-events:none}
+.home-river-edge-top{top:0;left:0;width:100%;height:var(--home-sky-top)}
+.home-river-edge-left,.home-river-edge-right{top:var(--home-sky-top);height:var(--river-hero-height)}
+.home-river-edge-left,.home-river-edge-top-left{right:100%;width:var(--home-safe-left)}
+.home-river-edge-right,.home-river-edge-top-right{left:100%;width:var(--home-safe-right)}
+.home-river-edge-top-left,.home-river-edge-top-right{top:0;height:var(--home-sky-top)}
+.home-edge-night{display:none}
+[data-theme="night"] .home-edge-day{display:none}
+[data-theme="night"] .home-edge-night{display:block}
+body.river-home .river-nav.editorial-header.glass-navigation{top:calc(12px + var(--home-sky-top));left:calc(var(--gutter) + var(--home-safe-left));right:calc(var(--gutter) + var(--home-safe-right))}
+body.river-home .skip:focus{top:calc(12px + var(--home-sky-top));left:calc(24px + var(--home-safe-left));z-index:51}
+body.river-home .motion-toggle{top:calc(var(--home-sky-top) + var(--river-hero-height) - 48px);right:calc(var(--home-safe-right) + max(8px,calc((100vw - var(--home-safe-left) - var(--home-safe-right) - 1920px)/2 + 8px)))}
+body.river-home .river-footer{padding-left:calc(var(--gutter) + var(--home-safe-left));padding-right:calc(var(--gutter) + var(--home-safe-right))}
+@media(max-width:1280px){body.river-home .motion-toggle{top:calc(var(--home-sky-top) + var(--river-hero-height) + 4px)}}
+@media(max-width:760px){body.river-home .river-nav.editorial-header.glass-navigation{top:calc(8px + var(--home-sky-top));left:calc(16px + var(--home-safe-left));right:calc(16px + var(--home-safe-right))}}
+html:has(body.river-home){scroll-padding-top:calc(100px + env(safe-area-inset-top,0px))}
+.river-home [id]{scroll-margin-top:calc(100px + var(--home-sky-top))}
+@media(max-width:760px){html:has(body.river-home){scroll-padding-top:calc(144px + env(safe-area-inset-top,0px))}.river-home [id]{scroll-margin-top:calc(144px + var(--home-sky-top))}}

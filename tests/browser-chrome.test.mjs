@@ -55,6 +55,7 @@ test('built template metadata has one color request and existing viewport withou
     assert.equal([...html.matchAll(/<meta name="theme-color"/g)].length, 1);
     assert.ok(html.includes('<meta name="theme-color" content="'+day+'"'));
     assert.ok(html.includes('width=device-width, initial-scale=1'));
-    assert.ok(!html.includes('apple-mobile-web-app-capable') && !html.includes('viewport-fit=cover'));
+    assert.ok(!html.includes('apple-mobile-web-app-capable'));
+    assert.ok(html.includes('viewport-fit='+(template === 'home' ? 'cover' : 'auto')));
   }
 });

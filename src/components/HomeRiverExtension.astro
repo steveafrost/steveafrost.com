@@ -1,0 +1,11 @@
+---
+const edges = ['top', 'left', 'right', 'top-left', 'top-right'];
+---
+<!-- Extend only exposed edge pixels; the original scene remains its own crop. -->
+<div class="home-river-extension" aria-hidden="true">
+  {edges.map(edge => <svg class={`home-river-edge home-river-edge-${edge}`} data-home-edge={edge} viewBox="0 0 2172 1" preserveAspectRatio="none" focusable="false">
+    <image class="home-edge-day" href="/river-assets/river-full-bleed.png" width="2172" height="724" />
+    <image class="home-edge-night" href="/river-assets/river-night-sky.png" width="2172" height="724" />
+  </svg>)}
+</div>
+<div class="home-sky-space" aria-hidden="true"></div>

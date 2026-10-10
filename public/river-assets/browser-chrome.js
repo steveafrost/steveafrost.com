@@ -3,6 +3,11 @@
   globalThis.riverBrowserChrome = (page, theme) => {
     const root = page.documentElement;
     const night = theme === 'night';
+    // Portrait Home gets the sky strip. Landscape retains its deployed safe
+    // viewport width, including existing responsive breakpoints and hero crop.
+    const landscape = typeof matchMedia === 'function' && matchMedia('(orientation: landscape)').matches;
+    const fit = root.dataset.browserTemplate === 'home' && !landscape ? 'cover' : 'auto';
+    page.querySelector('meta[name="viewport"]')?.setAttribute('content', 'width=device-width, initial-scale=1, viewport-fit=' + fit);
     const color = root.dataset[night ? 'chromeNight' : 'chromeDay'];
     if (!color) return;
     const scheme = night ? 'dark' : 'light';

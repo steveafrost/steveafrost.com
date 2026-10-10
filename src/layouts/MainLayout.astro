@@ -59,9 +59,9 @@ if (!socialImage) throw new Error("The default landscape social image is missing
     <ClientRouter />
     <meta name="theme-color" content={chromeDay} />
     <meta name="color-scheme" content="light" />
-    <script is:inline set:html={browserChromeSource} />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=auto" />
+    <meta name="viewport" content={`width=device-width, initial-scale=1, viewport-fit=${home ? "cover" : "auto"}`} />
+    <script is:inline set:html={browserChromeSource} />
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.ico?v=selected-river-3" sizes="16x16 32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=selected-river-3" sizes="any" />
@@ -113,7 +113,7 @@ if (!socialImage) throw new Error("The default landscape social image is missing
     <title>{title}</title>
     {home && <link rel="preload" as="image" href="/river-assets/moon-source.png" />}
     <link rel="stylesheet" href="/river-assets/river.css?v=lamp-controls-1" />
-    <link rel="stylesheet" href="/river-assets/production.css?v=featurette-viewport-1-safe-area-2" />
+    <link rel="stylesheet" href="/river-assets/production.css?v=featurette-viewport-1-home-sky-3" />
     <Analytics />
   </head>
   <body class:list={["river-site", home ? "river-home" : "river-inner", !home && useGlassHeader && "river-glass-inner"]}>
@@ -143,6 +143,7 @@ if (!socialImage) throw new Error("The default landscape social image is missing
     <script is:inline defer src="/river-assets/navigation-lifecycle.js?v=router-chrome-3"></script>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1-chrome-1"></script>
     <script is:inline defer src="/river-assets/mobile-menu.js?v=unfold-2-router-1"></script>
+    {home && <script is:inline type="module" src="/river-assets/home-sky.mjs?v=edge-1" />}
     {home && <script is:inline defer src="/river-assets/river.js?v=unified-motion-8-router-1"></script>}
     {home && <script is:inline type="module" src="/river-assets/bank-visitors.mjs?v=exact-start-6-router-1"></script>}
     {home && <script is:inline type="module" src="/river-assets/bridge-cyclist.mjs?v=exact-start-4-router-1"></script>}
