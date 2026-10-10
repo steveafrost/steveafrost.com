@@ -17,7 +17,7 @@ const { Content } = await render(article);
 const socialImage = articleSocialImage(article, Astro.site!);
 ---
 
-<MainLayout title={`${article.data.title} | Steve Frost`} description={article.data.description} ogType="article" ogImage={socialImage?.src} ogImageAlt={socialImage?.alt}>
+<MainLayout glassHeader title={`${article.data.title} | Steve Frost`} description={article.data.description} ogType="article" ogImage={socialImage?.src} ogImageAlt={socialImage?.alt}>
   <article class="py-8">
     <header class="mb-10">
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl text-gradient">{article.data.title}</h1>
