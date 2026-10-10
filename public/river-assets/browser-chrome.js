@@ -8,6 +8,7 @@
     const scheme = night ? 'dark' : 'light';
     root.dataset.theme = night ? 'night' : 'day';
     root.style.backgroundColor = color;
+    root.style.setProperty('--browser-chrome-color', color);
     root.style.colorScheme = scheme;
     page.querySelector('meta[name="theme-color"]')?.setAttribute('content', color);
     page.querySelector('meta[name="color-scheme"]')?.setAttribute('content', scheme);

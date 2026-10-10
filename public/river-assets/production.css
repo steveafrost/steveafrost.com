@@ -294,3 +294,8 @@ body.river-glass-inner .skip:focus{z-index:51}
   [data-theme="night"] body.river-site .editorial-header.glass-navigation.menu-enhanced::before{backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%);-webkit-backdrop-filter:blur(14px) saturate(125%) brightness(65%) contrast(60%)}
  }
 }
+
+/* Safari's automatic safe-area painting can sample body as well as html.
+   Keep the canvas/chrome color aligned; reading surfaces stay inside content. */
+body.river-site{background-color:var(--browser-chrome-color,var(--cream))}
+body.river-site #main,body.river-site .river-footer{background-color:var(--cream)}

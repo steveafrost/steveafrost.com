@@ -7,7 +7,7 @@ function page(day, night) {
   const events = new Map();
   const metas = { 'theme-color': { content: day }, 'color-scheme': { content: 'light' } };
   for (const meta of Object.values(metas)) meta.setAttribute = (key, value) => { meta[key] = value; };
-  return { documentElement: { dataset: { chromeDay: day, chromeNight: night }, style: {} }, metas,
+  return { documentElement: { dataset: { chromeDay: day, chromeNight: night }, style: { setProperty(key, value) { this[key] = value; } } }, metas,
     addEventListener: (name, fn) => events.set(name, fn), dispatch: (name, event) => events.get(name)?.(event),
     querySelector(selector) { return metas[selector.match(/meta\[name="([^"]+)"\]/)?.[1]] || null; }, querySelectorAll: () => [] };
 }
