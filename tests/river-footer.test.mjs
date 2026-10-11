@@ -2,25 +2,26 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import sharp from 'sharp';
 
 const built=route=>fs.readFileSync(`dist/${route}`,'utf8');
 test('every shared footer keeps the three destinations and native client navigation',()=>{
   const routes=fs.readdirSync('dist',{recursive:true}).filter(path=>path.endsWith('.html'));
   let count=0;
   for(const route of routes){
-    const html=built(route),footer=html.match(/<footer class="river-footer river-footer-edge"[\s\S]*?<\/footer>/)?.[0];
+    const html=built(route),footer=html.match(/<footer class="river-footer river-footer-minimal"[\s\S]*?<\/footer>/)?.[0];
     if(!footer)continue;count++;
     assert.deepEqual([...footer.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(match=>match[1]),['/','/projects','https://github.com/steveafrost']);
     assert.ok(footer.includes('aria-label="Footer"'));
     assert.ok(!footer.includes('data-astro-reload')&&!footer.includes('role="menu"'));
     assert.equal([...footer.matchAll(/class="theme-toggle theme-header theme-footer"/g)].length,1);
-    assert.ok(footer.includes('Light mode')&&footer.includes('Night mode'));
+    assert.ok(!/Light mode|Night mode|Useful things|<img\b|footer-art|footer-meta/.test(footer));
+    assert.ok(footer.includes('aria-label="Switch to dark mode"'));
+    assert.ok(footer.includes('aria-pressed="false"'));
     assert.ok(!/Ann Arbor|Michigan|location/i.test(footer),'footer must not expose a location in text or accessible variants');
   }
   assert.equal(count,71);
-  assert.ok(!built('knight-school/index.html').includes('river-footer-edge'));
-  assert.ok(!built('projects/mock/caamp/index.html').includes('river-footer-edge'));
+  assert.ok(!built('knight-school/index.html').includes('river-footer-minimal'));
+  assert.ok(!built('projects/mock/caamp/index.html').includes('river-footer-minimal'));
 });
 
 test('footer controls share theme state with header, survive route entry, and remove old listeners',()=>{
@@ -44,29 +45,10 @@ test('footer controls share theme state with header, survive route entry, and re
   assert.equal(saved.length,8);
 });
 
-test('art is raster, transparent at its wavy cap, lightweight, and decorative',async()=>{
-  const html=built('index.html'),footer=html.match(/<footer class="river-footer river-footer-edge"[\s\S]*?<\/footer>/)[0];
-  assert.ok(footer.includes('class="footer-art" aria-hidden="true"'));
-  const images=[...footer.matchAll(/<img\b[^>]*src="(\/footer-assets\/[^\"]+)"[^>]*>/g)];
-  assert.equal(images.length,6);
-  let bytes=0;
-  for(const [tag,src] of images){
-    assert.ok(tag.includes('alt=""'));assert.ok(tag.includes('fetchpriority="low"'));
-    const path='public'+src;bytes+=fs.statSync(path).size;
-    const meta=await sharp(path).metadata();assert.equal(meta.width,2172);assert.equal(meta.format,'webp');
-    if(src.includes('-cap')){
-      const {data,info}=await sharp(path).ensureAlpha().raw().toBuffer({resolveWithObject:true});
-      assert.equal(data[3],0);
-      assert.ok(data[(info.width*(info.height-1)+info.width/2)*4+3]>240);
-    }
-  }
-  assert.ok(bytes<400000);
-});
-
 test('footer responsive rules allow narrow wrapping without introducing motion or altering the Home sky',()=>{
   const component=fs.readFileSync('src/components/RiverFooter.astro','utf8');
   assert.ok(component.includes('@media(max-width:760px)'));
-  assert.ok(component.includes('grid-template-columns:minmax(0,1fr);gap:26px'));
+  assert.ok(component.includes("grid-template-areas:'name theme' 'links links'"));
   assert.ok(component.includes('flex-wrap:wrap'));
   assert.ok(component.includes('overflow-wrap:anywhere'));
   assert.ok(component.includes('min-height:44px'));
