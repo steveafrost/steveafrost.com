@@ -16,6 +16,7 @@ test('every shared footer keeps the three destinations and native client navigat
     assert.ok(!footer.includes('data-astro-reload')&&!footer.includes('role="menu"'));
     assert.equal([...footer.matchAll(/class="theme-toggle theme-header theme-footer"/g)].length,1);
     assert.ok(footer.includes('Light mode')&&footer.includes('Night mode'));
+    assert.ok(!/Ann Arbor|Michigan|location/i.test(footer),'footer must not expose a location in text or accessible variants');
   }
   assert.equal(count,71);
   assert.ok(!built('knight-school/index.html').includes('river-footer-edge'));

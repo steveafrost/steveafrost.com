@@ -22,7 +22,6 @@ import ThemeSwitch from './ThemeSwitch.astro';
       </nav>
     </div>
     <div class="footer-meta">
-      <p>Ann Arbor, Michigan</p>
       <ThemeSwitch footer />
     </div>
   </div>
@@ -51,7 +50,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
   .footer-links a span{min-width:0;overflow-wrap:anywhere}
   .footer-links :global(svg){flex-shrink:0;width:32px;height:32px;color:var(--red)}
   .footer-github :global(svg){transform:rotate(-45deg)}
-  .footer-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--footer-line);margin-top:32px;padding-top:12px;color:var(--footer-muted);font-size:18px;line-height:1.5}
+  .footer-meta{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px 24px;border-top:1px solid var(--footer-line);margin-top:32px;padding-top:12px;color:var(--footer-muted);font-size:18px;line-height:1.5}
   .footer-meta p{margin:0;overflow-wrap:anywhere}
   .footer-meta :global(.theme-footer){display:inline-flex;align-items:center;justify-content:center;gap:10px;grid-area:auto;width:auto;height:auto;min-height:44px;margin:0;padding:4px 0;background:transparent;border:0;border-radius:0;color:var(--footer-muted);font:inherit;white-space:nowrap}
   .footer-meta :global(.theme-footer svg){width:28px;height:28px;color:var(--red)}
