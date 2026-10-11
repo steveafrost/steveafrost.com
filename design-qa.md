@@ -1,11 +1,53 @@
-# Featurette viewport layout preview QA
+# River’s Edge footer candidate
 
-Final result: blocked pending permitted cloud rendered QA. No local browser used.
+final result: blocked
 
-All fifteen featurettes reuse the shared fixed glass header. Their hero starts at document top under the overlay; scoped main padding override removes header space. Hero uses 100vh/100svh/100dvh and grid layout; mobile image, title/subtitle/story CTA and three-column related links share the viewport. Short mobile landscape uses two columns. Related links have one common grid row, equal-width cells and centered text. Removed legacy global 860px/fixed-image/440px-copy offsets and component 900px hero minimum.
+Source visual truth: Library libfile_e2c58d18f45081918bc84650d4527087,
+file_0000000021fc81f6b3568eaae49b5004, version 0. Materialized through the supported
+Library helper and actually opened at
+/Users/white-box/Documents/Codex/2026-10-02/task-4/footer-reference/rivers-edge.png.
+Source dimensions: 1487×1058. Readable bytes: 1,780,024; SHA256
+68c1bce8a0d2089f91641349ef2dccc30cd974eb1efea0edda73bb4ee44bcbfd.
 
-80 tests pass; 83 Astro pages build; all 99 HTML routes retained. Mobile menu and sticky-glass JS plus curated project records/selection are byte-identical to production1b8e602. Production CSS change removes only obsolete project sizing rules; cache token updated. No changes to project copy, artwork or selected order.
+Implementation screenshot, viewport, pixel dimensions, density normalization,
+full-view comparison and focused comparison: pending parent cloud browser.
+No browser was launched on Steve’s Mac. No CPU image is claimed as a screenshot.
+Compare desktop light/dark and narrow light/dark. The reference’s surrounding
+article content is contextual and is not copied into the implementation.
 
-Library screenshot libfile_3a45f21b415881919c5fc5ed369f11df resolved as image(20261008-181837).png. Current Library materialization helper returned HTTP403; no local readable file exists, and permission failure was not bypassed. Parent successfully viewed it and reported the header spacer and CTA clipping. Implementation is grounded in explicit text requirements and source; no local pixel comparison claimed.
+## Findings
 
-Cloud QA must check hero top0, height equal visible viewport, title/subtitle/CTA fully visible and not beneath header, related link cell centers on one horizontal line, no horizontal overflow, day/night, portrait and landscape. No production deployment authorized for this candidate.
+- [Gate] Browser-rendered capture and visual comparison are unavailable locally.
+  Passing build/tests and inspecting assets do not establish design fidelity.
+- New Astro footer uses existing Fraunces/Space Grotesk fonts and arrow/theme
+  icons, plus inspected generated raster artwork. The water is a narrow ribbon;
+  no full scene, custom SVG/CSS drawing, or animation was added.
+- Cached-Back candidate and the deployed Home sky extension remain separate.
+
+## Required fidelity surfaces and implementation checklist
+
+- Typography: compare name’s Fraunces weight/optical feel, link size, tagline and
+  metadata wrapping at 320/390/500/1440px. Browser wrapping remains unverified.
+- Spacing/layout: compare shallow wave, identity, desktop right link column,
+  stacked mobile links, meta divider and 56/64px water ribbon; check x-overflow.
+- Colors/tokens: mint/day and teal/night art, text contrast, accent arrows and
+  current-state theme labels; night follows the existing root appearance.
+- Image quality: generated day/night PNG pixels were opened. Check browser WebP
+  crop, alpha boundary/halos, paper seams, foliage scale and ribbon quality.
+- Copy: Steve Frost; Useful things made with curiosity.; More work; GitHub;
+  Ann Arbor, Michigan; Light mode/Night mode. Keep actual page content unchanged.
+- Interactions: /, /projects, GitHub; keyboard/focus; footer toggle -> header and
+  stored state; Home/About/Work/Kindle/article/return and Back/Forward.
+- Both themes, short/long pages, reduced motion, console/network health.
+- Preserve Home portrait cover/landscape auto and Work’s existing full river scene.
+
+## Comparison history
+
+Source inspected; assets generated and inspected; candidate built/tested.
+No rendered iteration yet. No visual P0/P1/P2 finding or pass is claimed from
+source inspection. Put source and cloud screenshot in one normalized comparison
+input before deciding fidelity or applying visual fixes.
+
+## Follow-up polish
+
+Assess after rendered comparison; avoid speculative P3 iteration.

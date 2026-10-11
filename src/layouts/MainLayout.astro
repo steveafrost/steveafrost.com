@@ -6,6 +6,7 @@ import browserChromeSource from "../../public/river-assets/browser-chrome.js?raw
 
 import Analytics from "@vercel/analytics/astro";
 import ThemeSwitch from "../components/ThemeSwitch.astro";
+import RiverFooter from "../components/RiverFooter.astro";
 import NavigationIcon from "../components/NavigationIcon.astro";
 import { landscapeImage, resolveSocialImage } from "../lib/social-image.mjs";
 
@@ -139,7 +140,7 @@ if (!socialImage) throw new Error("The default landscape social image is missing
       </div>
     </header>
     <main id="main" class:list={[!home && "river-content wrap"]}><slot /></main>
-    <footer class="river-footer wrap"><a href="/">Steve Frost</a><a href="/projects">More work</a><a href="https://github.com/steveafrost">GitHub</a></footer>
+    <RiverFooter />
     <script is:inline defer src="/river-assets/navigation-lifecycle.js?v=router-chrome-3"></script>
     <script is:inline defer src="/river-assets/theme.js?v=header-editorial-1-chrome-1"></script>
     <script is:inline defer src="/river-assets/mobile-menu.js?v=unfold-2-router-1"></script>
