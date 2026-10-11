@@ -26,7 +26,7 @@ test('every shared footer keeps the three destinations and native client navigat
 
 test('footer controls share theme state with header, survive route entry, and remove old listeners',()=>{
   const listeners=new Map(), saved=[];
-  const document={documentElement:{dataset:{theme:'day'}},querySelector:()=>null,querySelectorAll:()=>controls};
+  const document={addEventListener(type,fn){listeners.set(type,fn);},removeEventListener(type,fn){assert.equal(listeners.get(type),fn);listeners.delete(type);},documentElement:{dataset:{theme:'day'}},querySelector:()=>null,querySelectorAll:()=>controls};
   const control=()=>({attrs:{},classList:{contains:name=>name==='theme-header'},setAttribute(name,value){this.attrs[name]=value;},addEventListener(type,fn){assert.equal(type,'click');listeners.set(this,fn);},removeEventListener(type,fn){assert.equal(type,'click');assert.equal(listeners.get(this),fn);listeners.delete(this);}});
   let controls=[control(),control()];
   const context=vm.createContext({document,riverLifecycle:{register(){}},localStorage:{setItem:(key,value)=>saved.push([key,value])}});

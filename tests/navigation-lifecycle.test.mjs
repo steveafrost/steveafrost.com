@@ -6,6 +6,7 @@ const read = name => fs.readFileSync(`public/river-assets/${name}`, 'utf8');
 function target() {
   const listeners = new Map();
   return {
+    dispatchEvent(event) { this.dispatch(event.type, event); },
     addEventListener(type, fn) { if (!listeners.has(type)) listeners.set(type, new Set()); listeners.get(type).add(fn); },
     removeEventListener(type, fn) { listeners.get(type)?.delete(fn); },
     dispatch(type, event = {}) { for (const fn of [...(listeners.get(type) || [])]) fn(event); },
@@ -13,13 +14,13 @@ function target() {
   };
 }
 function documentFixture() {
-  const picture = { dataset: { day: '/day.png', night: '/night.png' }, setAttribute(key, value) { this[key] = value; } };
+  const picture = { dataset: { day: '/day.png', night: '/night.png' }, getAttribute(key) { return this[key]; }, setAttribute(key, value) { this[key] = value; } };
   return Object.assign(target(), { documentElement: { dataset: { theme: 'day' } }, querySelector: () => picture, querySelectorAll: () => [], picture });
 }
 function fixture() {
   const document = documentFixture();
   const errors = [];
-  const context = vm.createContext({ ...target(), document, localStorage: { getItem: () => 'night' }, console: { error: (...args) => errors.push(args) } });
+  const context = vm.createContext({ ...target(), Event, document, localStorage: { getItem: () => 'night' }, console: { error: (...args) => errors.push(args) } });
   vm.runInContext(read('navigation-lifecycle.js'), context);
   return { context, document, errors };
 }
@@ -94,7 +95,7 @@ test('built shared routes include router; standalone demos retain a document bou
   for (const route of ['index.html', 'about/index.html', 'projects/index.html', 'articles/index.html', 'projects/kindle-newspaper/index.html']) {
     const html = fs.readFileSync(`dist/${route}`, 'utf8');
     assert.match(html, /name="astro-view-transitions-enabled"/);
-    assert.match(html, /navigation-lifecycle\.js\?v=router-chrome-3/);
+    assert.match(html, /navigation-lifecycle\.js\?v=router-history-4/);
   }
   const mock = fs.readFileSync('dist/projects/mock/tip-track/index.html', 'utf8');
   assert.doesNotMatch(mock, /name="astro-view-transitions-enabled"/);

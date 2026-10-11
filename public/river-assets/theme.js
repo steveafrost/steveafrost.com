@@ -64,6 +64,7 @@ function initializeTheme() {
     }
   }
   for (const control of controls) listen(control, 'click', () => toggle(control));
+  listen(document, 'river-theme-restored', sync);
   sync();
   return () => { disposed = true; for (const remove of removers) remove(); };
 }

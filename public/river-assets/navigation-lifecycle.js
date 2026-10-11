@@ -21,7 +21,10 @@
     documentToUpdate.documentElement.dataset.theme = value;
     globalThis.riverBrowserChrome?.(documentToUpdate, value);
     const picture = documentToUpdate.querySelector('.river-picture');
-    if (picture?.dataset[value]) picture.setAttribute('src', picture.dataset[value]);
+    if (picture?.dataset[value] && picture.getAttribute('src') !== picture.dataset[value]) {
+      if (documentToUpdate === document) document.dispatchEvent(new Event('river-artwork-changing'));
+      picture.setAttribute('src', picture.dataset[value]);
+    }
   }
   globalThis.riverLifecycle = {
     register(name, initialize) {
@@ -46,6 +49,12 @@
   document.addEventListener('astro:page-load', () => {
     theme(document);
     for (const entry of entries.values()) start(entry);
+  });
+  addEventListener('pageshow', event => {
+    // Native bfcache restores a DOM snapshot without Astro swap/page-load events.
+    if (!event.persisted) return;
+    theme(document);
+    document.dispatchEvent(new Event('river-theme-restored'));
   });
   addEventListener('pagehide', event => { if (!event.persisted) stop(); });
 })();
