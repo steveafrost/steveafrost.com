@@ -1,6 +1,121 @@
 ---
 // This standalone page avoids the portfolio layout's analytics and client router.
+// It serves double duty: App Store marketing landing page (hero, gallery, features,
+// pricing) and the app's required Support/Privacy URLs. Keep the #privacy and
+// #support anchors intact — they are registered in App Store Connect.
 import "../styles/global.css";
+
+const APP_STORE_URL = "https://apps.apple.com/us/app/knight-school-chess/id6782358551";
+
+const screenshots = [
+  {
+    src: "/img/knight-school/01-home-dashboard.jpg",
+    alt: "Knight School home screen showing the Knight Passport rank card, today's quest, and the coach plan.",
+    caption: "Home",
+    blurb: "Rank, quests, and one clear next step.",
+  },
+  {
+    src: "/img/knight-school/02-play-board.jpg",
+    alt: "The chess board during a game, with coach bot levels and an optional practice clock.",
+    caption: "Play",
+    blurb: "Ten coach bots or a sibling on the same iPad.",
+  },
+  {
+    src: "/img/knight-school/03-puzzles.jpg",
+    alt: "Puzzle library with themed packs and a queen fork tactic on the board.",
+    caption: "Puzzles",
+    blurb: "36 tactics, sorted into packs that make sense.",
+  },
+  {
+    src: "/img/knight-school/04-lessons.jpg",
+    alt: "The lessons catalog showing short lessons and opening paths.",
+    caption: "Lessons",
+    blurb: "21 short lessons — one idea at a time.",
+  },
+  {
+    src: "/img/knight-school/05-drills.jpg",
+    alt: "Drill paths with a knight movement exercise on the board.",
+    caption: "Drills",
+    blurb: "Piece moves until they stop being a guess.",
+  },
+  {
+    src: "/img/knight-school/06-progress.jpg",
+    alt: "Progress dashboard with per-area counters, badges, and the coach plan.",
+    caption: "Progress",
+    blurb: "Real numbers your kid can point at.",
+  },
+];
+
+const features = [
+  {
+    title: "Lessons with a point",
+    body: "21 short lessons and their quizzes, sequenced from the rules up through openings and endgames. Each one teaches a single idea and checks it before moving on.",
+  },
+  {
+    title: "Practice that adapts",
+    body: "Piece-move drills, board coordinates, 11 opening lines, 14 endgame challenges. Miss something and it comes back in Review Next instead of disappearing.",
+  },
+  {
+    title: "Ten coach bots",
+    body: "Gentle, Clever, and Coach personalities across ten bots. Beating one is a real milestone, not a participation badge.",
+  },
+  {
+    title: "Two players, one iPad",
+    body: "Same-device two-player for siblings and parents. No matchmaking, no strangers, no chat, no lobby.",
+  },
+  {
+    title: "Works on a plane",
+    body: "Lessons, puzzles, drills, and games all run offline. Only purchasing and restoring need a connection.",
+  },
+  {
+    title: "Grown-up controls",
+    body: "A grown-up check guards purchases, settings, backups, and sharing. Reports and certificates export as printable PDFs.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Is there a subscription?",
+    a: "No. Knight School is free to start. Full School is a single one-time US$4.99 purchase that unlocks permanently and restores on any iPad signed in to the same Apple Account.",
+    open: true,
+  },
+  {
+    q: "Does it collect data on my kid?",
+    a: "No accounts, ads, analytics, or tracking. The nickname, avatar, settings, and progress stay on the iPad. Purchases are handled entirely by Apple, and no learner nickname or practice history is sent with them.",
+    open: false,
+  },
+  {
+    q: "What's free, and what costs $4.99?",
+    a: "Free forever: four beginner Starter Path lessons and their quizzes, Gentle and Pip Coach Bot, and same-device Two Player. Full School adds the remaining lessons, puzzles, drills, opening lines, endgame challenges, advanced coaches, Analyze, Club, and Adventure.",
+    open: false,
+  },
+  {
+    q: "What devices does it run on?",
+    a: "iPad on iPadOS 17 or later. It's built as an iPad app, with a layout that respects Dynamic Type and strengthens contrast when Increase Contrast is on.",
+    open: false,
+  },
+  {
+    q: "Does progress survive a new iPad?",
+    a: "Export a progress backup from Parent Controls to a JSON file, then restore it on the new device. Loading a profile or restoring a backup starts a fresh game — unfinished games aren't included in backups.",
+    open: false,
+  },
+];
+
+const fullSchool = [
+  "All 21 lessons and their quizzes",
+  "All 36 puzzles across 8 packs",
+  "All drills, 11 openings, 14 endgames",
+  "Ten coach bots and advanced coaches",
+  "Analyze, Club, and Adventure",
+];
+
+const starter = [
+  "4 beginner Starter Path lessons",
+  "Their mastery quizzes",
+  "Gentle and Pip Coach Bot",
+  "Same-device Two Player",
+  "Local progress and quests",
+];
 ---
 
 <!doctype html>
@@ -8,28 +123,267 @@ import "../styles/global.css";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Privacy information and family support for Knight School Chess, an offline chess learning app for iPad." />
+    <meta
+      name="description"
+      content="Knight School Chess is an offline chess app for kids on iPad. 21 lessons, 36 puzzles, ten coach bots, and local two-player. No accounts, ads, or subscriptions."
+    />
     <link rel="canonical" href="https://steveafrost.com/knight-school" />
     <meta name="theme-color" content="#faf5e9" />
-    <title>Knight School Chess — Privacy &amp; Support</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Knight School Chess — learn chess one move at a time" />
+    <meta
+      property="og:description"
+      content="An offline chess app for kids on iPad. 21 lessons, 36 puzzles, ten coach bots. Free to start, no subscription, no ads, no tracking."
+    />
+    <meta property="og:url" content="https://steveafrost.com/knight-school" />
+    <meta property="og:image" content="https://steveafrost.com/img/knight-school/02-play-board.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Knight School Chess — an offline chess app for kids on iPad</title>
   </head>
   <body class="m-0 bg-[#faf5e9] font-sans text-[#292f29] antialiased">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded focus:bg-white focus:p-3">Skip to content</a>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-10 focus:rounded focus:bg-white focus:p-3"
+      >Skip to content</a
+    >
     <div class="h-2 bg-[#496a46]" aria-hidden="true"></div>
-    <header class="mx-auto max-w-3xl px-5 pb-8 pt-10 sm:px-8 sm:pt-16">
-      <p class="mb-4 text-sm font-bold uppercase tracking-widest text-[#496a46]">Learn. Practice. Play.</p>
-      <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">Knight School Chess</h1>
-      <p class="mt-5 max-w-xl text-lg leading-relaxed text-[#50584e]">A little practice. A brighter next move. Original chess lessons, puzzles, and local play for kids on iPad.</p>
-      <nav aria-label="Page sections" class="mt-7 flex flex-wrap gap-3">
-        <a href="#privacy" class="rounded-full bg-[#496a46] px-5 py-3 font-semibold text-white underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]">Privacy policy</a>
-        <a href="#support" class="rounded-full border border-[#496a46] px-5 py-3 font-semibold text-[#345032] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]">Family support</a>
-      </nav>
+
+    <header class="mx-auto max-w-5xl px-5 pb-6 pt-10 sm:px-8 sm:pt-16">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <p class="text-sm font-bold uppercase tracking-widest text-[#496a46]">Knight School Chess</p>
+        <nav aria-label="Page sections" class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+          <a href="#features" class="text-[#345032] underline-offset-4 hover:underline">Features</a>
+          <a href="#screens" class="text-[#345032] underline-offset-4 hover:underline">Screens</a>
+          <a href="#pricing" class="text-[#345032] underline-offset-4 hover:underline">Pricing</a>
+          <a href="#support" class="text-[#345032] underline-offset-4 hover:underline">Support</a>
+          <a href="#privacy" class="text-[#345032] underline-offset-4 hover:underline">Privacy</a>
+        </nav>
+      </div>
+
+      <div class="mt-10 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]">
+        <div>
+          <h1 class="text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            <span class="block sm:inline">Learn chess</span>{" "}
+            <span class="block sm:inline">one move at a time.</span>
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-[#50584e]">
+            Knight School brings lessons, practice, and friendly games together on iPad — then gets
+            out of the way. No accounts. No ads. No subscription. No strangers.
+          </p>
+          <p class="mt-4 text-sm font-semibold text-[#496a46]">
+            Now on the App Store · iPad · iPadOS 17+ · Free to start
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href={APP_STORE_URL}
+              class="inline-flex items-center gap-3 rounded-full bg-[#345032] px-6 py-4 font-semibold text-white shadow-sm transition hover:bg-[#2a4028] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                <path
+                  d="M16.36 12.72c.02 2.4 2.1 3.2 2.13 3.21-.02.05-.33 1.15-1.1 2.27-.66.98-1.35 1.95-2.44 1.97-1.06.02-1.4-.63-2.62-.63-1.21 0-1.6.61-2.6.65-1.05.04-1.85-1.05-2.52-2.02-1.38-2-2.43-5.65-1.02-8.11.7-1.23 1.95-2 3.31-2.03 1.02-.02 1.99.69 2.62.69.62 0 1.8-.85 3.03-.73.52.02 1.97.21 2.9 1.58-.08.05-1.73 1.01-1.69 3.15M14.3 5.9c.55-.67.92-1.6.82-2.53-.79.03-1.75.53-2.32 1.2-.51.58-.96 1.53-.84 2.43.88.07 1.79-.45 2.34-1.1"
+                />
+              </svg>
+              Download on the App Store
+            </a>
+            <a
+              href="#pricing"
+              class="rounded-full border border-[#496a46] px-6 py-4 font-semibold text-[#345032] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]"
+              >What's free?</a
+            >
+          </div>
+
+          <dl class="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-[#dfd8c9] pt-6">
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wider text-[#6b7369]">Lessons</dt>
+              <dd class="mt-1 text-2xl font-extrabold">21</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wider text-[#6b7369]">Puzzles</dt>
+              <dd class="mt-1 text-2xl font-extrabold">36</dd>
+            </div>
+            <div>
+              <dt class="text-xs font-semibold uppercase tracking-wider text-[#6b7369]">Coach bots</dt>
+              <dd class="mt-1 text-2xl font-extrabold">10</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="relative">
+          <div
+            class="overflow-hidden rounded-[2rem] border border-[#dfd8c9] bg-white shadow-[0_18px_40px_-24px_rgba(41,47,41,0.45)]"
+          >
+            <img
+              src="/img/knight-school/02-play-board.jpg"
+              alt="The Knight School chess board mid-game, with coach bot levels and an optional practice clock."
+              width="1100"
+              height="1467"
+              class="h-auto w-full"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
     </header>
-    <main id="main" class="mx-auto max-w-3xl space-y-7 px-5 pb-12 sm:px-8">
+
+    <main id="main" class="mx-auto max-w-5xl space-y-16 px-5 pb-16 sm:px-8">
+      <section aria-labelledby="why-title" class="rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+        <h2 id="why-title" class="text-2xl font-bold sm:text-3xl">A chess app that doesn't want anything from you</h2>
+        <p class="mt-4 max-w-3xl leading-relaxed text-[#50584e]">
+          Most kids' chess apps are a lobby with a game attached: accounts to create, ads to sit
+          through, coins to buy, and strangers to play. Knight School is the opposite. Everything
+          runs on the iPad, progress belongs to your family, and the only money involved is one
+          optional $4.99 unlock a grown-up chooses to make.
+        </p>
+        <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            ["No accounts", "No ads or analytics", "No subscription", "Works offline"].map((item) => (
+              <li class="flex items-start gap-2 text-sm font-semibold text-[#345032]">
+                <svg aria-hidden="true" viewBox="0 0 20 20" class="mt-0.5 h-4 w-4 shrink-0 fill-current">
+                  <path d="M8.1 14.2 3.6 9.7l1.5-1.5 3 3 6.8-6.8 1.5 1.5z" />
+                </svg>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section id="features" aria-labelledby="features-title" class="scroll-mt-6">
+        <h2 id="features-title" class="text-2xl font-bold sm:text-3xl">What's actually inside</h2>
+        <p class="mt-3 max-w-2xl leading-relaxed text-[#50584e]">
+          Enough content to matter, laid out so a kid always knows the next step.
+        </p>
+        <div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            features.map((feature) => (
+              <article class="rounded-2xl border border-[#dfd8c9] bg-white p-6">
+                <h3 class="text-lg font-bold">{feature.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-[#50584e]">{feature.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id="screens" aria-labelledby="screens-title" class="scroll-mt-6">
+        <h2 id="screens-title" class="text-2xl font-bold sm:text-3xl">A look at the app</h2>
+        <p class="mt-3 max-w-2xl leading-relaxed text-[#50584e]">
+          Warm notebook paper, flat green and cream boards, and big readable type — designed for
+          fingers and eyes that aren't finished growing.
+        </p>
+        <ul class="mt-7 grid grid-cols-2 gap-5 md:grid-cols-3">
+          {
+            screenshots.map((shot) => (
+              <li>
+                <figure>
+                  <div class="overflow-hidden rounded-xl border border-[#dfd8c9] bg-white">
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      width="1100"
+                      height="1467"
+                      class="h-auto w-full"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <figcaption class="mt-3">
+                    <span class="text-sm font-bold text-[#345032]">{shot.caption}</span>
+                    <span class="mt-0.5 block text-sm leading-snug text-[#50584e]">{shot.blurb}</span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section id="pricing" aria-labelledby="pricing-title" class="scroll-mt-6">
+        <h2 id="pricing-title" class="text-2xl font-bold sm:text-3xl">Free to start. One price to unlock.</h2>
+        <p class="mt-3 max-w-2xl leading-relaxed text-[#50584e]">
+          No tiers, no coins, no upsells inside a lesson. A grown-up answers one challenge to make
+          the purchase, and that's the whole transaction.
+        </p>
+        <div class="mt-7 grid gap-5 md:grid-cols-2">
+          <article class="rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+            <h3 class="text-lg font-bold">Free</h3>
+            <p class="mt-1 text-3xl font-extrabold">$0</p>
+            <p class="mt-1 text-sm text-[#50584e]">Always, with no account required.</p>
+            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed">
+              {
+                starter.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" class="mt-1 h-3.5 w-3.5 shrink-0 fill-[#496a46]">
+                      <path d="M8.1 14.2 3.6 9.7l1.5-1.5 3 3 6.8-6.8 1.5 1.5z" />
+                    </svg>
+                    <span class="text-[#50584e]">{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article class="rounded-2xl border-2 border-[#496a46] bg-white p-6 sm:p-8">
+            <div class="flex items-baseline justify-between gap-3">
+              <h3 class="text-lg font-bold">Full School</h3>
+              <span class="rounded-full bg-[#eef2ea] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#345032]"
+                >One time</span
+              >
+            </div>
+            <p class="mt-1 text-3xl font-extrabold">$4.99</p>
+            <p class="mt-1 text-sm text-[#50584e]">Not a subscription. Restores on your other iPads.</p>
+            <ul class="mt-5 space-y-2.5 text-sm leading-relaxed">
+              {
+                fullSchool.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <svg aria-hidden="true" viewBox="0 0 20 20" class="mt-1 h-3.5 w-3.5 shrink-0 fill-[#496a46]">
+                      <path d="M8.1 14.2 3.6 9.7l1.5-1.5 3 3 6.8-6.8 1.5 1.5z" />
+                    </svg>
+                    <span class="text-[#50584e]">{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+            <a
+              href={APP_STORE_URL}
+              class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#345032] px-6 py-3.5 font-semibold text-white transition hover:bg-[#2a4028] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#496a46]"
+              >Get it on the App Store</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="faq-title" class="rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+        <h2 id="faq-title" class="text-2xl font-bold">Questions parents ask</h2>
+        <div class="mt-6 divide-y divide-[#eae4d7]">
+          {
+            faqs.map((faq) => (
+              <details class="group py-4" open={faq.open}>
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
+                  <span>{faq.q}</span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    class="h-4 w-4 shrink-0 fill-[#496a46] transition-transform group-open:rotate-180"
+                  >
+                    <path d="M10 13.7 4.3 8l1.4-1.4L10 10.9l4.3-4.3L15.7 8z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-2xl text-sm leading-relaxed text-[#50584e]">{faq.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
       <section aria-labelledby="practice-title" class="rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
         <h2 id="practice-title" class="text-xl font-bold">Made for offline practice</h2>
-        <p class="mt-3 leading-relaxed text-[#50584e]">Learn the rules, solve tactics, and play a coach bot or another person on the same iPad. Progress stays local. No app account, ads, subscriptions, chat, or online matchmaking.</p>
-        <p class="mt-3 leading-relaxed text-[#50584e]">Beginner lessons and basic games are free. A grown-up can unlock all lessons, puzzles, drills, openings, advanced coaches, Club, and Adventure with a one-time US$4.99 Full School purchase. No subscription. Purchasing and restoring need an internet connection; verified access supports offline learning.</p>
+        <p class="mt-3 leading-relaxed text-[#50584e]">
+          Learn the rules, solve tactics, and play a coach bot or another person on the same iPad.
+          Progress stays local. No accounts, ads, subscriptions, chat, or online matchmaking.
+        </p>
       </section>
 
       <section id="privacy" aria-labelledby="privacy-title" class="scroll-mt-6 rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
@@ -63,7 +417,7 @@ import "../styles/global.css";
         </div>
       </section>
 
-      <section id="support" aria-labelledby="support-title" class="scroll-mt-6 rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
+<section id="support" aria-labelledby="support-title" class="scroll-mt-6 rounded-2xl border border-[#dfd8c9] bg-white p-6 sm:p-8">
         <h2 id="support-title" class="text-2xl font-bold">Family support</h2>
         <div class="mt-6 space-y-6 leading-relaxed">
           <section aria-labelledby="backup-title">
@@ -73,6 +427,10 @@ import "../styles/global.css";
           <section aria-labelledby="restore-title">
             <h3 id="restore-title" class="font-bold">Restore a backup</h3>
             <p class="mt-2 text-[#50584e]">In Parent Controls, choose Restore backup, select your Knight School JSON file, and review the preview before confirming. Restore replaces the current progress with the backup. Export your current progress first if you want to keep it.</p>
+          </section>
+          <section aria-labelledby="purchase-title">
+            <h3 id="purchase-title" class="font-bold">Restore a purchase</h3>
+            <p class="mt-2 text-[#50584e]">Full School is a one-time non-consumable purchase. Open Progress, find Full School Purchase &amp; Restore, complete the grown-up check, and choose Restore. It restores on any iPad signed in to the Apple Account that made the purchase. Apple handles payment and purchase records.</p>
           </section>
           <section aria-labelledby="game-title">
             <h3 id="game-title" class="font-bold">Come back to your game</h3>
@@ -84,8 +442,12 @@ import "../styles/global.css";
           </section>
         </div>
       </section>
+
       <footer class="px-1 text-sm leading-relaxed text-[#50584e]">
-        <p>Knight School Chess · Created by Steve Frost</p>
+        <p class="font-semibold text-[#345032]">
+          <a href={APP_STORE_URL} class="underline underline-offset-4">Knight School Chess on the App Store</a>
+        </p>
+        <p class="mt-2">Knight School Chess · Created by Steve Frost · <a href="mailto:hello@steveafrost.com" class="underline underline-offset-4">hello@steveafrost.com</a></p>
       </footer>
     </main>
   </body>
