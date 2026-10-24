@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://steveafrost.com/sitemap-index.xml

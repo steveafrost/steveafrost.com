@@ -7,6 +7,23 @@ import featuredProjectIds from "./featured-projects.json" with { type: "json" };
  */
 export const personalProjects = [
   {
+    slug: 'knight-school', name: 'Knight School Chess',
+    subtitle: 'Learn chess one move at a time.',
+    featuredDate: '2026-10-23',
+    story: '/knight-school',
+    postcard: '/img/knight-school/02-play-board.jpg', postcardClass: 'knight',
+    hero: '/img/knight-school/01-home-dashboard.jpg',
+    heroAlt: 'The Knight School Chess home screen on iPad, showing a lesson path and daily practice.',
+    noteTitle: 'A chess app that stays on the iPad',
+    paragraphs: [
+      "Knight School Chess started as a problem in a school chess club: the kids wanted to practice between meetings, and every app I tried wanted an account, showed ads, or needed a network connection. So I built the app I could not find.",
+      'It runs entirely offline on iPad. Short lessons introduce one idea at a time, then puzzles, drills, and ten offline coach bots let a kid actually use it. Two-player mode runs on a single iPad, so pairings at a club table do not require anyone to sign in.',
+      'There are no accounts, no ads, no analytics, and no subscription. Progress stays on the device. Reports and certificates export as printable PDFs, which was the feature the club parents asked for first.',
+      'It is free to start. A one-time $4.99 unlock opens the remaining lessons, all 36 puzzles, the drills, openings, endgames, and stronger bots.',
+    ],
+    sources: ['/knight-school'],
+  },
+  {
     slug: 'kindle-newspaper', name: 'Kindle newspaper',
     subtitle: 'A nightly edition for my Kindle.',
     featuredDate: '2026-09-30',

@@ -128,6 +128,35 @@ const starter = [
       content="Knight School Chess is an offline chess app for kids on iPad. 21 lessons, 36 puzzles, ten coach bots, and local two-player. No accounts, ads, or subscriptions."
     />
     <link rel="canonical" href="https://steveafrost.com/knight-school" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "Knight School Chess",
+      applicationCategory: "EducationalApplication",
+      applicationSubCategory: "Chess",
+      operatingSystem: "iPadOS 17.0 or later",
+      url: "https://apps.apple.com/us/app/knight-school-chess/id6782358551",
+      downloadUrl: "https://apps.apple.com/us/app/knight-school-chess/id6782358551",
+      description: "An offline chess app for kids on iPad. 21 lessons, 36 puzzles, ten coach bots, and two-player on one iPad. No accounts, ads, analytics, or subscriptions.",
+      author: { "@type": "Person", name: "Steve Frost", url: "https://steveafrost.com" },
+      offers: [
+        { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Free to start" },
+        { "@type": "Offer", price: "4.99", priceCurrency: "USD", name: "Full School, one-time unlock" }
+      ],
+      featureList: [
+        "21 short lessons with quizzes",
+        "36 puzzles in 8 packs",
+        "8 drills",
+        "11 openings",
+        "14 endgames",
+        "10 offline coach bots",
+        "Two-player on one iPad",
+        "Works entirely offline",
+        "No accounts, ads, analytics, or subscriptions"
+      ],
+      audience: { "@type": "EducationalAudience", educationalRole: "student" }
+    })} />
+
     <meta name="theme-color" content="#faf5e9" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Knight School Chess — learn chess one move at a time" />
