@@ -5,6 +5,7 @@ import browserChromeSource from "../../public/river-assets/browser-chrome.js?raw
 
 
 import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import ThemeSwitch from "../components/ThemeSwitch.astro";
 import RiverFooter from "../components/RiverFooter.astro";
 import NavigationIcon from "../components/NavigationIcon.astro";
@@ -150,5 +151,6 @@ if (!socialImage) throw new Error("The default landscape social image is missing
     {home && <script is:inline type="module" src="/river-assets/bridge-cyclist.mjs?v=exact-start-4-router-1"></script>}
     {home && <script is:inline type="module" src="/river-assets/tower-flag.mjs?v=exact-start-3-router-1"></script>}
     {useGlassHeader && <script is:inline defer src="/river-assets/sticky-glass.js?v=mobile-stable-1-router-1"></script>}
+    <SpeedInsights />
   </body>
 </html>
